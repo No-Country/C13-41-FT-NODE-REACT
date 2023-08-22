@@ -21,6 +21,21 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 *.lcov
+# testing
+/coverage
+# misc
+.DS_Store
+*.pem
+# local env files
+.env*.local
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+# production
+/build
 
 # nyc test coverage
 .nyc_output
