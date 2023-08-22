@@ -1,7 +1,7 @@
 .main {
 	padding: 2rem 1rem;
 	min-height: 100vh;
-	background-color: #ffffff;
+	background-color: #e5e5e5;
 }
 
 .container {
@@ -17,6 +17,7 @@
 	color: #2e2e2e;
 	text-align: center;
 	font-size: 1rem;
+	font-weight: 600;
 }
 
 .backgroundImage {
@@ -59,10 +60,9 @@
 	color: #2e2e2e;
 	font-size: 0.85rem;
 	text-align: center;
+	font-weight: 400;
 }
 
-.text a:hover {
-	text-decoration: none;
-	color: rebeccapurple;
-	transition: color 1s;
+.text a {
+	font-weight: 500;
 }
