@@ -3,13 +3,17 @@
 import React from 'react'
 import styles from "./styles.module.css"
 import { useFormik } from 'formik';
+import axios from 'axios';
 
 export default function Doctor (){
+
+  
 
   const formik = useFormik({
 
     initialValues: {
 
+      user: "doctor",
       fullname: "",
       email: "",
       gender: "Masculino",
@@ -22,15 +26,35 @@ export default function Doctor (){
       education: "",
 
     },
-
+    
     onSubmit: values => {
 
-      console.log (JSON.stringify (values, null, 2));
-      
+      let data = (JSON.stringify (values));
+      console.log (data);
+
+      axios.post('/register/doctor', {
+
+        data: data,
+
+      })
+
+      .then(function (response) {
+
+        console.log(response);
+
+      })
+
+      .catch(function (error) {
+
+        console.log(error);
+
+      });
 
     },
 
   });
+
+
 
   return (
 
@@ -53,7 +77,7 @@ export default function Doctor (){
           <option value="Otro">Otro</option>
         </select>
 
-        <label htmlFor="gender">Ingrese su Pais</label>
+        <label htmlFor="country">Ingrese su Pais</label>
         <select autoComplete='off' required id="country" name="country" onChange={formik.handleChange} value={formik.values.country}>
           <option value="Argentina">Argentina</option>
           <option value="Colombia">Colombia</option>
