@@ -1,0 +1,19 @@
+/* Estilos formulario de Registro - Doctor */
+
+.contenedorFormulario {
+
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #018988;
+  flex-direction: column;
+
+}
+
+.h1Saludo {
+
+  color: whitesmoke;
+  font-size: 20px;
+
+}
