@@ -2,9 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan')
 const cors = require('cors')
-
-const auth = require('./routes/auth')
-
+const indexRouter = require('./routes/index') 
 // Middleware
 
 app.use(cors())
@@ -12,12 +10,12 @@ app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/v1/auth', auth)
+app.use('/api/v1', indexRouter)
 
-app.get('/',(req,res,next)=> {
-  return res.send("running").end
+//default request return not found
+app.use('/',(req,res,next)=> {
+  return res.status(404).end()
 })
-
 //Routes
 
 const PORT = process.env.PORT || 5000;
