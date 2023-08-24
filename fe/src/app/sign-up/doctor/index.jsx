@@ -13,34 +13,38 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function Copyright (props) {
+function Copyright(props) {
+
   return (
+
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://klinikapp.com/">
-        klinika - No Country 
+        klinika - No Country
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
+
   );
+
 }
 
 
 const defaultTheme = createTheme();
 
-export default function Doctor () {
+export default function Doctor() {
 
   const handleSubmit = (event) => {
 
     event.preventDefault();
 
-    const data = new FormData (event.currentTarget);
+    const data = new FormData(event.currentTarget);
 
     console.log({
 
-      name: data.get('name'),
-      surname: data.get('surname'),
+
+      fullName: data.get('fullName'),
       dob: data.get('dob'),
       license: data.get('license'),
       specialty: data.get('specialty'),
@@ -58,14 +62,7 @@ export default function Doctor () {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
 
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
+        <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
 
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
@@ -79,36 +76,21 @@ export default function Doctor () {
 
             <Grid container spacing={2}>
 
-              <Grid item xs={12} sm={6}>
-
+              <Grid item xs={12} sm={12}>
                 <TextField
                   autoComplete="off"
-                  name="name"
+                  name="fullName"
                   required
                   fullWidth
-                  id="name"
-                  label="Nombre"
+                  id="fullName"
+                  label="Nombre y Apellido"
                   autoFocus
+                  type="text"
                 />
-
               </Grid>
 
-              <Grid item xs={12} sm={6}>
-
+              <Grid item xs={12} sm={12}>
                 <TextField
-                  required
-                  fullWidth
-                  id="surname"
-                  label="Apellido"
-                  name="surname"
-                  autoComplete="off"
-                />
-
-              </Grid>
-
-            <Grid item xs={12} sm={12}>
-
-            <TextField
                   autoComplete="off"
                   name="dob"
                   required
@@ -116,14 +98,10 @@ export default function Doctor () {
                   id="dob"
                   label=""
                   type="date"
-            />
+                />
+              </Grid>
 
-
-
-            </Grid>
-
-            <Grid item xs={12} sm={12}>
-
+              <Grid item xs={12} sm={12}>
                 <TextField
                   autoComplete="off"
                   name="license"
@@ -132,11 +110,9 @@ export default function Doctor () {
                   id="license"
                   label="Cedula Profesional / Numero Matricula / Colegiatura"
                 />
+              </Grid>
 
-            </Grid>
-
-                <Grid item xs={12} sm={12}>
-
+              <Grid item xs={12} sm={12}>
                 <TextField
                   autoComplete="off"
                   name="specialty"
@@ -145,11 +121,9 @@ export default function Doctor () {
                   id="specialty"
                   label="Especialidad Medica: Ej: Traumatologia"
                 />
-
               </Grid>
 
-            <Grid item xs={12} sm={12}>
-
+              <Grid item xs={12} sm={12}>
                 <TextField
                   autoComplete="off"
                   name="education"
@@ -158,7 +132,6 @@ export default function Doctor () {
                   id="education"
                   label="Universidad de Egreso: Ej: UNAM"
                 />
-
               </Grid>
 
               <Grid item xs={12}>
@@ -170,11 +143,9 @@ export default function Doctor () {
                   name="email"
                   autoComplete="off"
                 />
-
               </Grid>
 
               <Grid item xs={12}>
-
                 <TextField
                   required
                   fullWidth
@@ -184,7 +155,6 @@ export default function Doctor () {
                   id="password"
                   autoComplete="off"
                 />
-
               </Grid>
 
             </Grid>
@@ -194,8 +164,7 @@ export default function Doctor () {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            >
-              Registrarse
+            >Registrarse
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
