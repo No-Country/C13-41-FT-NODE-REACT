@@ -1,64 +1,87 @@
-## BackEnd Commands 
-| Command  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Description                                                        |
-| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| npm run database| Excecute all commands for deploy database |
-| npm start| Run the api |
+<br />
 
-## BackEnd .Env File 
+<div align="center">
 
->These are the variables that backend need
+![Github Contributors](https://img.shields.io/github/contributors/No-Country/C13-41-FT-NODE-REACT)
+![Github Stars](https://img.shields.io/github/stars/No-Country/C13-41-FT-NODE-REACT)
+![Github Issues](https://img.shields.io/github/issues-raw/No-Country/C13-41-FT-NODE-REACT)
 
-| Variable Name  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Description                                                        |
-| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| PORT | Port number which back end will be deployed
-| JWT_SECRET | The salt necessary for the token|
-|NODE_ENV| The currently enviroment|
-|PRO_DB_USER| Production user database|
-|PRO_DB_HOST| Production host database|
-|PRO_DB_PASSWORD| Production password database|
-|PRO_DB_PORT| Production port database|
-|PRO_DB_NAME| Production name database|
-|DEV_DB_USER| Development user database|
-|DEV_DB_HOST| Development host database|
-|DEV_DB_PASSWORD| development password database|
-|DEV_DB_PORT| development port database|
-|DEV_DB_NAME| development name database|
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="No-Country/C13-41-FT-NODE-REACT">
+    <img src="https://img.icons8.com/emoji/96/hospital-emoji.png" alt="Logo" width="96" height="96">
+  </a>
 
-------------------------------------------------------------------------------------------
-## frontend
+<h3 align="center">Welcome - Bienvenid@</h3>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+  <p align=center">
+    Klinika - DESCRIPCION
+    <br />
+    <br />
+    <a href="https://klinika.vercel.app/">View Demo - Ver Demo</a>
+    ·
+    <a href="https://github.com/No-Country/C13-41-FT-NODE-REACT/issues">Report Bug - Reportar Bug</a>
+    ·
+    <a href="https://github.com/No-Country/C13-41-FT-NODE-REACT/issues">Request Feature - Pedir Feature</a>
+  </p>
+</div>
 
-## Getting Started
+<!-- ABOUT THE PROJECT -->
 
-First, run the development server:
+<h1 align="center"> 
+About The Project <img src="https://media2.giphy.com/media/4ZrRpqbSaWoyZYRoCd/giphy.gif" width="30px"> Acerca del Proyecto
+</h1>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+lorem...
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h1 align="center"> 
+Built With <img src="https://media0.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif" width="30px"> Hecho Con
+</h1>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+LOREM.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<!-- GETTING STARTED -->
+<h1 align="center"> 
+Getting Started <img src="https://media1.giphy.com/media/QvpqIQAAl66EfoTJj8/giphy.gif" width="30px"> Comenzando
+</h1>
 
-## Learn More
+Install the project locally - Instalar el proyecto localmente. 
 
-To learn more about Next.js, take a look at the following resources:
+Clone the repo and execute npm install from your vscode
+   ```sh
+   git clone https://github.com/No-Country/C13-41-FT-NODE-REACT.git
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Or just simply click on the Demo link above - O simplemente clicka en el link de Demo de arriba. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<!-- USAGE EXAMPLES -->
+<h1 align="center"> 
+Usage <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2lvcWx2Ynpia3BjYnk3Yzlvdmw1cnBjdHI3cm5uY3QzenM1enNibiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/igPDtkfSJZMFwE0LP8/giphy.gif" width="30px"> Uso
+</h1>
 
-## Deploy on Vercel
+lorem.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- CONTRIBUTING -->
+<h1 align="center"> 
+Contributing <img src="https://media4.giphy.com/media/rkzUVAQe0zC52ActrJ/giphy.gif" width="30px"> Contribuir
+</h1>
 
+lorem lorem - No olvides darle una estrella al proyecto! Gracias de nuevo!
+
+<!-- CONTACT -->
+<h1 align="center"> 
+Contact <img src="https://media3.giphy.com/media/dA9zmG7BCtbauczAQY/giphy.gif" width="30px"> Contacto
+</h1>
+
+
+[Via Github](https://github.com/No-Country/C13-41-FT-NODE-REACT)
+
+
+<!-- ACKNOWLEDGMENTS -->
+<h1 align="center"> 
+Acknowledgments <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXliemQ4NzVmdXRxc3FyM3RjN2F2NzQ5MmRwZnJxa2VrZDBncjhtbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/sa5tk2gi3G1MSmy1vY/giphy.gif" width="30px"> Agradecimientos
+</h1>
+
+[No Country](https://www.nocountry.tech/)
