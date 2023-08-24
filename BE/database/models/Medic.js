@@ -27,9 +27,6 @@ module.exports = (sequelize, DataTypes) => {
     avatar: {
       type: DataTypes.TEXT
     },
-    location: {
-      type: DataTypes.STRING
-    },
     password: {
       type: DataTypes.TEXT,
       allowNull: true,

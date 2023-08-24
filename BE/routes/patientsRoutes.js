@@ -5,7 +5,7 @@ const {
   createPatient,
   loginPatient,
   editPatient
-} = require("../controllers/patientsController.js");
+} = require("../controllers/Patient/index.js");
 
 router.route("/patient").post(createPatient);
 router.route("/patient/login").post(loginPatient);

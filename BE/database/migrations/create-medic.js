@@ -22,9 +22,6 @@ module.exports = {
       avatar: {
         type: Sequelize.TEXT
       },
-      location: {
-        type: Sequelize.STRING
-      },
       password: {
         type: Sequelize.TEXT,
         allowNull: true,
