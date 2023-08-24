@@ -1,9 +1,9 @@
-const { createPatient } = require("./createPatient");
 const { editPatient } = require("./editPatient");
 const { loginPatient } = require("./loginPatient");
+const { createPatient } = require("./registerPatient");
 
 module.exports = {
-  createPatient,
   editPatient,
   loginPatient,
+  createPatient
 };

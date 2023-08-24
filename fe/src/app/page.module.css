@@ -1,59 +1,104 @@
+.header {
+	padding: 1rem 4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav {
+	display: flex;
+	column-gap: 1rem;
+	align-items: center;
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	column-gap: 1rem;
+}
+
+.listItem {
+	list-style: none;
+	font-size: 14px;
+}
+
+.logo {
+	padding: 0.5rem 1rem;
+	background-color: #b2b2b2;
+	border-radius: 0.25rem;
+}
+
 .main {
-	padding: 2rem 1rem;
+	padding: 2rem 4rem;
 	min-height: 100vh;
 	background-color: #ffffff;
 }
 
 .container {
 	margin: auto;
-	max-width: 27.5rem;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	row-gap: 3rem;
+	align-items: start;
+	justify-content: space-between;
+	column-gap: 3rem;
 }
 
 .title {
 	color: #2e2e2e;
-	text-align: center;
-	font-size: 1rem;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.subtitle {
+	color: #2e2e2e;
+	font-size: 1.5rem;
 	font-weight: 600;
+	text-align: center;
 }
 
 .backgroundImage {
-	background-image: url(https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);
+	background-image: url(https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	width: 100%;
-	height: 50vh;
-	border-radius: 1rem;
-	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+	width: 50%;
+	height: 70vh;
+}
+
+.bannerInfo {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	width: 50%;
+	padding: 2rem 0;
 }
 
 .button {
-	background-color: #959595;
-	border: 1px solid #959595;
-	border-radius: 0.75rem;
+	background-color: var(--primary5);
+	border: 1px solid var(--primary5);
+	border-radius: 0.5rem;
 	color: #ffffff;
 	padding: 0.5rem 1rem;
-	width: 100%;
+	font-size: 14px;
+	width: fit-content;
 	text-align: center;
 	cursor: pointer;
 }
 
 .button:hover {
 	background-color: transparent;
-	border: 1px solid #959595;
-	color: #959595;
+	border: 1px solid var(--primary5);
+	color: var(--primary5);
 	transition: color 1s;
 }
 
 .linkContainer {
 	display: flex;
-	flex-direction: column;
-	row-gap: 1rem;
 	align-items: center;
+	column-gap: 1rem;
+}
+
+.signupButtonContainer {
+	display: none;
 }
 
 .text {
@@ -65,4 +110,651 @@
 
 .text a {
 	font-weight: 500;
+}
+
+.slogan {
+	color: #2e2e2e;
+	line-height: 1.4;
+	font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+	.header {
+		padding: 1rem 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.nav {
+		flex-direction: row-reverse;
+	}
+
+	.list {
+		display: none;
+		column-gap: 0.5rem;
+	}
+
+	.listItem {
+		list-style: none;
+		font-size: 12px;
+	}
+
+	.logo {
+		padding: 0.5rem 1rem;
+		background-color: #b2b2b2;
+		border-radius: 0.25rem;
+	}
+
+	.main {
+		padding: 1rem 1rem;
+	}
+
+	.container {
+		flex-direction: column;
+	}
+
+	.title {
+		font-size: 1.5rem;
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+	}
+
+	/* Podría ser una imagen de fondo y quitarla del inicio */
+	.backgroundImage {
+		width: 100%;
+		height: 35vh;
+	}
+
+	.bannerInfo {
+		display: flex;
+		flex-direction: column;
+		row-gap: 1rem;
+		width: 100%;
+		padding: 2rem 0;
+	}
+
+	.button {
+		font-size: 12px;
+	}
+
+	.linkContainer {
+		display: none;
+	}
+
+	.slogan {
+		display: none;
+		color: #2e2e2e;
+		line-height: 1.4;
+		font-size: 14px;
+		font-weight: 400;
+	}
+
+	.buttonAppointment {
+		display: none;
+	}
+
+	.buttonSignup {
+		width: 100%;
+	}
+
+	.signupButtonContainer {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		row-gap: 1rem;
+		padding: 1rem 0;
+	}
+}
+
+/* Services Section */
+
+.servicesSection {
+	display: flex;
+	flex-direction: column;
+	padding: 4rem 0;
+}
+
+.servicesContainer {
+	display: flex;
+	align-items: center;
+	padding: 2rem 0;
+	margin: auto;
+	column-gap: 1rem;
+	overflow-x: auto;
+}
+
+.serviceCard {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	background-color: #d9d9d9;
+	border-radius: 0.25rem;
+	padding: 1rem;
+	max-width: 17.5rem;
+	min-width: 12.5rem;
+}
+
+.serviceCard:hover {
+	background-color: #bbbbbb;
+	transition: background-color 500ms;
+}
+
+.serviceIcon {
+	background-color: #bbbbbb;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 0.25rem;
+}
+
+.serviceCard:hover .serviceIcon {
+	background-color: #d9d9d9;
+	transition: background-color 500ms;
+}
+
+.serviceTitle {
+	color: #2e2e2e;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.serviceDescription {
+	color: #2e2e2e;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.serviceLink {
+	color: #2e2e2e;
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+	.servicesSection {
+		padding: 2rem 0;
+	}
+
+	.serviceCard {
+		display: flex;
+		flex-direction: column;
+		row-gap: 1rem;
+		background-color: #d9d9d9;
+		border-radius: 0.25rem;
+		padding: 1rem;
+	}
+
+	.serviceCard:hover {
+		background-color: #bbbbbb;
+		transition: background-color 500ms;
+	}
+
+	.serviceIcon {
+		background-color: #bbbbbb;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 0.25rem;
+	}
+
+	.serviceCard:hover .serviceIcon {
+		background-color: #d9d9d9;
+		transition: background-color 500ms;
+	}
+
+	.serviceTitle {
+		color: #2e2e2e;
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	.serviceDescription {
+		color: #2e2e2e;
+		font-size: 12px;
+		font-weight: 400;
+	}
+
+	.serviceLink {
+		color: #2e2e2e;
+		font-size: 12px;
+		font-weight: 500;
+	}
+}
+
+/* Appointment Section */
+
+.appointmentSection {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 0;
+	row-gap: 2rem;
+}
+
+.appointmentContainer {
+	display: flex;
+	align-items: center;
+	padding: 2rem 0;
+	margin: auto;
+	column-gap: 1rem;
+}
+
+.appointmentCard {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	max-width: 20rem;
+}
+
+.appointmentImage {
+	background-color: #b2b2b2;
+	height: 4rem;
+	border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.appointmentInfo {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+	text-align: left;
+	padding: 1rem;
+	color: #2e2e2e;
+	background-color: #d9d9d9;
+	border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.appointmentTitle {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.appointmentSpecialty {
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.appointmentDescription {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.appointmentCardIcon {
+	background-color: #bbbbbb;
+	height: 1rem;
+	width: 1rem;
+	border-radius: 0.25rem;
+}
+
+.appointmentLink {
+	background-color: #bbbbbb;
+	border-radius: 0.25rem;
+	width: fit-content;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 0.5rem 2rem;
+}
+
+@media screen and (max-width: 768px) {
+	.appointmentContainer {
+		flex-direction: column;
+		row-gap: 2rem;
+	}
+
+	.appointmentCard {
+		width: 100%;
+		margin: auto;
+		max-width: none;
+	}
+
+	.appointmentTitle {
+		font-size: 14px;
+	}
+
+	.appointmentSpecialty {
+		font-size: 14px;
+	}
+
+	.appointmentDescription {
+		font-size: 12px;
+	}
+
+	.appointmentLink {
+		font-size: 12px;
+	}
+}
+/* Why Us Section */
+
+.whyUsSection {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 0;
+	row-gap: 2rem;
+}
+
+.whyUsContainer {
+	display: flex;
+	align-items: center;
+	column-gap: 3rem;
+}
+
+.whyUsList {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+}
+
+.whyUsItem {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.25rem;
+	color: #2e2e2e;
+	list-style: none;
+}
+
+.whyUsItemTitle {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.whyUsItemDescription {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.whyUsImage {
+	width: 60%;
+	height: 50vh;
+	background-color: #b2b2b2;
+}
+
+@media screen and (max-width: 768px) {
+	.whyUsContainer {
+		flex-direction: column;
+		row-gap: 1rem;
+	}
+
+	.whyUsList {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.whyUsItemTitle {
+		font-size: 14px;
+	}
+
+	.whyUsItemDescription {
+		font-size: 12px;
+	}
+
+	.whyUsImage {
+		width: 100%;
+		height: 30vh;
+	}
+}
+
+/* Our services in the eyes of our patients Section */
+
+.patientSection {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 0;
+	row-gap: 2rem;
+}
+
+.patientContainer {
+	display: flex;
+	align-items: center;
+	column-gap: 1rem;
+}
+
+.patientCard {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	background-color: #d9d9d9;
+	border-radius: 0.25rem;
+	padding: 1rem;
+	max-width: 17.5rem;
+	color: #2e2e2e;
+}
+
+.patientCardHeader {
+	display: flex;
+	align-items: center;
+	column-gap: 1rem;
+}
+
+.patientIcon {
+	height: 4rem;
+	width: 4rem;
+	border-radius: 50%;
+	background-color: #a9a9a9;
+}
+
+.patientTitle {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.patientTagContainer {
+	display: flex;
+	column-gap: 0.25rem;
+}
+
+.patientTag {
+	height: 1rem;
+	width: 1rem;
+	border-radius: 0.25rem;
+	border: 1px solid #2e2e2e;
+	border-style: dashed;
+}
+
+.patientDescription {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+	.patientContainer {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 1rem;
+	}
+
+	.patientCard {
+		width: 100%;
+		row-gap: 0.75rem;
+		max-width: none;
+	}
+
+	.patientIcon {
+		height: 3rem;
+		width: 3rem;
+	}
+
+	.patientTitle {
+		font-size: 14px;
+	}
+
+	.patientDescription {
+		font-size: 12px;
+	}
+}
+/* App Seciton */
+
+.appSection {
+	display: flex;
+	flex-direction: column;
+	padding: 3rem 0;
+	row-gap: 3rem;
+}
+
+.appContainer {
+	display: flex;
+	align-items: center;
+	column-gap: 3rem;
+}
+
+.appImage {
+	display: grid;
+	place-items: center;
+	background-color: #b2b2b2;
+	height: 50vh;
+	width: 50%;
+	border-radius: 0.25rem;
+}
+
+.appInfo {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+	color: #2e2e2e;
+}
+
+.appDescription {
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.appLinkContainer {
+	display: flex;
+	column-gap: 1rem;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.appLink {
+	background-color: #bbbbbb;
+	border-radius: 0.25rem;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 0.5rem 2rem;
+}
+
+@media screen and (max-width: 768px) {
+	.appSection {
+		padding: 2rem 0;
+	}
+
+	.appContainer {
+		flex-direction: column;
+		row-gap: 1rem;
+	}
+
+	.appImage {
+		height: 30vh;
+		width: 100%;
+	}
+
+	.appInfo {
+		width: 100%;
+	}
+
+	.appDescription {
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.appLink {
+		font-size: 12px;
+	}
+}
+
+/* Footer section */
+
+.footer {
+	padding: 2rem 4rem 4rem 4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #d9d9d9;
+}
+
+.companyDetailsContainer {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	color: #2e2e2e;
+	text-align: center;
+	max-width: 30%;
+}
+
+.companyTitle {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.companyDescription {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.footerLinksContainer {
+	width: 40%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 3rem;
+	color: #2e2e2e;
+}
+
+.footerList {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	list-style: none;
+}
+
+.footerListItem {
+	font-size: 14px;
+}
+
+.footerListItemTitle {
+	font-weight: 600;
+}
+
+.footerLink {
+	font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+	.footer {
+		flex-direction: column;
+		padding: 2rem 1rem 2rem 1rem;
+		row-gap: 2rem;
+	}
+
+	.companyDetailsContainer {
+		width: 100%;
+		max-width: 80%;
+	}
+
+	.companyTitle {
+		font-size: 1rem;
+	}
+
+	.companyDescription {
+		font-size: 12px;
+	}
+
+	.footerLinksContainer {
+		width: 100%;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.footerList {
+		row-gap: 0.25rem;
+	}
+
+	.footerListItem {
+		font-size: 12px;
+	}
 }
