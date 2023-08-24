@@ -26,7 +26,8 @@ const loginPatient = async (req, res) => {
     }
     return res.status(200).json({ message: "Patient logged", patient });
   } catch (error) {
-    return res.status(400).json({ error });
+    return res.status(400).json({ message: error.message, error: "Login Patient" });
+
   }
 };
 

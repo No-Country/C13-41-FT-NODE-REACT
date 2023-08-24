@@ -7,8 +7,8 @@ const {
   editPatient
 } = require("../controllers/Patient/index.js");
 
-router.route("/patient").post(createPatient);
-router.route("/patient/login").post(loginPatient);
-router.route("/patient/edit").put(editPatient);
+router.post("/",createPatient);
+router.post("/login",loginPatient);
+router.put("/",editPatient);
 
 module.exports = router;

@@ -42,7 +42,7 @@ const createPatient = async (req, res) => {
 
     return res.status(201).json({ message: "Patient created", patient: newPatient });
   } catch (error) {
-    return res.status(400).json({ message: error.message, error: "Error" });
+    return res.status(400).json({ message: error.message, error: "Create Patient" });
   }
 };
 

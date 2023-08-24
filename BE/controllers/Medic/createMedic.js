@@ -54,7 +54,7 @@ const createMedic = async (req, res) => {
       .status(201)
       .json({ data: { medic: newMedic }, message: "medic created" });
   } catch (error) {
-    return res.status(400).json({ message: error.message, error: "Error" });
+    return res.status(400).json({ message: error.message, error: "Create Medic" });
   }
 };
 

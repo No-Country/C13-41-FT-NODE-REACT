@@ -38,15 +38,23 @@ const editPatient = async (req, res) => {
       }
     );
 
-    if (!updatedPatient) {
+    if (updatedPatient == 0) {
       throw new Error("Patient not found")
     }
 
+    const patient = await Patient.findOne(
+      {
+        where: {
+          email: email,
+        },
+      }
+    );
+
     return res
       .status(200)
-      .json({ data: { patient: updatedPatient }, message: "patient updated" });
+      .json({ data:{patient},message: "Patient Updated" });
   } catch (error) {
-    return res.status(400).json({ message: error.message, error: "Error" });
+    return res.status(400).json({ message: error.message, error: "Edit Patient" });
   }
 };
 

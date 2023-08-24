@@ -7,8 +7,8 @@ const {
   editMedic
 } = require("../controllers/Medic/index.js");
 
-router.route("/medic").post(createMedic)
-router.route("/medic/login").post(loginMedic);
-router.route("/medic/edit").put(editMedic);
+router.post("/",createMedic)
+router.post("/login",loginMedic);
+router.put("/",editMedic);
 
 module.exports = router;

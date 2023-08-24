@@ -31,7 +31,7 @@ const editMedic = async (req, res) => {
     const hashedPwd = await bcrypt.hash(password, 10);
 
     const updatedMedic = await Medic.update(
-      {
+      { 
         fullname,
         password: hashedPwd,
         email,
@@ -52,11 +52,20 @@ const editMedic = async (req, res) => {
       throw new Error("Medic not found")
     }
 
+    const medic = await Medic.findOne(
+      {
+        where: {
+          email: email,
+        },
+      }
+    );
+
+
     return res
       .status(200)
-      .json({ data: { medic: updatedMedic }, message: "medic updated" });
+      .json({ data: { medic }, message: "medic updated" });
   } catch (error) {
-    return res.status(400).json({ message: error.message, error: "Error" });
+    return res.status(400).json({ message: error.message, error: "Edit Medic" });
   }
 };
 
