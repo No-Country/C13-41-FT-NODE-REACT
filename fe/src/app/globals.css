@@ -1,0 +1,30 @@
+:root {
+	--gray0: #ffffff;
+	--gray1: #e5e5e5;
+	--gray2: #cccccc;
+	--gray3: #b2b2b2;
+	--gray4: #999999;
+	--gray5: #808080;
+	--gray6: #666666;
+	--gray7: #4d4d4d;
+	--gray8: #333333;
+	--gray9: #2e2e2e;
+	--primary5: #5e5ce6;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	max-width: 100vw;
+	overflow-x: hidden;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
