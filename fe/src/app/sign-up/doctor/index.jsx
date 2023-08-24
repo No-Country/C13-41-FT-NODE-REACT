@@ -1,117 +1,213 @@
 "use client";
 
-import React from 'react'
-import styles from "./styles.module.css"
-import { useFormik } from 'formik';
-import axios from 'axios';
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-export default function Doctor (){
-
-  
-
-  const formik = useFormik({
-
-    initialValues: {
-
-      user: "doctor",
-      fullname: "",
-      email: "",
-      gender: "Masculino",
-      country: "Colombia",
-      phone: "",
-      password: "",
-      dob: "",
-      license: "",
-      specialty: "",
-      education: "",
-
-    },
-    
-    onSubmit: values => {
-
-      let data = (JSON.stringify (values));
-      console.log (data);
-
-      axios.post('/register/doctor', {
-
-        data: data,
-
-      })
-
-      .then(function (response) {
-
-        console.log(response);
-
-      })
-
-      .catch(function (error) {
-
-        console.log(error);
-
-      });
-
-    },
-
-  });
+function Copyright (props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://klinikapp.com/">
+        klinika - No Country 
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 
+const defaultTheme = createTheme();
+
+export default function Doctor () {
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+
+    const data = new FormData (event.currentTarget);
+
+    console.log({
+
+      name: data.get('name'),
+      surname: data.get('surname'),
+      dob: data.get('dob'),
+      license: data.get('license'),
+      specialty: data.get('specialty'),
+      education: data.get('education'),
+      email: data.get('email'),
+      password: data.get('password'),
+
+    });
+
+  };
 
   return (
 
-    <div className={styles.contenedorFormulario}>
-      <form className={styles.Formulario} onSubmit={formik.handleSubmit} >
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
 
-        <label htmlFor="fullname">Ingrese su Nombre y Apellido</label>
-        <input placeholder='Solo se aceptan caracteres tipo letra' autoComplete='off' required id="fullname" name="fullname" type="text" onChange={formik.handleChange} value={formik.values.fullname}/>
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
 
-        <label htmlFor="dob">Fecha de nacimiento</label>
-        <input lang='es' autoComplete='off' required id="dob" name="dob" type="date" onChange={formik.handleChange} value={formik.values.dob}/>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
 
-        <label htmlFor="email">Ingrese su E-Mail</label>
-        <input autoComplete='off' required id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email}/>
+          <Typography component="h1" variant="h5">
+            Registro de Usuario - Medico
+          </Typography>
 
-        <label htmlFor="gender">Defina su Genero</label>
-        <select autoComplete='off' required id="gender" name="gender" onChange={formik.handleChange} value={formik.values.gender}>
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
-          <option value="Otro">Otro</option>
-        </select>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
 
-        <label htmlFor="country">Ingrese su Pais</label>
-        <select autoComplete='off' required id="country" name="country" onChange={formik.handleChange} value={formik.values.country}>
-          <option value="Argentina">Argentina</option>
-          <option value="Colombia">Colombia</option>
-          <option value="Chile">Chile</option>
-          <option value="Costa Rica">Costa Rica</option>
-          <option value="El Salvador">El Salvador</option>
-          <option value="Guatemala">Guatemala</option>
-          <option value="Honduras">Honduras</option>
-          <option value="Mexico">Mexico</option>
-          <option value="Nicaragua">Nicaragua</option>
-          <option value="Peru">Peru</option>
-          <option value="Uruguay">Uruguay</option>
-          <option value="Venezuela">Venezuela</option>
-        </select>
+            <Grid container spacing={2}>
 
-        <label htmlFor="phone">Ingrese su Numero Telefonico</label>
-        <input placeholder='Incluyendo codigo pais ejemplo: +56977777777' autoComplete='off' required id="phone" name="phone" type="tel" inputMode='numeric' onChange={formik.handleChange} value={formik.values.phone}/>
+              <Grid item xs={12} sm={6}>
 
-        <label htmlFor="license">Ingrese su Numero de Matricula/Colegiatura profesional.</label>
-        <input placeholder='Solo se aceptan caracteres tipo letra' autoComplete='off' required id="license" name="license" type="text" onChange={formik.handleChange} value={formik.values.license}/>
+                <TextField
+                  autoComplete="off"
+                  name="name"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Nombre"
+                  autoFocus
+                />
 
-        <label htmlFor="specialty">Ingrese su Especialidad.</label>
-        <input placeholder='Solo se aceptan caracteres tipo letra' autoComplete='off' required id="specialty" name="specialty" type="text" onChange={formik.handleChange} value={formik.values.specialty}/>
+              </Grid>
 
-        <label htmlFor="education">Ingrese su Facultad de Egreso.</label>
-        <input placeholder='Por ejemplo UNAM' autoComplete='off' required id="education" name="education" type="text" onChange={formik.handleChange} value={formik.values.education}/>
+              <Grid item xs={12} sm={6}>
 
-        <label htmlFor="password">Ingrese su Contraseña</label>
-        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder='8 Caracteres minimo y tener al menos un numero y una letra mayuscula' autoComplete='off' required id="password" name="password" type="password" inputMode='text' onChange={formik.handleChange} value={formik.values.password}/>
+                <TextField
+                  required
+                  fullWidth
+                  id="surname"
+                  label="Apellido"
+                  name="surname"
+                  autoComplete="off"
+                />
+
+              </Grid>
+
+            <Grid item xs={12} sm={12}>
+
+            <TextField
+                  autoComplete="off"
+                  name="dob"
+                  required
+                  fullWidth
+                  id="dob"
+                  label=""
+                  type="date"
+            />
 
 
-        <button type="submit">Registrar</button>
-      </form>
-    </div>
 
+            </Grid>
+
+            <Grid item xs={12} sm={12}>
+
+                <TextField
+                  autoComplete="off"
+                  name="license"
+                  required
+                  fullWidth
+                  id="license"
+                  label="Cedula Profesional / Numero Matricula / Colegiatura"
+                />
+
+            </Grid>
+
+                <Grid item xs={12} sm={12}>
+
+                <TextField
+                  autoComplete="off"
+                  name="specialty"
+                  required
+                  fullWidth
+                  id="specialty"
+                  label="Especialidad Medica: Ej: Traumatologia"
+                />
+
+              </Grid>
+
+            <Grid item xs={12} sm={12}>
+
+                <TextField
+                  autoComplete="off"
+                  name="education"
+                  required
+                  fullWidth
+                  id="education"
+                  label="Universidad de Egreso: Ej: UNAM"
+                />
+
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Direccion de Correo Electronico"
+                  name="email"
+                  autoComplete="off"
+                />
+
+              </Grid>
+
+              <Grid item xs={12}>
+
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Contraseña"
+                  type="password"
+                  id="password"
+                  autoComplete="off"
+                />
+
+              </Grid>
+
+            </Grid>
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Registrarse
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Ya tienes cuenta? Inicia sesion
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
   );
-};
+}
