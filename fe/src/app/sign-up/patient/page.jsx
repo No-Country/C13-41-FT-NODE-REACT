@@ -1,85 +1,204 @@
-"use client";
-import { AiOutlineEye } from "react-icons/ai";
-import { AiOutlineEyeInvisible } from "react-icons/ai";
-import styles from './patient.module.css'
-import {patientSchema} from '../validations/userPacient'
-
+'use client'
+import React from 'react';
+import { Formik, Form, Field } from 'formik';
+import { patientSchema } from '../validations/userPacient';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+// import  {DateField}  from '@mui/x-date-pickers/DateField';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Select from '@mui/material/Select';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import MenuItem from '@mui/material/MenuItem';
+import { Button, Grid } from '@mui/material';
+import  Checkbox  from '@mui/icons-material';
 export default function PacientSingUp() {
-  const createUser = async (e) => {
-    e.preventDefault()
-    
-    const formData = {
-      name: e.target.name.value,
-      birthdate: e.target.birthdate.value,
-      phone: e.target.phone.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-      checkbox: e.target.rememberme.checked
-    };
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword  = () => {
+    setShowPassword((show) => !show)
+  };
 
-    try {
-      await patientSchema.validate(formData);
-      console.log('Form data is valid');
-      // Proceed with  sending data to the server
-    } catch (error) {
-      console.error('Form data validation error:', error.message);
-      // Handle error, show error messages to the user, etc.
-    }
-  }
-  const showPassword = (e) => {
-    let password = document.getElementById('passw')
-    password.setAttribute('type', 'text')
-    e.target.style.display = 'none'
-    document.querySelector('.eyeInvisible').style.display = 'block'
-  }
-  const hidePassword = (e) => {
-    let password = document.getElementById('passw')
-    password.setAttribute('type', 'password')
-    e.target.style.display = 'none'
-    document.querySelector('.eyeVisible').style.display = 'block'
-  }
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <main className={styles.main}>
+    <Container>
+      <Typography variant='h3' mt={4} mb={4}>Register</Typography>
+      
+      <Formik
+        initialValues={{
+          name: '',
+          birthdate: '',
+          phone: '',
+          email: '',
+          password: '',
+          // checkBox: true,
+        }}
+        validationSchema={patientSchema}
+        onSubmit={(values, formikHelpers) => {
+          console.log(values);
+          formikHelpers.resetForm();
+        }}
+      >
+        
+          {({errors, isValid, touched, dirty }) => (
+            <Form>
+              <Grid container spacing={2}  rowSpacing={3}>
+              <Grid item xs={12} md={4}>
 
-      <img src="/" alt="logo" />
-      <form onSubmit={createUser} className={styles.form}>
-        <input name='name' type="text" className={styles.input}placeholder="Name & Surname"/>
-        <div className={styles.section}>
-          <input className={styles.specialinput} type="date" name='birthdate'  placeholder="Birthdate"/>
-          <select className={styles.specialinput} placeholder=''name="gender" id="gen">
-            <option value="Select">Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <select  className={styles.input}autoComplete='off' required id="country" name="country">
-          <option value="Argentina">Argentina</option>
-          <option value="Colombia">Colombia</option>
-          <option value="Chile">Chile</option>
-          <option value="Costa Rica">Costa Rica</option>
-          <option value="El Salvador">El Salvador</option>
-          <option value="Guatemala">Guatemala</option>
-          <option value="Honduras">Honduras</option>
-          <option value="Mexico">Mexico</option>
-          <option value="Nicaragua">Nicaragua</option>
-          <option value="Peru">Peru</option>
-          <option value="Uruguay">Uruguay</option>
-          <option value="Venezuela">Venezuela</option>
-          <option value="Venezuela">Ecuador</option>
-          <option value="Venezuela">Bolivia</option>
-        </select> 
-        <input className={styles.input} name='phone' type="number" placeholder="Phone"/>
-        <input className={styles.input}  type="text" name="email" id="email" placeholder="email" />
-        <div className={styles.passwordContainer}>
-        <input className={styles.passwordInput} autoComplete='on' type="password" name="password" id="passw" placeholder="password" />
-        <AiOutlineEye className={ `${styles.AiOutlineEye} eyeVisible`} onClick={showPassword}/>
-        <AiOutlineEyeInvisible className="eyeInvisible" onClick={hidePassword} style={{display: 'none'}}/>
-        </div>
-        <input className={styles.checkbox} id='rememberme'  type="checkbox" value='rememberme'  name="rememberme"/>
-        <label className={styles.checkbox} htmlFor="remember me">Remember me</label>
-        <input  className={styles.input} type="submit" value='Sing up' placeholder='singUp'/>
-      </form>
-    </main>
-  )
+                <Field
+                  name='name'
+                  type='text'
+                  as={TextField}
+                  variant='outlined'
+                  label='Name & Surname'
+                  id="margin-dense"
+                  fullWidth
+                  error={Boolean(errors.name) && Boolean(touched.name)}
+                  helperText={Boolean(touched.name) && errors.name}
+                />
+              </Grid>
+              
+              <Grid item xs={12} md={4}>
+              <Field
+                name='birthdate'
+                type='date'
+                as={TextField}
+                fullWidth
+                label='birthdate'
+                error={Boolean(errors.birthdate) && Boolean(touched.birthdate)}
+                helperText={Boolean(touched.birthdate) && errors.birthdate}
+              />
+              </Grid>
+              <Grid item xs={6} md={4}>
+              <Field
+                name='gen'
+                type='select'
+                as={Select}
+                fullWidth
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
+                error={Boolean(errors.birthdate) && Boolean(touched.birthdate)}
+                helperText={Boolean(touched.birthdate) && errors.birthdate}
+              >
+                <MenuItem value=''>Gender</MenuItem>
+                <MenuItem value='Male'>Male</MenuItem>
+                <MenuItem value='Female'>Female</MenuItem>
+                <MenuItem value='Other'>Other</MenuItem>
+              </Field>
+              </Grid>
+              <Grid item xs={6} md={6}>
+              <Field
+                name='country'
+                type='select'
+                as={Select}
+                fullWidth
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
+                error={Boolean(errors.country) && Boolean(touched.country)}
+                helperText={Boolean(touched.country) && errors.country}
+              >
+                <MenuItem value=''>Country</MenuItem>
+                <MenuItem value='Male'>Venezuela</MenuItem>
+                <MenuItem value='Female'>Colombia</MenuItem>
+                <MenuItem value='Other'>Mexico</MenuItem>
+                <MenuItem value='Other'>Bolivia</MenuItem>
+                <MenuItem value='Other'>Chile</MenuItem>
+                <MenuItem value='Other'>Argentina</MenuItem>
+                <MenuItem value='Other'>Urugay</MenuItem>
+                <MenuItem value='Other'>Peru</MenuItem>
+                <MenuItem value='Other'>Ecuador</MenuItem>
+                <MenuItem value='Other'>El Salvador</MenuItem>
+                <MenuItem value='Other'>Costa Rica</MenuItem>
+                <MenuItem value='Other'>Guatemala</MenuItem>
+                <MenuItem value='Other'>Honduras</MenuItem>
+                <MenuItem value='Other'>Nicaragua</MenuItem>
+              </Field>
+              </Grid>
+              <Grid item xs={6} md={6}>
+              <Field
+                name='phone'
+                type='number'
+                as={TextField}
+                fullWidth
+                label='Phone'
+                error={Boolean(errors.phone) && Boolean(touched.phone)}
+                helperText={Boolean(touched.phone) && errors.phone}
+              />
+                
+              </Grid>
+              {/* More fields... */}
+              <Grid item xs={6} md={6}>
+              <Field
+                name='email'
+                type='email'
+                as={TextField}
+                fullWidth
+                label='Email'
+                error={Boolean(errors.email) && Boolean(touched.email)}
+                helperText={Boolean(touched.email) && errors.email}
+              />
+                
+              </Grid>  
+              <Grid item xs={12} md={6}>
+              <Field
+                name='password'
+                error={Boolean(errors.password) && Boolean(touched.password)}
+                helperText={Boolean(touched.password) && errors.password}
+                type={showPassword ? 'text' : 'password'}
+                as={TextField}
+                variant='outlined'
+                label='Password'
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
+              />
+              </Grid> 
+                {/* <Grid item xs={6} md={6}>
+                <Field
+                  name='checkBox'
+                  type='checkbox'
+                  label='hi'
+                  error={Boolean(errors.checkBox)}
+                  // helperText={Boolean(touched.checkbox) && errors.checkbox}
+                >
+                  {({ field }) => (
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          {...field}
+                        />
+                      }
+                      label='Remember Me'
+                    />
+                  )}
+                </Field> 
+                </Grid>  */}
+              {/* Remember Me Checkbox */}
+              {/* Submit Button */}
+            </Grid>  
+              <Button type='submit' variant='contained' size='large' disabled={!dirty || !isValid}>
+                Submit
+              </Button>
+            </Form>
+          )}
+      </Formik>
+    </Container>
+  );
 }
