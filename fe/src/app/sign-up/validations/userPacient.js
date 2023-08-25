@@ -13,3 +13,4 @@ export const patientSchema = yup.object({
   password: yup.string().min(8).test('password must be stronger, with at leat 8 characters, one capital letter, one lower case and one special character', value  => isStrongPassword(value)),
   // checkbox: yup.boolean().required()
 })
+
