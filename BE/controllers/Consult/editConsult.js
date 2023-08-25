@@ -42,7 +42,7 @@ const editConsult = async (req, res) => {
       }
     );
 
-    if (!updatedConsult) {
+    if (updatedConsult == 0) {
       throw new Error("Consult not found")
     }
 
