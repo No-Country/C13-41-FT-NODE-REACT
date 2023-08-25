@@ -3,6 +3,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from './patient.module.css'
 import {patientSchema} from '../validations/userPacient'
+
 export default function PacientSingUp() {
   const createUser = async (e) => {
     e.preventDefault()
