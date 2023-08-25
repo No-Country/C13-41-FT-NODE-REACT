@@ -3,10 +3,14 @@ const router = express.Router();
 
 const {
   createPatient,
-  editPatient
+  editPatient,
+  deletePatient,
+  getPatient
 } = require("../controllers/Patient/index.js");
 
 router.post("/",createPatient);
 router.put("/",editPatient);
+router.delete("/",deletePatient);
+router.get("/",getPatient);
 
 module.exports = router;
