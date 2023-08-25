@@ -1,14 +1,12 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
-const crypto = require('node:crypto');
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Medics', {
       id: {
-        allowNull: false,
-        defaultValue: crypto.randomUUID(),
+        type: Sequelize.UUID,
         primaryKey: true,
-        type: Sequelize.UUID
+        defaultValue: Sequelize.UUIDV4,
       },
       fullname: {
         type: Sequelize.STRING,
