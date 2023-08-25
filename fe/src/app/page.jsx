@@ -1,5 +1,19 @@
-import Link from 'next/link';
 import styles from './page.module.css';
+import {
+	Avatar,
+	Box,
+	Button,
+	Card,
+	CardActions,
+	CardContent,
+	CardHeader,
+	CardMedia,
+	List,
+	ListItem,
+	Stack,
+	Typography,
+} from '@mui/material';
+import Link from '@mui/material/Link';
 
 const HomePage = () => {
 	return (
@@ -9,204 +23,289 @@ const HomePage = () => {
 					Logo
 				</Link>
 				<nav className={styles.nav}>
-					<ul className={styles.list}>
-						<li className={styles.listItem}>
-							<Link href={'/'}>Home</Link>
-						</li>
-						<li className={styles.listItem}>
-							<Link href={'/'}>Our services</Link>
-						</li>
-						{/* La ruta de doctores hacia lista de doctores necesita autenticación, sino redirige a sign-in */}
-						<li className={styles.listItem}>
-							<Link href={'/'}>Doctors</Link>
-						</li>
-					</ul>
 					<div className={styles.linkContainer}>
-						<Link href='/sign-up/patient' className={[styles.button, styles.buttonSignup].join(' ')}>
-							I{"'"}m a patient
-						</Link>
-						<Link href='/sign-up/doctor' className={[styles.button, styles.buttonSignup].join(' ')}>
-							I{"'"}m a doctor
-						</Link>
-						<Link href='/sign-in' className={[styles.button, styles.buttonSignin].join(' ')}>
-							Log in
-						</Link>
+						<ul className={styles.list}>
+							<li className={styles.listItem}>
+								<Link href={'/'} underline='none' color={'#2e2e2e'}>
+									Home
+								</Link>
+							</li>
+							<li className={styles.listItem}>
+								<Link href={'/'} underline='none' color={'#2e2e2e'}>
+									About
+								</Link>
+							</li>
+							<li className={styles.listItem}>
+								<Link href={'/'} underline='none' color={'#2e2e2e'}>
+									Contact
+								</Link>
+							</li>
+						</ul>
+						<Button
+							variant='contained'
+							href='/sign-up/patient'
+							size='medium'
+							sx={{ textTransform: 'none' }}
+							color='secondary'
+						>
+							I'm a patient
+						</Button>
+						<Button
+							variant='contained'
+							href='/sign-up/doctor'
+							size='medium'
+							sx={{ textTransform: 'none' }}
+							color='secondary'
+						>
+							I'm a doctor
+						</Button>
 					</div>
 				</nav>
 			</header>
-			<main className={styles.main}>
-				<section className={styles.container}>
-					<div className={styles.bannerInfo}>
-						<h1 className={styles.title}>Welcome to Klinika</h1>
-						<p className={styles.slogan}>
+			<Box component={'main'} className={styles.main}>
+				<Box
+					component={'section'}
+					sx={{
+						display: 'flex',
+						flexDirection: { xs: 'column', sm: 'row' },
+						alignItems: 'start',
+						justifyContent: 'center',
+						overflow: 'hidden',
+					}}
+				>
+					<Stack
+						spacing={2}
+						direction={'column'}
+						sx={{ padding: '2rem 0', width: '50%', xs: { width: '50%' } }}
+					>
+						<Typography variant='h1' fontSize={{ xs: '1.5rem', sm: '2rem' }}>
+							Welcome to Klinika
+						</Typography>
+						<Typography variant='body1' className={styles.slogan}>
 							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi tenetur ipsam ducimus
 							quis deleniti nihil voluptates perferendis fugit quaerat labore. Exercitationem veniam at qui
-							nesciunt dolore cum amet enim dolor!{' '}
-						</p>
-						<Link href='/appointment' className={[styles.button, styles.buttonAppointment].join(' ')}>
+							nesciunt dolore cum amet enim dolor!
+						</Typography>
+						<Button
+							variant='contained'
+							href='/appointment'
+							size='medium'
+							sx={{ textTransform: 'none', width: 'fit-content' }}
+							color='secondary'
+						>
 							Get an appointment
-						</Link>
-					</div>
-					<div className={styles.backgroundImage}></div>
-					<div className={styles.signupButtonContainer}>
-						<Link href='/sign-up/patient' className={[styles.button, styles.buttonSignup].join(' ')}>
-							I{"'"}m a patient
-						</Link>
-						<Link href='/sign-up/doctor' className={[styles.button, styles.buttonSignup].join(' ')}>
-							I{"'"}m a doctor
-						</Link>
-						<p className={styles.text}>
-							Already have an account? <Link href={'/sign-in'}>Log in</Link>
-						</p>
-					</div>
-				</section>
-				<section className={styles.servicesSection}>
-					<h2 className={styles.subtitle}>Services</h2>
-					<div className={styles.servicesContainer}>
-						<article className={styles.serviceCard}>
-							<div className={styles.serviceIcon}></div>
-							<h4 className={styles.serviceTitle}>Dentistry</h4>
-							<p className={styles.serviceDescription}>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam autem tenetur
-								necessitatibus ducimus consectetur est libero laborum dolores voluptatibus officia tempore
-								assumenda maiores error qui, aut quo sapiente adipisci natus?
-							</p>
-							<Link href={'/'} className={styles.serviceLink}>
-								Get started
+						</Button>
+					</Stack>
+					<Box
+						component={'img'}
+						sx={{ width: { xs: '100%', sm: '50%', height: { xs: '35vh', sm: '70vh' } } }}
+						src={
+							'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
+						}
+					></Box>
+					<Stack direction='column' display={{ sm: 'none' }} spacing={2} paddingY={2} width={'100%'}>
+						<Button
+							variant='contained'
+							href='/sign-up/patient'
+							size='medium'
+							sx={{ textTransform: 'none' }}
+							fullWidth
+							color='secondary'
+						>
+							I'm a patient
+						</Button>
+						<Button
+							variant='contained'
+							href='/sign-up/doctor'
+							size='medium'
+							sx={{ textTransform: 'none' }}
+							fullWidth
+							color='secondary'
+						>
+							I'm a doctor
+						</Button>
+						<Typography className={styles.text}>
+							Already have an account?
+							<Link href={'/sign-in'} underline='hover'>
+								Log in
 							</Link>
-						</article>
-						<article className={styles.serviceCard}>
-							<div className={styles.serviceIcon}></div>
-							<h4 className={styles.serviceTitle}>Dentistry</h4>
-							<p className={styles.serviceDescription}>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam autem tenetur
-								necessitatibus ducimus consectetur est libero laborum dolores voluptatibus officia tempore
-								assumenda maiores error qui, aut quo sapiente adipisci natus?
-							</p>
-							<Link href={'/'} className={styles.serviceLink}>
-								Get started
-							</Link>
-						</article>
-						<article className={styles.serviceCard}>
-							<div className={styles.serviceIcon}></div>
-							<h4 className={styles.serviceTitle}>Dentistry</h4>
-							<p className={styles.serviceDescription}>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam autem tenetur
-								necessitatibus ducimus consectetur est libero laborum dolores voluptatibus officia tempore
-								assumenda maiores error qui, aut quo sapiente adipisci natus?
-							</p>
-							<Link href={'/'} className={styles.serviceLink}>
-								Get started
-							</Link>
-						</article>
-					</div>
-				</section>
+						</Typography>
+					</Stack>
+				</Box>
+				<Box
+					component={'section'}
+					paddingY={6}
+					rowGap={2}
+					sx={{ display: 'flex', flexDirection: 'column' }}
+				>
+					<Typography variant='h2' className={styles.subtitle}>
+						Services
+					</Typography>
+					<Stack
+						direction='row'
+						spacing={2}
+						justifyContent='center'
+						paddingY={2}
+						alignItems={'center'}
+						overflow={'auto'}
+					>
+						<Card variant='outlined' sx={{ maxWidth: 300, backgroundColor: '#f5f5f5' }}>
+							<CardContent>
+								<Stack direction='column' spacing={2}>
+									<Box className={styles.serviceIcon}></Box>
+									<Typography variant='h4' className={styles.serviceTitle}>
+										Dentistry
+									</Typography>
+									<Typography variant='body2' className={styles.serviceDescription}>
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam autem tenetur
+										necessitatibus ducimus consectetur est libero laborum dolores voluptatibus officia tempore
+										assumenda maiores error qui, aut quo sapiente adipisci natus?
+									</Typography>
+								</Stack>
+							</CardContent>
+							<CardActions>
+								<Link href={'/'} paddingX={2} paddingY={1} underline='hover' color={'#2e2e2e'}>
+									Get started
+								</Link>
+							</CardActions>
+						</Card>
+					</Stack>
+				</Box>
 				<section className={styles.appointmentSection}>
-					<h2 className={styles.subtitle}>Meet your specialist</h2>
-					<div className={styles.appointmentContainer}>
-						<article className={styles.appointmentCard}>
-							<div className={styles.appointmentImage}></div>
-							<div className={styles.appointmentInfo}>
-								<p className={styles.appointmentTitle}>Dr Full Name</p>
-								<p className={styles.appointmentSpecialty}>Specialty</p>
-								<p className={styles.appointmentDescription}>
+					<Typography className={styles.subtitle}>Meet your specialist</Typography>
+					<Stack direction='row' spacing={2} paddingY={2}>
+						<Card sx={{ maxWidth: 345 }}>
+							<CardMedia
+								sx={{ height: 130 }}
+								image='https://w0.peakpx.com/wallpaper/302/817/HD-wallpaper-plain-colour.jpg'
+								title='green iguana'
+							/>
+							<CardContent>
+								<Typography gutterBottom variant='h5' component='div'>
+									Dr Full Name
+								</Typography>
+								<Typography variant='subtitle1'>Specialty</Typography>
+								<Typography variant='body1' color='text.secondary'>
 									Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur magni soluta
 									necessitatibus enim quam impedit quas non ratione adipisci.
-								</p>
-								<p className={styles.appointmentDescription}>
-									<span className={styles.appointmentCardIcon}></span>4.5 (2734 reviews)
-								</p>
-								<Link href={'/'} className={styles.appointmentLink}>
-									Appointment
-								</Link>
-							</div>
-						</article>
-					</div>
+								</Typography>
+								<Typography variant='body2'>4.5 (2734 reviews)</Typography>
+							</CardContent>
+							<CardActions>
+								<Button size='small' href='/' variant='outlined'>
+									Learn More
+								</Button>
+							</CardActions>
+						</Card>
+					</Stack>
 				</section>
-				<section className={styles.whyUsSection}>
-					<h2 className={styles.subtitle}>Why you choose us</h2>
-					<div className={styles.whyUsContainer}>
-						<ul className={styles.whyUsList}>
-							<li className={styles.whyUsItem}>
-								<h4 className={styles.whyUsItemTitle}>Motive One</h4>
-								<p className={styles.whyUsItemDescription}>
+				<Box component={'section'} className={styles.whyUsSection}>
+					<Typography variant='h2' className={styles.subtitle}>
+						Why you choose us
+					</Typography>
+					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} paddingY={2}>
+						<List sx={{ display: 'flex', flexDirection: 'column', width: { xs: '100%', sm: '50%' } }}>
+							<ListItem alignItems='flex-start' sx={{ display: 'flex', flexDirection: 'column' }}>
+								<Typography variant='h4' className={styles.whyUsItemTitle}>
+									Motive One
+								</Typography>
+								<Typography variant='body2' className={styles.whyUsItemDescription}>
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, quam minus consectetur
 									mollitia, voluptas quibusdam aliquam
-								</p>
-							</li>
-							<li className={styles.whyUsItem}>
-								<h4 className={styles.whyUsItemTitle}>Motive Two</h4>
-								<p className={styles.whyUsItemDescription}>
+								</Typography>
+							</ListItem>
+							<ListItem alignItems='flex-start' sx={{ display: 'flex', flexDirection: 'column' }}>
+								<Typography variant='h4' className={styles.whyUsItemTitle}>
+									Motive Two
+								</Typography>
+								<Typography variant='body2' className={styles.whyUsItemDescription}>
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, quam minus consectetur
 									mollitia, voluptas quibusdam aliquam
-								</p>
-							</li>
-							<li className={styles.whyUsItem}>
-								<h4 className={styles.whyUsItemTitle}>Motive Three</h4>
-								<p className={styles.whyUsItemDescription}>
+								</Typography>
+							</ListItem>
+							<ListItem alignItems='flex-start' sx={{ display: 'flex', flexDirection: 'column' }}>
+								<Typography variant='h4' className={styles.whyUsItemTitle}>
+									Motive Three
+								</Typography>
+								<Typography variant='body2' className={styles.whyUsItemDescription}>
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, quam minus consectetur
 									mollitia, voluptas quibusdam aliquam
-								</p>
-							</li>
-						</ul>
-						<div className={styles.whyUsImage}></div>
-					</div>
-				</section>
-				<section className={styles.patientSection}>
-					<h2 className={styles.subtitle}>Our services in the eyes of our patients</h2>
-					<div className={styles.patientContainer}>
-						<article className={styles.patientCard}>
-							<div className={styles.patientCardHeader}>
-								<div className={styles.patientIcon}></div>
-								<h4 className={styles.patientTitle}>Full Name</h4>
-							</div>
-							<div className={styles.patientTagContainer}>
+								</Typography>
+							</ListItem>
+						</List>
+						<Box
+							component={'img'}
+							sx={{ minHeight: 200, width: { xs: '100%', sm: '50%' }, backgroundColor: '#f5f5f5' }}
+						></Box>
+					</Stack>
+				</Box>
+				<Box component={'section'} className={styles.patientSection}>
+					<Typography variant='h2' className={styles.subtitle}>
+						Our services in the eyes of our patients
+					</Typography>
+					<Stack direction='row' spacing={2} paddingY={2}>
+						<Card sx={{ maxWidth: 300, backgroundColor: '#bbbbbb' }}>
+							<CardHeader
+								sx={{ color: '#2e2e2e', fontSize: '1.5rem', fontWeight: 'bold' }}
+								avatar={
+									<Avatar sx={{ bgcolor: 'primary.main', width: 64, height: 64 }} aria-label='profile'>
+										R
+									</Avatar>
+								}
+								title='Full Name'
+							/>
+							<Stack direction='row' spacing={1} paddingX={2}>
 								<span className={styles.patientTag}></span>
 								<span className={styles.patientTag}></span>
 								<span className={styles.patientTag}></span>
-							</div>
-							<p className={styles.patientDescription}>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nepellat?
-							</p>
-						</article>
-						<article className={styles.patientCard}>
-							<div className={styles.patientCardHeader}>
-								<div className={styles.patientIcon}></div>
-								<h4 className={styles.patientTitle}>Full Name</h4>
-							</div>
-							<div className={styles.patientTagContainer}>
-								<span className={styles.patientTag}></span>
-								<span className={styles.patientTag}></span>
-								<span className={styles.patientTag}></span>
-							</div>
-							<p className={styles.patientDescription}>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nepellat?
-							</p>
-						</article>
-					</div>
-				</section>
-				<section className={styles.appSection}>
-					<h2 className={styles.subtitle}>Download our mobile app</h2>
-					<div className={styles.appContainer}>
-						<div className={styles.appImage}>Image</div>
-						<div className={styles.appInfo}>
-							<p className={styles.appDescription}>
+							</Stack>
+							<CardContent>
+								<Typography gutterBottom variant='body2'>
+									Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nepellat?
+								</Typography>
+							</CardContent>
+						</Card>
+					</Stack>
+				</Box>
+				<Box
+					component={'section'}
+					sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, paddingY: 2 }}
+				>
+					<Typography variant='h2' className={styles.subtitle}>
+						Download our mobile app
+					</Typography>
+					<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} columnGap={4} height={300}>
+						<Box
+							component={'img'}
+							sx={{
+								width: { xs: '100%', sm: '50%' },
+								backgroundColor: '#f5f5f5',
+								height: '100%',
+							}}
+						></Box>
+						<Stack
+							direction={'column'}
+							spacing={2}
+							sx={{ width: { xs: '100%', sm: '50%' } }}
+							justifyContent={'center'}
+						>
+							<Typography variant='body2' textAlign={'center'}>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, blanditiis soluta. Culpa
 								suscipit nostrum dicta cupiditate magnam officia fugiat nesciunt, non vitae illum excepturi,
 								sunt iste, fuga optio odio quo.
-							</p>
-							<div className={styles.appLinkContainer}>
-								<Link href={'/'} className={styles.appLink}>
+							</Typography>
+							<Stack direction={'row'} spacing={2} justifyContent={'center'}>
+								<Button href={'/'} color='inherit' variant='outlined' sx={{ textTransform: 'none' }}>
 									Playstore
-								</Link>
-								<Link href={'/'} className={styles.appLink}>
+								</Button>
+								<Button href={'/'} color='inherit' variant='outlined' sx={{ textTransform: 'none' }}>
 									Appstore
-								</Link>
-							</div>
-						</div>
-					</div>
-				</section>
-			</main>
+								</Button>
+							</Stack>
+						</Stack>
+					</Stack>
+				</Box>
+			</Box>
 			<footer className={styles.footer}>
 				<div className={styles.companyDetailsContainer}>
 					<h3 className={styles.companyTitle}>Company{"'"}s Name</h3>

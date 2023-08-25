@@ -19,6 +19,7 @@
 
 .listItem {
 	list-style: none;
+	color: #2e2e2e;
 	font-size: 14px;
 }
 
@@ -437,21 +438,6 @@
 	display: flex;
 	align-items: center;
 	column-gap: 3rem;
-}
-
-.whyUsList {
-	width: 40%;
-	display: flex;
-	flex-direction: column;
-	row-gap: 1rem;
-}
-
-.whyUsItem {
-	display: flex;
-	flex-direction: column;
-	row-gap: 0.25rem;
-	color: #2e2e2e;
-	list-style: none;
 }
 
 .whyUsItemTitle {
