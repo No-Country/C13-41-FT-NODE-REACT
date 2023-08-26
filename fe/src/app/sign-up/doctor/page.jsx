@@ -1,109 +1,158 @@
-"use client";
-
-import React from 'react'
-import styled from '@emotion/styled'
-import { TextField } from '@mui/material';
-import { useFormik } from "formik";
+'use client';
+import React from 'react';
+import { Box, Grid, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Form, Formik, Field } from 'formik';
 import '@fontsource/poppins';
+import { doctorSchema } from '../validations/userDoctor';
+export default function DoctorSignUp() {
+	const countries = [
+		{ value: 'Venezuela', label: 'Venezuela' },
+		{ value: 'Colombia', label: 'Colombia' },
+		{ value: 'Mexico', label: 'Mexico' },
+		{ value: 'Bolivia', label: 'Bolivia' },
+		{ value: 'Chile', label: 'Chile' },
+		{ value: 'Argentina', label: 'Argentina' },
+		{ value: 'Uruguay', label: 'Uruguay' },
+		{ value: 'Peru', label: 'Peru' },
+		{ value: 'Ecuador', label: 'Ecuador' },
+		{ value: 'El Salvador', label: 'El Salvador' },
+		{ value: 'Costa Rica', label: 'Costa Rica' },
+		{ value: 'Guatemala', label: 'Guatemala' },
+		{ value: 'Honduras', label: 'Honduras' },
+		{ value: 'Nicaragua', label: 'Nicaragua' },
+	];
 
-const SignUpContainer = styled ("section") ({
-
-  display: "flex",
-  flexDirection: "column",
-
-});
-
-const Title = styled ("H1") ({
-
-  fontFamily: "Poppins",
-  fontWeight: "500",
-  fontSize: "32px",
-  lineHeight: "48px",
-  color: "#131313",
-  textAlign: "center",
-  userSelect: "none",
-  
-});
-
-const Form = styled ("form") ({
-
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  
-});
-
-const ChildContainer = styled ("div") ({
-
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  padding: "10px 0px",
-  
-});
-
-const Button = styled ("button") ({
-
-  width: "300px",
-  height: "60px",
-  
-});
-
-export default function DoctorSignUp () {
-
-  const formik = useFormik ({
-
-    initialValues: { fullname: "", phone: "", email: "", password: "", country: "", resume: "", license: "", gender: "", birthdate: "",  },
-
-    onSubmit: values => {
-
-      const data = JSON.stringify(values);
-      console.log (data);
-      
-    }
-
-  });
-
-  return (
-
-    <SignUpContainer>
-      <Title>Register</Title>
-      <Form onSubmit={formik.handleSubmit} autoComplete='off'>
-        <ChildContainer>
-          <TextField onChange={formik.handleChange} value={formik.values.fullname} pattern="[a-zA-Z]+" type='text' id='fullname' name='fullname' label='Please enter your full name' variant='outlined' autoComplete='off' sx={{width: "700px",}} required helperText="Please include any surnames/lastnames"/>
-        </ChildContainer>
-        <ChildContainer style={{gap: "100px",}}>
-          <TextField onChange={formik.handleChange} value={formik.values.phone} type='tel' inputMode='numeric' id='phone' label='Please enter your Telephone' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="Please use international phone number format. Such as '+56977777777'"/>
-
-          <TextField onChange={formik.handleChange} value={formik.values.email} type='email' id='email' label='Please enter your Email Adress' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="Please enter your current email information"/>
-
-        </ChildContainer>
-
-        <ChildContainer style={{gap: "100px",}}>
-          <TextField onChange={formik.handleChange} value={formik.values.password} type='password' id='password' label='Please enter your Password' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="Please use at least 8 characters with numbers and a special character"/>
-
-          <TextField onChange={formik.handleChange} value={formik.values.country} type='text' id='country' label='Please enter your Country' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="Please type in your country."/>
-
-        </ChildContainer>
-
-        <ChildContainer style={{gap: "100px",}}>
-          <TextField onChange={formik.handleChange} value={formik.values.resume} type='text' id='resume' label='Academic Information' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="For example: MD graduated in 2005 from UCLA."/>
-
-          <TextField onChange={formik.handleChange} value={formik.values.license} type='text' id='license' label='Please enter your medic license number' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="Please type in your license number."/>
-          
-        </ChildContainer>
-
-        <ChildContainer style={{gap: "100px",}}>
-
-          <TextField onChange={formik.handleChange} value={formik.values.gender} type='text' id='gender' label='Please enter your gender information' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="For example: Masculine, Feminine, or Other."/>
-
-          <TextField onChange={formik.handleChange} value={formik.values.birthdate} type='date' id='birthdate' variant='outlined' autoComplete='off' sx={{width: "300px",}} required helperText="Please enter your birthday information."/>
-          
-        </ChildContainer>
-        <Button type="submit">Create my account</Button>
-      </Form>
-    </SignUpContainer>
-
-  )
-
+	return (
+		<Box
+			component={'main'}
+			paddingX={'2rem'}
+			paddingY={'2rem'}
+			sx={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '100vh' }}
+		>
+			<Typography variant='h1' component='h1' align='left' fontSize='2rem' fontFamily='bold'>
+				Register
+			</Typography>
+			<Formik
+				initialValues={{
+					name: '',
+					phone: '',
+					email: '',
+					password: '',
+					country: '',
+					license: '',
+					gender: '',
+					birthdate: '',
+				}}
+				validationSchema={doctorSchema}
+				onSubmit={(values, formikHelpers) => {
+					console.log(values);
+					formikHelpers.resetForm();
+				}}
+			>
+				{({ errors, touched, dirty, isValid }) => (
+					<Form>
+						<Grid container gridTemplateColumns={'repeat(2, 1fr)'} gap={4}>
+							<Field
+								id='name'
+								name='name'
+								type='text'
+								as={TextField}
+								variant='outlined'
+								label='Fullname'
+								required
+								error={Boolean(errors.name) && Boolean(touched.name)}
+								helperText={Boolean(touched.name) && errors.name}
+							/>
+							<Field
+								id='birthdate'
+								name='birthdate'
+								type='date'
+								as={TextField}
+								variant='outlined'
+								label='Birthdate'
+								required
+								error={Boolean(errors.birthdate) && Boolean(touched.birthdate)}
+								helperText={Boolean(touched.birthdate) && errors.birthdate}
+							/>
+							<Field
+								id='phone'
+								name='phone'
+								type='tel'
+								as={TextField}
+								label='Phone'
+								error={Boolean(errors.phone) && Boolean(touched.phone)}
+								helperText={Boolean(touched.phone) && errors.phone}
+							/>
+							<Field
+								id='email'
+								name='email'
+								type='email'
+								as={TextField}
+								variant='outlined'
+								label='Email'
+								required
+								error={Boolean(errors.email) && Boolean(touched.email)}
+								helperText={Boolean(touched.email) && errors.email}
+							/>
+							<Field
+								id='password'
+								name='password'
+								type='password'
+								as={TextField}
+								variant='outlined'
+								label='Password'
+								error={Boolean(errors.password) && Boolean(touched.password)}
+								helperText={Boolean(touched.password) && errors.password}
+							/>
+							<Field
+								id='gender'
+								name='gender'
+								type='select'
+								as={Select}
+								error={Boolean(errors.gender) && Boolean(touched.gender)}
+								helperText={Boolean(touched.gender) && errors.gender}
+								SelectProps={{ displayEmpty: true }}
+							>
+								<MenuItem value='Gender'>Gender</MenuItem>
+								<MenuItem value='Male'>Male</MenuItem>
+								<MenuItem value='Female'>Female</MenuItem>
+								<MenuItem value='Other'>Other</MenuItem>
+							</Field>
+							<Field
+								id='country'
+								name='country'
+								type='select'
+								as={Select}
+								error={Boolean(errors.country) && Boolean(touched.country)}
+								helperText={Boolean(touched.country) && errors.country}
+							>
+								<MenuItem value='Country' selected>
+									Country
+								</MenuItem>
+								{countries.map((country, index) => {
+									return (
+										<MenuItem key={index} value={country.value}>
+											{country.label}
+										</MenuItem>
+									);
+								})}
+							</Field>
+							<Field
+								id='license'
+								name='license'
+								as={TextField}
+								variant='outlined'
+								label='License'
+								error={Boolean(errors.license) && Boolean(touched.license)}
+								helperText={Boolean(touched.license) && errors.license}
+							/>
+						</Grid>
+						<button type='submit' disabled={!dirty || !isValid}>
+							Create my account
+						</button>
+					</Form>
+				)}
+			</Formik>
+		</Box>
+	);
 }
