@@ -1,158 +1,80 @@
 'use client';
-import React from 'react';
-import { Box, Grid, MenuItem, Select, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Container, Button, Typography, Grid, TextField, Snackbar, Alert } from '@mui/material';
 import { Form, Formik, Field } from 'formik';
 import '@fontsource/poppins';
 import { doctorSchema } from '../validations/userDoctor';
+import BasicForm from '@/components/BasicForm';
+import { initialValues } from '../validations/initialValuesDoctor';
 export default function DoctorSignUp() {
-	const countries = [
-		{ value: 'Venezuela', label: 'Venezuela' },
-		{ value: 'Colombia', label: 'Colombia' },
-		{ value: 'Mexico', label: 'Mexico' },
-		{ value: 'Bolivia', label: 'Bolivia' },
-		{ value: 'Chile', label: 'Chile' },
-		{ value: 'Argentina', label: 'Argentina' },
-		{ value: 'Uruguay', label: 'Uruguay' },
-		{ value: 'Peru', label: 'Peru' },
-		{ value: 'Ecuador', label: 'Ecuador' },
-		{ value: 'El Salvador', label: 'El Salvador' },
-		{ value: 'Costa Rica', label: 'Costa Rica' },
-		{ value: 'Guatemala', label: 'Guatemala' },
-		{ value: 'Honduras', label: 'Honduras' },
-		{ value: 'Nicaragua', label: 'Nicaragua' },
-	];
+	const [successSignup, setSuccessSignup] = useState(false);
+	const [errorSignup, setErrorSignup] = useState(false);
 
 	return (
-		<Box
-			component={'main'}
-			paddingX={'2rem'}
-			paddingY={'2rem'}
-			sx={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '100vh' }}
-		>
-			<Typography variant='h1' component='h1' align='left' fontSize='2rem' fontFamily='bold'>
+		<Container>
+			<Typography variant='h3' mt={4} mb={4}>
 				Register
 			</Typography>
 			<Formik
-				initialValues={{
-					name: '',
-					phone: '',
-					email: '',
-					password: '',
-					country: '',
-					license: '',
-					gender: '',
-					birthdate: '',
-				}}
+				initialValues={initialValues}
 				validationSchema={doctorSchema}
-				onSubmit={(values, formikHelpers) => {
-					console.log(values);
-					formikHelpers.resetForm();
+				onSubmit={async (values, formikHelpers) => {
+					try {
+						await new Promise(resolve => setTimeout(resolve, 500));
+						console.log(values);
+						setErrorSignup(true);
+						formikHelpers.resetForm();
+					} catch (error) {
+						console.log(error);
+						setSuccessSignup(true);
+					}
 				}}
 			>
 				{({ errors, touched, dirty, isValid }) => (
 					<Form>
-						<Grid container gridTemplateColumns={'repeat(2, 1fr)'} gap={4}>
-							<Field
-								id='name'
-								name='name'
-								type='text'
-								as={TextField}
-								variant='outlined'
-								label='Fullname'
-								required
-								error={Boolean(errors.name) && Boolean(touched.name)}
-								helperText={Boolean(touched.name) && errors.name}
-							/>
-							<Field
-								id='birthdate'
-								name='birthdate'
-								type='date'
-								as={TextField}
-								variant='outlined'
-								label='Birthdate'
-								required
-								error={Boolean(errors.birthdate) && Boolean(touched.birthdate)}
-								helperText={Boolean(touched.birthdate) && errors.birthdate}
-							/>
-							<Field
-								id='phone'
-								name='phone'
-								type='tel'
-								as={TextField}
-								label='Phone'
-								error={Boolean(errors.phone) && Boolean(touched.phone)}
-								helperText={Boolean(touched.phone) && errors.phone}
-							/>
-							<Field
-								id='email'
-								name='email'
-								type='email'
-								as={TextField}
-								variant='outlined'
-								label='Email'
-								required
-								error={Boolean(errors.email) && Boolean(touched.email)}
-								helperText={Boolean(touched.email) && errors.email}
-							/>
-							<Field
-								id='password'
-								name='password'
-								type='password'
-								as={TextField}
-								variant='outlined'
-								label='Password'
-								error={Boolean(errors.password) && Boolean(touched.password)}
-								helperText={Boolean(touched.password) && errors.password}
-							/>
-							<Field
-								id='gender'
-								name='gender'
-								type='select'
-								as={Select}
-								error={Boolean(errors.gender) && Boolean(touched.gender)}
-								helperText={Boolean(touched.gender) && errors.gender}
-								SelectProps={{ displayEmpty: true }}
-							>
-								<MenuItem value='Gender'>Gender</MenuItem>
-								<MenuItem value='Male'>Male</MenuItem>
-								<MenuItem value='Female'>Female</MenuItem>
-								<MenuItem value='Other'>Other</MenuItem>
-							</Field>
-							<Field
-								id='country'
-								name='country'
-								type='select'
-								as={Select}
-								error={Boolean(errors.country) && Boolean(touched.country)}
-								helperText={Boolean(touched.country) && errors.country}
-							>
-								<MenuItem value='Country' selected>
-									Country
-								</MenuItem>
-								{countries.map((country, index) => {
-									return (
-										<MenuItem key={index} value={country.value}>
-											{country.label}
-										</MenuItem>
-									);
-								})}
-							</Field>
-							<Field
-								id='license'
-								name='license'
-								as={TextField}
-								variant='outlined'
-								label='License'
-								error={Boolean(errors.license) && Boolean(touched.license)}
-								helperText={Boolean(touched.license) && errors.license}
-							/>
+						<BasicForm errors={errors} isValid={isValid} touched={touched} dirty={dirty} />
+						<Grid container paddingY={3} spacing={2} rowSpacing={3}>
+							<Grid item xs={6} md={6}>
+								<Field
+									name='license'
+									type='text'
+									as={TextField}
+									variant='outlined'
+									label='License'
+									fullWidth
+									error={Boolean(errors.license) && Boolean(touched.license)}
+									helperText={Boolean(touched.license) && errors.license}
+								/>
+							</Grid>
 						</Grid>
-						<button type='submit' disabled={!dirty || !isValid}>
+						<Button type='submit' variant='contained' size='large' disabled={!dirty || !isValid}>
 							Create my account
-						</button>
+						</Button>
 					</Form>
 				)}
 			</Formik>
-		</Box>
+			<Snackbar
+				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+				open={successSignup}
+				autoHideDuration={5000}
+				message='Account created successfully'
+				onClose={() => {}}
+			>
+				<Alert severity='success' sx={{ width: '100%' }}>
+					Account created
+				</Alert>
+			</Snackbar>
+			<Snackbar
+				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+				open={errorSignup}
+				autoHideDuration={5000}
+				message='Error creating account'
+				onClose={() => {}}
+			>
+				<Alert severity='error' sx={{ width: '100%' }}>
+					Error creating account
+				</Alert>
+			</Snackbar>
+		</Container>
 	);
 }
