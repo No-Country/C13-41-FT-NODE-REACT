@@ -20,7 +20,7 @@ const getPatient = async (req, res) => {
         throw new Error('Patient not found')
       }
 
-      return res.status(201).json({ message: 'Patient data', patient })
+      return res.status(200).json({ message: 'Patient data', patient })
   
     } catch (error) {
 
