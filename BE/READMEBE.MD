@@ -111,7 +111,7 @@ Here are some examples of how to make requests to the API endpoints:
   "data": {
     "medic": {
       "id": "0343446c-7fd2-427a-a922-d0949ffc629e",
-      "fullname": "Jhuon Doe",
+      "fullname": "Jhon Doe",
       "password": "$2b$10$v2Nu9lE7cmhExJfxHQ1uzurOKUYrdmlNls18OWYYi/4EdveKSolMa",
       "email": "jhondoe@mail.com",
       "country": "Colombia",
@@ -126,6 +126,46 @@ Here are some examples of how to make requests to the API endpoints:
     }
   },
   "message": "Medic Created"
+}
+
+```
+
+- Register a new patient:
+**POST** */api/v1/patient*
+
+**Request Body:**
+```json
+{
+  "fullname": "Jhon Doe",
+  "password": "12345",
+  "email": "jhondoee@mail.com",
+  "country": "Colombia",
+  "gender": "male",
+  "nid": "12312",
+  "avatar": "unavatar.com",
+  "birthdate": "2023-05-11"
+  }
+
+```
+
+**Response Body:**
+```json
+{
+  "message": "Patient created",
+  "patient": {
+    "id": "a9dc545d-78f3-42e0-893e-78d9c7e51f8b",
+    "fullname": "Jhon Doe",
+    "password": "$2b$10$UPBZnexaetlRISGObca8NuRKw9jp5LyhT3kQuBbr4oVDcf35A74RC",
+    "email": "jhondoee@mail.com",
+    "country": "Colombia",
+    "nid": "12312",
+    "gender": "male",
+    "birthdate": "2023-05-11T00:00:00.000Z",
+    "updatedAt": "2023-08-28T15:23:43.474Z",
+    "createdAt": "2023-08-28T15:23:43.474Z",
+    "avatar": null,
+    "resume": null
+  }
 }
 
 ```
