@@ -33,7 +33,7 @@ const loginMedic = async (req, res) => {
       return res.status(201).json({ message: 'Medic logged', data:{token}})
   
     } catch (error) {
-      return res.status(400).json({ error: 'Create medic', message: error.message })
+      return res.status(400).json({ error: 'Login medic', message: error.message })
     }   
   }
 
