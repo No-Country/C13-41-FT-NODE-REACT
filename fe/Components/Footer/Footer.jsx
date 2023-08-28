@@ -21,6 +21,7 @@ const FooterParentContainer = styled ("footer") ({
     borderBottom: "2px solid", 
     borderColor: ColorsKlinik.border,
     boxShadow: "1px solid gray",
+    marginTop: "100px",
   
 });
 
@@ -99,10 +100,10 @@ function Footer () {
 
         <RightContainer>
             <LinksContainer>
-                <Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Home</Link>
-                <Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Our Services</Link>
-                <Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Doctors</Link>
-                <Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>About</Link>
+                <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600", textAlign: "center"}}>Home</Link>
+                <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600", textAlign: "center"}}>Our Services</Link>
+                <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600", textAlign: "center"}}>Doctors</Link>
+                <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600",}}>About</Link>
             </LinksContainer>
 
             <SocialsContainer>

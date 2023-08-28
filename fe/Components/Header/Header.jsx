@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Button } from '@mui/material';
 import styled from '@emotion/styled'
 import { ColorsKlinik } from '@/app/colors';
+import RegisterMenu from './RegisterMenu';
 
 const Logo = styled ("img") ({
 
@@ -23,28 +24,27 @@ const Logo = styled ("img") ({
 
 function Header () {
   
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [AnchorHeader, setAnchorHeader] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
 
-    setAnchorElNav (event.currentTarget);
+    setAnchorHeader (event.currentTarget);
 
   };
 
   const handleCloseNavMenu = () => {
 
-    setAnchorElNav(null);
+    setAnchorHeader(null);
 
   };
 
   return (
 	
-    <AppBar position="fixed" sx={{backgroundColor: ColorsKlinik.background, borderBottom: "2px solid", borderColor: ColorsKlinik.border,}}>
+    <AppBar position="static" sx={{backgroundColor: ColorsKlinik.background, borderBottom: "2px solid", borderColor: ColorsKlinik.border, }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Button draggable="false" variant='text' title="Volver al inicio" sx={{ display: { xs: 'none', md: 'flex' }}}>
             <Logo draggable="false" src="https://img.icons8.com/clouds/100/caduceus.png" />
-
 
             <Typography
                 variant="h6"
@@ -60,8 +60,7 @@ function Header () {
                 color: ColorsKlinik.text,
                 textDecoration: 'none',
                 }}
-                draggable="false"
-            >
+                draggable="false">
                 Klinika - by Mercharcovz
             </Typography>
           </Button>
@@ -70,13 +69,12 @@ function Header () {
             <IconButton
               size="large"
               onClick={handleOpenNavMenu}
-              color={ColorsKlinik.text}
-            >
+              color={ColorsKlinik.text}>
               <MenuIcon />
             </IconButton>
             <Menu
               id="menu-appbar"
-              anchorEl={anchorElNav}
+              anchorEl={AnchorHeader}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
@@ -86,27 +84,28 @@ function Header () {
                 vertical: 'top',
                 horizontal: 'left',
               }}
-              open={Boolean(anchorElNav)}
+              open={Boolean(AnchorHeader)}
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
+              disableScrollLock={"false"}
             >
             
             <MenuItem onClick={handleCloseNavMenu}>
-            	<Link href="/" textAlign="center">Homes</Link>
+            	<Link href="/" >Homes</Link>
             </MenuItem>
 
               <MenuItem onClick={handleCloseNavMenu}>
-				<Link href="/" textAlign="center">Our Services</Link>
+				<Link href="/" >Our Services</Link>
               </MenuItem>
 
 			  <MenuItem onClick={handleCloseNavMenu}>
-			  	<Link href="/" textAlign="center">Doctors</Link>
-              </MenuItem>
+			  	<Link href="/" >Doctors</Link>
+        </MenuItem>
 
 			  <MenuItem onClick={handleCloseNavMenu}>
-				<Link href="/" textAlign="center">About</Link>
+				<Link href="/" >About</Link>
               </MenuItem>
 
             </Menu>
@@ -118,7 +117,7 @@ function Header () {
             href="/"
             sx={{
               ml: 1,
-			  mr: 1,
+			        mr: 1,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
@@ -126,34 +125,25 @@ function Header () {
               color: ColorsKlinik.text,
               textDecoration: 'none',
               fontSize: '23px',
-            }}
-          >
-            Klinika
+            }}>Klinika
           </Typography>
 		  
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: "30px", }}>
 
-			<Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Home</Link>
-
-			<Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Our Services</Link>
-
-			<Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Doctors</Link>
-
-			<Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>About</Link>
-
+            <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Home</Link>
+            <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Our Services</Link>
+            <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>Doctors</Link>
+            <Link draggable="false" href="/" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "600"}}>About</Link>
 
           </Box>
 
-          <Box sx={{ flexGrow: 0, display: "flex", gap: "30px", }}>
-
-			<Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "500"}}>Register</Link>
-	
-			<Link draggable="false" href="/" textAlign="center" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "500"}}>Login</Link>
-
-			{/* Consultar con el equipo si prefieren un solo enlace */}
+          <Box sx={{ flexGrow: 0, display: "flex", gap: "30px", alignItems: "center" }}>
+            
+            <RegisterMenu />
+            
+            <Link draggable="false" href="../../sign-in" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "500"}}>Login</Link>
 
           </Box>
-		  
         </Toolbar>
       </Container>
     </AppBar>
