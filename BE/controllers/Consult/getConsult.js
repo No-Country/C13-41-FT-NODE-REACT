@@ -24,7 +24,7 @@ const getConsult = async (req, res) => {
     }
     return res
       .status(200)
-      .json({ message: 'Consult data', consult });
+      .json({ message: 'Consult data', data:{consult} });
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Get Consult" });
   }

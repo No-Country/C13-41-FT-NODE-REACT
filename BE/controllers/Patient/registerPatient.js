@@ -1,5 +1,4 @@
 const {Patient} = require('../../database/models')
-const crypto = require('node:crypto');
 const bcrypt = require('bcrypt')
 
 const createPatient = async (req, res) => {
@@ -24,7 +23,6 @@ const createPatient = async (req, res) => {
       }
   
       const newPatient = await Patient.create({
-        id: crypto.randomUUID(),
         fullname,
         password:hashedPwd,
         email,

@@ -8,9 +8,11 @@ const {
   getPatient
 } = require("../controllers/Patient/index.js");
 
+const {verifyJWT} = require('../middlewares/jwt.js')
+
 router.post("/",createPatient);
-router.put("/",editPatient);
-router.delete("/:email",deletePatient);
-router.get("/",getPatient);
+router.put("/",verifyJWT,editPatient);
+router.delete("/:email",verifyJWT,deletePatient);
+router.get("/",verifyJWT,getPatient);
 
 module.exports = router;

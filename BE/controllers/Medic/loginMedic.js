@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const {Medic} = require('../../database/models')
-
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 const loginMedic = async (req, res) => {
     try {
@@ -26,8 +27,10 @@ const loginMedic = async (req, res) => {
       if (!isPasswordValid) {
          throw new Error('Invalid password')
       }
-  
-      return res.status(200).json({ message: 'Medic logged', medic })
+
+      const token = jwt.sign({medic},process.env.JWT_SECRET,{expiresIn:'5h'})
+
+      return res.status(201).json({ message: 'Medic logged', data:{token}})
   
     } catch (error) {
       return res.status(400).json({ error: 'Login medic', message: error.message })
