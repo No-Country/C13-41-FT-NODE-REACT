@@ -54,6 +54,7 @@ const basicForm = props => {
 					name='gen'
 					type='select'
 					as={Select}
+					disableScrollLock={true}
 					fullWidth
 					displayEmpty
 					inputProps={{ 'aria-label': 'Without label' }}
