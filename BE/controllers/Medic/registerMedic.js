@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt')
-const crypto = require('node:crypto');
 const {Medic} = require('../../database/models')
 
 
@@ -11,10 +10,20 @@ const createMedic = async (req, res) => {
       if (!fullname || !password || !email || !country || !gender || !birthdate || !nid || !profesionalid) {
         throw new Error('All fields are required.')
       }
+
+      const isDuplicated = await Medic.findOne({
+        where: {
+          email: email
+        }
+      })
+
+      if (isDuplicated) {
+        throw new Error('Medic duplicated')
+       }
+
       const hashedPwd = await bcrypt.hash(password, 10)
   
       const newMedic = await Medic.create({
-        id: crypto.randomUUID(),
         fullname,
         password:hashedPwd,
         email,

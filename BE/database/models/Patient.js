@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { uuid} = require("uuidv4")
 module.exports = (sequelize, DataTypes) => {
   class Patient extends Model {
     /**
@@ -51,6 +52,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Patient',
+  }),
+  Patient.addHook('beforeSave', async (patient) => {
+    return patient.id = uuid();
   });
   return Patient;
 };
