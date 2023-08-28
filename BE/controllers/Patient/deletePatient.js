@@ -5,8 +5,6 @@ const deletePatient = async (req, res) => {
   try {
     const email = req.params.email;
 
-    console.log(email)
-
     if (!email) {
       throw new Error("All fields are required")
     }
