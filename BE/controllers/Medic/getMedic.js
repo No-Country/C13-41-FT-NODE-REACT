@@ -20,7 +20,7 @@ const getMedic = async (req, res) => {
         throw new Error('Medic not found')
       }
 
-      return res.status(201).json({ message: 'Medic data', medic })
+      return res.status(200).json({ message: 'Medic data', medic })
   
     } catch (error) {
 
