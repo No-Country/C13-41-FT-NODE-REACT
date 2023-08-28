@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-// const {
-//   createPatient,
-//   editPatient
-// } = require("../controllers/Speciality/index.js");
+const {
+  addSpeciality,
+  deleteSpeciality,
+  editSpeciality,
+  getSpecialities
+} = require("../controllers/Speciality/index.js");
 
-// router.post("/",createPatient);
-// router.put("/",editPatient);
+router.get("/",getSpecialities);
+router.post("/",addSpeciality);
+router.put("/",editSpeciality);
+router.delete("/",deleteSpeciality);
 
 module.exports = router;

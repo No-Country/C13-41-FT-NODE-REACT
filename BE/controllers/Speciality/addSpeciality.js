@@ -5,7 +5,7 @@ const addSpeciality = async (req, res) => {
   
       const { name } = req.body
   
-      if (!fullname) throw new Error('Speciality name is required.')
+      if (!name) throw new Error('Speciality name is required.')
   
       const isDuplicated = await Speciality.findOne({
         where: {
