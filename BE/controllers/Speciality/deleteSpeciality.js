@@ -2,7 +2,7 @@ const { Speciality } = require("../../database/models");
 
 const deleteSpeciality = async (req, res) => {
   try {
-    const { id } = req.body;
+    const id = req.params.id;
 
     if (!id) throw new Error("Id is required")
 
