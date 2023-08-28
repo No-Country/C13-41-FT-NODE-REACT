@@ -22,11 +22,17 @@ export default function DoctorSignUp() {
 					try {
 						await new Promise(resolve => setTimeout(resolve, 500));
 						console.log(values);
-						setErrorSignup(true);
+						setSuccessSignup(true);
+						setTimeout(() => {
+							setSuccessSignup(false);
+						}, 5000);
 						formikHelpers.resetForm();
 					} catch (error) {
 						console.log(error);
-						setSuccessSignup(true);
+						setErrorSignup(true);
+						setTimeout(() => {
+							setErrorSignup(false);
+						}, 5000);
 					}
 				}}
 			>
