@@ -2,6 +2,7 @@
 import { useFilterContext } from '@/contexts/Filters.context';
 import {
 	Box,
+	Button,
 	Card,
 	CardContent,
 	CardHeader,
@@ -14,8 +15,19 @@ import {
 import React from 'react';
 
 const DoctorsPage = () => {
-	const { filteredDoctor, allDoctors, setFilterByCountry, setFilterByName, setFilterBySpecialty } =
-		useFilterContext();
+	const {
+		filteredDoctor,
+		allDoctors,
+		setFilterByCountry,
+		filterByCountry,
+		setFilterByName,
+		filterBySpecialty,
+		setFilterBySpecialty,
+	} = useFilterContext();
+
+	const countryList = new Set(allDoctors.map(doctor => doctor.country));
+	const specialtyList = new Set(allDoctors.map(doctor => doctor.specialty));
+
 	return (
 		<Container component={'main'}>
 			<Box
@@ -40,12 +52,46 @@ const DoctorsPage = () => {
 					component={'aside'}
 					sx={{ backgroundColor: '#e2e2e2', minHeight: '100vh', width: '30%', padding: '1rem' }}
 				>
-					<div>Inputs selects</div>
-					<Select labelId='demo-simple-select-label' id='demo-simple-select' label='Age'>
-						<MenuItem value={10}>Ten</MenuItem>
-						<MenuItem value={20}>Twenty</MenuItem>
-						<MenuItem value={30}>Thirty</MenuItem>
-					</Select>
+					<Box>
+						<Typography variant='h6'>Country</Typography>
+						<TextField
+							id='demo-simple-select'
+							select
+							label='Select a Country'
+							value={filterByCountry}
+							onChange={e => setFilterByCountry(e.target.value)}
+							fullWidth
+						>
+							{[...countryList].map(country => (
+								<MenuItem key={country} value={country}>
+									{country}
+								</MenuItem>
+							))}
+						</TextField>
+						<Button variant='contained' onClick={() => setFilterByCountry('')}>
+							Clear country
+						</Button>
+					</Box>
+					<Box>
+						<Typography variant='h6'>Specialty</Typography>
+						<TextField
+							id='demo-simple-select'
+							select
+							label='Select a Specialty'
+							value={filterBySpecialty}
+							onChange={e => setFilterBySpecialty(e.target.value)}
+							fullWidth
+						>
+							{[...specialtyList].map(specialty => (
+								<MenuItem key={specialty} value={specialty}>
+									{specialty}
+								</MenuItem>
+							))}
+						</TextField>
+						<Button variant='contained' onClick={() => setFilterBySpecialty('')}>
+							Clear specialty
+						</Button>
+					</Box>
 				</Container>
 				<Container component={'section'}>
 					<div>Cards de médicos segun busqueda</div>
