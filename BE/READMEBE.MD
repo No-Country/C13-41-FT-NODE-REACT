@@ -44,15 +44,15 @@
 ```env
 PORT=5000
 NODE_ENV=development
-PRO_DB_USER=postgres
-PRO_DB_HOST=localhost
-PRO_DB_PASSWORD=root
-PRO_DB_USER=klinika
-DEV_DB_USER=postgres
-DEV_DB_HOST=localhost
-DEV_DB_PASSWORD=root
-DEV_DB_NAME=klinika
-JWT_SECRET=bWVjaGFyY292ejIyLzAyLzIwMjNAw7E
+PRO_DB_USER=
+PRO_DB_HOST=
+PRO_DB_PASSWORD=
+PRO_DB_USER=
+DEV_DB_USER=
+DEV_DB_HOST=
+DEV_DB_PASSWORD=
+DEV_DB_NAME=
+JWT_SECRET=
 ```
 
 - If the `.env` file doesn't export the variables correctly, you can manually export them by running the following commands in the terminal:
@@ -60,15 +60,15 @@ JWT_SECRET=bWVjaGFyY292ejIyLzAyLzIwMjNAw7E
 ```bash
 export PORT=5000
 export NODE_ENV=development
-export PRO_DB_USER=postgres
-export PRO_DB_HOST=localhost
-export PRO_DB_PASSWORD=root
-export PRO_DB_USER=klinika
-export DEV_DB_USER=postgres
-export DEV_DB_HOST=localhost
-export DEV_DB_PASSWORD=root
-export DEV_DB_NAME=klinika
-export JWT_SECRET=bWVjaGFyY292ejIyLzAyLzIwMjNAw7E
+export PRO_DB_USER=
+export PRO_DB_HOST=
+export PRO_DB_PASSWORD=
+export PRO_DB_USER=
+export DEV_DB_USER=
+export DEV_DB_HOST=
+export DEV_DB_PASSWORD=
+export DEV_DB_NAME=
+export JWT_SECRET=
 ```
 
 Make sure to export the variables correctly to ensure the project works as expected.
