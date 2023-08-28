@@ -27,7 +27,7 @@ const loginPatient = async (req, res) => {
         throw new Error('Invalid password')
       }
 
-      return res.status(201).json({ message: 'Patient logged', patient })
+      return res.status(200).json({ message: 'Patient logged', patient })
   
     } catch (error) {
 

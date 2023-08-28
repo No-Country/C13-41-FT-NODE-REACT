@@ -27,10 +27,10 @@ const loginMedic = async (req, res) => {
          throw new Error('Invalid password')
       }
   
-      return res.status(201).json({ message: 'Medic logged', medic })
+      return res.status(200).json({ message: 'Medic logged', medic })
   
     } catch (error) {
-      return res.status(400).json({ error: 'Create medic', message: error.message })
+      return res.status(400).json({ error: 'Login medic', message: error.message })
     }   
   }
 
