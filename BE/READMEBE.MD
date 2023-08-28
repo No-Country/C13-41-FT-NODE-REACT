@@ -87,7 +87,7 @@ The API exposes the following endpoints:
 
 Here are some examples of how to make requests to the API endpoints:
 
-- Resiter a new medic:
+- Register a new medic:
 **POST** */api/v1/medic*
 
 **Request Body:**
@@ -101,6 +101,31 @@ Here are some examples of how to make requests to the API endpoints:
   "nid": "12312",
   "profesionalid": "12334521",
   "birthdate": "2023-05-11"
+}
+
+```
+
+**Response Body:**
+```json
+{
+  "data": {
+    "medic": {
+      "id": "0343446c-7fd2-427a-a922-d0949ffc629e",
+      "fullname": "Jhuon Doe",
+      "password": "$2b$10$v2Nu9lE7cmhExJfxHQ1uzurOKUYrdmlNls18OWYYi/4EdveKSolMa",
+      "email": "jhondoe@mail.com",
+      "country": "Colombia",
+      "gender": "male",
+      "nid": "12312",
+      "profesionalid": "12334521",
+      "birthdate": "2023-05-11T00:00:00.000Z",
+      "updatedAt": "2023-08-28T14:27:13.509Z",
+      "createdAt": "2023-08-28T14:27:13.509Z",
+      "resume": null,
+      "avatar": null
+    }
+  },
+  "message": "Medic Created"
 }
 
 ```
