@@ -6,8 +6,9 @@ const {
   editConsult
 } = require("../controllers/Consult/index.js");
 
+const {verifyJWT} = require('../middlewares/jwt.js')
 
-router.post("/",createConsult)
-router.put("/",editConsult);
+router.post("/",verifyJWT,createConsult)
+router.put("/",verifyJWT,editConsult);
 
 module.exports = router;

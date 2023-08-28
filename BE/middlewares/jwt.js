@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 
 //verify the token isn't corrupt or expired and continue with the request otherwise throw an error
-const verify = (req, res, next) => {
+const verifyJWT = (req, res, next) => {
     try {
         const { authorization } = req.headers;
         if (!authorization) { throw new Error('Not authorization header inside the request') }
@@ -15,7 +15,5 @@ const verify = (req, res, next) => {
 }
 
 module.exports = {
-    enconde,
-    decode,
-    verify
+    verifyJWT
 }
