@@ -55,7 +55,7 @@ DEV_DB_NAME=klinika
 JWT_SECRET=bWVjaGFyY292ejIyLzAyLzIwMjNAw7E
 ```
 
-- If the `.env` file doesn't export the variables correctly, you can manually export them by running the following commands in the terminal (replace `<value>` with the actual value for each variable):
+- If the `.env` file doesn't export the variables correctly, you can manually export them by running the following commands in the terminal:
 
 ```bash
 export PORT=5000
@@ -72,3 +72,35 @@ export JWT_SECRET=bWVjaGFyY292ejIyLzAyLzIwMjNAw7E
 ```
 
 Make sure to export the variables correctly to ensure the project works as expected.
+
+## API Endpoints :page_with_curl:
+
+The API exposes the following endpoints:
+
+- **POST /api/v1/auth/medic**: Medic autentication.
+- **POST /api/v1/medic**: Medic registration.
+- **POST /api/v1/auth/patient**: Patient autentication.
+- **POST /api/v1/patient**: Patient registration.
+- **POST /api/v1/consult**: Consult registration.
+
+## Request Examples :notebook:
+
+Here are some examples of how to make requests to the API endpoints:
+
+- Resiter a new medic:
+**POST** */api/v1/medic*
+
+**Request Body:**
+```json
+{
+  "fullname": "Jhon Doe",
+  "password": "12345",
+  "email": "jhondoe@mail.com",
+  "country": "Colombia",
+  "gender": "male",
+  "nid": "12312",
+  "profesionalid": "12334521",
+  "birthdate": "2023-05-11"
+}
+
+```
