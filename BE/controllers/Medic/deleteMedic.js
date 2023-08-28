@@ -3,13 +3,9 @@ const { Medic } = require("../../database/models");
 // TODO: Cambiar con middleware de atenticación
 const deleteMedic = async (req, res) => {
   try {
-    const {
-      email,
-    } = req.body;
+    const email = req.params.email;
 
-    if (
-      !email
-    ) {
+    if (!email) {
       throw new Error("All fields are required")
     }
 
