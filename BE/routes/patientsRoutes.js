@@ -10,7 +10,7 @@ const {
 
 router.post("/",createPatient);
 router.put("/",editPatient);
-router.delete("/",deletePatient);
+router.delete("/:email",deletePatient);
 router.get("/",getPatient);
 
 module.exports = router;
