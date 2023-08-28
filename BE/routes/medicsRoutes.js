@@ -11,7 +11,7 @@ const {
 
 router.post("/",createMedic)
 router.put("/",editMedic);
-router.delete("/",deleteMedic);
+router.delete("/:email",deleteMedic);
 router.get("/",getMedic);
 
 module.exports = router;
