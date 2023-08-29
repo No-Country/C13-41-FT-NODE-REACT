@@ -24,13 +24,13 @@
 .title {
 	color: #2e2e2e;
 	text-align: center;
-	font-size: 1rem;
+	font-size: 2rem;
 	font-weight: 600;
 }
 
 .button {
-	background-color: #959595;
-	border: 1px solid #959595;
+	background-color: #ff0b0b;
+	border: 3px solid #959595;
 	border-radius: 0.75rem;
 	color: #ffffff;
 	padding: 0.5rem 1rem;
@@ -48,7 +48,7 @@
 
 .text {
 	color: #2e2e2e;
-	font-size: 0.85rem;
+	font-size: 0.80rem;
 	text-align: center;
 	font-weight: 400;
 }
@@ -122,3 +122,72 @@
 	text-align: left;
 	font-weight: 400;
 }
+
+
+/* ================================================================= LOGIN IN WITH*/
+
+.socialLoginButtons {
+	margin-top: 20px;
+	text-align: center;
+  }
+  
+  .loginSpan {
+	display: block;
+	font-size: 16px;
+	margin-bottom: 20px;
+	color: #555;
+  }
+  
+  .socialButtonContainer {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+  }
+  
+  .socialButton { 
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	border-radius: 5px;
+	transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .googleButton {
+	background-color: #DB4437;
+	color: white;
+  }
+  
+  .appleButton {
+	background-color: black;
+	color: white;
+  }
+  
+  .facebookButton {
+	background-color: #1877F2;
+	color: white;
+  }
+  
+  .socialButton:hover {
+	background-color: #333;
+	color: white;
+  }
+  
+  
+  .logoContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	display: grid;
+	place-content: center;
+	margin-bottom: 1rem;
+  }
+  
+  .logo {
+	width: 150px; /* Ajusta el tamaño según tus necesidades */
+	height: 150px;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+  }
+  
