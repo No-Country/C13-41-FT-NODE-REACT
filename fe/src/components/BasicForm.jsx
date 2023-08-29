@@ -54,7 +54,6 @@ const basicForm = props => {
 					name='gen'
 					type='select'
 					as={Select}
-					disableScrollLock={true}
 					fullWidth
 					displayEmpty
 					inputProps={{ 'aria-label': 'Without label' }}
@@ -62,9 +61,9 @@ const basicForm = props => {
 					helperText={Boolean(props.touched.birthdate) && props.errors.birthdate}
 				>
 					<MenuItem value=''>Select</MenuItem>
-					<MenuItem value='Male'>Male</MenuItem>
-					<MenuItem value='Female'>Female</MenuItem>
-					<MenuItem value='Other'>Other</MenuItem>
+					<MenuItem value='male'>Male</MenuItem>
+					<MenuItem value='female'>Female</MenuItem>
+					<MenuItem value='other'>Other</MenuItem>
 				</Field>
 				<FormHelperText>Gender</FormHelperText>
 			</Grid>

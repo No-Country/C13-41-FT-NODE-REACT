@@ -6,7 +6,7 @@ const isStrongPassword = password => {
 export const patientSchema = yup.object({
 	name: yup.string().required(),
 	birthdate: yup.date().required(),
-	gen: yup.string().oneOf(['Male', 'Female', 'Other'], 'select a gen'),
+	gen: yup.string().oneOf(['male', 'female', 'other'], 'select a gen'),
 	country: yup
 		.string()
 		.oneOf(
