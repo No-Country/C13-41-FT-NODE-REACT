@@ -60,7 +60,7 @@ const SignInPage = () => {
       </Typography>
 	  <div className={styles.logoContainer}>
   <img
-  
+	
     alt="Logo"
     className={styles.logo}
   />
