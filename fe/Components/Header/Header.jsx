@@ -89,7 +89,7 @@ function Header () {
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
-              disableScrollLock={"false"}
+              disableScrollLock={true}
             >
             
             <MenuItem onClick={handleCloseNavMenu}>
