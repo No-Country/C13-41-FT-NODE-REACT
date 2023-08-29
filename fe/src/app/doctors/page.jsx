@@ -94,19 +94,22 @@ const DoctorsPage = () => {
 					</Box>
 				</Container>
 				<Container component={'section'}>
-					<div>Cards de médicos segun busqueda</div>
-					<Box component={'div'} display={'flex'} flexDirection={'column'} rowGap={3}>
-						{filteredDoctor?.map(doctor => {
-							return (
-								<Card>
-									<CardHeader title={doctor.fullname} sx={{ backgroundColor: '#34A0A4' }}></CardHeader>
-									<CardContent>
-										<Typography>{doctor.specialty}</Typography>
-										<Typography>{doctor.country}</Typography>
-									</CardContent>
-								</Card>
-							);
-						})}
+					<Box component={'div'} display={'flex'} flexDirection={'column'} rowGap={3} paddingY={4}>
+						{filteredDoctor.length > 0 ? (
+							filteredDoctor.map(doctor => {
+								return (
+									<Card>
+										<CardHeader title={doctor.fullname} sx={{ backgroundColor: '#34A0A4' }}></CardHeader>
+										<CardContent>
+											<Typography>{doctor.specialty}</Typography>
+											<Typography>{doctor.country}</Typography>
+										</CardContent>
+									</Card>
+								);
+							})
+						) : (
+							<Typography>No doctors available</Typography>
+						)}
 					</Box>
 				</Container>
 			</Box>
