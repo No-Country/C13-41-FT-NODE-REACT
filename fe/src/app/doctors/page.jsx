@@ -4,15 +4,19 @@ import {
 	Box,
 	Button,
 	Card,
+	CardActions,
 	CardContent,
 	CardHeader,
 	Container,
+	Divider,
+	InputAdornment,
 	MenuItem,
 	Select,
 	TextField,
 	Typography,
 } from '@mui/material';
 import React from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 
 const DoctorsPage = () => {
 	const {
@@ -29,7 +33,7 @@ const DoctorsPage = () => {
 	const specialtyList = new Set(allDoctors.map(doctor => doctor.specialty));
 
 	return (
-		<Container component={'main'}>
+		<Box component={'main'}>
 			<Box
 				component={'section'}
 				display={'flex'}
@@ -45,14 +49,28 @@ const DoctorsPage = () => {
 					type='search'
 					fullWidth
 					onChange={e => setFilterByName(e.target.value)}
+					InputProps={{
+						startAdornment: (
+							<InputAdornment position='start'>
+								<SearchIcon />
+							</InputAdornment>
+						),
+					}}
 				/>
 			</Box>
 			<Box component={'section'} display={'flex'} flexDirection={'row'}>
 				<Container
 					component={'aside'}
-					sx={{ backgroundColor: '#e2e2e2', minHeight: '100vh', width: '30%', padding: '1rem' }}
+					display={'flex'}
+					flexDirection={'column'}
+					sx={{
+						backgroundColor: '#e2e2e2',
+						minHeight: '100vh',
+						width: '30%',
+						padding: '1rem',
+					}}
 				>
-					<Box>
+					<Box display={'flex'} flexDirection={'column'} rowGap={2}>
 						<Typography variant='h6'>Country</Typography>
 						<TextField
 							id='demo-simple-select'
@@ -68,11 +86,13 @@ const DoctorsPage = () => {
 								</MenuItem>
 							))}
 						</TextField>
-						<Button variant='contained' onClick={() => setFilterByCountry('')}>
+
+						<Button variant='text' size='small' onClick={() => setFilterByCountry('')}>
 							Clear country
 						</Button>
 					</Box>
-					<Box>
+					<Divider />
+					<Box display={'flex'} flexDirection={'column'} rowGap={2}>
 						<Typography variant='h6'>Specialty</Typography>
 						<TextField
 							id='demo-simple-select'
@@ -88,10 +108,11 @@ const DoctorsPage = () => {
 								</MenuItem>
 							))}
 						</TextField>
-						<Button variant='contained' onClick={() => setFilterBySpecialty('')}>
+						<Button variant='text' size='small' onClick={() => setFilterBySpecialty('')}>
 							Clear specialty
 						</Button>
 					</Box>
+					<Divider />
 				</Container>
 				<Container component={'section'}>
 					<Box component={'div'} display={'flex'} flexDirection={'column'} rowGap={3} paddingY={4}>
@@ -104,6 +125,10 @@ const DoctorsPage = () => {
 											<Typography>{doctor.specialty}</Typography>
 											<Typography>{doctor.country}</Typography>
 										</CardContent>
+										<CardActions>
+											<Button href={`/profile/${doctor.id}`}>View profile</Button>
+											<Button href='#'>Book an appointment</Button>
+										</CardActions>
 									</Card>
 								);
 							})
@@ -113,7 +138,7 @@ const DoctorsPage = () => {
 					</Box>
 				</Container>
 			</Box>
-		</Container>
+		</Box>
 	);
 };
 
