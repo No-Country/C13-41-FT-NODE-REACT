@@ -8,7 +8,7 @@ const isStrongPassword = password => {
 export const doctorSchema = yup.object({
 	name: yup.string().required(),
 	birthdate: yup.date().required(),
-	gen: yup.string().oneOf(['Male', 'Female', 'Other'], 'select a gender'),
+	gen: yup.string().oneOf(['male', 'female', 'other'], 'select a gender'),
 	country: yup
 		.string()
 		.oneOf(
@@ -40,6 +40,10 @@ export const doctorSchema = yup.object({
 				'Password must be stronger, with at leat 8 characters, one capital letter, one lower case and one special character',
 			test: value => isStrongPassword(value),
 		}),
-	license: yup.string().required(),
+	license: yup
+		.string()
+		.matches(/^[0-9]+$/, 'Must be a numeric value')
+		.min(6, 'Must have at least 6 characters')
+		.required('License is required'),
 	// checkbox: yup.boolean().required()
 });
