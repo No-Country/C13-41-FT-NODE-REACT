@@ -14,6 +14,7 @@ router.use('/medic',medicsRoutes)
 router.use('/patient',patientRoutes)
 router.use('/consult',consultsRoutes)
 router.use('/auth',authRoutes)
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+router.use('/specialty',specialtyRoutes)
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 module.exports = router
