@@ -7,6 +7,7 @@ import { Button } from '@mui/material';
 import { initialValues } from '../validations/initialValuesPatient';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import '@fontsource/poppins';
 export default function PacientSingUp() {
 	return (
 		<Container>
@@ -25,7 +26,7 @@ export default function PacientSingUp() {
 					<Form>
 						<BasicForm errors={errors} isValid={isValid} touched={touched} dirty={dirty} />
 						<Button type='submit' variant='contained' size='large' disabled={!dirty || !isValid}>
-							Submit
+							Create my account
 						</Button>
 					</Form>
 				)}
