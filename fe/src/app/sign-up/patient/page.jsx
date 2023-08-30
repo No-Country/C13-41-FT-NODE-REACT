@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import BasicForm from '@/components/BasicForm';
+import BasicForm from '../../../../Components/BasicForm';
 import { patientSchema } from '../validations/userPacient';
 import { Form, Formik } from 'formik';
 import { Button, Snackbar, Alert } from '@mui/material';
