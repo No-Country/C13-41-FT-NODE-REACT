@@ -1,11 +1,12 @@
 export const initialValues = {
-  name: '',
-  birthdate: '',
-  gen: '',
-  country: '',
-  phone: '',
-  email: '',
-  password: '',
-  // rememberme: false,
-  // ...other fields
+	fullname: '',
+	birthdate: '',
+	gender: '',
+	country: '',
+	phone: '',
+	email: '',
+	password: '',
+	nid: '',
+	// rememberme: false,
+	// ...other fields
 };
