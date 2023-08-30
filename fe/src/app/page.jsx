@@ -5,8 +5,8 @@ const HomePage = () => {
 
 	return (
 
-		// <Landing />
-		<DoctorProfile />
+		<Landing />
+		// <DoctorProfile />
 
 
 	);

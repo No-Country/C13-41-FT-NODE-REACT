@@ -24,5 +24,8 @@
 		"sweetalert2": "^11.7.27",
 		"sweetalert2-react-content": "^5.0.7",
 		"yup": "^1.2.0"
-	}
+	},
+	"engines": {
+		"node": ">=18 <19"
+	  }
 }
