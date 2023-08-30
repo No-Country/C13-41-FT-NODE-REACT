@@ -30,7 +30,6 @@ const InputContainer = styled ("div") ({
     flexDirection: "row",
     gap: "10px",
 
-  
 });
 
 const DetailSpan = styled ("span") ({
@@ -47,7 +46,6 @@ const AvatarPicture = styled ("img") ({
     height: "300px",
   
 });
-
 
 function changeFullName () {
 
@@ -67,7 +65,6 @@ function changeFullName () {
         return newValue;
 
     }
-
 
 }
 
@@ -177,28 +174,6 @@ function changePhone () {
 
 }
 
-function changeLicense () {
-
-    let askValue = prompt ("Change Your License Number.");
-
-    if (askValue === "" || askValue === null || askValue === undefined) {
-
-        alert ("The License Number field cannot be empty. Refreshing...");
-        window.location.reload();
-
-    }
-
-    else {
-
-        let newValue = document.getElementById ("license").innerText=askValue;
-        alert ("The new value for license is '" +newValue+ "'.\nDon't forget to save your changes.");
-        return newValue;
-
-    }
-
-
-}
-
 function changeAvatar () {
 
     let askValue = prompt ("Please enter the url for the desired avatar picture image.");
@@ -229,7 +204,7 @@ function Details (props) {
     <DetailsContainer>
 
         <InsideContainer>
-            <DetailSpan>Account Type: Medic</DetailSpan>
+            <DetailSpan>Account Type: Patient</DetailSpan>
 
             <InputContainer>
                 <DetailSpan>Full Name:</DetailSpan>
@@ -265,11 +240,6 @@ function Details (props) {
                 <DetailSpan id='phone'>{props.phone}<EditIcon onClick={changePhone}/></DetailSpan>
             </InputContainer>
 
-            <InputContainer>
-                <DetailSpan>License ID:</DetailSpan>
-                <DetailSpan id='license'>{props.license}<EditIcon onClick={changeLicense} /></DetailSpan>
-            </InputContainer>
-
         </InsideContainer>
 
                 <InsideContainer>
@@ -279,8 +249,6 @@ function Details (props) {
                 <AvatarPicture id="avatar" />
 
             </InputContainer>
-
-
 
         </InsideContainer>
 
