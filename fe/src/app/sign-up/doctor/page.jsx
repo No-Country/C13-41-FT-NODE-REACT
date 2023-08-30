@@ -1,16 +1,26 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Button, Typography, Grid, TextField, Snackbar, Alert } from '@mui/material';
-import { Form, Formik, Field, replace } from 'formik';
+import { Form, Formik, Field } from 'formik';
 import '@fontsource/poppins';
 import { doctorSchema } from '../validations/userDoctor';
 import BasicForm from '@/components/BasicForm';
 import { initialValues } from '../validations/initialValuesDoctor';
-import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/navigation';
+
 export default function DoctorSignUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
 	const [message, setMessage] = useState(false);
+
+	const { push } = useRouter();
+	const shouldRedirect = successSignup && !message;
+
+	useEffect(() => {
+		if (shouldRedirect) {
+			push('/sign-in');
+		}
+	}, [shouldRedirect]);
 
 	return (
 		<Container>
@@ -22,13 +32,13 @@ export default function DoctorSignUp() {
 				validationSchema={doctorSchema}
 				onSubmit={async (values, formikHelpers) => {
 					const userData = {
-						fullname: values.name,
+						fullname: values.fullname,
 						password: values.password,
 						email: values.email,
 						country: values.country,
-						gender: values.gen,
-						nid: values.phone,
-						profesionalid: values.license,
+						gender: values.gender,
+						nid: values.nid,
+						profesionalid: values.profesionalid,
 						birthdate: values.birthdate,
 					};
 
@@ -43,24 +53,15 @@ export default function DoctorSignUp() {
 
 						const data = await response.json();
 
-						if (response.ok) {
-							console.log(data);
-							setSuccessSignup(true);
-							setTimeout(() => {
-								setSuccessSignup(false);
-							}, 3000);
+						console.log(data);
+						setSuccessSignup(true);
+						setTimeout(() => {
+							setSuccessSignup(false);
 							setMessage(true);
 							setTimeout(() => {
 								setMessage(false);
 							}, 2000);
-							redirect('/sign-in', replace);
-						} else {
-							setErrorSignup(true);
-							setTimeout(() => {
-								setErrorSignup(false);
-							}, 3000);
-						}
-
+						}, 3000);
 						formikHelpers.resetForm();
 					} catch (error) {
 						console.log(error);
@@ -77,14 +78,14 @@ export default function DoctorSignUp() {
 						<Grid container paddingY={3} spacing={2} rowSpacing={3}>
 							<Grid item xs={6} md={6}>
 								<Field
-									name='license'
+									name='profesionalid'
 									type='text'
 									as={TextField}
 									variant='outlined'
 									label='Profesional License'
 									fullWidth
-									error={Boolean(errors.license) && Boolean(touched.license)}
-									helperText={Boolean(touched.license) && errors.license}
+									error={Boolean(errors.profesionalid) && Boolean(touched.profesionalid)}
+									helperText={Boolean(touched.profesionalid) && errors.profesionalid}
 								/>
 							</Grid>
 						</Grid>

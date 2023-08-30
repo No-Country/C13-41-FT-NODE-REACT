@@ -24,15 +24,15 @@ const basicForm = props => {
 		<Grid container spacing={2} rowSpacing={3}>
 			<Grid item xs={12} md={4}>
 				<Field
-					name='name'
+					name='fullname'
 					type='text'
 					as={TextField}
 					variant='outlined'
 					label='Name & Surname'
 					id='margin-dense'
 					fullWidth
-					error={Boolean(props.errors.name) && Boolean(props.touched.name)}
-					helperText={Boolean(props.touched.name) && props.errors.name}
+					error={Boolean(props.errors.fullname) && Boolean(props.touched.fullname)}
+					helperText={Boolean(props.touched.fullname) && props.errors.fullname}
 				/>
 			</Grid>
 
@@ -51,14 +51,14 @@ const basicForm = props => {
 			</Grid>
 			<Grid item xs={6} md={4}>
 				<Field
-					name='gen'
+					name='gender'
 					type='select'
 					as={Select}
 					fullWidth
 					displayEmpty
 					inputProps={{ 'aria-label': 'Without label' }}
-					error={Boolean(props.errors.birthdate) && Boolean(props.touched.birthdate)}
-					helperText={Boolean(props.touched.birthdate) && props.errors.birthdate}
+					error={Boolean(props.errors.gender) && Boolean(props.touched.gender)}
+					helperText={Boolean(props.touched.gender) && props.errors.gender}
 				>
 					<MenuItem value=''>Select</MenuItem>
 					<MenuItem value='male'>Male</MenuItem>
@@ -125,6 +125,17 @@ const basicForm = props => {
 							</InputAdornment>
 						),
 					}}
+				/>
+			</Grid>
+			<Grid item xs={6} md={6}>
+				<Field
+					name='nid'
+					error={Boolean(props.errors.nid) && Boolean(props.touched.nid)}
+					helperText={Boolean(props.touched.nid) && props.errors.nid}
+					as={TextField}
+					variant='outlined'
+					label='National Identification Number (NID)'
+					fullWidth
 				/>
 			</Grid>
 		</Grid>
