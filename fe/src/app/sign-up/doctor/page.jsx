@@ -4,7 +4,7 @@ import { Container, Button, Typography, Grid, TextField, Snackbar, Alert } from 
 import { Form, Formik, Field } from 'formik';
 import '@fontsource/poppins';
 import { doctorSchema } from '../validations/userDoctor';
-import BasicForm from '@/components/BasicForm';
+import BasicForm from '../../../../Components/BasicForm';
 import { initialValues } from '../validations/initialValuesDoctor';
 import { useRouter } from 'next/navigation';
 
