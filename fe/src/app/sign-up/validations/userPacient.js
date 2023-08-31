@@ -4,9 +4,9 @@ const isStrongPassword = password => {
 	return regex.test(password);
 };
 export const patientSchema = yup.object({
-	name: yup.string().required(),
+	fullname: yup.string().required(),
 	birthdate: yup.date().required(),
-	gen: yup.string().oneOf(['Male', 'Female', 'Other'], 'select a gen'),
+	gender: yup.string().oneOf(['male', 'female', 'other'], 'select a gen'),
 	country: yup
 		.string()
 		.oneOf(
@@ -38,5 +38,10 @@ export const patientSchema = yup.object({
 				'password must be stronger, with at leat 8 characters, one capital letter, one lower case and one special character',
 			test: value => isStrongPassword(value),
 		}),
+	nid: yup
+		.string()
+		.matches(/^[0-9]+$/, 'Only numbers are allowed. No dots or spaces')
+		.min(6, 'Must have at least 6 characters')
+		.required('NID is required'),
 	// checkbox: yup.boolean().required()
 });

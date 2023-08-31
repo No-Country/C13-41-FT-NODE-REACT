@@ -43,7 +43,7 @@ export default function RegisterMenu () {
         MenuListProps={{
           'aria-labelledby': 'register-button',
         }}
-        disableScrollLock={"true"}
+        disableScrollLock={true}
       >
         <MenuItem onClick={handleClose}><Link draggable="false" href="../../sign-up/doctor" style={{fontSize: "1.2rem", color: ColorsKlinik.text, textTransform: "none", fontWeight: "500"}}>As a Doctor</Link></MenuItem>
 

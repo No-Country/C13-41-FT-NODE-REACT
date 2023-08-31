@@ -39,7 +39,15 @@ export const FilterProvider = ({ children }) => {
 
 	return (
 		<FilterContext.Provider
-			value={{ filteredDoctor, allDoctors, setFilterByCountry, setFilterByName, setFilterBySpecialty }}
+			value={{
+				filteredDoctor,
+				allDoctors,
+				filterByCountry,
+				setFilterByCountry,
+				setFilterByName,
+				filterBySpecialty,
+				setFilterBySpecialty,
+			}}
 		>
 			{children}
 		</FilterContext.Provider>

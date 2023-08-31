@@ -18,17 +18,17 @@ import {
 import { Router } from "next/router";
 
 const SignInPage = () => {
-  const [fieldErrors, setFieldErrors] = useState({});
+	const [fieldErrors, setFieldErrors] = useState({});
 
-  // Datos de ejemplo hasta tener la API
-  const successLogin = {
-    data: { patient: "paciente" },
-    message: "success login",
-  };
-  const errorLogin = {
-    error: "duplicated",
-    message: "email was duplicate",
-  };
+	// Datos de ejemplo hasta tener la API
+	const successLogin = {
+		data: { patient: 'paciente' },
+		message: 'success login',
+	};
+	const errorLogin = {
+		error: 'duplicated',
+		message: 'email was duplicate',
+	};
 
   const initialValues = {
     email: "",
