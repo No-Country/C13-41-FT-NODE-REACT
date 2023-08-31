@@ -16,10 +16,6 @@ router.use('/patient',patientRoutes)
 router.use('/consult',consultsRoutes)
 router.use('/auth',authRoutes)
 router.use('/specialty',specialtyRoutes)
-<<<<<<< HEAD
 router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-=======
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
->>>>>>> f5f3020 (feat: Add new route for API documentation)
 
 module.exports = router

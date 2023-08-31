@@ -3,7 +3,7 @@ const {Medic} = require('../../database/models')
 // TODO: Cambiar con middleware de atenticación
 const getMedic = async (req, res) => {
     try {
-      const { email } = req.body;
+      const { email } = req.query;
   
       if(!email)
       {
