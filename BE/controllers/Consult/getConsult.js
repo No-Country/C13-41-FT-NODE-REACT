@@ -5,7 +5,7 @@ const getConsult = async (req, res) => {
   try {
     const {
       id,
-    } = req.body;
+    } = req.query;
 
     if (
       !id
@@ -19,9 +19,6 @@ const getConsult = async (req, res) => {
       }
     });
 
-    if (!consult) {
-      throw new Error("Consult not found")
-    }
     return res
       .status(200)
       .json({ message: 'Consult data', data:{consult} });

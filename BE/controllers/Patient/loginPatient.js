@@ -27,7 +27,7 @@ const loginPatient = async (req, res) => {
         throw new Error('Invalid password')
       }
       const token = jwt.sign({patient},process.env.JWT_SECRET,{expiresIn:'5h'})
-      return res.status(201).json({ message: 'Patient logged', data:{token} })
+      return res.status(200).json({ message: 'Patient logged', data:{token} })
   
     } catch (error) {
 
