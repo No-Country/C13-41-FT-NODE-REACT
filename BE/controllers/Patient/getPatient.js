@@ -15,10 +15,6 @@ const getPatient = async (req, res) => {
           email: email
         }
       });
-      
-      if (!patient) {
-        throw new Error('Patient not found')
-      }
 
       return res.status(200).json({ message: 'Patient data', data:{patient} })
   
