@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import * as yup from "yup";
@@ -15,20 +15,33 @@ import {
   TextField,
   FormControlLabel,
 } from "@mui/material";
-import { Router } from "next/router";
+import { useRouter } from 'next/navigation';
+
 
 const SignInPage = () => {
-	const [fieldErrors, setFieldErrors] = useState({});
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [successSignIn, setSuccessSignIn] = useState(false);
+  const { push } = useRouter();
 
-	// Datos de ejemplo hasta tener la API
-	const successLogin = {
-		data: { patient: 'paciente' },
-		message: 'success login',
-	};
-	const errorLogin = {
-		error: 'duplicated',
-		message: 'email was duplicate',
-	};
+  
+  useEffect(() => {
+    if (successSignIn) {
+      push("/home");
+    }
+  }, [successSignIn]);
+
+
+
+
+  // Datos de ejemplo hasta tener la API
+  const successLogin = {
+    data: { patient: "paciente" },
+    message: "success login",
+  };
+  const errorLogin = {
+    error: "duplicated",
+    message: "email was duplicate",
+  };
 
   const initialValues = {
     email: "",
@@ -51,14 +64,55 @@ const SignInPage = () => {
       .required(""),
   });
 
+  const signIn = async (data) => {
+    if (!data) return;
+
+    const userLogin = {
+      email: data.email,
+      password: data.password,
+    };
+    console.log(userLogin);
+    try {
+      let endpoint = "";
+      if (data.user === "patient") {
+        endpoint = "https://mecharcovz-be.onrender.com/api/v1/auth/patient";
+      } else {
+        endpoint = "https://mecharcovz-be.onrender.com/api/v1/auth/medic";
+      }
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userLogin),
+      });
+      const dataUser = await response.json();
+      console.log(dataUser);
+      if (response.status === 201) {
+        console.log(successLogin.message);
+        // Router
+        setSuccessSignIn(true);
+      }
+
+      if (response.status === 400) {
+        console.log(errorLogin.message);
+      }
+    } catch (errors) {
+      console.log(errors.message);
+      setTimeout(() => {
+        setFieldErrors({});
+      }, 3000);
+    }
+  };
+
   const onSubmit = (values, props) => {
     console.log(values);
     setTimeout(() => {
       props.resetForm();
       props.setSubmitting(false);
     }, 2000);
-
-    console.log(props);
+    signIn(values);
   };
 
   return (
@@ -95,6 +149,7 @@ const SignInPage = () => {
                   name="email"
                   type="email"
                   placeholder="Email"
+                  /* autoComplete='off' */
                   helperText={<ErrorMessage name="email" />}
                   style={{
                     width: "100%",
