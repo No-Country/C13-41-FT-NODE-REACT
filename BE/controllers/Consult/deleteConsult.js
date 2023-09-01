@@ -3,7 +3,7 @@ const { Consult } = require("../../database/models");
 // TODO: Cambiar con middleware de atenticación
 const deleteConsult = async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.query.id;
 
     if (!id) {
       throw new Error("All fields are required")

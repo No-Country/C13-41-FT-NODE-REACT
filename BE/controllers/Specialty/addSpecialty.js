@@ -17,7 +17,7 @@ const addSpecialty = async (req, res) => {
   
       const newSpecialty = await Specialty.create({ name: name });
   
-      return res.status(201).json({ message: 'Specialty created', patient: newSpecialty })
+      return res.status(201).json({ message: 'Specialty created', data: newSpecialty })
     } catch (error) {
       return res.status(400).json({ error: 'Register Specialty', message:error.message })
     }   

@@ -30,7 +30,7 @@ const loginMedic = async (req, res) => {
 
       const token = jwt.sign({medic},process.env.JWT_SECRET,{expiresIn:'5h'})
 
-      return res.status(201).json({ message: 'Medic logged', data:{token}})
+      return res.status(200).json({ message: 'Medic logged', data:{token}})
   
     } catch (error) {
       return res.status(400).json({ error: 'Login medic', message: error.message })

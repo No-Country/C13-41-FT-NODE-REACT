@@ -3,7 +3,7 @@ const { Patient } = require("../../database/models");
 // TODO: Cambiar con middleware de atenticación
 const deletePatient = async (req, res) => {
   try {
-    const email = req.params.email;
+    const email = req.query.email;
 
     if (!email) {
       throw new Error("All fields are required")

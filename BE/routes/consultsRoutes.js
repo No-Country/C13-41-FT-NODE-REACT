@@ -12,7 +12,7 @@ const {verifyJWT} = require('../middlewares/jwt.js')
 
 router.post("/",verifyJWT,createConsult)
 router.put("/",verifyJWT,editConsult);
-router.delete("/:id",verifyJWT,deleteConsult);
-router.get("/",verifyJWT,getConsult);
+router.delete("",verifyJWT,deleteConsult);
+router.get("",verifyJWT,getConsult);
 
 module.exports = router;
