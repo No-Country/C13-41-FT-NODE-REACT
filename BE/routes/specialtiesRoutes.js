@@ -11,6 +11,6 @@ const {
 router.get("/",getSpecialties);
 router.post("/",addSpecialty);
 router.put("/",editSpecialty);
-router.delete("/:id",deleteSpecialty);
+router.delete("",deleteSpecialty);
 
 module.exports = router;

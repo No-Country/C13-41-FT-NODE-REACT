@@ -3,7 +3,7 @@ const {Medic} = require('../../database/models')
 // TODO: Cambiar con middleware de atenticación
 const getMedic = async (req, res) => {
     try {
-      const { email } = req.body;
+      const { email } = req.query;
   
       if(!email)
       {
@@ -15,10 +15,6 @@ const getMedic = async (req, res) => {
           email: email
         }
       });
-      
-      if (!medic) {
-        throw new Error('Medic not found')
-      }
 
       return res.status(200).json({ message: 'Medic data', data:{medic} })
   
