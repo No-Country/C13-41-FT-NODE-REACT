@@ -14,6 +14,8 @@ import { Button } from '@mui/material';
 import styled from '@emotion/styled';
 import { colors } from '@/app/colors';
 import RegisterMenu from './RegisterMenu';
+import { useAuth } from '@/contexts/Auth.context';
+import { isAbortError } from 'next/dist/server/pipe-readable';
 
 const Logo = styled('img')({
 	width: '64px',
@@ -22,7 +24,7 @@ const Logo = styled('img')({
 
 function Header() {
 	const [AnchorHeader, setAnchorHeader] = React.useState(null);
-
+	const { logout, token } = useAuth();
 	const handleOpenNavMenu = event => {
 		setAnchorHeader(event.currentTarget);
 	};
@@ -182,20 +184,37 @@ function Header() {
 					</Box>
 
 					<Box sx={{ flexGrow: 0, display: 'flex', gap: '30px', alignItems: 'center' }}>
-						<RegisterMenu />
+						{token ? (
+							<Button
+								draggable='false'
+								style={{
+									fontSize: '1.2rem',
+									color: colors.text,
+									textTransform: 'none',
+									fontWeight: '500',
+								}}
+								onClick={logout}
+							>
+								Logout
+							</Button>
+						) : (
+							<>
+								<RegisterMenu />
 
-						<Link
-							draggable='false'
-							href='../../sign-in'
-							style={{
-								fontSize: '1.2rem',
-								color: colors.text,
-								textTransform: 'none',
-								fontWeight: '500',
-							}}
-						>
-							Login
-						</Link>
+								<Link
+									draggable='false'
+									href='../../sign-in'
+									style={{
+										fontSize: '1.2rem',
+										color: colors.text,
+										textTransform: 'none',
+										fontWeight: '500',
+									}}
+								>
+									Login
+								</Link>
+							</>
+						)}
 					</Box>
 				</Toolbar>
 			</Container>
