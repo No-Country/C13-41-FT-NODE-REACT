@@ -21,6 +21,7 @@ export default function PacientSingUp() {
 			push('/sign-in');
 		}
 	}, [shouldRedirect]);
+
 	return (
 		<Container>
 			<Typography variant='h3' mt={4} mb={4}>
