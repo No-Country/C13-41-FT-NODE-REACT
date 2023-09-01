@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { FilterProvider } from '@/contexts/Filters.context';
-import { UserProvider } from '@/contexts/User.context';
+import { AuthProvider } from '@/contexts/Auth.context';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 
@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<UserProvider>
+		<AuthProvider>
 			<FilterProvider>
 				<html lang='en'>
 					<body className={inter.className}>
@@ -24,6 +24,6 @@ export default function RootLayout({ children }) {
 					</body>
 				</html>
 			</FilterProvider>
-		</UserProvider>
+		</AuthProvider>
 	);
 }

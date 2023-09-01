@@ -26,7 +26,7 @@ export default function DoctorSignUp() {
 
 	return (
 		<Container>
-			<Typography variant='h3' mt={4} mb={4}>
+			<Typography variant='h3' fontSize={'2.5rem'} mt={4} mb={4}>
 				Register
 			</Typography>
 			<Formik
