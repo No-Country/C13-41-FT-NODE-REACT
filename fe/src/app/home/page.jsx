@@ -30,7 +30,14 @@ const UserHomePage = () => {
 						Upcoming appointments
 					</Typography>
 				</Box>
-				<Box component={'div'} display={'flex'} alignItems={'center'} columnGap={2}>
+				<Box
+					component={'div'}
+					display={'flex'}
+					alignItems={'center'}
+					columnGap={2}
+					rowGap={2}
+					sx={{ flexWrap: 'wrap' }}
+				>
 					{fakeConsultations &&
 						fakeConsultations.map(consultation => {
 							return (
