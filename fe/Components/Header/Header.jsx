@@ -15,7 +15,7 @@ import styled from '@emotion/styled';
 import { colors } from '@/app/colors';
 import RegisterMenu from './RegisterMenu';
 import { useAuth } from '@/contexts/Auth.context';
-import { isAbortError } from 'next/dist/server/pipe-readable';
+import { useRouter } from 'next/navigation';
 
 const Logo = styled('img')({
 	width: '64px',
@@ -25,12 +25,20 @@ const Logo = styled('img')({
 function Header() {
 	const [AnchorHeader, setAnchorHeader] = React.useState(null);
 	const { logout, token } = useAuth();
+	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorHeader(event.currentTarget);
 	};
 
 	const handleCloseNavMenu = () => {
 		setAnchorHeader(null);
+	};
+
+	const handleLogout = () => {
+		setTimeout(() => {
+			logout();
+			push('/');
+		}, 2000);
 	};
 
 	return (
@@ -51,7 +59,6 @@ function Header() {
 						sx={{ display: { xs: 'none', md: 'flex' } }}
 					>
 						<Logo draggable='false' src='https://img.icons8.com/clouds/100/caduceus.png' />
-
 						<Typography
 							variant='h6'
 							noWrap
@@ -68,7 +75,7 @@ function Header() {
 							}}
 							draggable='false'
 						>
-							Klinika - by Mercharcovz
+							Klinika
 						</Typography>
 					</Button>
 
@@ -193,7 +200,7 @@ function Header() {
 									textTransform: 'none',
 									fontWeight: '500',
 								}}
-								onClick={logout}
+								onClick={handleLogout}
 							>
 								Logout
 							</Button>
