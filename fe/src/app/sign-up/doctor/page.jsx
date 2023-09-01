@@ -11,20 +11,22 @@ import FormAlerts from '../../../../Components/FormAlerts';
 export default function DoctorSignUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
-	const [message, setMessage] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
+	const [redirecting, setRedirecting] = useState(false);
 
 	const { push } = useRouter();
-	const shouldRedirect = successSignup && !message;
 
 	useEffect(() => {
-		if (shouldRedirect) {
-			push('/sign-in');
+		if (successSignup) {
+			setTimeout(() => {
+				push('/sign-in');
+			}, 5000);
 		}
-	}, [shouldRedirect]);
+	}, [successSignup]);
 
 	return (
 		<Container>
-			<Typography variant='h3' mt={4} mb={4}>
+			<Typography variant='h3' fontSize={'2.5rem'} mt={4} mb={4}>
 				Register
 			</Typography>
 			<Formik
@@ -57,14 +59,14 @@ export default function DoctorSignUp() {
 						setSuccessSignup(true);
 						setTimeout(() => {
 							setSuccessSignup(false);
-							setMessage(true);
+							setRedirecting(true);
 							setTimeout(() => {
-								setMessage(false);
+								setRedirecting(false);
 							}, 2000);
 						}, 3000);
 						formikHelpers.resetForm();
 					} catch (error) {
-						console.log(error);
+						setErrorMessage(error.error);
 						setErrorSignup(true);
 						setTimeout(() => {
 							setErrorSignup(false);
@@ -95,7 +97,12 @@ export default function DoctorSignUp() {
 					</Form>
 				)}
 			</Formik>
-			<FormAlerts successSignup={successSignup} errorSignup={errorSignup} message={message}/>
+			<FormAlerts
+				successSignup={successSignup}
+				errorSignup={errorSignup}
+				redirecting={redirecting}
+				errorMessage={errorMessage}
+			/>
 		</Container>
 	);
 }

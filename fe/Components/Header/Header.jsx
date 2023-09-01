@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import { Button } from '@mui/material';
 import styled from '@emotion/styled';
-import { ColorsKlinik } from '@/app/colors';
+import { colors } from '@/app/colors';
 import RegisterMenu from './RegisterMenu';
 
 const Logo = styled('img')({
@@ -35,9 +35,9 @@ function Header() {
 		<AppBar
 			position='static'
 			sx={{
-				backgroundColor: ColorsKlinik.background,
+				backgroundColor: colors.background,
 				borderBottom: '2px solid',
-				borderColor: ColorsKlinik.border,
+				borderColor: colors.border,
 			}}
 		>
 			<Container maxWidth='xl'>
@@ -61,7 +61,7 @@ function Header() {
 								fontFamily: 'monospace',
 								fontWeight: 700,
 								letterSpacing: '.8rem',
-								color: ColorsKlinik.text,
+								color: colors.text,
 								textDecoration: 'none',
 							}}
 							draggable='false'
@@ -71,7 +71,7 @@ function Header() {
 					</Button>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-						<IconButton size='large' onClick={handleOpenNavMenu} color={ColorsKlinik.text}>
+						<IconButton size='large' onClick={handleOpenNavMenu} color={colors.text}>
 							<MenuIcon />
 						</IconButton>
 						<Menu
@@ -122,7 +122,7 @@ function Header() {
 							flexGrow: 1,
 							fontFamily: 'monospace',
 							fontWeight: 'bold',
-							color: ColorsKlinik.text,
+							color: colors.text,
 							textDecoration: 'none',
 							fontSize: '23px',
 						}}
@@ -136,7 +136,7 @@ function Header() {
 							href='/'
 							style={{
 								fontSize: '1.2rem',
-								color: ColorsKlinik.text,
+								color: colors.text,
 								textTransform: 'none',
 								fontWeight: '600',
 							}}
@@ -148,7 +148,7 @@ function Header() {
 							href='/'
 							style={{
 								fontSize: '1.2rem',
-								color: ColorsKlinik.text,
+								color: colors.text,
 								textTransform: 'none',
 								fontWeight: '600',
 							}}
@@ -160,7 +160,7 @@ function Header() {
 							href='/doctors'
 							style={{
 								fontSize: '1.2rem',
-								color: ColorsKlinik.text,
+								color: colors.text,
 								textTransform: 'none',
 								fontWeight: '600',
 							}}
@@ -172,7 +172,7 @@ function Header() {
 							href='/'
 							style={{
 								fontSize: '1.2rem',
-								color: ColorsKlinik.text,
+								color: colors.text,
 								textTransform: 'none',
 								fontWeight: '600',
 							}}
@@ -189,7 +189,7 @@ function Header() {
 							href='../../sign-in'
 							style={{
 								fontSize: '1.2rem',
-								color: ColorsKlinik.text,
+								color: colors.text,
 								textTransform: 'none',
 								fontWeight: '500',
 							}}
