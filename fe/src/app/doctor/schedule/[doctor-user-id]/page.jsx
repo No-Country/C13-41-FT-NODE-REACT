@@ -1,0 +1,158 @@
+'use client';
+import React, { useState } from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Checkbox, Paper, Button, tableCellClasses } from '@mui/material';
+import { Circle, CircleOutlined } from '@mui/icons-material';
+import { hexToRgb, styled } from '@mui/material/styles';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+const franjasHorarias = ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00']; // Agrega más franjas según necesites
+import { ColorsKlinik } from '@/app/colors';
+import DoctorCalendar from '../../../../../Components/Calendar/DoctorCalendar';
+const ScheduleDoctor = () => {
+  const [values, setValues] = React.useState([]);
+  const [schedule, setSchedule] = useState([
+    { dia: 'Lunes', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Lunes', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Lunes', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Lunes', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Lunes', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Lunes', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Lunes', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Lunes', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Lunes', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Martes', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Martes', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Martes', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Martes', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Martes', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Martes', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Martes', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Martes', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Martes', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Miercoles', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Miercoles', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Miercoles', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Miercoles', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Miercoles', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Miercoles', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Miercoles', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Miercoles', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Miercoles', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Jueves', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Jueves', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Jueves', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Jueves', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Jueves', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Jueves', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Jueves', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Jueves', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Jueves', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Viernes', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Viernes', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Viernes', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Viernes', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Viernes', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Viernes', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Viernes', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Viernes', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Viernes', franja: '16:00 - 17:00', selected: false },
+    // Agrega más combinaciones día-franja según necesites
+  ]);
+
+  const handleCheckboxChange = (dia, franja, e) => {
+    const newSchedule = schedule.map((horario) => {
+      if (horario.dia === dia && horario.franja === franja) {
+        return { ...horario, selected: e.srcElement.checked };
+      }
+      return horario;
+    });
+    setSchedule(newSchedule);
+  };
+  const handleClick = async () => {
+    let scheduleChoosed = []; 
+    schedule.map((s) => {
+      if(s.selected){
+        scheduleChoosed.push({dia: s.dia, franja: s.franja})
+      }
+    } )
+    console.log(scheduleChoosed);
+    // try {
+    //   const response = await fetch('https://mecharcovz-be.onrender.com/', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(userData),
+    //   });
+
+    //   const data = await response.json();
+    //   console.log(data);
+    // } catch (error) {
+    //   console.log(error);
+    //   setErrorSignup(true);
+    //   setTimeout(() => {
+    //     setErrorSignup(false);
+    //   }, 5000);
+    // }
+  }
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: ColorsKlinik.background,
+      color: ColorsKlinik.text,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: ColorsKlinik.softBackground,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  return (
+    <>
+      <TableContainer style={{marginBottom: 12}} component={Paper}>
+        <Table size='small' style={{marginTop: 12}}>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell><h4>Hora</h4></StyledTableCell>
+              {diasSemana.map((dia) => (
+                <StyledTableCell key={dia}><h4>{dia}</h4></StyledTableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {franjasHorarias.map((franja) => (
+              <TableRow key={franja} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell>{franja}</TableCell>
+                {diasSemana.map((dia) => {
+                  // const horario = schedule.find((h) => h.dia === dia && h.franja === franja);
+                  return (
+                    <TableCell key={dia} >
+                      <Checkbox
+                        icon={<CircleOutlined/>}
+                        checkedIcon={<Circle/>}
+                        // checked={horario.selected}
+                        onChange={() => handleCheckboxChange(dia, franja, event )}
+                      />
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <DoctorCalendar values={values} setValues={setValues}/>
+      <Button type='submit' onClick={handleClick} endIcon={<BookmarkAddIcon/>} color='success' variant='contained' size='large' >
+          Save
+      </Button>    
+    </>
+  );
+};
+
+export default ScheduleDoctor;
