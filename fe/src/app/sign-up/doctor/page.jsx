@@ -11,16 +11,18 @@ import { useRouter } from 'next/navigation';
 export default function DoctorSignUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
-	const [message, setMessage] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
+	const [redirecting, setRedirecting] = useState(false);
 
 	const { push } = useRouter();
-	const shouldRedirect = successSignup && !message;
 
 	useEffect(() => {
-		if (shouldRedirect) {
-			push('/sign-in');
+		if (successSignup) {
+			setTimeout(() => {
+				push('/sign-in');
+			}, 5000);
 		}
-	}, [shouldRedirect]);
+	}, [successSignup]);
 
 	return (
 		<Container>
@@ -57,14 +59,14 @@ export default function DoctorSignUp() {
 						setSuccessSignup(true);
 						setTimeout(() => {
 							setSuccessSignup(false);
-							setMessage(true);
+							setRedirecting(true);
 							setTimeout(() => {
-								setMessage(false);
+								setRedirecting(false);
 							}, 2000);
 						}, 3000);
 						formikHelpers.resetForm();
 					} catch (error) {
-						console.log(error);
+						setErrorMessage(error.error);
 						setErrorSignup(true);
 						setTimeout(() => {
 							setErrorSignup(false);
@@ -114,12 +116,12 @@ export default function DoctorSignUp() {
 				onClose={() => {}}
 			>
 				<Alert severity='error' sx={{ width: '100%' }}>
-					Error creating account
+					{errorMessage ? errorMessage : 'Error creating account. Try again.'}
 				</Alert>
 			</Snackbar>
 			<Snackbar
 				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={message}
+				open={redirecting}
 				autoHideDuration={3000}
 				message='Redirecting to login'
 				onClose={() => {}}
