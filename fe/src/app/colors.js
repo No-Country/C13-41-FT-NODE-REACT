@@ -1,6 +1,7 @@
 export const colors = {
 	background: '#F0ECE4',
 	text: '#131313',
+	inputBackground: '#C1CBCF',
 	cardBackground: '#C1CBCF',
 	navbarBackground: '#9AAAB1',
 	selectedOption: '#9AAAB1',

@@ -14,6 +14,8 @@ import { Button } from '@mui/material';
 import styled from '@emotion/styled';
 import { colors } from '@/app/colors';
 import RegisterMenu from './RegisterMenu';
+import { useAuth } from '@/contexts/Auth.context';
+import { useRouter } from 'next/navigation';
 
 const Logo = styled('img')({
 	width: '64px',
@@ -22,13 +24,21 @@ const Logo = styled('img')({
 
 function Header() {
 	const [AnchorHeader, setAnchorHeader] = React.useState(null);
-
+	const { logout, token } = useAuth();
+	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorHeader(event.currentTarget);
 	};
 
 	const handleCloseNavMenu = () => {
 		setAnchorHeader(null);
+	};
+
+	const handleLogout = () => {
+		setTimeout(() => {
+			logout();
+			push('/');
+		}, 2000);
 	};
 
 	return (
@@ -49,7 +59,6 @@ function Header() {
 						sx={{ display: { xs: 'none', md: 'flex' } }}
 					>
 						<Logo draggable='false' src='https://img.icons8.com/clouds/100/caduceus.png' />
-
 						<Typography
 							variant='h6'
 							noWrap
@@ -66,7 +75,7 @@ function Header() {
 							}}
 							draggable='false'
 						>
-							Klinika - by Mercharcovz
+							Klinika
 						</Typography>
 					</Button>
 
@@ -182,20 +191,37 @@ function Header() {
 					</Box>
 
 					<Box sx={{ flexGrow: 0, display: 'flex', gap: '30px', alignItems: 'center' }}>
-						<RegisterMenu />
+						{token ? (
+							<Button
+								draggable='false'
+								style={{
+									fontSize: '1.2rem',
+									color: colors.text,
+									textTransform: 'none',
+									fontWeight: '500',
+								}}
+								onClick={handleLogout}
+							>
+								Logout
+							</Button>
+						) : (
+							<>
+								<RegisterMenu />
 
-						<Link
-							draggable='false'
-							href='../../sign-in'
-							style={{
-								fontSize: '1.2rem',
-								color: colors.text,
-								textTransform: 'none',
-								fontWeight: '500',
-							}}
-						>
-							Login
-						</Link>
+								<Link
+									draggable='false'
+									href='../../sign-in'
+									style={{
+										fontSize: '1.2rem',
+										color: colors.text,
+										textTransform: 'none',
+										fontWeight: '500',
+									}}
+								>
+									Login
+								</Link>
+							</>
+						)}
 					</Box>
 				</Toolbar>
 			</Container>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'formik';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Button from '@mui/material';
+import { colors } from '@/app/colors';
 import {
 	Grid,
 	TextField,
@@ -12,6 +12,7 @@ import {
 	MenuItem,
 	FormHelperText,
 } from '@mui/material';
+
 const basicForm = props => {
 	const [showPassword, setShowPassword] = React.useState(false);
 	const handleClickShowPassword = () => {
@@ -28,7 +29,6 @@ const basicForm = props => {
 					name='fullname'
 					type='text'
 					as={TextField}
-					variant='outlined'
 					label='Name & Surname'
 					id='margin-dense'
 					fullWidth

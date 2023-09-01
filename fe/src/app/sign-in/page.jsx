@@ -16,14 +16,15 @@ import {
 	FormControlLabel,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
-// import { useAuth } from '@/contexts/Auth.context';
+import jwtDecode from 'jwt-decode';
+import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
+import { useAuth } from '@/contexts/Auth.context';
 
 const SignInPage = () => {
-	const [fieldErrors, setFieldErrors] = useState({});
 	const [successSignIn, setSuccessSignIn] = useState(false);
 
 	// Utilizo login para setear el token y los datos del usuario una vez logueado
-	// const { login } = useAuth();
+	const { login } = useAuth();
 	const { push } = useRouter();
 
 	useEffect(() => {
@@ -31,16 +32,6 @@ const SignInPage = () => {
 			push('/home');
 		}
 	}, [successSignIn]);
-
-	// Datos de ejemplo hasta tener la API
-	const successLogin = {
-		data: { patient: 'paciente' },
-		message: 'success login',
-	};
-	const errorLogin = {
-		error: 'duplicated',
-		message: 'email was duplicate',
-	};
 
 	const initialValues = {
 		email: '',
@@ -83,21 +74,23 @@ const SignInPage = () => {
 			const dataUser = await response.json();
 			console.log(dataUser);
 			if (response.status === 201) {
-				console.log(successLogin.message);
-				// Router
+				const decoded = jwtDecode(dataUser.data.token);
+
 				// Almaceno el token y los datos en un estado y en el local storage por si cierra la sesión
-				// login({ token: dataUser.token, data: dataUser.data });
+				if (data.user === 'patient') {
+					login({ token: dataUser.data.token, data: decoded.patient });
+				} else if (data.user === 'doctor') {
+					login({ token: dataUser.data.token, data: decoded.medic });
+				}
+
 				setSuccessSignIn(true);
 			}
 
 			if (response.status === 400) {
-				console.log(errorLogin.message);
+				console.log('error login');
 			}
 		} catch (errors) {
 			console.log(errors.message);
-			setTimeout(() => {
-				setFieldErrors({});
-			}, 3000);
 		}
 	};
 
@@ -126,31 +119,19 @@ const SignInPage = () => {
 			<Formik initialValues={initialValues} validationSchema={signInSchema} onSubmit={onSubmit}>
 				{({ errors, touched, dirty, isValid, isSubmitting }) => (
 					<Form>
-						<Grid
-							container
-							alignItems='center'
-							justifyContent='center'
-							paddingY={3}
-							spacing={4}
-							rowSpacing={10}
-						>
-							<Grid item xs={6} md={6}>
+						<Grid container alignItems='center' justifyContent='center' paddingY={3} spacing={6}>
+							<Grid item xs={6} md={12}>
 								<Field
 									as={TextField}
 									name='email'
 									type='email'
 									placeholder='Email'
 									/* autoComplete='off' */
-									helperText={<ErrorMessage name='email' />}
-									style={{
-										width: '100%',
-										marginBottom: '1rem',
-										padding: '0.5rem',
-										borderRadius: '4px',
-										border: '1px solid #ccc',
-									}}
+									fullWidth
+									error={Boolean(errors.email) && Boolean(touched.email)}
+									helperText={Boolean(touched.email) && errors.email}
 								/>
-								{errors.email && touched.email ? <div>{errors.email}</div> : null}
+
 								<Typography>
 									<Link href='/forgot-password' className={styles.text}>
 										Did you Forgot your password?
@@ -160,26 +141,21 @@ const SignInPage = () => {
 									as={TextField}
 									type='password'
 									name='password'
-									helperText={<ErrorMessage name='password' />}
 									placeholder='Password'
-									style={{
-										width: '100%',
-										marginBottom: '1rem',
-										padding: '0.5rem',
-										borderRadius: '4px',
-										border: '1px solid #ccc',
-									}}
+									fullWidth
+									error={Boolean(errors.password) && Boolean(touched.password)}
+									helperText={Boolean(touched.password) && errors.password}
 								/>
-								{errors.password && touched.password ? <div>{errors.password}</div> : null}
 
-								<Field
-									as={FormControlLabel}
-									name='remember'
-									control={<Checkbox color='primary'></Checkbox>}
-									label='Remember Me'
-								></Field>
-
-								<h4>Login as</h4>
+								<Typography
+									variant='h4'
+									color={colors.text}
+									textAlign={'center'}
+									paddingY={4}
+									fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
+								>
+									Login as
+								</Typography>
 								<div role='group' aria-labelledby='my-radio-group'>
 									<label>
 										<Field as={Checkbox} type='radio' name='user' id='patient' value='patient' />
@@ -192,35 +168,19 @@ const SignInPage = () => {
 									</label>
 								</div>
 							</Grid>
+							<Grid item xs={6} md={12}>
+								<Button
+									color='success'
+									variant='contained'
+									fullWidth
+									size='large'
+									type='submit'
+									disabled={!dirty || !isValid || isSubmitting}
+								>
+									{isSubmitting ? 'Loading' : 'sign in'}
+								</Button>
+							</Grid>
 						</Grid>
-
-						<Button
-							color='success'
-							variant='contained'
-							fullWidth
-							size='large'
-							type='submit'
-							disabled={!dirty || !isValid || isSubmitting}
-						>
-							{isSubmitting ? 'Loading' : 'sign in'}
-						</Button>
-
-						<div className={styles.socialLoginButtons}>
-							<span className={styles.loginSpan}>Login In With</span>
-							<div className={styles.socialButtonContainer}>
-								<Button className={`${styles.socialButton} ${styles.googleButton}`} type='button'>
-									Google
-								</Button>
-
-								<Button className={`${styles.socialButton} ${styles.appleButton}`} type='button'>
-									Apple
-								</Button>
-
-								<Button className={`${styles.socialButton} ${styles.facebookButton}`} type='button'>
-									Facebook
-								</Button>
-							</div>
-						</div>
 					</Form>
 				)}
 			</Formik>
