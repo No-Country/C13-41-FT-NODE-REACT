@@ -1,12 +1,13 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import BasicForm from '@/components/BasicForm';
+import BasicForm from '../../../../Components/BasicForm';
 import { patientSchema } from '../validations/userPacient';
 import { Form, Formik } from 'formik';
 import { Button, Snackbar, Alert } from '@mui/material';
 import { initialValues } from '../validations/initialValuesPatient';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import FormAlerts from '../../../../Components/FormAlerts';
 import '@fontsource/poppins';
 import { useRouter } from 'next/navigation';
 export default function PacientSingUp() {
@@ -82,40 +83,8 @@ export default function PacientSingUp() {
 					</Form>
 				)}
 			</Formik>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={successSignup}
-				autoHideDuration={3000}
-				message='Account created successfully'
-				onClose={() => {}}
-			>
-				<Alert severity='success' sx={{ width: '100%' }}>
-					Account created
-				</Alert>
-			</Snackbar>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={errorSignup}
-				autoHideDuration={3000}
-				message='Error creating account'
-				onClose={() => {}}
-			>
-				<Alert severity='error' sx={{ width: '100%' }}>
-					Error creating account
-				</Alert>
-			</Snackbar>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={message}
-				autoHideDuration={3000}
-				message='Redirecting to login'
-				onClose={() => {}}
-			>
-				<Alert severity='info' sx={{ width: '100%' }}>
-					Redirecting to login
-				</Alert>
-			</Snackbar>
+			<FormAlerts successSignup={successSignup} errorSignup={errorSignup} message={message}/>
 		</Container>
 	);
-	
+
 }

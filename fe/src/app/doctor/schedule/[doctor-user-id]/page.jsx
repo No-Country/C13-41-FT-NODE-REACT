@@ -1,76 +1,158 @@
 'use client';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import CircleIcon from '@mui/icons-material/Circle';
-import { DataGrid } from '@mui/x-data-grid';
-import Checkbox from '@mui/material/Checkbox';
-const SheduleDoctor =  () => {
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-  function createData(id ,time, selected) {
-    return { id, time, selected } ;
+import React, { useState } from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Checkbox, Paper, Button, tableCellClasses } from '@mui/material';
+import { Circle, CircleOutlined } from '@mui/icons-material';
+import { hexToRgb, styled } from '@mui/material/styles';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+const franjasHorarias = ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00']; // Agrega más franjas según necesites
+import { ColorsKlinik } from '@/app/colors';
+import DoctorCalendar from '../../../../../Components/Calendar/DoctorCalendar';
+const ScheduleDoctor = () => {
+  const [values, setValues] = React.useState([]);
+  const [schedule, setSchedule] = useState([
+    { dia: 'Lunes', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Lunes', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Lunes', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Lunes', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Lunes', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Lunes', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Lunes', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Lunes', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Lunes', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Martes', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Martes', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Martes', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Martes', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Martes', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Martes', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Martes', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Martes', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Martes', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Miercoles', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Miercoles', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Miercoles', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Miercoles', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Miercoles', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Miercoles', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Miercoles', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Miercoles', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Miercoles', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Jueves', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Jueves', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Jueves', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Jueves', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Jueves', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Jueves', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Jueves', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Jueves', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Jueves', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Viernes', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Viernes', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Viernes', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Viernes', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Viernes', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Viernes', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Viernes', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Viernes', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Viernes', franja: '16:00 - 17:00', selected: false },
+    // Agrega más combinaciones día-franja según necesites
+  ]);
+
+  const handleCheckboxChange = (dia, franja, e) => {
+    const newSchedule = schedule.map((horario) => {
+      if (horario.dia === dia && horario.franja === franja) {
+        return { ...horario, selected: e.srcElement.checked };
+      }
+      return horario;
+    });
+    setSchedule(newSchedule);
+  };
+  const handleClick = async () => {
+    let scheduleChoosed = []; 
+    schedule.map((s) => {
+      if(s.selected){
+        scheduleChoosed.push({dia: s.dia, franja: s.franja})
+      }
+    } )
+    console.log(scheduleChoosed);
+    // try {
+    //   const response = await fetch('https://mecharcovz-be.onrender.com/', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(userData),
+    //   });
+
+    //   const data = await response.json();
+    //   console.log(data);
+    // } catch (error) {
+    //   console.log(error);
+    //   setErrorSignup(true);
+    //   setTimeout(() => {
+    //     setErrorSignup(false);
+    //   }, 5000);
+    // }
   }
-  const Columns = [
-    { field: 'monday', headerName: 'Monday', width: 70 },  
-    { field: 'tuesday', headerName: 'Tuesday', width: 70 },  
-    { field: 'tednesday', headerName: 'Wednesday', width: 70 },  
-    { field: 'thursday', headerName: 'Thursday', width: 70 },  
-    { field: 'friday', headerName: 'Friday', width: 70 },  
-    { field: 'saturday', headerName: 'Saturday', width: 70 },  
-    { field: 'sunday', headerName: 'Sunday', width: 70 },  
-  ]
-  const Timerows = [
-    createData(1,'7:00 - 8:00', false),
-    createData(2,'8:00 - 9:00', false),
-    createData(3,'9:00 - 10:00', false),
-    createData(4,'10:00 - 11:00', false),
-    createData(4,'12:00 - 13:00', false),
-    createData(5,'14:00 - 15:00', false),
-    createData(6,'15:00 - 16:00', false),
-    createData(7,'16:00 - 17:00', false),
-  ];
-  return(
-    <TableContainer >
-    <Table size='small' sx={{ minWidth: 650 }} aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell><h3>Time/Day</h3></TableCell>
-          <TableCell><h3>Monday</h3></TableCell>
-          <TableCell><h3>Tuesday</h3></TableCell>
-          <TableCell><h3>Wednesday</h3></TableCell>
-          <TableCell><h3>Thursday</h3></TableCell>
-          <TableCell><h3>Friday</h3></TableCell>
-          <TableCell><h3>Saturday</h3></TableCell>
-          <TableCell><h3>Sunday</h3></TableCell>
-        </TableRow>          
-      </TableHead>
-      <TableBody>
-        {Timerows.map((row) => (
-          <TableRow
-            key={row.id}
-            sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
-            style={{width: '100%'}}
-          >
-            <TableCell component="th" scope="row">
-              {row.time}
-            </TableCell>
-            <TableCell align="right"><Checkbox  icon={<CircleOutlinedIcon/>} checkedIcon={<CircleIcon/>}/></TableCell>
-            <TableCell align="right"><Checkbox icon={<CircleOutlinedIcon/>} checkedIcon={<CircleIcon/>}/></TableCell>
-            <TableCell align="right"><Checkbox icon={<CircleOutlinedIcon/>} checkedIcon={<CircleIcon/>}/></TableCell>
-            <TableCell align="right"><Checkbox icon={<CircleOutlinedIcon/>} checkedIcon={<CircleIcon/>}/></TableCell>
-            <TableCell align="right"><Checkbox icon={<CircleOutlinedIcon/>} checkedIcon={<CircleIcon/>}/></TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-    
-  )
-}
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: ColorsKlinik.background,
+      color: ColorsKlinik.text,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: ColorsKlinik.softBackground,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  return (
+    <>
+      <TableContainer style={{marginBottom: 12}} component={Paper}>
+        <Table size='small' style={{marginTop: 12}}>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell><h4>Hora</h4></StyledTableCell>
+              {diasSemana.map((dia) => (
+                <StyledTableCell key={dia}><h4>{dia}</h4></StyledTableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {franjasHorarias.map((franja) => (
+              <TableRow key={franja} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell>{franja}</TableCell>
+                {diasSemana.map((dia) => {
+                  // const horario = schedule.find((h) => h.dia === dia && h.franja === franja);
+                  return (
+                    <TableCell key={dia} >
+                      <Checkbox
+                        icon={<CircleOutlined/>}
+                        checkedIcon={<Circle/>}
+                        // checked={horario.selected}
+                        onChange={() => handleCheckboxChange(dia, franja, event )}
+                      />
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <DoctorCalendar values={values} setValues={setValues}/>
+      <Button type='submit' onClick={handleClick} endIcon={<BookmarkAddIcon/>} color='success' variant='contained' size='large' >
+          Save
+      </Button>    
+    </>
+  );
+};
 
-
-export default SheduleDoctor
+export default ScheduleDoctor;
