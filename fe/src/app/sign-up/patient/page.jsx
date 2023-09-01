@@ -7,6 +7,8 @@ import { Button, Snackbar, Alert } from '@mui/material';
 import { initialValues } from '../validations/initialValuesPatient';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import FormAlerts from '../../../../Components/FormAlerts';
+import '@fontsource/poppins';
 import { useRouter } from 'next/navigation';
 export default function PacientSingUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
@@ -84,6 +86,7 @@ export default function PacientSingUp() {
 					</Form>
 				)}
 			</Formik>
+<<<<<<< HEAD
 			<Snackbar
 				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
 				open={successSignup}
@@ -117,6 +120,10 @@ export default function PacientSingUp() {
 					Redirecting to login
 				</Alert>
 			</Snackbar>
+=======
+			<FormAlerts successSignup={successSignup} errorSignup={errorSignup} message={message}/>
+>>>>>>> 1c4e4e1b6155af8aa4fe93857f94d477190793b9
 		</Container>
 	);
+
 }
