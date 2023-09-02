@@ -13,6 +13,7 @@ export const colors = {
 		ehr: '#81A0C5',
 		medication: '#AAC2AD',
 		labs: '#7EAC98',
+		doctors: '#7BABB0',
 	},
 	doctorExperience: '#7BABB0',
 	starIcon: '#426AC2',
@@ -27,6 +28,8 @@ export const titleFontSizeDesktop = {
 	h4: '1.5rem',
 	h5: '1.25rem',
 	h6: '1rem',
+	normal: '1rem',
+	body: '0.85rem',
 };
 
 export const titleFontSizeMobile = {
@@ -36,4 +39,6 @@ export const titleFontSizeMobile = {
 	h4: '1.25rem',
 	h5: '1rem',
 	h6: '0.875rem',
+	normal: '1rem',
+	body: '0.75rem',
 };

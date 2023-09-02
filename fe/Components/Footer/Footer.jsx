@@ -79,7 +79,7 @@ function Footer() {
 						>
 							Doctors
 						</Link>
-						<Link href='/' style={{ color: colors.text, textTransform: 'none', fontWeight: '600' }}>
+						<Link href={'/'} style={{ color: colors.text, textTransform: 'none', fontWeight: '600' }}>
 							About
 						</Link>
 					</Stack>
