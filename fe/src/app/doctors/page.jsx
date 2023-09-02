@@ -58,15 +58,15 @@ const DoctorsPage = () => {
 					}}
 				/>
 			</Box>
-			<Box component={'section'} display={'flex'} flexDirection={'row'}>
+			<Box component={'section'} display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }}>
 				<Container
 					component={'aside'}
 					display={'flex'}
-					flexDirection={'column'}
+					flexDirection={{ xs: 'row', sm: 'column' }}
 					sx={{
 						backgroundColor: '#e2e2e2',
-						minHeight: '100vh',
-						width: '30%',
+						minHeight: { xs: 'auto', sm: '100vh' },
+						width: { xs: '100%', sm: '30%' },
 						padding: '1rem',
 					}}
 				>

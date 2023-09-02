@@ -7,24 +7,26 @@ import { doctorSchema } from '../validations/userDoctor';
 import BasicForm from '../../../../Components/BasicForm';
 import { initialValues } from '../validations/initialValuesDoctor';
 import { useRouter } from 'next/navigation';
-
+import FormAlerts from '../../../../Components/FormAlerts';
 export default function DoctorSignUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
-	const [message, setMessage] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
+	const [redirecting, setRedirecting] = useState(false);
 
 	const { push } = useRouter();
-	const shouldRedirect = successSignup && !message;
 
 	useEffect(() => {
-		if (shouldRedirect) {
-			push('/sign-in');
+		if (successSignup) {
+			setTimeout(() => {
+				push('/sign-in');
+			}, 5000);
 		}
-	}, [shouldRedirect]);
+	}, [successSignup]);
 
 	return (
 		<Container>
-			<Typography variant='h3' mt={4} mb={4}>
+			<Typography variant='h3' fontSize={'2.5rem'} mt={4} mb={4}>
 				Register
 			</Typography>
 			<Formik
@@ -57,14 +59,14 @@ export default function DoctorSignUp() {
 						setSuccessSignup(true);
 						setTimeout(() => {
 							setSuccessSignup(false);
-							setMessage(true);
+							setRedirecting(true);
 							setTimeout(() => {
-								setMessage(false);
+								setRedirecting(false);
 							}, 2000);
 						}, 3000);
 						formikHelpers.resetForm();
 					} catch (error) {
-						console.log(error);
+						setErrorMessage(error.error);
 						setErrorSignup(true);
 						setTimeout(() => {
 							setErrorSignup(false);
@@ -95,39 +97,12 @@ export default function DoctorSignUp() {
 					</Form>
 				)}
 			</Formik>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={successSignup}
-				autoHideDuration={3000}
-				message='Account created successfully'
-				onClose={() => {}}
-			>
-				<Alert severity='success' sx={{ width: '100%' }}>
-					Account created
-				</Alert>
-			</Snackbar>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={errorSignup}
-				autoHideDuration={3000}
-				message='Error creating account'
-				onClose={() => {}}
-			>
-				<Alert severity='error' sx={{ width: '100%' }}>
-					Error creating account
-				</Alert>
-			</Snackbar>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={message}
-				autoHideDuration={3000}
-				message='Redirecting to login'
-				onClose={() => {}}
-			>
-				<Alert severity='info' sx={{ width: '100%' }}>
-					Redirecting to login
-				</Alert>
-			</Snackbar>
+			<FormAlerts
+				successSignup={successSignup}
+				errorSignup={errorSignup}
+				redirecting={redirecting}
+				errorMessage={errorMessage}
+			/>
 		</Container>
 	);
 }
