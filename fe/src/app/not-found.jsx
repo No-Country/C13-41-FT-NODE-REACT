@@ -34,7 +34,7 @@ function Error404() {
 				draggable='false'
 				style={{
 					fontSize: '22px',
-					color: ColorsKlinik.border,
+					color: colors.border,
 					textDecoration: 'none',
 					fontWeight: 'bold',
 				}}

@@ -1,12 +1,12 @@
 'use client';
 import React, { useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Checkbox, Paper, Button, tableCellClasses } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Checkbox, Paper, Button, tableCellClasses, Box, Typography } from '@mui/material';
 import { Circle, CircleOutlined } from '@mui/icons-material';
 import { hexToRgb, styled } from '@mui/material/styles';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
 const franjasHorarias = ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00']; // Agrega más franjas según necesites
-import { ColorsKlinik } from '@/app/colors';
+import { colors } from '@/app/colors';
 import DoctorCalendar from '../../../../../Components/Calendar/DoctorCalendar';
 const ScheduleDoctor = () => {
   const [values, setValues] = React.useState([]);
@@ -97,25 +97,17 @@ const ScheduleDoctor = () => {
   }
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: ColorsKlinik.background,
-      color: ColorsKlinik.text,
+      backgroundColor: colors.background,
+      color: colors.text,
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
     },
   }));
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: ColorsKlinik.softBackground,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  }));
   return (
     <>
-      <TableContainer style={{marginBottom: 12}} component={Paper}>
+      <Typography fontSize={20} sx={{marginLeft: 7 , marginTop: 5}}>Choose your own schedule</Typography>
+      <TableContainer style={{marginBottom: 12, marginTop: 6, width: '90%', margin: 'auto'}} component={Paper}>
         <Table size='small' style={{marginTop: 12}}>
           <TableHead>
             <TableRow>
@@ -148,9 +140,12 @@ const ScheduleDoctor = () => {
         </Table>
       </TableContainer>
       <DoctorCalendar values={values} setValues={setValues}/>
-      <Button type='submit' onClick={handleClick} endIcon={<BookmarkAddIcon/>} color='success' variant='contained' size='large' >
-          Save
-      </Button>    
+      <Box sx={{display: 'flex', paddingRight: 18 , justifyContent:'flex-end' }}>
+        <Button type='submit'  onClick={handleClick} endIcon={<BookmarkAddIcon/>} color='success' variant='contained' size='large' >
+            Save
+        </Button>    
+
+      </Box>
     </>
   );
 };

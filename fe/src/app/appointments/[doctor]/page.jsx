@@ -10,6 +10,7 @@ import {
 	StepLabel,
 } from '@mui/material';
 import { useState } from 'react';
+import PatienteCalendar from '../../../../Components/Calendar/PatientCalendar';
 
 const steps = ['Select a date', 'Confirm personal details', 'Complete the payment'];
 const AppointmentInfoPage = () => {
@@ -78,6 +79,11 @@ const AppointmentInfoPage = () => {
 					) : (
 						<>
 							<Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+							{activeStep === 0 && 
+							<Container>
+								Este es el primer paso donde se selecciona el horario
+								<PatienteCalendar/>
+							</Container>}
 							<Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
 								<Button color='inherit' disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
 									Back
@@ -87,7 +93,6 @@ const AppointmentInfoPage = () => {
 							</Box>
 						</>
 					)}
-					{activeStep === 0 && <Box>Este es el primer paso donde se selecciona el horario</Box>}
 				</Box>
 			</Box>
 		</Container>
