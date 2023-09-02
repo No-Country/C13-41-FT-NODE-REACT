@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Button, Typography, Grid, TextField, Snackbar, Alert } from '@mui/material';
 import { Form, Formik, Field } from 'formik';
 import '@fontsource/poppins';
@@ -8,6 +8,7 @@ import BasicForm from '../../../../Components/BasicForm';
 import { initialValues } from '../validations/initialValuesDoctor';
 import { useRouter } from 'next/navigation';
 import FormAlerts from '../../../../Components/FormAlerts';
+import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 export default function DoctorSignUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
@@ -16,18 +17,16 @@ export default function DoctorSignUp() {
 
 	const { push } = useRouter();
 
-	useEffect(() => {
-		if (successSignup) {
-			setTimeout(() => {
-				push('/sign-in');
-			}, 5000);
-		}
-	}, [successSignup]);
-
 	return (
-		<Container>
-			<Typography variant='h3' fontSize={'2.5rem'} mt={4} mb={4}>
-				Register
+		<Container sx={{ paddingY: 4 }}>
+			<Typography
+				variant='h1'
+				fontSize={{ xs: titleFontSizeMobile.h1, md: titleFontSizeDesktop.h1 }}
+				color={colors.text}
+				fontWeight={700}
+				className='inter'
+			>
+				Register as doctor
 			</Typography>
 			<Formik
 				initialValues={initialValues}
@@ -62,8 +61,10 @@ export default function DoctorSignUp() {
 							setRedirecting(true);
 							setTimeout(() => {
 								setRedirecting(false);
+								push('/sign-in');
 							}, 2000);
-						}, 3000);
+						}, 2000);
+
 						formikHelpers.resetForm();
 					} catch (error) {
 						setErrorMessage(error.error);
@@ -77,8 +78,8 @@ export default function DoctorSignUp() {
 				{({ errors, touched, dirty, isValid }) => (
 					<Form>
 						<BasicForm errors={errors} isValid={isValid} touched={touched} dirty={dirty} />
-						<Grid container paddingY={3} spacing={2} rowSpacing={3}>
-							<Grid item xs={6} md={6}>
+						<Grid container paddingBottom={3} spacing={2} rowSpacing={3}>
+							<Grid item xs={12} md={6}>
 								<Field
 									name='profesionalid'
 									type='text'
@@ -91,7 +92,27 @@ export default function DoctorSignUp() {
 								/>
 							</Grid>
 						</Grid>
-						<Button type='submit' variant='contained' size='large' disabled={!dirty || !isValid}>
+						<Button
+							type='submit'
+							variant='contained'
+							className='inter'
+							sx={{
+								color: 'white',
+								display: 'block',
+								textTransform: 'none',
+								fontWeight: '500',
+								backgroundColor: colors.buttonIcon,
+								border: '1px solid',
+								borderColor: colors.buttonIcon,
+								':hover': {
+									backgroundColor: 'transparent',
+									borderColor: colors.buttonIcon,
+									color: colors.buttonIcon,
+								},
+							}}
+							size='large'
+							disabled={!dirty || !isValid}
+						>
 							Create my account
 						</Button>
 					</Form>

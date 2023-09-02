@@ -15,10 +15,7 @@ import fakeConsultations from './fakeConsultationData';
 
 const UserHomePage = () => {
 	return (
-		<Container
-			component={'main'}
-			sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, padding: 4 }}
-		>
+		<Container sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, padding: 4 }}>
 			<Box component={'section'}>
 				<Typography variant={'h1'} fontSize={'2rem'}>
 					Good morning, <br /> Sophie!

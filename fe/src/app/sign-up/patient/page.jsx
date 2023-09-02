@@ -11,6 +11,7 @@ import FormAlerts from '../../../../Components/FormAlerts';
 import '@fontsource/poppins';
 import { useRouter } from 'next/navigation';
 import { titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import { GridColumnMenuContainer } from '@mui/x-data-grid';
 export default function PacientSingUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
@@ -28,15 +29,15 @@ export default function PacientSingUp() {
 	}, [successSignup]);
 
 	return (
-		<Container backgroundColor={colors.background}>
+		<Container sx={{ paddingY: 4 }}>
 			<Typography
 				variant='h1'
-				fontSize={{ xs: titleFontSizeMobile.h1, sm: titleFontSizeDesktop.h1 }}
+				fontSize={{ xs: titleFontSizeMobile.h1, md: titleFontSizeDesktop.h1 }}
 				color={colors.text}
-				mt={4}
-				mb={4}
+				fontWeight={700}
+				className='inter'
 			>
-				Register
+				Register as patient
 			</Typography>
 			<Formik
 				initialValues={initialValues}
@@ -87,7 +88,27 @@ export default function PacientSingUp() {
 				{({ errors, isValid, touched, dirty }) => (
 					<Form>
 						<BasicForm errors={errors} isValid={isValid} touched={touched} dirty={dirty} />
-						<Button type='submit' variant='contained' size='large' disabled={!dirty || !isValid}>
+						<Button
+							type='submit'
+							variant='contained'
+							className='inter'
+							sx={{
+								color: 'white',
+								display: 'block',
+								textTransform: 'none',
+								fontWeight: '500',
+								backgroundColor: colors.buttonIcon,
+								border: '1px solid',
+								borderColor: colors.buttonIcon,
+								':hover': {
+									backgroundColor: 'transparent',
+									borderColor: colors.buttonIcon,
+									color: colors.buttonIcon,
+								},
+							}}
+							size='large'
+							disabled={!dirty || !isValid}
+						>
 							Create my account
 						</Button>
 					</Form>
