@@ -11,7 +11,7 @@ import BiotechOutlinedIcon from '@mui/icons-material/BiotechOutlined';
 import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
 import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
-import NearbyDoctorCard from '../../../Components/Appointments/NearbyDoctorCard';
+import DoctorCard from '../../../Components/Appointments/DoctorCard';
 import { fakeDoctorData } from '../doctors/fakeDoctosData';
 
 const servicesLabels = ['labs', 'vaccines', 'doctors', 'medications', 'EHR'];
@@ -124,17 +124,14 @@ const UserHomePage = () => {
 						Nearby doctors
 					</Typography>
 				</Box>
-				<Box
-					component={'section'}
-					display={'flex'}
-					flexDirection={'row'}
-					alignItems={'center'}
-					gap={2}
-					flexWrap={'wrap'}
-				>
+				<Grid container spacing={2}>
 					{nearbyDoctors.length > 0 ? (
 						nearbyDoctors.map((doctor, idx) => {
-							return <NearbyDoctorCard key={idx} doctor={doctor} />;
+							return (
+								<Grid item key={idx} xs={6} sm={4} lg={3}>
+									<DoctorCard doctor={doctor} />
+								</Grid>
+							);
 						})
 					) : (
 						<Typography
@@ -146,7 +143,7 @@ const UserHomePage = () => {
 							No doctors nearby
 						</Typography>
 					)}
-				</Box>
+				</Grid>
 			</Box>
 		</Container>
 	);

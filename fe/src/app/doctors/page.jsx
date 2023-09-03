@@ -9,6 +9,7 @@ import {
 	CardHeader,
 	Container,
 	Divider,
+	Grid,
 	InputAdornment,
 	MenuItem,
 	Select,
@@ -17,6 +18,8 @@ import {
 } from '@mui/material';
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
+import DoctorCard from '../../../Components/Appointments/DoctorCard';
 
 const DoctorsPage = () => {
 	const {
@@ -33,19 +36,19 @@ const DoctorsPage = () => {
 	const specialtyList = new Set(allDoctors.map(doctor => doctor.specialty));
 
 	return (
-		<Box component={'main'}>
+		<Container component={'main'} sx={{ paddingY: 4 }}>
 			<Box
 				component={'section'}
 				display={'flex'}
 				flexDirection={'column'}
 				justifyContent={'center'}
 				alignItems={'center'}
-				sx={{ backgroundColor: '#f2f2f2' }}
-				p={2}
+				paddingY={{ xs: 1, sm: 4 }}
+				paddingX={1}
 			>
 				<TextField
 					id='outlined-search'
-					label='Search by name'
+					label='Find professionals by name'
 					type='search'
 					fullWidth
 					onChange={e => setFilterByName(e.target.value)}
@@ -58,20 +61,29 @@ const DoctorsPage = () => {
 					}}
 				/>
 			</Box>
-			<Box component={'section'} display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }}>
-				<Container
+			<Box component={'section'} display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }} gap={4}>
+				<Box
 					component={'aside'}
 					display={'flex'}
 					flexDirection={{ xs: 'row', sm: 'column' }}
+					gap={2}
 					sx={{
-						backgroundColor: '#e2e2e2',
 						minHeight: { xs: 'auto', sm: '100vh' },
-						width: { xs: '100%', sm: '30%' },
-						padding: '1rem',
 					}}
+					paddingY={{ xs: 1, sm: 4 }}
+					paddingX={1}
+					width={{ xs: '100%', sm: '30%' }}
 				>
-					<Box display={'flex'} flexDirection={'column'} rowGap={2}>
-						<Typography variant='h6'>Country</Typography>
+					<Box display={'flex'} flexDirection={'column'} rowGap={1} width={'100%'}>
+						<Typography
+							variant='h5'
+							className='inter'
+							fontWeight={500}
+							color={colors.text}
+							fontSize={{ xs: titleFontSizeMobile.h5, sm: titleFontSizeDesktop.h5 }}
+						>
+							Country
+						</Typography>
 						<TextField
 							id='demo-simple-select'
 							select
@@ -86,14 +98,34 @@ const DoctorsPage = () => {
 								</MenuItem>
 							))}
 						</TextField>
-
-						<Button variant='text' size='small' onClick={() => setFilterByCountry('')}>
+						<Button
+							variant='text'
+							size='small'
+							sx={{
+								width: '100%',
+								textTransform: 'none',
+								backgroundColor: colors.inputBackground,
+								color: colors.text,
+								':hover': {
+									backgroundColor: colors.inputBackground,
+								},
+							}}
+							onClick={() => setFilterByCountry('')}
+						>
 							Clear country
 						</Button>
 					</Box>
-					<Divider />
-					<Box display={'flex'} flexDirection={'column'} rowGap={2}>
-						<Typography variant='h6'>Specialty</Typography>
+
+					<Box display={'flex'} flexDirection={'column'} rowGap={1} width={'100%'}>
+						<Typography
+							variant='h5'
+							className='inter'
+							fontWeight={500}
+							color={colors.text}
+							fontSize={{ xs: titleFontSizeMobile.h5, sm: titleFontSizeDesktop.h5 }}
+						>
+							Specialty
+						</Typography>
 						<TextField
 							id='demo-simple-select'
 							select
@@ -108,37 +140,64 @@ const DoctorsPage = () => {
 								</MenuItem>
 							))}
 						</TextField>
-						<Button variant='text' size='small' onClick={() => setFilterBySpecialty('')}>
+						<Button
+							variant='text'
+							size='small'
+							sx={{
+								width: '100%',
+								textTransform: 'none',
+								backgroundColor: colors.inputBackground,
+								color: colors.text,
+								':hover': {
+									backgroundColor: colors.inputBackground,
+								},
+							}}
+							onClick={() => setFilterBySpecialty('')}
+						>
 							Clear specialty
 						</Button>
 					</Box>
-					<Divider />
-				</Container>
-				<Container component={'section'}>
-					<Box component={'div'} display={'flex'} flexDirection={'column'} rowGap={3} paddingY={4}>
+				</Box>
+				<Box
+					component={'section'}
+					width={{ xs: '100%', sm: '70%' }}
+					paddingY={{ xs: 1, sm: 4 }}
+					paddingX={1}
+				>
+					<Grid container spacing={2}>
 						{filteredDoctor.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
-									<Card>
-										<CardHeader title={doctor.fullname} sx={{ backgroundColor: '#34A0A4' }}></CardHeader>
-										<CardContent>
-											<Typography>{doctor.specialty}</Typography>
-											<Typography>{doctor.country}</Typography>
-										</CardContent>
-										<CardActions>
-											<Button href={`/profile/${doctor.id}`}>View profile</Button>
-											<Button href='#'>Book an appointment</Button>
-										</CardActions>
-									</Card>
+									<Grid item xs={6} md={4} key={doctor.id}>
+										<DoctorCard doctor={doctor} />
+										{/* <Button href={`/profile/${doctor.id}`}>View profile</Button> */}
+										<Button
+											href='#'
+											variant='contained'
+											className='inter'
+											fullWidth
+											sx={{
+												backgroundColor: colors.buttonIcon,
+												color: 'white',
+												textTransform: 'none',
+												mt: 1,
+
+												':hover': { backgroundColor: colors.buttonIcon },
+											}}
+											fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}
+										>
+											Book now
+										</Button>
+									</Grid>
 								);
 							})
 						) : (
 							<Typography>No doctors available</Typography>
 						)}
-					</Box>
-				</Container>
+					</Grid>
+				</Box>
 			</Box>
-		</Box>
+		</Container>
 	);
 };
 
