@@ -33,7 +33,7 @@ const AppointmentCard = ({ consultation }) => {
 
 			<CardContent>
 				<Stack direction={'row'} spacing={1} alignItems={'center'}>
-					<CalendarMonthRounded sx={{ color: colors.buttonIcon }} />
+					<CalendarMonthRounded fontSize='small' sx={{ color: colors.buttonIcon }} />
 					<Typography
 						variant='body2'
 						className='inter'
@@ -44,7 +44,7 @@ const AppointmentCard = ({ consultation }) => {
 					</Typography>
 				</Stack>
 				<Stack direction={'row'} spacing={1} alignItems={'center'}>
-					<EmailRounded sx={{ color: colors.buttonIcon }} />
+					<EmailRounded fontSize='small' sx={{ color: colors.buttonIcon }} />
 					<Typography
 						variant='body2'
 						className='inter'

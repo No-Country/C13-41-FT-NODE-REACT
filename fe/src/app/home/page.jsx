@@ -6,13 +6,30 @@ import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import { useAuth } from '@/contexts/Auth.context';
 import AppointmentCard from '../../../Components/Appointments/AppointmentCard';
 import ServiceCard from '../../../Components/Appointments/ServicesCard';
+import MasksOutlinedIcon from '@mui/icons-material/MasksOutlined';
+import BiotechOutlinedIcon from '@mui/icons-material/BiotechOutlined';
+import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
+import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
+import NearbyDoctorCard from '../../../Components/Appointments/NearbyDoctorCard';
+import { fakeDoctorData } from '../doctors/fakeDoctosData';
 
 const servicesLabels = ['labs', 'vaccines', 'doctors', 'medications', 'EHR'];
 const { labs, vaccines, doctors, medication, ehr } = colors.categoryIcons;
-const servicesIconColor = [labs, vaccines, doctors, medication, ehr];
+const servicesColor = [labs, vaccines, doctors, medication, ehr];
+const servicesIcon = [
+	<BiotechOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<VaccinesOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<MasksOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<MedicationOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<FolderOpenOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+];
 
 const UserHomePage = () => {
 	const { userData } = useAuth();
+	const nearbyDoctors = fakeDoctorData.filter(doctor => {
+		return doctor.country === userData.country;
+	});
 	return (
 		<Container sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, paddingY: 4 }}>
 			<Box component={'section'}>
@@ -75,19 +92,59 @@ const UserHomePage = () => {
 					display={'flex'}
 					flexDirection={'row'}
 					alignItems={'center'}
-					columnGap={2}
+					gap={2}
+					flexWrap={'wrap'}
 				>
 					{servicesLabels ? (
 						servicesLabels.map((service, idx) => {
-							console.log('service', service);
-							console.log('idx', idx);
-							console.log('color', servicesIconColor[idx]);
+							console.log(servicesIcon[idx]);
 							return (
-								<ServiceCard key={idx} serviceLabel={service} serviceIconColor={servicesIconColor[idx]} />
+								<ServiceCard
+									key={idx}
+									serviceLabel={service}
+									serviceColor={servicesColor[idx]}
+									serviceIcon={servicesIcon[idx]}
+								/>
 							);
 						})
 					) : (
 						<></>
+					)}
+				</Box>
+			</Box>
+			<Box component={'section'} display={'flex'} flexDirection={'column'} rowGap={2}>
+				<Box component={'div'}>
+					<Typography
+						variant='h4'
+						color={colors.text}
+						fontWeight={500}
+						className='inter'
+						fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
+					>
+						Nearby doctors
+					</Typography>
+				</Box>
+				<Box
+					component={'section'}
+					display={'flex'}
+					flexDirection={'row'}
+					alignItems={'center'}
+					gap={2}
+					flexWrap={'wrap'}
+				>
+					{nearbyDoctors.length > 0 ? (
+						nearbyDoctors.map((doctor, idx) => {
+							return <NearbyDoctorCard key={idx} doctor={doctor} />;
+						})
+					) : (
+						<Typography
+							variant='body2'
+							className='inter'
+							color={colors.text}
+							fontSize={{ xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body }}
+						>
+							No doctors nearby
+						</Typography>
 					)}
 				</Box>
 			</Box>
