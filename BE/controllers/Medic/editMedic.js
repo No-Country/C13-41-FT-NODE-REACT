@@ -1,74 +1,51 @@
-const bcrypt = require("bcrypt");
+
 const { Medic } = require("../../database/models");
 
 // TODO: Cambiar con middleware de atenticación
 const editMedic = async (req, res) => {
   try {
-    const {
-      fullname,
-      password,
-      email,
-      country,
-      gender,
-      birthdate,
-      nid,
-      profesionalid,
-    } = req.body;
 
-    if (
-      !fullname ||
-      !password ||
-      !email ||
-      !country ||
-      !gender ||
-      !birthdate ||
-      !nid ||
-      !profesionalid
-    ) {
-      throw new Error("All fields are required")
+    const { email, password } = req.body
+    console.log(req.body)
+    if(!email)
+    {
+      throw new Error("Must contain email")
+    }
+    
+    if(password)
+    {
+      throw new Error("Not must contain password")
     }
 
-    const hashedPwd = await bcrypt.hash(password, 10);
-
     const updatedMedic = await Medic.update(
-      { 
-        fullname,
-        password: hashedPwd,
-        email,
-        country,
-        gender,
-        nid,
-        profesionalid,
-        birthdate,
-      },
+        req.body,
       {
         where: {
-          email: email,
+          email,
         },
       }
     );
 
-    if (!updatedMedic) {
+    if (updatedMedic == 0) {
       throw new Error("Medic not found")
     }
 
-    const medic = await Medic.findOne(
+    const MedicFound = await Medic.findOne(
       {
         where: {
-          email: email,
+          email
         },
       }
     );
 
-
     return res
       .status(200)
-      .json({ data: { medic }, message: "medic updated" });
+      .json({ data:{MedicFound},message: "Medic Updated" });
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Edit Medic" });
   }
 };
 
 module.exports = {
-  editMedic,
+  editMedic
 };
