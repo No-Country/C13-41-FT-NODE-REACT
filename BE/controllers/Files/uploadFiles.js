@@ -14,7 +14,6 @@ const main = ['public/uploads/', 'public/uploads/avatarpatient', 'public/uploads
 if (!fs.existsSync(path.join(`${mainFolder}`))) {
 
   main.forEach(item => {
-    console.log(item)
     fs.mkdirSync(path.join(`${item}`), { recursive: true }, (err) => {
       if (err) {
         console.error('Error creating folder:', err);
@@ -26,11 +25,6 @@ if (!fs.existsSync(path.join(`${mainFolder}`))) {
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const typeFolder = `${mainFolder}/${req.query.type}`
-
-    if (!fs.existsSync(path.join(typeFolder))) {
-
-      
-    }
 
     cb(null, typeFolder);
   },
