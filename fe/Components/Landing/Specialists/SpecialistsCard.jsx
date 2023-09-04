@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 import styled from '@emotion/styled';
-import { ColorsKlinik } from '@/app/colors';
+import { colors } from '@/app/colors';
 import Link from 'next/link';
 
+<<<<<<< HEAD
 const CardContainer = styled ("div") ({
 
     height: "300px",
@@ -21,32 +22,43 @@ const CardIcon = styled ("img") ({
     width: "64px",
     userSelect: "none",
 
+=======
+const CardContainer = styled('div')({
+	height: '414px',
+	width: '395px',
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'space-around',
+	backgroundColor: 'whitesmoke',
+	borderRadius: '5px',
 });
 
-const Name = styled ("h1") ({
-
-    fontSize: "40px",
-    color: `${ColorsKlinik.text}`,
-    fontWeight: "600",
-
+const CardIcon = styled('img')({
+	height: '414x',
+	width: '165px',
+	userSelect: 'none',
+>>>>>>> dev
 });
 
-const Title = styled ("h1") ({
-
-    fontSize: "40px",
-    color: `${ColorsKlinik.text}`,
-    fontWeight: "400",
-
+const Name = styled('h1')({
+	fontSize: '40px',
+	color: `${colors.text}`,
+	fontWeight: '600',
 });
 
-const Text = styled ("p") ({
-
-    fontSize: "14px",
-    color: `${ColorsKlinik.text}`,
-    textAlign: "left",
-
+const Title = styled('h1')({
+	fontSize: '40px',
+	color: `${colors.text}`,
+	fontWeight: '400',
 });
 
+const Text = styled('p')({
+	fontSize: '14px',
+	color: `${colors.text}`,
+	textAlign: 'left',
+});
+
+<<<<<<< HEAD
 const NameContainer = styled ("div") ({
 
     display: "flex",
@@ -71,6 +83,20 @@ function SpecialistsCard (props) {
     </CardContainer>
 
   )
+=======
+function SpecialistsCard(props) {
+	return (
+		<CardContainer>
+			<CardIcon draggable='false' src={props.img} />
+			<Name>{props.name}</Name>
+			<Title>{props.speciality}</Title>
+			<Text>{props.description}</Text>
+			<Link style={{ fontSize: '14px', color: colors.text }} href={props.link}>
+				Get an Appointment
+			</Link>
+		</CardContainer>
+	);
+>>>>>>> dev
 }
 
 export default SpecialistsCard;

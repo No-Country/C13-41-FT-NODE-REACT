@@ -1,0 +1,1106 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Klinika API",
+    "version": "1.0.0",
+    "description": "API for an online clinic"
+  },
+  
+  "paths": {
+    "/api/v1/patient": {
+      "post": {
+        "summary": "Register a new customer patient",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Patient"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "message": "Patient created",
+                    "patient": {
+                      "id": "61b6963e-e51b-4ac4-be03-ea2b6a3185d3",
+                      "fullname": "Santiago López",
+                      "password": "secretpassword",
+                      "email": "santiago.lopez@example.com",
+                      "country": "Argentina",
+                      "nid": "40224477",
+                      "gender": "male",
+                      "birthdate": "2005-12-05T03:00:00.000Z",
+                      "updatedAt": "2023-08-28T18:31:16.537Z",
+                      "createdAt": "2023-08-28T18:31:16.537Z",
+                      "avatar": null,
+                      "resume": null
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Register Patient",
+                  "message": "Patient duplicated"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Retrieve customer patient data by email",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "Email of the patient to get"
+            },
+            "description": "Email of the patient to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Patient data",
+                  "patient": {
+                    "id": "3d2da159-785d-4847-99e3-011944bfb79a",
+                    "fullname": "Santiago López",
+                    "avatar": null,
+                    "password": "secretpassword",
+                    "email": "santiago.lopez@example.com",
+                    "country": "Argentina",
+                    "nid": "40224477",
+                    "gender": "male",
+                    "birthdate": "2005-12-05T03:00:00.000Z",
+                    "resume": null,
+                    "createdAt": "2023-08-28T21:13:28.709Z",
+                    "updatedAt": "2023-08-28T21:13:28.709Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Get Patient",
+                  "message": "Patient not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Update an existing customer patient",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Patient"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "data": {
+                      "patient": {
+                        "id": "3d2da159-785d-4847-99e3-011944bfb79a",
+                        "fullname": "Santiago López",
+                        "avatar": null,
+                        "password": "secretpassword",
+                        "email": "santiago.lopez@example.com",
+                        "country": "Argentina",
+                        "nid": "40224477",
+                        "gender": "male",
+                        "birthdate": "2005-12-05T03:00:00.000Z",
+                        "resume": null,
+                        "createdAt": "2023-08-28T21:13:28.709Z",
+                        "updatedAt": "2023-08-28T22:19:37.941Z"
+                      }
+                    },
+                    "message": "Patient Updated"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Patient not found",
+                  "error": "Edit Patient"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Delete patient data by email",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "Email of the patient to be deleted"
+            },
+            "description": "Email of the patient to be deleted"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "patient deleted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Patient not found",
+                  "error": "Delete Patient"
+                }
+              }
+            }
+          }
+        }
+      }
+        
+    },
+    "/api/v1/medic": {
+      "post": {
+        "summary": "Register a new customer medic",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medic"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "data": {
+                      "medic": {
+                        "id": "c2f7a16b-ab7d-4c8a-96a7-daa853e3614c",
+                        "fullname": "Santiago López",
+                        "password": "secretpassword",
+                        "email": "santiago.lopez@example.com",
+                        "country": "Argentina",
+                        "gender": "male",
+                        "nid": "42098212",
+                        "profesionalid": "21903390",
+                        "birthdate": "2000-12-05T03:00:00.000Z",
+                        "updatedAt": "2023-08-28T22:47:44.811Z",
+                        "createdAt": "2023-08-28T22:47:44.811Z",
+                        "resume": null,
+                        "avatar": null
+                      }
+                    },
+                    "message": "Medic Created"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Register Medic",
+                  "message": "Medic duplicated"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Retrieve customer medic data by email",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "Email of the medic to get"
+            },
+            "description": "Email of the medic to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Medic data",
+                  "patient": {
+                    "id": "3d2da159-785d-4847-99e3-011944bfb79a",
+                    "fullname": "Santiago López",
+                    "avatar": null,
+                    "password": "secretpassword",
+                    "email": "santiago.lopez@example.com",
+                    "country": "Argentina",
+                    "nid": "42098212",
+                    "gender": "male",
+                    "birthdate": "2005-12-05T03:00:00.000Z",
+                    "resume": null,
+                    "createdAt": "2023-08-28T21:13:28.709Z",
+                    "updatedAt": "2023-08-28T21:13:28.709Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Get Medic",
+                  "message": "Medic not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Update an existing customer medic",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Medic"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "data": {
+                      "patient": {
+                        "id": "3d2da159-785d-4847-99e3-011944bfb79a",
+                        "fullname": "Santiago López",
+                        "avatar": null,
+                        "password": "secretpassword",
+                        "email": "santiago.lopez@example.com",
+                        "country": "Argentina",
+                        "nid": "40224477",
+                        "gender": "male",
+                        "birthdate": "2005-12-05T03:00:00.000Z",
+                        "resume": null,
+                        "createdAt": "2023-08-28T21:13:28.709Z",
+                        "updatedAt": "2023-08-28T22:19:37.941Z"
+                      }
+                    },
+                    "message": "Medic Updated"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Medic not found",
+                  "error": "Edit Medic"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Delete medic data by email",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "description": "Email of the medic to be deleted"
+            },
+            "description": "Email of the medic to be deleted"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "medic deleted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Medic not found",
+                  "error": "Delete Medic"
+                }
+              }
+            }
+          }
+        }
+      } 
+    },
+    "/api/v1/consult": {
+      "post": {
+        "summary": "Register a new consult",
+        "parameters": [
+          {
+            "name": "consultData",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Consult"
+            },
+            "description": "Consult information for registration"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "data": {
+                      "consult": {
+                        "id": "6",
+                        "diagnostic": "Cystic acne",
+                        "recipe": "Isotretinoin",
+                        "consultTimestamp": "0123-01-01T03:53:48.000Z",
+                        "status": "active",
+                        "resume": "empty",
+                        "urlFile": "empty",
+                        "updatedAt": "2023-08-28T22:58:02.083Z",
+                        "createdAt": "2023-08-28T22:58:02.083Z"
+                      }
+                    },
+                    "message": "Consult Created"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "error id",
+                  "message": "Register Consult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Retrieve consult data by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "id",
+              "description": "Id of the consult to get"
+            },
+            "description": "Id of the consult to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Consult data",
+                  "consult": {
+                    "id": "1",
+                    "diagnostic": "Cystic acne",
+                    "recipe": "Isotretinoin",
+                    "consultTimestamp": "0123-01-01T03:53:48.000Z",
+                    "status": "active",
+                    "resume": "empty",
+                    "urlFile": "empty",
+                    "createdAt": "2023-08-28T23:08:50.024Z",
+                    "updatedAt": "2023-08-28T23:08:50.024Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Consult not found",
+                  "error": "Get Consult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Update an existing consult",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consult"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "data": {
+                      "consult": {
+                        "id": "7",
+                        "diagnostic": "Rosacea",
+                        "recipe": "Tetracycline",
+                        "consultTimestamp": "0123-01-01T03:53:48.000Z",
+                        "status": "active",
+                        "resume": "empty",
+                        "urlFile": "empty",
+                        "createdAt": "2023-08-28T23:08:50.024Z",
+                        "updatedAt": "2023-08-28T23:12:06.866Z"
+                      }
+                    },
+                    "message": "consult updated"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Consult not found",
+                  "error": "Edit Consult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Delete consult data by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "id",
+              "description": "Id of the consult to be deleted"
+            },
+            "description": "Id of the consult to be deleted"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "consult deleted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Consult not found",
+                  "error": "Delete Consult"
+                }
+              }
+            }
+          }
+        }
+      } 
+    },
+    "/api/v1/specialty": {
+      "post": {
+        "summary": "Register a new specialty",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Specialty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "message": "Specialty created",
+                    "data": {
+                      "id": "1",
+                      "name": "Cardiology",
+                      "updatedAt": "2023-08-31T19:44:50.443Z",
+                      "createdAt": "2023-08-31T19:44:50.443Z"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Register Specialty",
+                  "message": "Specialty already exists."
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Retrieve all specialties",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": {
+                    "specialties": [
+                      {
+                        "id": "1",
+                        "name": "Cardiology",
+                        "createdAt": "2023-08-31T19:43:47.000Z",
+                        "updatedAt": "2023-08-31T19:43:47.000Z"
+                      },
+                      {
+                        "id": "2",
+                        "name": "Dermatology",
+                        "createdAt": "2023-08-29T19:44:43.938Z",
+                        "updatedAt": "2023-08-29T19:44:43.938Z"
+                      },
+                      {
+                        "id": "3",
+                        "name": "Odontology",
+                        "createdAt": "2023-08-28T19:44:50.443Z",
+                        "updatedAt": "2023-08-28T19:44:50.443Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "error.message",
+                  "error": "Get Specialties"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Update an existing specialty",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Specialty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "data": {
+                      "specialty": {
+                        "id": "1",
+                        "name": "Odontology",
+                        "createdAt": "2023-08-31T19:43:47.000Z",
+                        "updatedAt": "2023-08-31T19:52:28.132Z"
+                      }
+                    },
+                    "message": "Specialty Updated"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "error.message",
+                  "error": "Edit Specialty"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Delete specialty data by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "id",
+              "description": "Id of the specialty to be deleted"
+            },
+            "description": "Id of the specialty to be deleted"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Specialty Deleted"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Specialty not found",
+                  "error": "Delete Specialty"
+                }
+              }
+            }
+          }
+        }
+      } 
+    },
+    "/api/v1/auth/patient": {
+      "post": {
+        "summary": "Authenticate customer patient",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "lucas.martinez@example.com",
+                "password": "secretpassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Patient logged",
+                  "data": {
+                    "token":"your-auth-token"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Login Patient",
+                  "message": "Patient not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/medic": {
+      "post": {
+        "summary": "Authenticate customer medic",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "lucas.martinez@example.com",
+                "password": "secretpassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Medic logged",
+                  "data": {
+                    "token":"your-auth-token"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Login medic",
+                  "message": "Medic not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Patient": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique ID of the patient",
+            "example": "61b6963e-e51b-4ac4-be03-ea2b6a3185d3"
+          },
+          "fullname": {
+            "type": "string",
+            "description": "Full name of the patient",
+            "example": "Lucas Martínez"
+          },
+          "avatar": {
+            "type": "string",
+            "format": "url",
+            "description": "URL of the patient's avatar image"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password of the patient",
+            "example": "secretpassword"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email of the patient",
+            "example": "lucas.martinez@example.com"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country of the patient",
+            "example": "Argentina"
+          },
+          "nid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "National ID of the patient"
+          },
+          "gender": {
+            "type": "string",
+            "enum": ["male", "female", "other"],
+            "description": "Gender of the patient"
+          },
+          "birthdate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Birthdate of the patient"
+          },
+          "resume": {
+            "type": "string",
+            "description": "URL of the patient's resume"
+          }
+        },
+        "required": ["fullname", "email", "password", "country", "gender", "nid", "birthdate"],
+        "example": {
+          "fullname": "Lucas Martínez",
+          "password": "secretpassword",
+          "email": "lucas.martinez@example.com",
+          "country": "Argentina",
+          "nid": 40224477,
+          "gender": "male",
+          "birthdate": "2005-12-05T03:00:00.000Z"
+        }
+      },
+      "Medic": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique ID of the medic",
+            "example": "3d2da159-785d-4847-99e3-011944bfb79a"
+          },
+          "fullname": {
+            "type": "string",
+            "description": "Full name of the medic",
+            "example": "Lucas Martínez"
+          },
+          "resume": {
+            "type": "string",
+            "description": "URL of the medic's resume"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country of the medic",
+            "example": "Argentina"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "URL of the medic's avatar image"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password of the medic",
+            "example": "secretpassword"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email of the patient",
+            "example": "lucas.martinez@example.com"
+          },
+          "gender": {
+            "type": "string",
+            "enum": ["male", "female", "other"],
+            "description": "Gender of the medic",
+            "example": "male"
+          },
+          "profesionalid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Professional ID"
+          },
+          "nid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "National ID of the medic",
+            "example": "42980821"
+          },
+          "birthdate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Birthdate of the medic"
+          }
+        },
+        "required": ["fullname", "password", "email", "gender", "country", "birthdate", "nid", "profesionalid"],
+        "example": {
+          "fullname": "Lucas Martínez",
+          "password": "secretpassword",
+          "email": "lucas.martinez@example.com",
+          "gender": "male",
+          "country": "Argentina",
+          "birthdate":"2005-12-05T03:00:00.000Z",
+          "nid":"42098212",
+          "profesionalid": "21903390"
+        }
+      },
+      "Consult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Unique ID of the appointment",
+            "example": 1
+          },
+          "diagnostic": {
+            "type": "string",
+            "description": "Diagnostic information",
+            "example": "Cystic acne"
+          },
+          "recipe": {
+            "type": "string",
+            "description": "Prescribed recipe information",
+            "example": "Isotretinoin"
+          },
+          "consultTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of the consultation",
+            "example": "2023-08-28T21:30:00.000Z"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["programmed", "finished", "active", "canceled"],
+            "description": "Status of the appointment",
+            "example": "active"
+          },
+          "resume": {
+            "type": "string",
+            "description": "Additional notes or resume of the appointment"
+          },
+          "urlFile": {
+            "type": "string",
+            "description": "URL of the appointment file"
+          }
+        },
+        "required": ["id", "diagnostic", "recipe", "consultTimestamp", "status", "resume", "urlFile"],
+        "example": {
+          "id": 7,
+          "diagnostic": "Cystic acne",
+          "recipe": "Isotretinoin",
+          "consultTimestamp": "2023-08-28T21:30:00.000Z",
+          "status": "active",
+          "resume": "empty",
+          "urlFile": "empty"
+        }
+      },
+      "Specialty": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Unique ID of the specialty",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the specialty",
+            "example": "Odontology"
+          }
+        },
+        "required": ["id", "name"],
+        "example": {
+          "id": 1,
+          "name": "Odontology"
+        }
+      } 
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

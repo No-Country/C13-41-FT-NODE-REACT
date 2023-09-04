@@ -1,109 +1,149 @@
-import {
-	Avatar,
-	Box,
-	Card,
-	CardContent,
-	CardHeader,
-	IconButton,
-	Typography,
-	Container,
-} from '@mui/material';
-import { StarBorderOutlined } from '@mui/icons-material';
+'use client';
+import { Box, Typography, Container, Grid } from '@mui/material';
 import React from 'react';
-import Link from 'next/link';
 import fakeConsultations from './fakeConsultationData';
+import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
+import { useAuth } from '@/contexts/Auth.context';
+import AppointmentCard from '../../../Components/Appointments/AppointmentCard';
+import ServiceCard from '../../../Components/Appointments/ServicesCard';
+import MasksOutlinedIcon from '@mui/icons-material/MasksOutlined';
+import BiotechOutlinedIcon from '@mui/icons-material/BiotechOutlined';
+import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
+import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
+import DoctorCard from '../../../Components/Appointments/DoctorCard';
+import { fakeDoctorData } from '../doctors/fakeDoctosData';
+
+const servicesLabels = ['labs', 'vaccines', 'doctors', 'medications', 'EHR'];
+const { labs, vaccines, doctors, medication, ehr } = colors.categoryIcons;
+const servicesColor = [labs, vaccines, doctors, medication, ehr];
+const servicesIcon = [
+	<BiotechOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<VaccinesOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<MasksOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<MedicationOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	<FolderOpenOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+];
 
 const UserHomePage = () => {
+	const { userData } = useAuth();
+	const nearbyDoctors = fakeDoctorData.filter(doctor => {
+		return doctor.country === userData.country;
+	});
 	return (
-		<Container
-			component={'main'}
-			sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, padding: 4 }}
-		>
+		<Container sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, paddingY: 4 }}>
 			<Box component={'section'}>
-				<Typography variant={'h1'} fontSize={'2rem'}>
-					Good morning, <br /> Sophie!
+				<Typography
+					variant='h1'
+					color={colors.text}
+					className='inter'
+					fontWeight={700}
+					sx={{ lineHeight: 1.5 }}
+					fontSize={{ xs: titleFontSizeMobile.h1, sm: titleFontSizeDesktop.h1 }}
+				>
+					Good morning, <br />{' '}
+					<Typography
+						component='span'
+						className='inter'
+						fontSize={{ xs: titleFontSizeMobile.h1, sm: titleFontSizeDesktop.h1 }}
+						fontWeight={400}
+					>
+						{userData && userData.fullname.split(' ')[0]}!
+					</Typography>
 				</Typography>
 			</Box>
 			<Box component={'section'} display={'flex'} flexDirection={'column'} rowGap={2}>
 				<Box component={'div'}>
-					<Typography variant={'h3'} fontSize={'1.5rem'}>
+					<Typography
+						variant='h4'
+						color={colors.text}
+						fontWeight={500}
+						className='inter'
+						fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
+					>
 						Upcoming appointments
 					</Typography>
 				</Box>
-				<Box
-					component={'div'}
-					display={'flex'}
-					alignItems={'center'}
-					columnGap={2}
-					rowGap={2}
-					sx={{ flexWrap: 'wrap' }}
-				>
+				<Grid container spacing={2}>
 					{fakeConsultations &&
-						fakeConsultations.map(consultation => {
+						fakeConsultations.map((consultation, idx) => {
 							return (
-								<Card sx={{ minWidth: 345, maxWidth: 400, backgroundColor: '#D9D9D9' }}>
-									<CardHeader
-										avatar={
-											<Avatar sx={{ backgroundColor: '#34A0A4' }} aria-label='recipe'>
-												{consultation.doctor.fullname.charAt(0).toUpperCase()}
-											</Avatar>
-										}
-										action={
-											<IconButton aria-label='settings'>
-												<StarBorderOutlined />
-											</IconButton>
-										}
-										title={consultation.doctor.fullname}
-										subheader={consultation.doctor.speciality}
-									/>
-
-									<CardContent>
-										<Typography variant='body2'>
-											{new Date(consultation.consultTimestamp).toDateString()}
-										</Typography>
-										<Typography variant='body2'>Mail: {consultation.doctor.email}</Typography>
-									</CardContent>
-								</Card>
+								<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
+									<AppointmentCard consultation={consultation} />
+								</Grid>
 							);
 						})}
+				</Grid>
+			</Box>
+			<Box component={'section'} display={'flex'} flexDirection={'column'} rowGap={2}>
+				<Box component={'div'}>
+					<Typography
+						variant='h4'
+						color={colors.text}
+						fontWeight={500}
+						className='inter'
+						fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
+					>
+						Services
+					</Typography>
+				</Box>
+				<Box
+					component={'section'}
+					display={'flex'}
+					flexDirection={'row'}
+					alignItems={'center'}
+					gap={2}
+					flexWrap={'wrap'}
+				>
+					{servicesLabels ? (
+						servicesLabels.map((service, idx) => {
+							console.log(servicesIcon[idx]);
+							return (
+								<ServiceCard
+									key={idx}
+									serviceLabel={service}
+									serviceColor={servicesColor[idx]}
+									serviceIcon={servicesIcon[idx]}
+								/>
+							);
+						})
+					) : (
+						<></>
+					)}
 				</Box>
 			</Box>
 			<Box component={'section'} display={'flex'} flexDirection={'column'} rowGap={2}>
 				<Box component={'div'}>
-					<Typography variant={'h3'} fontSize={'1.5rem'}>
-						Services
+					<Typography
+						variant='h4'
+						color={colors.text}
+						fontWeight={500}
+						className='inter'
+						fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
+					>
+						Nearby doctors
 					</Typography>
 				</Box>
-				<Box component={'section'} display={'flex'} flexDirection={'column'} rowGap={2}>
-					<Box component={'div'} display={'flex'} alignItems={'center'} columnGap={2}>
-						<Box
-							component={'article'}
-							display={'flex'}
-							alignItems={'end'}
-							justifyContent={'center'}
-							padding={2}
-							sx={{ height: '10rem', width: '10rem', backgroundColor: '#D9D9D9', borderRadius: '0.5rem' }}
+				<Grid container spacing={2}>
+					{nearbyDoctors.length > 0 ? (
+						nearbyDoctors.map((doctor, idx) => {
+							return (
+								<Grid item key={idx} xs={6} sm={4} lg={3}>
+									<DoctorCard doctor={doctor} />
+								</Grid>
+							);
+						})
+					) : (
+						<Typography
+							variant='body2'
+							className='inter'
+							color={colors.text}
+							fontSize={{ xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body }}
 						>
-							<Link href={'/doctors'}>
-								<Typography variant={'h4'} fontSize={'1rem'}>
-									Doctors
-								</Typography>
-							</Link>
-						</Box>
-						<Box
-							component={'article'}
-							display={'flex'}
-							alignItems={'end'}
-							justifyContent={'center'}
-							padding={2}
-							sx={{ height: '10rem', width: '10rem', backgroundColor: '#D9D9D9', borderRadius: '0.5rem' }}
-						>
-							<Typography variant={'h4'} fontSize={'1rem'}>
-								Medications
-							</Typography>
-						</Box>
-					</Box>
-				</Box>
+							No doctors nearby
+						</Typography>
+					)}
+				</Grid>
 			</Box>
 		</Container>
 	);

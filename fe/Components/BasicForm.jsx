@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Field } from 'formik';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { colors } from '@/app/colors';
 import {
 	Grid,
 	TextField,
@@ -11,6 +12,7 @@ import {
 	MenuItem,
 	FormHelperText,
 } from '@mui/material';
+
 const basicForm = props => {
 	const [showPassword, setShowPassword] = React.useState(false);
 	const handleClickShowPassword = () => {
@@ -21,13 +23,12 @@ const basicForm = props => {
 		event.preventDefault();
 	};
 	return (
-		<Grid container spacing={2} rowSpacing={3}>
+		<Grid container spacing={2} rowSpacing={3} paddingY={3}>
 			<Grid item xs={12} md={4}>
 				<Field
 					name='fullname'
 					type='text'
 					as={TextField}
-					variant='outlined'
 					label='Name & Surname'
 					id='margin-dense'
 					fullWidth
@@ -127,7 +128,7 @@ const basicForm = props => {
 					}}
 				/>
 			</Grid>
-			<Grid item xs={6} md={6}>
+			<Grid item xs={12} md={6}>
 				<Field
 					name='nid'
 					error={Boolean(props.errors.nid) && Boolean(props.touched.nid)}

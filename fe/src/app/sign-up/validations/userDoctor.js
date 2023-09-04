@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 const isStrongPassword = password => {
-	const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+	const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_\-])[A-Za-z\d@$!%*?&_\-]{8,}$/;
 	return regex.test(password);
 };
 
@@ -37,7 +37,7 @@ export const doctorSchema = yup.object({
 		.min(8)
 		.test({
 			message:
-				'Password must be stronger, with at leat 8 characters, one capital letter, one lower case and one special character',
+				'Password must be stronger, with at leat 8 characters, one capital letter, one lower case, one number and one special character',
 			test: value => isStrongPassword(value),
 		}),
 	profesionalid: yup

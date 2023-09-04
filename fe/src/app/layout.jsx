@@ -1,10 +1,17 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { FilterProvider } from '@/contexts/Filters.context';
+import { AuthProvider } from '@/contexts/Auth.context';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
+import { Box } from '@mui/material';
+import { colors } from './colors';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+	subsets: ['latin'],
+	display: 'swap',
+	weights: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
 export const metadata = {
 	title: 'Klinika',
@@ -13,14 +20,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<FilterProvider>
-			<html lang='en'>
-				<body className={inter.className}>
-					<Header />
-					{children}
-					<Footer />
-				</body>
-			</html>
-		</FilterProvider>
+		<AuthProvider>
+			<FilterProvider>
+				<html lang='en' className={inter.className}>
+					<body>
+						<Header />
+						<Box component={'main'} sx={{ backgroundColor: colors.background }}>
+							{children}
+						</Box>
+						<Footer />
+					</body>
+				</html>
+			</FilterProvider>
+		</AuthProvider>
 	);
 }
