@@ -45,16 +45,18 @@ function Hero() {
 			<LeftContainer>
 				<Title>Welcome to Klinika</Title>
 				<Text>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, asperiores nam nesciunt nemo
-					minus hic provident, incidunt dolor minima reprehenderit excepturi officia quo! Rem eaque, illo
-					placeat pariatur explicabo dicta? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Cumque cupiditate, vero rem fuga hic perferendis esse vitae ratione possimus. Debitis assumenda
-					odio provident libero saepe, repellendus suscipit quae quo est? Lorem ipsum dolor sit amet
-					consectetur, adipisicing elit. Autem odit aut corporis quidem harum ex, tempora dolorem porro
-					et nam beatae soluta sed quod esse obcaecati vel voluptates temporibus minus. Lorem ipsum dolor
-					sit, amet consectetur adipisicing elit. Numquam delectus, vel ex inventore quisquam deleniti
-					obcaecati aliquam rerum quas consequatur dignissimos dicta consectetur maiores deserunt,
-					tempore eos quam magnam sunt.
+					We're thrilled to have you here, you've come to the right place.
+
+					We're delighted to introduce a convenient and efficient way to manage your healthcare needs. Our user-friendly online platform is designed with your well-being in mind, making it easier than ever to schedule medical appointments at your fingertips.
+
+					Your health is our priority, and our scheduling platform is designed to make your healthcare experience as smooth as possible. Whether you're due for a routine check-up, seeking specialized care, or simply need medical advice, we're here to assist you every step of the way.
+
+					Thank you for choosing Klinika for your medical needs. Your journey to a better health begins here.
+
+					Schedule your appointment today and embark on a path towards a healthier, happier you.
+
+					Best regards,
+					The Klinika Team.
 				</Text>
 				<Button
 					href='https://github.com'
