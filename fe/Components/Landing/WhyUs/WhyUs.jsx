@@ -16,7 +16,6 @@ const InsiderContainer = styled('div')({
 	alignItems: 'center',
 });
 
-<<<<<<< HEAD
 const TextContainer = styled ("div") ({
 
     display: "flex",
@@ -25,13 +24,6 @@ const TextContainer = styled ("div") ({
     flexDirection: "column",
     gap: "10px",
 
-=======
-const TextContainer = styled('div')({
-	display: 'flex',
-	justifyContent: 'start',
-	marginTop: '30px',
-	flexDirection: 'column',
->>>>>>> dev
 });
 
 const ImageContainer = styled('div')({
@@ -66,7 +58,6 @@ const DoctorsImage = styled('img')({
 	height: '376px',
 });
 
-<<<<<<< HEAD
 function WhyUs () {
 
   return (
@@ -94,46 +85,6 @@ function WhyUs () {
         </InsiderContainer>
     </WhyUsContainer>
   )
-=======
-function WhyUs() {
-	return (
-		<WhyUsContainer>
-			<Title>Why you choose us</Title>
-			<InsiderContainer>
-				<TextContainer>
-					<MotiveTitle>Motive one</MotiveTitle>
-					<MotiveText>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod
-						ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem
-						enim ut modi?
-					</MotiveText>
-					<MotiveTitle>Motive two</MotiveTitle>
-					<MotiveText>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod
-						ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem
-						enim ut modi?
-					</MotiveText>
-					<MotiveTitle>Motive three</MotiveTitle>
-					<MotiveText>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod
-						ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem
-						enim ut modi?
-					</MotiveText>
-					<MotiveTitle>Motive four</MotiveTitle>
-					<MotiveText>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod
-						ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem
-						enim ut modi?
-					</MotiveText>
-				</TextContainer>
->>>>>>> dev
-
-				<ImageContainer>
-					<DoctorsImage src='https://media.istockphoto.com/id/1189304032/es/foto/m%C3%A9dico-sosteniendo-tableta-digital-en-la-sala-de-reuniones.jpg?s=612x612&w=0&k=20&c=pmijXzja8qGwKXlqt7YWzSUkxFxnODfK6u7B1QXd1wU=' />
-				</ImageContainer>
-			</InsiderContainer>
-		</WhyUsContainer>
-	);
 }
 
 export default WhyUs;

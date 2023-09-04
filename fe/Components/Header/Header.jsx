@@ -72,32 +72,8 @@ const Header = () => {
 							textTransform: 'none',
 						}}
 					>
-<<<<<<< HEAD
-						<Logo draggable='false' src='https://img.icons8.com/clouds/100/caduceus.png' />
-
-						<Typography
-							variant='h6'
-							noWrap
-							component='a'
-							href='/'
-							sx={{
-								mr: 13,
-								display: { xs: 'none', md: 'flex' },
-								fontFamily: 'monospace',
-								fontWeight: 700,
-								letterSpacing: '.8rem',
-								color: ColorsKlinik.text,
-								textDecoration: 'none',
-							}}
-							draggable='false'
-						>
-							Klinika
-						</Typography>
-					</Button>
-=======
 						Klinika
 					</Typography>
->>>>>>> dev
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton

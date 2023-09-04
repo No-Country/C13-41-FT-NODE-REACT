@@ -24,7 +24,6 @@ const Title = styled('h1')({
 	marginBottom: '30px',
 });
 
-<<<<<<< HEAD
 function Reviews () {
 
   return (
@@ -42,31 +41,6 @@ function Reviews () {
 
   )
 
-=======
-function Reviews() {
-	return (
-		<ReviewsContainer>
-			<Title>Our Services in the eyes of our patients</Title>
-			<CardsContainer>
-				<ReviewCard
-					description='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero laudantium, quam magni odit dolor quasi quidem hic, distinctio natus consequuntur alias, quibusdam quisquam! Numquam, adipisci. Quisquam consequuntur laudantium blanditiis sapiente?'
-					title='Batman'
-					img='https://cdn-icons-png.flaticon.com/512/3736/3736150.png'
-				/>
-				<ReviewCard
-					description='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero laudantium, quam magni odit dolor quasi quidem hic, distinctio natus consequuntur alias, quibusdam quisquam! Numquam, adipisci. Quisquam consequuntur laudantium blanditiis sapiente?'
-					title='Fulanito de tal'
-					img='https://cdn-icons-png.flaticon.com/512/3736/3736150.png'
-				/>
-				<ReviewCard
-					description='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero laudantium, quam magni odit dolor quasi quidem hic, distinctio natus consequuntur alias, quibusdam quisquam! Numquam, adipisci. Quisquam consequuntur laudantium blanditiis sapiente?'
-					title='Aquiles Baeza'
-					img='https://cdn-icons-png.flaticon.com/512/3736/3736150.png'
-				/>
-			</CardsContainer>
-		</ReviewsContainer>
-	);
->>>>>>> dev
 }
 
 export default Reviews;
