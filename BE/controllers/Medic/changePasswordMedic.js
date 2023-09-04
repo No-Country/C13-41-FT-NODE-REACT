@@ -1,24 +1,23 @@
-
+const bcrypt = require("bcrypt");
 const { Medic } = require("../../database/models");
 
 // TODO: Cambiar con middleware de atenticación
-const editMedic = async (req, res) => {
+const changePasswordMedic = async (req, res) => {
   try {
 
     const { email, password } = req.body
-    console.log(req.body)
-    if(!email)
+
+    if(!email || !password)
     {
-      throw new Error("Must contain email")
+      throw new Error("Must contain email and password")
     }
-    
-    if(password)
-    {
-      throw new Error("Not must contain password")
-    }
+      
+    const hashedPwd = await bcrypt.hash(password, 10)
 
     const updatedMedic = await Medic.update(
-        req.body,
+        {
+          password: hashedPwd
+        },
       {
         where: {
           email,
@@ -47,5 +46,5 @@ const editMedic = async (req, res) => {
 };
 
 module.exports = {
-  editMedic
+  changePasswordMedic
 };
