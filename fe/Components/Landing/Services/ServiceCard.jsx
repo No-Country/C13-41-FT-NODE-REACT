@@ -1,43 +1,54 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors } from '@/app/colors';
+import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import Link from 'next/link';
+import { Stack, Typography } from '@mui/material';
 
-const CardContainer = styled('div')({
-	height: '300px',
-	width: '300px',
+const CardContainer = styled('article')({
+	width: '17.5rem',
+	minHeight: '17.5rem',
 	display: 'flex',
 	flexDirection: 'column',
-	justifyContent: 'space-around',
-	backgroundColor: 'whitesmoke',
-	borderRadius: '5px',
+	justifyContent: 'space-between',
+	rowGap: '0.5rem',
+	backgroundColor: colors.cardBackground,
+	padding: '1rem',
+	borderRadius: '0.5rem',
 });
 
 const CardIcon = styled('img')({
-	height: '50px',
-	width: '50px',
+	height: '3rem',
+	width: '3rem',
 	userSelect: 'none',
-});
-
-const Title = styled('h1')({
-	fontSize: '40px',
-	color: `${colors.text}`,
-	fontWeight: '400',
-});
-
-const Text = styled('p')({
-	fontSize: '14px',
-	color: `${colors.text}`,
-	textAlign: 'left',
+	backgroundColor: colors.doctorExperience,
+	borderRadius: '100%',
+	padding: '0.5rem',
 });
 
 function ServiceCard(props) {
 	return (
 		<CardContainer>
-			<CardIcon draggable='false' src={props.img} />
-			<Title>{props.title}</Title>
-			<Text>{props.description}</Text>
-			<Link style={{ fontSize: '14px', color: colors.text }} href={props.link}>
+			<Stack direction='column' spacing={2}>
+				<CardIcon draggable='false' src={props.img} />
+				<Typography
+					className='inter'
+					variant='h3'
+					color={colors.text}
+					fontSize={{ xs: titleFontSizeMobile.h3, sm: titleFontSizeDesktop.h3 }}
+					fontFamily='500'
+				>
+					{props.title}
+				</Typography>
+			</Stack>
+			<Typography
+				className='inter'
+				variant='body2'
+				color={colors.text}
+				fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
+			>
+				{props.description}
+			</Typography>
+			<Link className='inter' style={{ color: colors.text, fontWeight: '600' }} href={props.link}>
 				Get Started
 			</Link>
 		</CardContainer>
