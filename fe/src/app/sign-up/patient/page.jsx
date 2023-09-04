@@ -8,6 +8,7 @@ import { initialValues } from '../validations/initialValuesPatient';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
+
 export default function PacientSingUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);

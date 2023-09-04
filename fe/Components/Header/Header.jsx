@@ -66,7 +66,7 @@ function Header() {
 							}}
 							draggable='false'
 						>
-							Klinika - by Mercharcovz
+							Klinika
 						</Typography>
 					</Button>
 

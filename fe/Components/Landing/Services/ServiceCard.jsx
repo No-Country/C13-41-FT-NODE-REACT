@@ -13,7 +13,6 @@ const CardContainer = styled ("div") ({
     backgroundColor: "whitesmoke",
     borderRadius: "5px",
 
-
 });
 
 const CardIcon = styled ("img") ({
@@ -41,13 +40,12 @@ const Text = styled ("p") ({
 });
 
 
-
 function ServiceCard (props) {
 
   return (
     
     <CardContainer>
-        <CardIcon draggable="false" src={props.img}/>
+        <CardIcon draggable="false" src={props.img}></CardIcon>
         <Title>{props.title}</Title>
         <Text>{props.description}</Text>
         <Link style={{fontSize: "14px", color: ColorsKlinik.text}} href={props.link}>Get Started</Link>

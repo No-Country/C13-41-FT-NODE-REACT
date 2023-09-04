@@ -13,14 +13,13 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 const FooterParentContainer = styled ("footer") ({
 
     display: "flex",
-    padding: "2rem 4rem 4rem 4rem",
+    padding: "1rem 0rem 1rem 0rem",
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: ColorsKlinik.background,
     borderTop: "2px solid", 
     borderBottom: "2px solid", 
     borderColor: ColorsKlinik.border,
-    boxShadow: "1px solid gray",
     marginTop: "100px",
   
 });
@@ -48,6 +47,7 @@ const CompanyDescription = styled ("p") ({
 
     fontSize: "14px",
     fontWeight: "400",
+    textAlign: "start"
   
 });
 
@@ -93,8 +93,12 @@ function Footer () {
         <Container maxWidth="xl" sx={{display: "flex", justifyContent: "space-between"}}>
 
         <TextContainer>
-            <CompanyName>Klinika Mecharcovz</CompanyName>
-            <CompanyDescription>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, natus. Corporis rerum expedita eligendi sit enim aut sunt sequi error, quis nostrum, optio excepturi est distinctio magni tempore necessitatibus sint. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, voluptatem deserunt. Repellendus soluta reiciendis rerum qui consectetur atque esse amet, ad non! Assumenda quis expedita eius? Voluptatem eius velit alias.
+            <CompanyName>Klinika</CompanyName>
+            <CompanyDescription>Disclaimer: The content of this project does not constitute legal, professional, academic, or any other type of advice. Any reliance you place on the information provided is therefore strictly at your own risk. 
+            
+            References to any specific products, services, organizations, or third-party websites are provided for informational purposes only and do not constitute endorsements or recommendations.
+
+            This is an academic project and it may contain links to external websites or resources over which we have no control. We are not responsible for the content, availability, or accuracy of these external resources.
             </CompanyDescription>
         </TextContainer>
 
@@ -130,7 +134,7 @@ function Footer () {
 
             </SocialsContainer>
             
-            <CompanyDescription style={{textAlign: "center", fontWeight: "bold",}}>©2023 Klinika Mecharcovz - All rights reserved</CompanyDescription>
+            <CompanyDescription style={{textAlign: "center", fontWeight: "bold",}}>©2023 Klinika - All rights Reserved</CompanyDescription>
 
         </RightContainer>
 

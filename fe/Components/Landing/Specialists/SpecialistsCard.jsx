@@ -5,21 +5,20 @@ import Link from 'next/link';
 
 const CardContainer = styled ("div") ({
 
-    height: "414px",
-    width: "395px",
+    height: "300px",
+    width: "500px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
     backgroundColor: "whitesmoke",
     borderRadius: "5px",
 
-
 });
 
 const CardIcon = styled ("img") ({
 
-    height: "414x",
-    width: "165px",
+    height: "64px",
+    width: "64px",
     userSelect: "none",
 
 });
@@ -48,6 +47,13 @@ const Text = styled ("p") ({
 
 });
 
+const NameContainer = styled ("div") ({
+
+    display: "flex",
+    gap: "20px",
+
+});
+
 
 
 function SpecialistsCard (props) {
@@ -55,8 +61,10 @@ function SpecialistsCard (props) {
   return (
     
     <CardContainer>
-        <CardIcon draggable="false" src={props.img}/>
-        <Name>{props.name}</Name>
+        <NameContainer>
+            <CardIcon draggable="false" src={props.img}/>
+            <Name>{props.name}</Name>
+        </NameContainer>
         <Title>{props.speciality}</Title>
         <Text>{props.description}</Text>
         <Link style={{fontSize: "14px", color: ColorsKlinik.text}} href={props.link}>Get an Appointment</Link>

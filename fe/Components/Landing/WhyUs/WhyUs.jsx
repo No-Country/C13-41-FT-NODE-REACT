@@ -26,6 +26,7 @@ const TextContainer = styled ("div") ({
     justifyContent: "start",
     marginTop: "30px",
     flexDirection: "column",
+    gap: "10px",
 
 });
 
@@ -76,18 +77,19 @@ function WhyUs () {
   return (
 
     <WhyUsContainer>
-        <Title>Why you choose us</Title>
+        <Title>Why Klinika?, because we understand the value of your time and your health. Our intuitive scheduling system empowers you to:</Title>
         <InsiderContainer>
 
             <TextContainer>
-                <MotiveTitle>Motive one</MotiveTitle>
-                <MotiveText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem enim ut modi?</MotiveText>
-                <MotiveTitle>Motive two</MotiveTitle>
-                <MotiveText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem enim ut modi?</MotiveText>
-                <MotiveTitle>Motive three</MotiveTitle>
-                <MotiveText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem enim ut modi?</MotiveText>
-                <MotiveTitle>Motive four</MotiveTitle>
-                <MotiveText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium voluptate doloribus quod ex natus nulla iure harum. Ab ipsam accusamus doloremque possimus voluptas non a. Iure rem enim ut modi?</MotiveText>
+
+                <MotiveTitle>Take Control</MotiveTitle>
+                <MotiveText> You are in charge of your healthcare journey. Browse through available appointment slots and choose the one that fits your schedule seamlessly</MotiveText>
+                <MotiveTitle>24/7 Accessibility</MotiveTitle>
+                <MotiveText>No need to wait for office hours to make an appointment. Our platform is accessible round the clock, allowing you to book at a time that suits you best.</MotiveText>
+                <MotiveTitle>Effortless Booking</MotiveTitle>
+                <MotiveText>Say goodbye to long hold times on the phone. With just a few clicks, you can secure your spot with your preferred health professional.</MotiveText>
+                <MotiveTitle>Transparent Availability</MotiveTitle>
+                <MotiveText>Get a clear view of the available time slots for your chosen health professional. This transparency ensures you make the best informed decisions.</MotiveText>
 
             </TextContainer>
 

@@ -4,7 +4,7 @@ import { ColorsKlinik } from '@/app/colors';
 
 const CardContainer = styled ("div") ({
 
-    height: "300px",
+    height: "250px",
     width: "330px",
     display: "flex",
     flexDirection: "column",
@@ -15,15 +15,7 @@ const CardContainer = styled ("div") ({
 
 });
 
-const CardIcon = styled ("img") ({
-
-    height: "50px",
-    width: "50px",
-    userSelect: "none",
-
-});
-
-const Title = styled ("h1") ({
+const Author = styled ("h1") ({
 
     fontSize: "40px",
     color: `${ColorsKlinik.text}`,
@@ -57,8 +49,7 @@ function ReviewCard (props) {
     
     <CardContainer>
         <PersonContainer>
-            <CardIcon draggable="false" src={props.img}/>
-            <Title>{props.title}</Title>
+            <Author>{props.author}</Author>
         </PersonContainer>
         <Text>{props.description}</Text>
     </CardContainer>
