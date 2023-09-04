@@ -24,9 +24,10 @@ const PersonSpan = styled('span')({
 	fontSize: '30px',
 	fontWeight: 'bold',
 	color: colors.text,
+	userSelect: "none",
 });
 
-function SaveBar(props) {
+function SaveBar (props) {
 	return (
 		<UserSaveContainer>
 			<PersonContainer>

@@ -2,8 +2,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@/app/colors';
 import EditIcon from '@mui/icons-material/Edit';
+import { TextField } from '@mui/material';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useState } from 'react';
 
 const DetailsContainer = styled('div')({
 	display: 'flex',
@@ -12,9 +14,9 @@ const DetailsContainer = styled('div')({
 });
 
 const InsideContainer = styled('div')({
-	display: 'flex',
+	display: 'grid',
+	gridTemplateColumns: "repeat (2, 1fr)",
 	marginTop: '30px',
-	flexDirection: 'column',
 	gap: '20px',
 	justifyContent: 'space-between',
 });
@@ -30,38 +32,13 @@ const DetailSpan = styled('span')({
 	fontSize: '30px',
 	fontWeight: 'bold',
 	color: colors.text,
+	userSelect: "none",
 });
 
 const AvatarPicture = styled('img')({
 	width: '300px',
 	height: '300px',
 });
-
-function changeFullName() {
-	let askValue = prompt('Change Full Name');
-
-	if (askValue === '' || askValue === null || askValue === undefined) {
-		alert('The name cannot be empty. Refreshing...');
-		window.location.reload();
-	} else {
-		let newValue = (document.getElementById('fullname').innerText = askValue);
-		alert("The new value for Full Name is '" + newValue + "'.\nDon't forget to save your changes.");
-		return newValue;
-	}
-}
-
-function changeEmail() {
-	let askValue = prompt('Change Email Adress');
-
-	if (askValue === '' || askValue === null || askValue === undefined) {
-		alert('The Adress cannot be empty. Refreshing...');
-		window.location.reload();
-	} else {
-		let newValue = (document.getElementById('email').innerText = askValue);
-		alert("The new value for Email is '" + newValue + "'.\nDon't forget to save your changes.");
-		return newValue;
-	}
-}
 
 function changeBirthdate() {
 	let askValue = prompt('Change Your Birth Date using a MM/DD/YYYY format.');
@@ -85,19 +62,6 @@ function changeNID() {
 	} else {
 		let newValue = (document.getElementById('nid').innerText = askValue);
 		alert("The new value for NID is '" + newValue + "'.\nDon't forget to save your changes.");
-		return newValue;
-	}
-}
-
-function changeCountry() {
-	let askValue = prompt('Change Your Country.');
-
-	if (askValue === '' || askValue === null || askValue === undefined) {
-		alert('The Country field cannot be empty. Refreshing...');
-		window.location.reload();
-	} else {
-		let newValue = (document.getElementById('country').innerText = askValue);
-		alert("The new value for country is '" + newValue + "'.\nDon't forget to save your changes.");
 		return newValue;
 	}
 }
@@ -141,33 +105,32 @@ function changeAvatar() {
 	}
 }
 
+function changeResume () {
+
+	let resumeTextArea = document.getElementById ('resumeTextArea')
+	resumeTextArea.removeAttribute ("hidden");
+	resumeTextArea.style.resize = "none";
+	resumeTextArea.style.outline = "none";
+	resumeTextArea.style.fontSize = "20px";
+	resumeTextArea.style.fontWeight = "bold";
+
+}
+
 function Details(props) {
+
+	const [resume, setResume] = useState("");
+
 	return (
+
 		<DetailsContainer>
 			<InsideContainer>
 				<DetailSpan>Account Type: Medic</DetailSpan>
 
 				<InputContainer>
-					<DetailSpan>Full Name:</DetailSpan>
-					<DetailSpan id='fullname'>
-						{props.fullname}
-						<EditIcon onClick={changeFullName} />
-					</DetailSpan>
-				</InputContainer>
-
-				<InputContainer>
-					<DetailSpan>E-Mail:</DetailSpan>
-					<DetailSpan id='email'>
-						{props.email}
-						<EditIcon onClick={changeEmail} />
-					</DetailSpan>
-				</InputContainer>
-
-				<InputContainer>
 					<DetailSpan>Birthdate:</DetailSpan>
 					<DetailSpan id='birthdate'>
-						{props.birthdate}
-						<EditIcon onClick={changeBirthdate} />
+						{new Date(props.birthdate).toDateString()}
+						<EditIcon onClick={changeBirthdate} style={{cursor: "pointer"}}/>
 					</DetailSpan>
 				</InputContainer>
 
@@ -175,36 +138,54 @@ function Details(props) {
 					<DetailSpan>NID:</DetailSpan>
 					<DetailSpan id='nid'>
 						{props.nid}
-						<EditIcon onClick={changeNID} />
+						<EditIcon onClick={changeNID} style={{cursor: "pointer"}} />
+					</DetailSpan>
+				</InputContainer>
+
+				<InputContainer>
+					<DetailSpan>Gender:</DetailSpan>
+					<DetailSpan id='gender'>{props.gender}
+					</DetailSpan>
+				</InputContainer>
+
+				<InputContainer>
+					<DetailSpan>Country:</DetailSpan>
+					<DetailSpan id='country'>
+						{props.country}
 					</DetailSpan>
 				</InputContainer>
 			</InsideContainer>
 
 			<InsideContainer>
 				<InputContainer>
-					<DetailSpan>Country:</DetailSpan>
-					<DetailSpan id='country'>
-						{props.country}
-						<EditIcon onClick={changeCountry} />
-					</DetailSpan>
-				</InputContainer>
-
-				<InputContainer>
 					<DetailSpan>Phone:</DetailSpan>
 					<DetailSpan id='phone'>
 						{props.phone}
-						<EditIcon onClick={changePhone} />
+						<EditIcon onClick={changePhone} style={{cursor: "pointer"}} />
 					</DetailSpan>
 				</InputContainer>
 
 				<InputContainer>
 					<DetailSpan>License ID:</DetailSpan>
 					<DetailSpan id='license'>
-						{props.license}
-						<EditIcon onClick={changeLicense} />
+						{props.profesionalid}
+						<EditIcon onClick={changeLicense} style={{cursor: "pointer"}} />
 					</DetailSpan>
 				</InputContainer>
+
+				<InputContainer>
+					<DetailSpan>Email:</DetailSpan>
+					<DetailSpan id='email'>
+						{props.email}
+					</DetailSpan>
+				</InputContainer>
+
+				<InputContainer id='resumeContainer' style={{display: "flex", flexDirection: "column",}}>
+					<DetailSpan>Resume:<EditIcon onClick={changeResume} style={{cursor: "pointer"}} /></DetailSpan>
+					<textarea id="resumeTextArea" cols="30" rows="10" hidden placeholder='Please enter a brief summary of your work experience' value={resume} onChange={e => setResume (e.target.value)}/>
+				</InputContainer>
 			</InsideContainer>
+
 
 			<InsideContainer>
 				<InputContainer style={{ display: 'flex', flexDirection: 'column' }}>
@@ -212,13 +193,14 @@ function Details(props) {
 						Profile Picture:{' '}
 						<DetailSpan>
 							{props.avatar}
-							<EditIcon onClick={changeAvatar} />
+							<EditIcon onClick={changeAvatar} style={{cursor: "pointer"}} />
 						</DetailSpan>
 					</DetailSpan>
 					<AvatarPicture id='avatar' />
 				</InputContainer>
 			</InsideContainer>
 		</DetailsContainer>
+
 	);
 }
 
