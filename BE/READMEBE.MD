@@ -11,6 +11,8 @@
 | Variable Name  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Description                                                        |
 | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | PORT | Port number which back end will be deployed
+|EMAIL_USER| Necessary to send emails notifications|
+|EMAIL_PASSWORD| Necessary to send emails notifications|
 | JWT_SECRET | The salt necessary for the token|
 |NODE_ENV| The currently enviroment|
 |PRO_DB_USER| Production user database|
@@ -53,6 +55,8 @@ DEV_DB_HOST=
 DEV_DB_PASSWORD=
 DEV_DB_NAME=
 JWT_SECRET=
+EMAIL_USER=
+EMAIL_PASSWORD=
 ```
 
 - If the `.env` file doesn't export the variables correctly, you can manually export them by running the following commands in the terminal:
@@ -69,6 +73,8 @@ export DEV_DB_HOST=
 export DEV_DB_PASSWORD=
 export DEV_DB_NAME=
 export JWT_SECRET=
+export EMAIL_USER=
+export EMAIL_PASSWORD=
 ```
 
 Make sure to export the variables correctly to ensure the project works as expected.
