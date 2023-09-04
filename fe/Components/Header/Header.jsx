@@ -203,6 +203,7 @@ const Header = () => {
 								}}
 								open={Boolean(anchorElUser)}
 								onClose={handleCloseUserMenu}
+								disableScrollLock={true}
 							>
 								{/* Falta agregar una ruta dinámina dependiendo de si es doctor o paciente, o hacer un perfil dinámico */}
 								<MenuItem onClick={() => userData && push('/profile/doctor')}>

@@ -91,6 +91,11 @@ const DoctorsPage = () => {
 							value={filterByCountry}
 							onChange={e => setFilterByCountry(e.target.value)}
 							fullWidth
+							SelectProps={{
+								MenuProps: {
+									disableScrollLock: true,
+								},
+							}}
 						>
 							{[...countryList].map(country => (
 								<MenuItem key={country} value={country}>
@@ -133,6 +138,11 @@ const DoctorsPage = () => {
 							value={filterBySpecialty}
 							onChange={e => setFilterBySpecialty(e.target.value)}
 							fullWidth
+							SelectProps={{
+								MenuProps: {
+									disableScrollLock: true,
+								},
+							}}
 						>
 							{[...specialtyList].map(specialty => (
 								<MenuItem key={specialty} value={specialty}>
