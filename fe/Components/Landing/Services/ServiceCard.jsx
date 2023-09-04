@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import Link from 'next/link';
 import { Stack, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 
 const CardContainer = styled('article')({
 	width: '17.5rem',
@@ -29,7 +30,20 @@ function ServiceCard(props) {
 	return (
 		<CardContainer>
 			<Stack direction='column' spacing={2}>
-				<CardIcon draggable='false' src={props.img} />
+				<Box
+					display={'flex'}
+					alignItems={'center'}
+					justifyContent={'center'}
+					sx={{
+						width: '3rem',
+						height: '3rem',
+						borderRadius: '100%',
+						padding: '0.5rem',
+						backgroundColor: colors.doctorExperience,
+					}}
+				>
+					{props.img}
+				</Box>
 				<Typography
 					className='inter'
 					variant='h3'
