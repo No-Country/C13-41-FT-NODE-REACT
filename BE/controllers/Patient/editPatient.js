@@ -1,39 +1,27 @@
-const bcrypt = require("bcrypt");
+
 const { Patient } = require("../../database/models");
 
 // TODO: Cambiar con middleware de atenticación
 const editPatient = async (req, res) => {
   try {
-    const { fullname, password, email, country, gender, birthdate, nid } =
-      req.body;
 
-    if (
-      !fullname ||
-      !password ||
-      !email ||
-      !country ||
-      !gender ||
-      !birthdate ||
-      !nid
-    ) {
-      throw new Error("All fields are required")
+    const { email, password } = req.body
+
+    if(!email)
+    {
+      throw new Error("Must contain email")
+    }
+    
+    if(password)
+    {
+      throw new Error("Not must contain password")
     }
 
-    const hashedPwd = await bcrypt.hash(password, 10);
-
     const updatedPatient = await Patient.update(
-      {
-        fullname,
-        password: hashedPwd,
-        email,
-        country,
-        nid,
-        gender,
-        birthdate,
-      },
+        req.body,
       {
         where: {
-          email: email,
+          email,
         },
       }
     );
@@ -45,7 +33,7 @@ const editPatient = async (req, res) => {
     const patient = await Patient.findOne(
       {
         where: {
-          email: email,
+          email
         },
       }
     );

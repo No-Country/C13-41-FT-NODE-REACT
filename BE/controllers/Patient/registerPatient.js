@@ -1,4 +1,6 @@
 const {Patient} = require('../../database/models')
+const {sendEmail} = require('../Email/sendEmail')
+
 const bcrypt = require('bcrypt')
 
 const createPatient = async (req, res) => {
@@ -31,9 +33,17 @@ const createPatient = async (req, res) => {
         gender,
         birthdate
       });
-  
-  
-      return res.status(201).json({ message: 'Patient created', patient: newPatient })
+
+      const emailSubject = 'Welcome to Klinika Merchacovz'
+
+      const emailBody = `<h1>Hello ${fullname}</h1>,
+      <h2>Thank you for registering on our platform. We are excited to have you as a Patient!</h2>
+      
+      Best regards,
+      Klinika Mercharcovz`;
+
+      return sendEmail(res, email, emailSubject, emailBody, 'Email confirmation for registration sent')
+
     } catch (error) {
       return res.status(400).json({ error: 'Register Patient', message:error.message })
     }   
