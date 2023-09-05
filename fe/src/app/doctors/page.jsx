@@ -70,7 +70,6 @@ const DoctorsPage = () => {
 					sx={{
 						minHeight: { xs: 'auto', sm: '100vh' },
 					}}
-					paddingY={{ xs: 1, sm: 4 }}
 					paddingX={1}
 					width={{ xs: '100%', sm: '30%' }}
 				>
@@ -168,12 +167,8 @@ const DoctorsPage = () => {
 						</Button>
 					</Box>
 				</Box>
-				<Box
-					component={'section'}
-					width={{ xs: '100%', sm: '70%' }}
-					paddingY={{ xs: 1, sm: 4 }}
-					paddingX={1}
-				>
+				<Divider orientation='vertical' flexItem />
+				<Box component={'section'} width={{ xs: '100%', sm: '70%' }} paddingX={1}>
 					<Grid container spacing={2}>
 						{filteredDoctor.length > 0 ? (
 							filteredDoctor.map(doctor => {
@@ -202,7 +197,21 @@ const DoctorsPage = () => {
 								);
 							})
 						) : (
-							<Typography>No doctors available</Typography>
+							<Grid item xs={12}>
+								<Typography
+									variant='h6'
+									className='inter'
+									color={colors.text}
+									backgroundColor={colors.inputBackground}
+									borderRadius={2}
+									textAlign={'center'}
+									paddingX={2}
+									paddingY={1}
+									fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}
+								>
+									No doctors available
+								</Typography>
+							</Grid>
 						)}
 					</Grid>
 				</Box>

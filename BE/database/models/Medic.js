@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'medicId', // This is the foreign key in the VacationDate table that links to the Medic table
         as: 'vacationDate', // This sets an alias for the association
       });
+      Medic.hasMany(models.Comment,{foreignKey: 'medicId', as: 'comments'})
+      Medic.hasMany(models.SocialNetwork,{foreignKey: 'medicId', as: 'socialnetworks'})
     }
   }
   Medic.init({

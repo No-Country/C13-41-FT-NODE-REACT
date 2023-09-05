@@ -1,5 +1,5 @@
 import Landing from '../../Components/Landing/Landing';
-import DoctorProfile from './profile/doctor/page';
+import DoctorProfile from './profile/doctor/[doctorID]/edit/page';
 
 const HomePage = () => {
 	return (

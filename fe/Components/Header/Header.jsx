@@ -26,6 +26,7 @@ const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const { logout, token, userData } = useAuth();
+	console.log(userData);
 	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorElNav(event.currentTarget);
@@ -122,6 +123,24 @@ const Header = () => {
 									Doctors
 								</Typography>
 							</MenuItem>
+							<MenuItem onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}>
+								<Typography
+									textAlign='center'
+									className='inter'
+									sx={{ color: colors.text, textTransform: 'none' }}
+								>
+									New appointment
+								</Typography>
+							</MenuItem>
+							<MenuItem onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}>
+								<Typography
+									textAlign='center'
+									className='inter'
+									sx={{ color: colors.text, textTransform: 'none' }}
+								>
+									Schedule
+								</Typography>
+							</MenuItem>
 						</Menu>
 					</Box>
 
@@ -170,6 +189,30 @@ const Header = () => {
 							className='inter'
 						>
 							Doctors
+						</Button>
+						<Button
+							onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}
+							sx={{
+								color: colors.text,
+								display: 'block',
+								textTransform: 'none',
+								fontWeight: '600',
+							}}
+							className='inter'
+						>
+							New appointment
+						</Button>
+						<Button
+							onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}
+							sx={{
+								color: colors.text,
+								display: 'block',
+								textTransform: 'none',
+								fontWeight: '600',
+							}}
+							className='inter'
+						>
+							Schedule
 						</Button>
 					</Box>
 

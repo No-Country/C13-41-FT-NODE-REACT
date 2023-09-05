@@ -17,6 +17,9 @@ a {
 	color: inherit;
 	text-decoration: none;
 }
+.custom-time-picker .MuiStaticTimePicker-toolbar {
+  display: none;
+}
 
 .inter {
 	font-family: 'Inter', sans-serif;
