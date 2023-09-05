@@ -10,12 +10,9 @@ import Typography from '@mui/material/Typography';
 import FormAlerts from '../../../../Components/FormAlerts';
 import '@fontsource/poppins';
 import { useRouter } from 'next/navigation';
-<<<<<<< HEAD
-
-=======
 import { titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import { GridColumnMenuContainer } from '@mui/x-data-grid';
->>>>>>> dev
+
 export default function PacientSingUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
