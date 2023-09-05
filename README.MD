@@ -183,10 +183,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://www.linkedin.com/in/maximiliano-leonel-p%C3%A9rez-8846b826a/" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Maximiliano Perez | Frontend</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/MaximilianoLeonel23">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/maximiliano-leonel-p%C3%A9rez-8846b826a/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -199,10 +199,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/scarolayton" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Sergio Caro | Frontend</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/scarolayton">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/sergio-eduardo-caro-layton-408969228/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -215,7 +215,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/cric992010" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Cristian Ortiz | Frontend</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/cric992010">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
         <a href="https://www.linkedin.com/in/jjrh92/">
