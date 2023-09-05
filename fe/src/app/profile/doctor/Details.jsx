@@ -2,8 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@/app/colors';
 import EditIcon from '@mui/icons-material/Edit';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+// import Swal from 'sweetalert2';
+// import withReactContent from 'sweetalert2-react-content';
 
 const DetailsContainer = styled('div')({
 	display: 'flex',

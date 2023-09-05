@@ -4,58 +4,76 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Check
 import { Circle, CircleOutlined } from '@mui/icons-material';
 import { hexToRgb, styled } from '@mui/material/styles';
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
-const diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+const diasSemana = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const franjasHorarias = ['07:00 - 08:00', '08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00']; // Agrega más franjas según necesites
 import { colors } from '@/app/colors';
 import DoctorCalendar from '../../../../../Components/Calendar/DoctorCalendar';
 const ScheduleDoctor = () => {
-  const [values, setValues] = React.useState([]);
+  const [vacationDays, setVacationDays] = React.useState([]);
   const [schedule, setSchedule] = useState([
-    { dia: 'Lunes', franja: '07:00 - 08:00', selected: false },
-    { dia: 'Lunes', franja: '08:00 - 09:00', selected: false },
-    { dia: 'Lunes', franja: '09:00 - 10:00', selected: false },
-    { dia: 'Lunes', franja: '10:00 - 11:00', selected: false },
-    { dia: 'Lunes', franja: '11:00 - 12:00', selected: false },
-    { dia: 'Lunes', franja: '13:00 - 14:00', selected: false },
-    { dia: 'Lunes', franja: '14:00 - 15:00', selected: false },
-    { dia: 'Lunes', franja: '15:00 - 16:00', selected: false },
-    { dia: 'Lunes', franja: '16:00 - 17:00', selected: false },
-    { dia: 'Martes', franja: '07:00 - 08:00', selected: false },
-    { dia: 'Martes', franja: '08:00 - 09:00', selected: false },
-    { dia: 'Martes', franja: '09:00 - 10:00', selected: false },
-    { dia: 'Martes', franja: '10:00 - 11:00', selected: false },
-    { dia: 'Martes', franja: '11:00 - 12:00', selected: false },
-    { dia: 'Martes', franja: '13:00 - 14:00', selected: false },
-    { dia: 'Martes', franja: '14:00 - 15:00', selected: false },
-    { dia: 'Martes', franja: '15:00 - 16:00', selected: false },
-    { dia: 'Martes', franja: '16:00 - 17:00', selected: false },
-    { dia: 'Miercoles', franja: '07:00 - 08:00', selected: false },
-    { dia: 'Miercoles', franja: '08:00 - 09:00', selected: false },
-    { dia: 'Miercoles', franja: '09:00 - 10:00', selected: false },
-    { dia: 'Miercoles', franja: '10:00 - 11:00', selected: false },
-    { dia: 'Miercoles', franja: '11:00 - 12:00', selected: false },
-    { dia: 'Miercoles', franja: '13:00 - 14:00', selected: false },
-    { dia: 'Miercoles', franja: '14:00 - 15:00', selected: false },
-    { dia: 'Miercoles', franja: '15:00 - 16:00', selected: false },
-    { dia: 'Miercoles', franja: '16:00 - 17:00', selected: false },
-    { dia: 'Jueves', franja: '07:00 - 08:00', selected: false },
-    { dia: 'Jueves', franja: '08:00 - 09:00', selected: false },
-    { dia: 'Jueves', franja: '09:00 - 10:00', selected: false },
-    { dia: 'Jueves', franja: '10:00 - 11:00', selected: false },
-    { dia: 'Jueves', franja: '11:00 - 12:00', selected: false },
-    { dia: 'Jueves', franja: '13:00 - 14:00', selected: false },
-    { dia: 'Jueves', franja: '14:00 - 15:00', selected: false },
-    { dia: 'Jueves', franja: '15:00 - 16:00', selected: false },
-    { dia: 'Jueves', franja: '16:00 - 17:00', selected: false },
-    { dia: 'Viernes', franja: '07:00 - 08:00', selected: false },
-    { dia: 'Viernes', franja: '08:00 - 09:00', selected: false },
-    { dia: 'Viernes', franja: '09:00 - 10:00', selected: false },
-    { dia: 'Viernes', franja: '10:00 - 11:00', selected: false },
-    { dia: 'Viernes', franja: '11:00 - 12:00', selected: false },
-    { dia: 'Viernes', franja: '13:00 - 14:00', selected: false },
-    { dia: 'Viernes', franja: '14:00 - 15:00', selected: false },
-    { dia: 'Viernes', franja: '15:00 - 16:00', selected: false },
-    { dia: 'Viernes', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Monday', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Monday', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Monday', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Monday', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Monday', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Monday', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Monday', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Monday', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Monday', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Tuesday', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Tuesday', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Tuesday', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Tuesday', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Tuesday', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Tuesday', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Tuesday', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Tuesday', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Tuesday', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Wednesday', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Wednesday', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Wednesday', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Wednesday', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Wednesday', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Wednesday', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Wednesday', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Wednesday', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Wednesday', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Thursday', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Thursday', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Thursday', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Thursday', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Thursday', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Thursday', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Thursday', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Thursday', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Thursday', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Friday', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Friday', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Friday', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Friday', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Friday', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Friday', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Friday', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Friday', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Friday', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Saturday', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Saturday', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Saturday', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Saturday', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Saturday', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Saturday', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Saturday', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Saturday', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Saturday', franja: '16:00 - 17:00', selected: false },
+    { dia: 'Sunday', franja: '07:00 - 08:00', selected: false },
+    { dia: 'Sunday', franja: '08:00 - 09:00', selected: false },
+    { dia: 'Sunday', franja: '09:00 - 10:00', selected: false },
+    { dia: 'Sunday', franja: '10:00 - 11:00', selected: false },
+    { dia: 'Sunday', franja: '11:00 - 12:00', selected: false },
+    { dia: 'Sunday', franja: '13:00 - 14:00', selected: false },
+    { dia: 'Sunday', franja: '14:00 - 15:00', selected: false },
+    { dia: 'Sunday', franja: '15:00 - 16:00', selected: false },
+    { dia: 'Sunday', franja: '16:00 - 17:00', selected: false },
     // Agrega más combinaciones día-franja según necesites
   ]);
 
@@ -76,6 +94,7 @@ const ScheduleDoctor = () => {
       }
     } )
     console.log(scheduleChoosed);
+    console.log(vacationDays)
     // try {
     //   const response = await fetch('https://mecharcovz-be.onrender.com/', {
     //     method: 'POST',
@@ -139,7 +158,7 @@ const ScheduleDoctor = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <DoctorCalendar values={values} setValues={setValues}/>
+      <DoctorCalendar vacationDays={vacationDays} setVacationDays={setVacationDays}/>
       <Box sx={{display: 'flex', paddingRight: 18 , justifyContent:'flex-end' }}>
         <Button type='submit'  onClick={handleClick} endIcon={<BookmarkAddIcon/>} color='success' variant='contained' size='large' >
             Save
