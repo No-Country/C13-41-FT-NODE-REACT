@@ -49,6 +49,9 @@ module.exports = (sequelize, DataTypes) => {
     resume: {
       type: DataTypes.TEXT,
     },
+    phone:{
+      type: DataTypes.BIGINT
+    }
   }, {
     sequelize,
     modelName: 'Patient',

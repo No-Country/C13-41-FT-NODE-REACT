@@ -6,12 +6,14 @@ const {
   editMedic,
   deleteMedic,
   getMedic,
-  changePasswordMedic
+  changePasswordMedic,
+  addMedicSpecialty
 } = require("../controllers/Medic/index.js");
 
 const {verifyJWT} = require('../middlewares/jwt.js')
 
 router.post("/",createMedic)
+router.post("/addspecialty",verifyJWT,addMedicSpecialty)
 router.put("/",verifyJWT,editMedic);
 router.put("/changepwd",changePasswordMedic);
 router.delete("",verifyJWT,deleteMedic);

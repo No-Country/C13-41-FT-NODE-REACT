@@ -5,16 +5,14 @@ const getPatient = async (req, res) => {
     try {
       const { email } = req.query;
   
-      if(!email)
-      {
-        throw new Error('All fields are required')
-      }
-  
-      const patient = await Patient.findOne({
+      const patient = email
+      ?
+      (await Patient.findOne({
         where: {
           email: email
         }
-      });
+      }))
+      : await Patient.findAll()
 
       return res.status(200).json({ message: 'Patient data', data:{patient} })
   

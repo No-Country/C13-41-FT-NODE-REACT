@@ -24,7 +24,7 @@ const createMedic = async (req, res) => {
 
       const hashedPwd = await bcrypt.hash(password, 10)
   
-      const newMedic = await Medic.create({
+      await Medic.create({
         fullname,
         password:hashedPwd,
         email,

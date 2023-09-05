@@ -2,15 +2,24 @@
 const {
   Model
 } = require('sequelize');
-const { uuid} = require("uuidv4")
+const { uuid } = require("uuidv4")
 module.exports = (sequelize, DataTypes) => {
   class Medic extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
+      Medic.hasMany(models.Schedule, {
+        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
+        as: 'schedules', // This sets an alias for the association
+      });
+      Medic.belongsToMany(models.Specialty, {
+        through: 'MedicSpecialty', // This is the name of the intermediary table
+        foreignKey: 'medicId',
+        otherKey: 'specialtyId',
+        as: 'specialties', // This sets an alias for the association
+      })
+      Medic.hasOne(models.VacationDate, {
+        foreignKey: 'medicId', // This is the foreign key in the VacationDate table that links to the Medic table
+        as: 'vacationDate', // This sets an alias for the association
+      });
       Medic.hasMany(models.Comment,{foreignKey: 'medicId', as: 'comments'})
       Medic.hasMany(models.SocialNetwork,{foreignKey: 'medicId', as: 'socialnetworks'})
     }
@@ -52,6 +61,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     },
+    phone:{
+      type: DataTypes.BIGINT
+    }
   }, {
     sequelize,
     modelName: 'Medic',
