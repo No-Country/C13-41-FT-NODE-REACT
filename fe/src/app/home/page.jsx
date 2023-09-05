@@ -28,7 +28,7 @@ const servicesIcon = [
 const UserHomePage = () => {
 	const { userData } = useAuth();
 	const nearbyDoctors = fakeDoctorData.filter(doctor => {
-		return doctor.country.toLowerCase().includes(userData.country.toLowerCase());
+		return doctor.country.toLowerCase().includes(userData?.country?.toLowerCase());
 	});
 	return (
 		<Container sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, paddingY: 4 }}>
@@ -97,7 +97,6 @@ const UserHomePage = () => {
 				>
 					{servicesLabels ? (
 						servicesLabels.map((service, idx) => {
-							console.log(servicesIcon[idx]);
 							return (
 								<ServiceCard
 									key={idx}
