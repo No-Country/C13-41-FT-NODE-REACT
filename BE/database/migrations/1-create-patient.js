@@ -42,6 +42,9 @@ module.exports = {
       resume: {
         type: Sequelize.TEXT,
       },
+      phone: {
+        type: Sequelize.BIGINT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

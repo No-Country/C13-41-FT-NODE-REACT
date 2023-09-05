@@ -44,6 +44,9 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
+      phone: {
+        type: Sequelize.BIGINT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
