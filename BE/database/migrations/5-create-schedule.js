@@ -4,23 +4,39 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Schedules', {
       id: {
-        type: Sequelize.BIGINT,
+        type: Sequelize.STRING,
         primaryKey: true,
-        autoIncrement: true
       },
-      name: {
-        type: Sequelize.TEXT,
+      day: {
+        type: Sequelize.ENUM("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
         allowNull: false,
       },
+      initialHour: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      finalHour: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      type: {
+        type: Sequelize.ENUM("daily", "weekly"),
+        allowNull: false,
+      },
+      status: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      duration: {
+        type: Sequelize.INTEGER
+      },
       medicId: {
-        type: Sequelize.UUID,
+        type: Sequelize.UUID, // Use UUID data type
         allowNull: false,
         references: {
           model: 'Medics', // This should match the actual table name for the Medic model
           key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        }
       },
       createdAt: {
         allowNull: false,

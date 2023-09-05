@@ -2,14 +2,8 @@
 const {
   Model
 } = require('sequelize');
-const { uuid} = require("uuidv4")
 module.exports = (sequelize, DataTypes) => {
   class Schedule extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
         // Define a one-to-one association where each Schedule belongs to one Medic
         Schedule.belongsTo(models.Medic, {
@@ -55,9 +49,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Schedule',
-  }),
-  Schedule.addHook('beforeSave', async (schedule) => {
-    return schedule.id = uuid();
-  });
+  })
   return Schedule;
 };
