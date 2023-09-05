@@ -26,7 +26,20 @@ export default function RegisterMenu() {
 				aria-haspopup='true'
 				aria-expanded={open ? 'true' : undefined}
 				onClick={handleClick}
-				style={{ fontSize: '1.2rem', color: colors.text, textTransform: 'none', fontWeight: '500' }}
+				className='inter'
+				variant='contained'
+				style={{
+					color: colors.buttonIcon,
+					textTransform: 'none',
+					fontWeight: '600',
+					display: 'block',
+					backgroundColor: 'transparent',
+					border: '1px solid',
+					borderColor: colors.buttonIcon,
+					':hover': {
+						backgroundColor: 'transparent',
+					},
+				}}
 			>
 				Register
 			</Button>
@@ -39,22 +52,28 @@ export default function RegisterMenu() {
 					'aria-labelledby': 'register-button',
 				}}
 				disableScrollLock={true}
+				sx={{ mt: 2 }}
 			>
 				<MenuItem onClick={handleClose}>
 					<Link
 						draggable='false'
-						href='../../sign-up/doctor'
-						style={{ fontSize: '1.2rem', color: colors.text, textTransform: 'none', fontWeight: '500' }}
+						href='/sign-up/doctor'
+						style={{
+							color: colors.text,
+							textTransform: 'none',
+							fontWeight: '600',
+						}}
+						className='inter'
 					>
 						As a Doctor
 					</Link>
 				</MenuItem>
-
 				<MenuItem onClick={handleClose}>
 					<Link
 						draggable='false'
-						href='../../sign-up/patient'
-						style={{ fontSize: '1.2rem', color: colors.text, textTransform: 'none', fontWeight: '500' }}
+						href='/sign-up/patient'
+						style={{ color: colors.text, textTransform: 'none', fontWeight: '600' }}
+						className='inter'
 					>
 						As a Patient
 					</Link>

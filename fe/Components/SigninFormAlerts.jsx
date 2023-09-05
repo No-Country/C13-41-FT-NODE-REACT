@@ -1,25 +1,25 @@
 import { Snackbar, Alert } from '@mui/material';
-const FormAlerts = ({ successSignup, errorSignup, errorMessage, redirecting }) => {
+const SigninFormAlerts = ({ successSignin, errorSignin, errorMessage, redirecting }) => {
 	return (
 		<>
 			<Snackbar
 				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={successSignup}
+				open={successSignin}
 				autoHideDuration={3000}
 				onClose={() => {}}
 			>
 				<Alert severity='success' sx={{ width: '100%' }}>
-					Account created
+					Login successful
 				</Alert>
 			</Snackbar>
 			<Snackbar
 				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={errorSignup}
+				open={errorSignin}
 				autoHideDuration={3000}
 				onClose={() => {}}
 			>
 				<Alert severity='error' sx={{ width: '100%' }}>
-					{errorMessage ? errorMessage : 'Error creating account'}
+					{errorMessage ? errorMessage : 'Error to login. Try again'}
 				</Alert>
 			</Snackbar>
 			<Snackbar
@@ -29,11 +29,11 @@ const FormAlerts = ({ successSignup, errorSignup, errorMessage, redirecting }) =
 				onClose={() => {}}
 			>
 				<Alert severity='info' sx={{ width: '100%' }}>
-					Redirecting to login
+					Redirecting to home page
 				</Alert>
 			</Snackbar>
 		</>
 	);
 };
 
-export default FormAlerts;
+export default SigninFormAlerts;

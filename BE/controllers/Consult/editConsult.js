@@ -1,40 +1,17 @@
-const bcrypt = require("bcrypt");
 const { Consult } = require("../../database/models");
 
 // TODO: Cambiar con middleware de atenticación
 const editConsult = async (req, res) => {
   try {
-    const {
-      id,
-      diagnostic,
-      recipe,
-      consultTimestamp,
-      status,
-      resume,
-      urlFile
-    } = req.body;
+    const { id } = req.body
 
-    if (
-      !id ||
-      !diagnostic ||
-      !recipe ||
-      !consultTimestamp ||
-      !status ||
-      !resume ||
-      !urlFile
-    ) {
-      throw new Error("All fields are required")
+    if(!id)
+    {
+      throw new Error("Must contain id")
     }
 
     const updatedConsult = await Consult.update(
-      { 
-        diagnostic,
-        recipe,
-        consultTimestamp,
-        status,
-        resume,
-        urlFile
-      },
+        req.body,
       {
         where: {
           id: id,
