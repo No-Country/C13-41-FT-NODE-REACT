@@ -1,11 +1,11 @@
-const { editSpecialty } = require("./editSchedule");
+const { editSchedule } = require("./editSchedule");
 const { createSchedule } = require("./createSchedule");
-const { deleteSpecialty } = require("./deleteSchedule");
+const { deleteSchedule } = require("./deleteSchedule");
 const { getSchedule } = require("./getSchedule");
 
 module.exports = {
-  editSpecialty,
+  editSchedule,
   createSchedule,
-  deleteSpecialty,
+  deleteSchedule,
   getSchedule
 };
