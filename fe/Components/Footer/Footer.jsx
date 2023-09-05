@@ -33,12 +33,10 @@ function Footer() {
 							fontSize: { xs: titleFontSizeMobile.h3, sm: titleFontSizeDesktop.h3 },
 						}}
 					>
-						Klinika Mecharcovz
+						Klinika
 					</Typography>
 					<Typography variant='body2' className='inter' sx={{ color: colors.text, textAlign: 'center' }}>
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, natus. Corporis rerum expedita
-						eligendi sit enim aut sunt sequi error, quis nostrum, optio excepturi est distinctio magni
-						tempore necessitatibus sint.
+					Disclaimer: The content of this project does not constitute legal, professional, academic, or any other type of advice. Any reliance you place on the information provided is therefore strictly at your own risk. References to any specific products, services, organizations, or third-party websites are provided for informational purposes only and do not constitute endorsements or recommendations. This is an academic project and it may contain links to external websites or resources over which we have no control. We are not responsible for the content, availability, or accuracy of these external resources.
 					</Typography>
 				</Stack>
 
@@ -84,7 +82,7 @@ function Footer() {
 						</Link>
 					</Stack>
 					<Typography variant='body2' className='inter' sx={{ color: colors.text }}>
-						©2023 Klinika Mecharcovz - All rights reserved
+						©2023 Klinika - All rights reserved
 					</Typography>
 				</Stack>
 			</Container>
