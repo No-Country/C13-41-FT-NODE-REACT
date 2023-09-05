@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: 'specialtyId',
         as: 'specialties', // This sets an alias for the association
       })
+      Medic.hasOne(models.VacationDate, {
+        foreignKey: 'medicId', // This is the foreign key in the VacationDate table that links to the Medic table
+        as: 'vacationDate', // This sets an alias for the association
+      });
     }
   }
   Medic.init({
