@@ -4,13 +4,13 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Specialty extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Specialty.belongsToMany(models.Medic, {
+        through: 'MedicSpecialty', // Name of the junction table
+        foreignKey: 'specialtyId',
+        otherKey: 'medicId',
+        as: 'medics', // This sets an alias for the association
+      });
     }
   }
   Specialty.init({

@@ -3,28 +3,45 @@ import React, { useState, useEffect } from 'react';
 import BasicForm from '../../../../Components/BasicForm';
 import { patientSchema } from '../validations/userPacient';
 import { Form, Formik } from 'formik';
-import { Button, Snackbar, Alert } from '@mui/material';
+import { Button, Snackbar, Alert, colors } from '@mui/material';
 import { initialValues } from '../validations/initialValuesPatient';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import FormAlerts from '../../../../Components/FormAlerts';
+import '@fontsource/poppins';
 import { useRouter } from 'next/navigation';
+<<<<<<< HEAD
+
+=======
+import { titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import { GridColumnMenuContainer } from '@mui/x-data-grid';
+>>>>>>> dev
 export default function PacientSingUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
-	const [message, setMessage] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
+	const [redirecting, setRedirecting] = useState(false);
 
 	const { push } = useRouter();
-	const shouldRedirect = successSignup && !message;
 
 	useEffect(() => {
-		if (shouldRedirect) {
-			push('/sign-in');
+		if (successSignup) {
+			setTimeout(() => {
+				push('/sign-in');
+			}, 5000);
 		}
-	}, [shouldRedirect]);
+	}, [successSignup]);
+
 	return (
-		<Container>
-			<Typography variant='h3' mt={4} mb={4}>
-				Register
+		<Container sx={{ paddingY: 4 }}>
+			<Typography
+				variant='h1'
+				fontSize={{ xs: titleFontSizeMobile.h1, md: titleFontSizeDesktop.h1 }}
+				color={colors.text}
+				fontWeight={700}
+				className='inter'
+			>
+				Register as patient
 			</Typography>
 			<Formik
 				initialValues={initialValues}
@@ -56,15 +73,15 @@ export default function PacientSingUp() {
 						setSuccessSignup(true);
 						setTimeout(() => {
 							setSuccessSignup(false);
-							setMessage(true);
+							setRedirecting(true);
 							setTimeout(() => {
-								setMessage(false);
+								setRedirecting(false);
 							}, 2000);
 						}, 3000);
 
 						formikHelpers.resetForm();
 					} catch (error) {
-						console.log(error);
+						setErrorMessage(error.error);
 						setErrorSignup(true);
 						setTimeout(() => {
 							setErrorSignup(false);
@@ -75,45 +92,38 @@ export default function PacientSingUp() {
 				{({ errors, isValid, touched, dirty }) => (
 					<Form>
 						<BasicForm errors={errors} isValid={isValid} touched={touched} dirty={dirty} />
-						<Button type='submit' variant='contained' size='large' disabled={!dirty || !isValid}>
+						<Button
+							type='submit'
+							variant='contained'
+							className='inter'
+							sx={{
+								color: 'white',
+								display: 'block',
+								textTransform: 'none',
+								fontWeight: '500',
+								backgroundColor: colors.buttonIcon,
+								border: '1px solid',
+								borderColor: colors.buttonIcon,
+								':hover': {
+									backgroundColor: 'transparent',
+									borderColor: colors.buttonIcon,
+									color: colors.buttonIcon,
+								},
+							}}
+							size='large'
+							disabled={!dirty || !isValid}
+						>
 							Create my account
 						</Button>
 					</Form>
 				)}
 			</Formik>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={successSignup}
-				autoHideDuration={3000}
-				message='Account created successfully'
-				onClose={() => {}}
-			>
-				<Alert severity='success' sx={{ width: '100%' }}>
-					Account created
-				</Alert>
-			</Snackbar>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={errorSignup}
-				autoHideDuration={3000}
-				message='Error creating account'
-				onClose={() => {}}
-			>
-				<Alert severity='error' sx={{ width: '100%' }}>
-					Error creating account
-				</Alert>
-			</Snackbar>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={message}
-				autoHideDuration={3000}
-				message='Redirecting to login'
-				onClose={() => {}}
-			>
-				<Alert severity='info' sx={{ width: '100%' }}>
-					Redirecting to login
-				</Alert>
-			</Snackbar>
+			<FormAlerts
+				successSignup={successSignup}
+				errorSignup={errorSignup}
+				redirecting={redirecting}
+				errorMessage={errorMessage}
+			/>
 		</Container>
 	);
 }

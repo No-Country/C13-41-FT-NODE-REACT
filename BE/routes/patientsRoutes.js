@@ -5,14 +5,16 @@ const {
   createPatient,
   editPatient,
   deletePatient,
-  getPatient
+  getPatient,
+  changePasswordPatient
 } = require("../controllers/Patient/index.js");
 
 const {verifyJWT} = require('../middlewares/jwt.js')
 
 router.post("/",createPatient);
-router.put("/",verifyJWT,editPatient);
-router.delete("",verifyJWT,deletePatient);
-router.get("",verifyJWT,getPatient);
+router.put("/", verifyJWT,editPatient);
+router.put("/changepwd",changePasswordPatient);
+router.delete("", verifyJWT,deletePatient);
+router.get("", verifyJWT,getPatient);
 
 module.exports = router;

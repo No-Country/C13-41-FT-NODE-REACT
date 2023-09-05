@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import styled from '@emotion/styled';
-import { ColorsKlinik } from '@/app/colors';
+import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 
 const CardContainer = styled ("div") ({
 
-    height: "300px",
+    height: "250px",
     width: "330px",
     display: "flex",
     flexDirection: "column",
@@ -12,41 +12,28 @@ const CardContainer = styled ("div") ({
     backgroundColor: "whitesmoke",
     borderRadius: "5px",
     alignItems: "center",
-
 });
 
-const CardIcon = styled ("img") ({
 
-    height: "50px",
-    width: "50px",
-    userSelect: "none",
-
-});
-
-const Title = styled ("h1") ({
+const Author = styled ("h1") ({
 
     fontSize: "40px",
-    color: `${ColorsKlinik.text}`,
+    color: `${colors.text}`,
     fontWeight: "400",
 
 });
 
-const Text = styled ("p") ({
-
-    fontSize: "14px",
-    color: `${ColorsKlinik.text}`,
-    textAlign: "center",
-
+const Text = styled('p')({
+	fontSize: '14px',
+	color: `${colors.text}`,
+	textAlign: 'center',
 });
 
-const PersonContainer = styled ("div") ({
-
-    display: "flex",
-    flexDirection: "row",
-    gap: "10px",
-    justifyContent: "center",
-
-
+const PersonContainer = styled('div')({
+	display: 'flex',
+	flexDirection: 'row',
+	gap: '10px',
+	justifyContent: 'center',
 });
 
 
@@ -57,8 +44,7 @@ function ReviewCard (props) {
     
     <CardContainer>
         <PersonContainer>
-            <CardIcon draggable="false" src={props.img}/>
-            <Title>{props.title}</Title>
+            <Author>{props.author}</Author>
         </PersonContainer>
         <Text>{props.description}</Text>
     </CardContainer>
