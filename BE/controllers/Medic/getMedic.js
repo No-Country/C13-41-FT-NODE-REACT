@@ -1,4 +1,4 @@
-const { Medic } = require('../../database/models')
+const { Medic,Specialty } = require('../../database/models')
 
 // TODO: Cambiar con middleware de atenticación
 const getMedic = async (req, res) => {
@@ -10,9 +10,13 @@ const getMedic = async (req, res) => {
       (await Medic.findOne({
         where: {
           email: email
-        }
+        },include: {
+          model: Specialty,
+          as: 'specialties'}
       }))
-      : await Medic.findAll()
+      : await Medic.findAll({include: {
+        model: Specialty,
+        as: 'specialties'},})
 
 
     return res.status(200).json({ message: 'Medic data', data: { medic } })
