@@ -13,8 +13,10 @@ import {
 } from '@mui/icons-material';
 import { fakeComments } from './fakeComments';
 import CommentCard from './CommentCard';
+import CommentInput from './CommentInput';
 const PublicDoctorProfilePage = () => {
 	const { userData } = useAuth();
+
 	return (
 		<Container sx={{ paddingY: 4, minHeight: '100vh' }}>
 			<Grid container spacing={4}>
@@ -138,6 +140,7 @@ const PublicDoctorProfilePage = () => {
 						>
 							Comentarios ({fakeComments.length})
 						</Typography>
+						<CommentInput />
 						{fakeComments.length > 0 ? (
 							fakeComments.map(comment => {
 								return <CommentCard comment={comment} />;
