@@ -16,6 +16,10 @@ const ServicesCard = ({ serviceLabel, serviceColor, serviceIcon }) => {
 				width: '10rem',
 				backgroundColor: colors.cardBackground,
 				borderRadius: '0.5rem',
+				transition: 'all 0.3s',
+				':hover': {
+					borderBottomRightRadius: '2rem',
+				},
 			}}
 		>
 			<Box
