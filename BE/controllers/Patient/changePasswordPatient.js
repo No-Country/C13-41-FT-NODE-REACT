@@ -1,17 +1,26 @@
 const bcrypt = require("bcrypt");
 const { Patient } = require("../../database/models");
+const {sendEmail} = require('../Email/sendEmail')
+const {faker} = require('@faker-js/faker')
 
 // TODO: Cambiar con middleware de atenticación
 const changePasswordPatient = async (req, res) => {
   try {
 
-    const { email, password } = req.body
+    const { email } = req.body
 
-    if(!email || !password)
+    if(!email)
     {
-      throw new Error("Must contain email and password")
+      throw new Error("Must contain email")
     }
       
+    const password = faker.internet.password(
+    {
+      length: 10,
+      memorable: true,
+      pattern: /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&_-])[A-Za-z\d@$!%?&_-]{8,}$/
+    })
+    
     const hashedPwd = await bcrypt.hash(password, 10)
 
     const updatedPatient = await Patient.update(
@@ -36,10 +45,16 @@ const changePasswordPatient = async (req, res) => {
         },
       }
     );
+    
+    const emailSubject = 'Password reset (Klinika Mecharcovz)'
 
-    return res
-      .status(200)
-      .json({ data:{patient},message: "Patient Updated" });
+    const emailBody = `<h1>Your new password is: ${password}</h1>,
+    
+    Best regards,
+    Klinika Mercharcovz`;
+    
+    return sendEmail(res, email, emailSubject, emailBody, 'Email notification for password reset sent')
+
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Edit Patient" });
   }
