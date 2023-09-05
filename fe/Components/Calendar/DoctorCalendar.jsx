@@ -9,21 +9,21 @@ import { Card } from '@mui/material';
 import addDays from 'date-fns/addDays';
 export default function DoctorCalendar(props) {
   const today = new Date();
-  const {values, setValues} = props;
+  const {vacationDays, setVacationDays} = props;
   const minDay = addDays(today, 5)
   const handleDeleteDate = (id) => {
-    const newValues = values.filter((value) => {
+    const newVacationDays = vacationDays.filter((value) => {
       return value.id !== id;
     })
-    setValues(newValues)
+    setVacationDays(newVacationDays)
   }
   const handleChooseDate = (newValue) => {
     const valueToString = newValue.toString().slice(0,16)
-    const found = values.find((value) => value.title === valueToString)
+    const found = vacationDays.find((value) => value.title === valueToString)
     if(found === undefined){
       
-      const newCard = {id: values.length + 1, title: valueToString}
-      setValues([...values, newCard ]);
+      const newCard = {id: vacationDays.length + 1, title: valueToString}
+      setVacationDays([...vacationDays, newCard ]);
     }
   }
 
@@ -39,7 +39,7 @@ export default function DoctorCalendar(props) {
 
       </Grid>
       <Grid id='cardsContainer' item md={6}>
-        {values.map((value) => (
+        {vacationDays.map((value) => (
                   <Card sx={{margin: 5}}>
                   <CardHeader
                     titleTypographyProps={{variant:'h7' , color: colors.text } }
