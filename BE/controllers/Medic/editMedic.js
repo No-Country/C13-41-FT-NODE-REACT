@@ -6,7 +6,6 @@ const editMedic = async (req, res) => {
   try {
 
     const { email, password } = req.body
-    console.log(req.body)
     if(!email)
     {
       throw new Error("Must contain email")
