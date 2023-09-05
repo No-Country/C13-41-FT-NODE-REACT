@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { Medic } = require("../../database/models");
 const {sendEmail} = require('../Email/sendEmail')
-const generatePassword = require('../../helpers/passwordGenerator')
+const {faker} = require('@faker-js/faker')
 
 // TODO: Cambiar con middleware de atenticación
 const changePasswordMedic = async (req, res) => {
@@ -14,7 +14,13 @@ const changePasswordMedic = async (req, res) => {
       throw new Error("Must contain email")
     }
     
-    const password = generatePassword()
+    const password = faker.internet.password(
+    {
+      length: 10,
+      memorable: true,
+      pattern: /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&_-])[A-Za-z\d@$!%?&_-]{8,}$/
+    })
+
     const hashedPwd = await bcrypt.hash(password, 10)
 
     const updatedMedic = await Medic.update(
