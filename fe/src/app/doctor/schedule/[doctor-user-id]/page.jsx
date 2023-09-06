@@ -90,29 +90,37 @@ const ScheduleDoctor = () => {
     let scheduleChoosed = []; 
     schedule.map((s) => {
       if(s.selected){
-        scheduleChoosed.push({dia: s.dia, franja: s.franja})
+        const [horaInicio, horaFinal] = s.franja.split('-')
+        scheduleChoosed.push({day: s.dia, 
+          initialHour: horaInicio.trim(), 
+          finalHour: horaFinal.trim(), 
+          status: s.selected, 
+          duaration: 60,
+          medicId: '53822488-cc1f-43ad-ac56-e57e3bb1fb90'
+        })
       }
     } )
-    console.log(scheduleChoosed);
-    console.log(vacationDays)
-    // try {
-    //   const response = await fetch('https://mecharcovz-be.onrender.com/', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(userData),
-    //   });
 
-    //   const data = await response.json();
-    //   console.log(data);
-    // } catch (error) {
-    //   console.log(error);
-    //   setErrorSignup(true);
-    //   setTimeout(() => {
-    //     setErrorSignup(false);
-    //   }, 5000);
-    // }
+    // console.log(scheduleChoosed);
+    // console.log(vacationDays)
+    try {
+      const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=53822488-cc1f-43ad-ac56-e57e3bb1fb90', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(scheduleChoosed),
+      });
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      // setErrorSignup(true);
+      // setTimeout(() => {
+      //   setErrorSignup(false);
+      // }, 5000);
+    }
   }
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
