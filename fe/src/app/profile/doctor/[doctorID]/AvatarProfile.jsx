@@ -1,8 +1,12 @@
 'use client';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
-import { Avatar, Box, Container, Stack, Typography } from '@mui/material';
+import { Avatar, Stack, Typography } from '@mui/material';
 
-const AvatarProfile = ({ userData }) => {
+const AvatarProfile = ({ doctorData }) => {
+	console.log(doctorData);
+
+	if (!doctorData) return null;
+
 	return (
 		<Stack
 			direction={{ xs: 'column', sm: 'row' }}
@@ -17,8 +21,8 @@ const AvatarProfile = ({ userData }) => {
 					fontSize: { xs: '3rem', sm: '3rem' },
 					fontWeight: 500,
 				}}
-				alt={userData && userData.fullname}
-				src={userData && userData.avatar}
+				alt={doctorData && doctorData.fullname}
+				src={doctorData && doctorData.avatar}
 				imgProps={{
 					style: {
 						objectFit: 'cover',
@@ -27,7 +31,7 @@ const AvatarProfile = ({ userData }) => {
 					},
 				}}
 			>
-				{userData && userData.fullname.charAt(0).toUpperCase()}
+				{doctorData?.fullname?.charAt(0).toUpperCase()}
 			</Avatar>
 			<Stack direction={'column'} spacing={1} alignItems={{ xs: 'center', sm: 'start' }}>
 				<Typography
@@ -40,7 +44,7 @@ const AvatarProfile = ({ userData }) => {
 						fontSize: { xs: titleFontSizeMobile.h1, sm: titleFontSizeDesktop.h1 },
 					}}
 				>
-					Dr. {userData && userData.fullname}
+					{doctorData?.fullname}
 				</Typography>
 				<Typography
 					className='inter'
@@ -52,7 +56,7 @@ const AvatarProfile = ({ userData }) => {
 						fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
 					}}
 				>
-					{userData?.speciality ? userData.speciality : 'Clinic'}
+					{doctorData?.specialties[0]?.name ? doctorData.specialties[0].name : 'General Practitioner'}
 				</Typography>
 			</Stack>
 		</Stack>

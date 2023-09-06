@@ -1,11 +1,10 @@
 'use client';
 import { useAuth } from '@/contexts/Auth.context';
-import { Avatar, Box, Card, Chip, Container, Grid, Stack, Typography } from '@mui/material';
+import { Box, Card, Chip, Container, Grid, Stack, Typography } from '@mui/material';
 import AvatarProfile from './AvatarProfile';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import {
 	ChatBubbleRounded,
-	ChatRounded,
 	EmailOutlined,
 	Payment,
 	PhoneAndroidOutlined,
@@ -15,16 +14,30 @@ import {
 import { fakeComments } from './fakeComments';
 import CommentCard from './CommentCard';
 import CommentInput from './CommentInput';
+import { useEffect, useState } from 'react';
+import { getSingleDoctor } from '@/lib/getSingleDoctor';
 const PublicDoctorProfilePage = ({ params }) => {
+	const [doctorData, setDoctorData] = useState();
 	const doctorID = params.doctorID;
+	if (!doctorID) return;
+
 	const { userData } = useAuth();
+
+	const fetchDoctorData = async () => {
+		const doctorData = await getSingleDoctor(doctorID);
+		setDoctorData(doctorData.data.medic);
+	};
+
+	useEffect(() => {
+		fetchDoctorData();
+	}, []);
 
 	return (
 		<Container sx={{ paddingY: 4, minHeight: '100vh' }}>
 			<Grid container spacing={4}>
 				<Grid item xs={12} sm={6}>
 					<Stack direction={'column'} spacing={4}>
-						<AvatarProfile userData={userData} />
+						<AvatarProfile doctorData={doctorData} />
 						<Stack
 							direction={'row'}
 							spacing={1}
@@ -69,7 +82,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 						<Stack direction={'row'} spacing={1} justifyContent={'start'} alignItems={'center'}>
 							<PlaceOutlined sx={{ color: colors.locationIcon }} />
 							<Typography variant='body2' className='inter' color={colors.text}>
-								{userData?.country}
+								{doctorData?.country}
 							</Typography>
 						</Stack>
 						<Stack direction={'column'} spacing={1} justifyContent={'start'}>
@@ -125,7 +138,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 								className='inter'
 								fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 							>
-								{userData?.resume ? userData.resume : 'Resume not provided yet.'}
+								{doctorData?.resume ? doctorData.resume : 'Resume not provided yet.'}
 							</Typography>
 						</Stack>
 						<Stack direction={'column'} spacing={1} justifyContent={'start'}>
@@ -147,10 +160,10 @@ const PublicDoctorProfilePage = ({ params }) => {
 									className='inter'
 									fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 								>
-									{userData && userData.email}
+									{doctorData && doctorData.email}
 								</Typography>
 							</Stack>
-							{userData && userData.phone && (
+							{doctorData && doctorData.phone && (
 								<Stack direction={'row'} spacing={2} justifyContent={'start'} alignItems={'center'}>
 									<PhoneAndroidOutlined sx={{ color: colors.buttonIcon }} />
 									<Typography
@@ -160,7 +173,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 										className='inter'
 										fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 									>
-										{userData.phone}
+										{doctorData.phone}
 									</Typography>
 								</Stack>
 							)}
@@ -178,10 +191,10 @@ const PublicDoctorProfilePage = ({ params }) => {
 						>
 							Comentarios ({fakeComments.length})
 						</Typography>
-						<CommentInput />
+						{userData?.email !== doctorData?.email && <CommentInput />}
 						{fakeComments.length > 0 ? (
-							fakeComments.map(comment => {
-								return <CommentCard comment={comment} />;
+							fakeComments.map((comment, idx) => {
+								return <CommentCard key={idx} comment={comment} />;
 							})
 						) : (
 							<Chip
