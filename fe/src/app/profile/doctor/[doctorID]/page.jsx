@@ -7,6 +7,7 @@ import {
 	ChatBubbleRounded,
 	ChatRounded,
 	EmailOutlined,
+	Payment,
 	PhoneAndroidOutlined,
 	PlaceOutlined,
 	Videocam,
@@ -14,7 +15,8 @@ import {
 import { fakeComments } from './fakeComments';
 import CommentCard from './CommentCard';
 import CommentInput from './CommentInput';
-const PublicDoctorProfilePage = () => {
+const PublicDoctorProfilePage = ({ params }) => {
+	const doctorID = params.doctorID;
 	const { userData } = useAuth();
 
 	return (
@@ -69,6 +71,42 @@ const PublicDoctorProfilePage = () => {
 							<Typography variant='body2' className='inter' color={colors.text}>
 								{userData?.country}
 							</Typography>
+						</Stack>
+						<Stack direction={'column'} spacing={1} justifyContent={'start'}>
+							<Typography
+								variant={'h4'}
+								color={colors.text}
+								fontWeight={600}
+								className='inter'
+								fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
+							>
+								Info
+							</Typography>
+							<Stack direction={'row'} spacing={2} justifyContent={'start'} alignItems={'center'}>
+								<Card
+									sx={{
+										width: '10rem',
+										height: '7.5rem',
+										backgroundColor: colors.cardBackground,
+										borderRadius: '0.5rem',
+										boxShadow: 'none',
+										padding: '1rem',
+									}}
+								>
+									<Stack direction={'row'} spacing={1} alignItems={'center'}>
+										<Payment sx={{ color: colors.profileIcon }} fontSize='medium' />
+										<Typography
+											variant={'h6'}
+											color={colors.text}
+											fontWeight={500}
+											className='inter'
+											fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}
+										>
+											Price
+										</Typography>
+									</Stack>
+								</Card>
+							</Stack>
 						</Stack>
 						<Stack direction={'column'} spacing={1} justifyContent={'start'}>
 							<Typography
