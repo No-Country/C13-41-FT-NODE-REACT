@@ -13,7 +13,21 @@ import {
 import { Edit, Save } from '@mui/icons-material';
 import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import Button from '@mui/material';
+import styled from '@emotion/styled';
+
+const VisuallyHiddenInput = styled('input')`
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  white-space: nowrap;
+  width: 1px;
+`;
 
 async function getSpecialty () {
 
@@ -189,6 +203,7 @@ function Details({
 							/>
 						</Stack>
 					</Grid>
+
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>Telephone Number</label>
@@ -232,6 +247,7 @@ function Details({
 							</FormControl>
 						</Stack>
 					</Grid>
+
 				</Grid>
 			)}
 		</Container>
