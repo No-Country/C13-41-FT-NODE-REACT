@@ -37,14 +37,6 @@ const changePasswordPatient = async (req, res) => {
     if (updatedPatient == 0) {
       throw new Error("Patient not found")
     }
-
-    const patient = await Patient.findOne(
-      {
-        where: {
-          email
-        },
-      }
-    );
     
     const emailSubject = 'Password reset (Klinika Mecharcovz)'
 

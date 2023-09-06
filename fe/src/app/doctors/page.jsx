@@ -3,16 +3,11 @@ import { useFilterContext } from '@/contexts/Filters.context';
 import {
 	Box,
 	Button,
-	Card,
-	CardActions,
-	CardContent,
-	CardHeader,
 	Container,
 	Divider,
 	Grid,
 	InputAdornment,
 	MenuItem,
-	Select,
 	TextField,
 	Typography,
 } from '@mui/material';

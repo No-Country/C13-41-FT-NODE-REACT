@@ -37,15 +37,6 @@ const changePasswordMedic = async (req, res) => {
     if (updatedMedic == 0) {
       throw new Error("Medic not found")
     }
-
-    const MedicFound = await Medic.findOne(
-      {
-        where: {
-          email
-        },
-      }
-    );
-
     const emailSubject = 'Password reset (Klinika Mecharcovz)'
 
     const emailBody = `<h1>Your new password is: ${password}</h1>,

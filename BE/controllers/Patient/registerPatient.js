@@ -24,7 +24,7 @@ const createPatient = async (req, res) => {
        throw new Error('Patient duplicated')
       }
   
-      const newPatient = await Patient.create({
+      await Patient.create({
         fullname,
         password:hashedPwd,
         email,
