@@ -65,6 +65,7 @@ const SignInPage = () => {
 
 		try {
 			let endpoint = '';
+
 			if (data.user === 'patient') {
 				endpoint = 'https://mecharcovz-be.onrender.com/api/v1/auth/patient';
 			} else {
@@ -78,9 +79,10 @@ const SignInPage = () => {
 				},
 				body: JSON.stringify(userLogin),
 			});
+
 			const dataUser = await response.json();
-			console.log(dataUser);
-			if (response.status === 201) {
+
+			if (response.ok) {
 				const decoded = jwtDecode(dataUser.data.token);
 
 				// Almaceno el token y los datos en un estado y en el local storage por si cierra la sesión

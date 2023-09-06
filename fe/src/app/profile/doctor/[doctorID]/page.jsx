@@ -146,7 +146,14 @@ const PublicDoctorProfilePage = () => {
 								return <CommentCard comment={comment} />;
 							})
 						) : (
-							<Chip label='This medic has no comment yet' />
+							<Chip
+								label='This medic has no comment yet'
+								className='inter'
+								sx={{
+									color: colors.text,
+									fontSize: { xs: titleFontSizeMobile.body, sm: titleFontSizeMobile.body },
+								}}
+							/>
 						)}
 					</Stack>
 				</Grid>
