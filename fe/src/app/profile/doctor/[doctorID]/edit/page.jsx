@@ -16,6 +16,7 @@ const ProfileContainer = styled('main')({
 });
 
 function DoctorProfile({ params }) {
+
 	const [editResume, setEditResume] = useState(false);
 	const [resume, setResume] = useState('');
 	const [editProfessionalid, setEditProfessionalid] = useState(false);
@@ -23,7 +24,11 @@ function DoctorProfile({ params }) {
 	const [editNationalId, setEditNationalId] = useState(false);
 	const [nationalId, setNationalId] = useState('');
 	const [avatar, setAvatar] = useState('');
-	const [speciality, setSpeciality] = useState('clinic');
+	const [phone, setPhone] = useState('');
+	const [editPhone, setEditPhone] = useState(false);
+	const [speciality, setSpeciality] = useState('');
+	const [editSocialMedia, setEditSocialMedia] = useState(false);
+	const [socialMedia, setSocialMedia] = useState('https://www.linkedin.com/in/gared-lyon-194b21222/');
 
 	// Snackbar
 	const [successUpdate, setSuccessUpdate] = useState(false);
@@ -35,6 +40,8 @@ function DoctorProfile({ params }) {
 			setResume(userData.resume);
 			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
+			setPhone(userData.phone);
+			setSocialMedia(userData.socialmedia);
 		}
 	}, [userData]);
 
@@ -48,6 +55,8 @@ function DoctorProfile({ params }) {
 			nid: nationalId,
 			speciality,
 			avatar,
+			phone,
+			socialMedia,
 		};
 		console.log(data);
 		setSuccessUpdate(true);
@@ -75,6 +84,14 @@ function DoctorProfile({ params }) {
 					setEditProfessionalid={setEditProfessionalid}
 					speciality={speciality}
 					setSpeciality={setSpeciality}
+					phone={phone}
+					setPhone={setPhone}
+					editPhone={editPhone}
+					setEditPhone={setEditPhone}
+					editSocialMedia={editSocialMedia}
+					setEditSocialMedia={setEditSocialMedia}
+					socialMedia={socialMedia}
+					setSocialMedia={setSocialMedia}
 				/>
 				<Container>
 					<Button
