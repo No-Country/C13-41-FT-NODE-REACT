@@ -108,6 +108,7 @@ const ScheduleDoctor = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `bearer ${localStorage.getItem('token')}`,
         },
         body: JSON.stringify(scheduleChoosed),
       });

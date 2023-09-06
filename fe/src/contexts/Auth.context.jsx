@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
 
 	// Cierro sesión y borror el token y los datos del usuario
 	const logout = () => {
-		setToken(null);
+		setToken(null); 
 		setUserData(null);
 
 		localStorage.removeItem('token');
