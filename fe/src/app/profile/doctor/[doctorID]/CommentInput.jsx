@@ -22,10 +22,9 @@ const CommentInput = () => {
 		if (!comment) return;
 		const commentData = {
 			description: comment,
-			patient: {
-				id: userData.id,
-				fullname: userData.fullname,
-			},
+			patientId: userData.id,
+			// id del médico
+			medicId: userData.id,
 		};
 
 		console.log(commentData);

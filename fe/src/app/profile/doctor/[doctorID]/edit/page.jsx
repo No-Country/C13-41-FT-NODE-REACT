@@ -15,7 +15,7 @@ const ProfileContainer = styled('main')({
 	padding: '2rem 0 4rem',
 });
 
-function DoctorProfile() {
+function DoctorProfile({ params }) {
 	const [editResume, setEditResume] = useState(false);
 	const [resume, setResume] = useState('');
 	const [editProfessionalid, setEditProfessionalid] = useState(false);
@@ -24,11 +24,12 @@ function DoctorProfile() {
 	const [nationalId, setNationalId] = useState('');
 	const [avatar, setAvatar] = useState('');
 	const [speciality, setSpeciality] = useState('clinic');
+
 	// Snackbar
 	const [successUpdate, setSuccessUpdate] = useState(false);
 
-	const { userData } = useAuth();
-
+	const { userData, token } = useAuth();
+	console.log(token);
 	useEffect(() => {
 		if (userData) {
 			setResume(userData.resume);

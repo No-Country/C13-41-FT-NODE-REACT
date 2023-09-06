@@ -65,6 +65,7 @@ const SignInPage = () => {
 
 		try {
 			let endpoint = '';
+
 			if (data.user === 'patient') {
 				endpoint = 'https://mecharcovz-be.onrender.com/api/v1/auth/patient';
 			} else {
@@ -78,32 +79,32 @@ const SignInPage = () => {
 				},
 				body: JSON.stringify(userLogin),
 			});
+
+			if (response?.error) {
+				throw new Error('Credenciales inválidas');
+			}
+
 			const dataUser = await response.json();
-			console.log(dataUser);
-			if (response.status === 201) {
-				const decoded = jwtDecode(dataUser.data.token);
 
-				// Almaceno el token y los datos en un estado y en el local storage por si cierra la sesión
-				if (data.user === 'patient') {
-					login({ token: dataUser.data.token, data: decoded.patient });
-				} else if (data.user === 'doctor') {
-					login({ token: dataUser.data.token, data: decoded.medic });
-				}
-				// Muestro el login exitoso
-				setSuccessSignin(true);
+			const decoded = jwtDecode(dataUser.data.token);
+
+			// Almaceno el token y los datos en un estado y en el local storage por si cierra la sesión
+			if (data.user === 'patient') {
+				login({ token: dataUser.data.token, data: decoded.patient });
+			} else if (data.user === 'doctor') {
+				login({ token: dataUser.data.token, data: decoded.medic });
+			}
+
+			// Muestro el login exitoso
+			setSuccessSignin(true);
+			setTimeout(() => {
+				setSuccessSignin(false);
+				setRedirecting(true);
 				setTimeout(() => {
-					setSuccessSignin(false);
-					setRedirecting(true);
-					setTimeout(() => {
-						setRedirecting(false);
-						push('/home');
-					}, 2000);
+					setRedirecting(false);
+					push('/home');
 				}, 2000);
-			}
-
-			if (response.status === 400) {
-				console.log('error login');
-			}
+			}, 2000);
 		} catch (error) {
 			setErrorMessage(error.error);
 			setErrorSignin(true);
