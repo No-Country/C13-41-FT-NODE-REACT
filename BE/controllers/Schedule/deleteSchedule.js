@@ -3,6 +3,10 @@ const { Schedule } = require("../../database/models");
 const deleteSchedule = async (req, res) => {
   try {
    
+    const { shceduleId} = req.query
+
+    await Schedule.destroy({where:{id:shceduleId}})
+
     return res
       .status(200)
       .json({ message: "Schedule Deleted" });

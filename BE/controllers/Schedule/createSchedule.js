@@ -3,6 +3,12 @@ const { uuid } = require("uuidv4")
 const createSchedule = async (req, res) => {
   try {
     const { day, initialHour, finalHour, type, status, duration, medicId } = req.body
+
+    if (!day || !initialHour || !finalHour || !type || !status || !duration || !medicId) {
+      throw new Error('Body must contain day, initialHour, finalHour, type, status, duration, medicId')
+    }
+
+
     const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     let idSchedule = uuid()
 
