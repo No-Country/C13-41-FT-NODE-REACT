@@ -9,6 +9,7 @@ import {
 	Payment,
 	PhoneAndroidOutlined,
 	PlaceOutlined,
+	Settings,
 	Videocam,
 } from '@mui/icons-material';
 import { fakeComments } from './fakeComments';
@@ -16,6 +17,7 @@ import CommentCard from './CommentCard';
 import CommentInput from './CommentInput';
 import { useEffect, useState } from 'react';
 import { getSingleDoctor } from '@/lib/getSingleDoctor';
+import Link from 'next/link';
 const PublicDoctorProfilePage = ({ params }) => {
 	const [doctorData, setDoctorData] = useState();
 	const doctorID = params.doctorID;
@@ -78,6 +80,28 @@ const PublicDoctorProfilePage = ({ params }) => {
 									fontSize='medium'
 								/>
 							</Box>
+							{userData?.id === doctorData?.id && (
+								<Link href={`/profile/doctor/${userData?.email}/edit`}>
+									<Box
+										sx={{
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
+											backgroundColor: colors.cardBackground,
+											borderRadius: '0.5rem',
+											padding: '0.5rem',
+											cursor: 'pointer',
+										}}
+									>
+										<Settings
+											sx={{
+												color: colors.profileIcon,
+											}}
+											fontSize='medium'
+										/>
+									</Box>
+								</Link>
+							)}
 						</Stack>
 						<Stack direction={'row'} spacing={1} justifyContent={'start'} alignItems={'center'}>
 							<PlaceOutlined sx={{ color: colors.locationIcon }} />

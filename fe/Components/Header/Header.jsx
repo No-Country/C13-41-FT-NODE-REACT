@@ -105,42 +105,50 @@ const Header = () => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							<MenuItem onClick={() => (token ? push('/home') : push('/sign-in'))}>
-								<Typography
-									textAlign='center'
-									className='inter'
-									sx={{ color: colors.text, textTransform: 'none' }}
-								>
-									Home
-								</Typography>
-							</MenuItem>
-							<MenuItem onClick={() => (token ? push('/doctors') : push('/sign-in'))}>
-								<Typography
-									textAlign='center'
-									className='inter'
-									sx={{ color: colors.text, textTransform: 'none' }}
-								>
-									Doctors
-								</Typography>
-							</MenuItem>
-							<MenuItem onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}>
-								<Typography
-									textAlign='center'
-									className='inter'
-									sx={{ color: colors.text, textTransform: 'none' }}
-								>
-									New appointment
-								</Typography>
-							</MenuItem>
-							<MenuItem onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}>
-								<Typography
-									textAlign='center'
-									className='inter'
-									sx={{ color: colors.text, textTransform: 'none' }}
-								>
-									Schedule
-								</Typography>
-							</MenuItem>
+							{/* Verifico que este logueado y tenga los datos de usuario */}
+							{token && userData && (
+								<>
+									<MenuItem onClick={() => (token ? push('/home') : push('/sign-in'))}>
+										<Typography
+											textAlign='center'
+											className='inter'
+											sx={{ color: colors.text, textTransform: 'none' }}
+										>
+											Home
+										</Typography>
+									</MenuItem>
+									<MenuItem onClick={() => (token ? push('/doctors') : push('/sign-in'))}>
+										<Typography
+											textAlign='center'
+											className='inter'
+											sx={{ color: colors.text, textTransform: 'none' }}
+										>
+											Doctors
+										</Typography>
+									</MenuItem>
+									<MenuItem onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}>
+										<Typography
+											textAlign='center'
+											className='inter'
+											sx={{ color: colors.text, textTransform: 'none' }}
+										>
+											New appointment
+										</Typography>
+									</MenuItem>
+									{/* Verifico que sea un médico para mostrar el link al schedule */}
+									{userData.profesionalid && (
+										<MenuItem onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}>
+											<Typography
+												textAlign='center'
+												className='inter'
+												sx={{ color: colors.text, textTransform: 'none' }}
+											>
+												Schedule
+											</Typography>
+										</MenuItem>
+									)}
+								</>
+							)}
 						</Menu>
 					</Box>
 
@@ -166,54 +174,58 @@ const Header = () => {
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						<Button
-							onClick={() => (token ? push('/home') : push('/sign-in'))}
-							sx={{
-								color: colors.text,
-								display: 'block',
-								textTransform: 'none',
-								fontWeight: '600',
-							}}
-							className='inter'
-						>
-							Home
-						</Button>
-						<Button
-							onClick={() => (token ? push('/doctors') : push('/sign-in'))}
-							sx={{
-								color: colors.text,
-								display: 'block',
-								textTransform: 'none',
-								fontWeight: '600',
-							}}
-							className='inter'
-						>
-							Doctors
-						</Button>
-						<Button
-							onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}
-							sx={{
-								color: colors.text,
-								display: 'block',
-								textTransform: 'none',
-								fontWeight: '600',
-							}}
-							className='inter'
-						>
-							New appointment
-						</Button>
-						<Button
-							onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}
-							sx={{
-								color: colors.text,
-								display: 'block',
-								textTransform: 'none',
-								fontWeight: '600',
-							}}
-							className='inter'
-						>
-							Schedule
-						</Button>
+						{token && userData && (
+							<>
+								<Button
+									onClick={() => (token ? push('/home') : push('/sign-in'))}
+									sx={{
+										color: colors.text,
+										display: 'block',
+										textTransform: 'none',
+										fontWeight: '600',
+									}}
+									className='inter'
+								>
+									Home
+								</Button>
+								<Button
+									onClick={() => (token ? push('/doctors') : push('/sign-in'))}
+									sx={{
+										color: colors.text,
+										display: 'block',
+										textTransform: 'none',
+										fontWeight: '600',
+									}}
+									className='inter'
+								>
+									Doctors
+								</Button>
+								<Button
+									onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}
+									sx={{
+										color: colors.text,
+										display: 'block',
+										textTransform: 'none',
+										fontWeight: '600',
+									}}
+									className='inter'
+								>
+									New appointment
+								</Button>
+								<Button
+									onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}
+									sx={{
+										color: colors.text,
+										display: 'block',
+										textTransform: 'none',
+										fontWeight: '600',
+									}}
+									className='inter'
+								>
+									Schedule
+								</Button>
+							</>
+						)}
 					</Box>
 
 					{token ? (
@@ -248,8 +260,15 @@ const Header = () => {
 								onClose={handleCloseUserMenu}
 								disableScrollLock={true}
 							>
-								{/* Falta agregar una ruta dinámina dependiendo de si es doctor o paciente, o hacer un perfil dinámico */}
-								<MenuItem onClick={() => userData && push('/profile/doctor')}>
+								<MenuItem
+									onClick={() => {
+										if (userData && userData.profesionalid) {
+											push(`/profile/doctor/${userData.email}`);
+										} else {
+											push('/home');
+										}
+									}}
+								>
 									<Typography
 										textAlign='center'
 										className='inter'
