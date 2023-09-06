@@ -6,9 +6,9 @@ const bcrypt = require('bcrypt')
 const createPatient = async (req, res) => {
     try {
   
-      const { fullname, password, email, country, gender, birthdate, nid } = req.body
+      const { fullname, password, email, country, gender, birthdate, nid, phone } = req.body
   
-      if (!fullname || !password || !email || !country || !gender || !birthdate || !nid) {
+      if (!fullname || !password || !email || !country || !gender || !birthdate || !nid || !phone) {
         throw new Error('All fields are required.')
       }
   
@@ -31,7 +31,8 @@ const createPatient = async (req, res) => {
         country,
         nid,
         gender,
-        birthdate
+        birthdate,
+        phone
       });
 
       const emailSubject = 'Welcome to Klinika Merchacovz'
