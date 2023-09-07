@@ -5,7 +5,7 @@ const editService = async (req, res) => {
   
       const { serviceId, description, price } = req.body
   
-      if (!serviceId || !description && !price) throw new Error('Query must contain serviceId')
+      if (!serviceId || !description && !price) throw new Error('Query must contain serviceId and description or price')
 
       let updateData = {};
 
