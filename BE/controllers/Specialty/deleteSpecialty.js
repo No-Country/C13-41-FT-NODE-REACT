@@ -6,15 +6,11 @@ const deleteSpecialty = async (req, res) => {
 
     if (!id) throw new Error("Id is required")
 
-    const deletedSpecialty = await Specialty.destroy({
+    await Specialty.destroy({
       where: {
         id: id
       }
     });
-
-    if (deletedSpecialty == 0) {
-      throw new Error("Specialty not found")
-    }
 
     return res
       .status(200)
