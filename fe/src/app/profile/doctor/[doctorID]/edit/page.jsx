@@ -6,6 +6,7 @@ import Details from './Details';
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/Auth.context';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import { getSpecialty } from '@/lib/getSpecialty';
 
 const ProfileContainer = styled('main')({
 	display: 'flex',
@@ -29,11 +30,9 @@ function DoctorProfile() {
 	const [socialMedia, setSocialMedia] = useState(
 		'https://www.linkedin.com/in/gared-lyon-194b21222/',
 	);
-
-	const [speciality, setSpeciality] = useState('clinic');
+	const [speciality, setSpeciality] = useState('Pediatrics');
 	// Snackbar
 	const [successUpdate, setSuccessUpdate] = useState(false);
-
 	const { userData, updateUserData } = useAuth();
 
 	useEffect(() => {

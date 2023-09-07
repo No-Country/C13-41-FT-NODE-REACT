@@ -22,6 +22,7 @@ import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import { useAuth } from '@/contexts/Auth.context';
 import SigninFormAlerts from '../../../Components/SigninFormAlerts';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import jwtDecode from 'jwt-decode';
 
 const SignInPage = () => {
 	const [successSignin, setSuccessSignin] = useState(false);
@@ -106,6 +107,7 @@ const SignInPage = () => {
 				}, 2000);
 			}, 2000);
 		} catch (error) {
+			console.log(error);
 			setErrorMessage(error.error);
 			setErrorSignin(true);
 			setTimeout(() => {

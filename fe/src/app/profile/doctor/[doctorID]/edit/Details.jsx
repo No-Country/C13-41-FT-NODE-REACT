@@ -13,9 +13,8 @@ import {
 import { Edit, Save } from '@mui/icons-material';
 import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import Button from '@mui/material';
 import styled from '@emotion/styled';
+import { getSpecialty } from '@/lib/getSpecialty';
 
 const VisuallyHiddenInput = styled('input')`
 	clip: rect(0 0 0 0);
@@ -28,19 +27,6 @@ const VisuallyHiddenInput = styled('input')`
 	white-space: nowrap;
 	width: 1px;
 `;
-
-async function getSpecialty() {
-	const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/specialty', {
-		method: 'GET',
-		headers: {
-			Authorization: `bearer ${localStorage.getItem('token')}`,
-		},
-	});
-	if (!response) {
-		throw new Error();
-	}
-	return response.json();
-}
 
 function Details({
 	editResume,
@@ -66,13 +52,13 @@ function Details({
 	speciality,
 	setSpeciality,
 }) {
+	const [specialties, SetSpecialties] = useState([]);
 	const { userData } = useAuth();
-
 	const fetchSpecialties = async () => {
 		const data = await getSpecialty();
 		SetSpecialties(data.data.specialties);
 	};
-	const [specialties, SetSpecialties] = useState([]);
+
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
