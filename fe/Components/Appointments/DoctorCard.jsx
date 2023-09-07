@@ -29,8 +29,10 @@ const DoctorCard = ({ doctor }) => {
 				<Avatar
 					variant='circular'
 					sizes='large'
-					sx={{ backgroundColor: colors.categoryIcons.vaccines }}
-					src={avatar}
+					sx={{ backgroundColor: colors.categoryIcons.vaccines, width: '4rem', height: '4rem' }}
+					src={`https://mecharcovz-be.onrender.com/public/uploads/${
+						doctor.profesionalid ? 'avatarmedic' : 'avatarpatient'
+					}/${avatar}`}
 				>
 					{fullname.charAt(0).toUpperCase()}
 				</Avatar>
@@ -52,7 +54,7 @@ const DoctorCard = ({ doctor }) => {
 					color={colors.text}
 					fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 				>
-					{specialties[0]?.name}
+					{specialties[0]?.name ? specialties[0]?.name : 'General Practitioner'}
 				</Typography>
 			</Stack>
 			<Box

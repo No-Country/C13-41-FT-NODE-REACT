@@ -254,15 +254,23 @@ const Header = () => {
 						<Box sx={{ flexGrow: 0 }}>
 							<Tooltip title='Open settings'>
 								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-									{userData ? (
-										userData.avatar ? (
-											<Avatar alt='Remy Sharp' src={userData.avatar} />
-										) : (
-											<Avatar alt='Remy Sharp'>{userData.fullname.charAt(0)}</Avatar>
-										)
-									) : (
-										<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
-									)}
+									{
+										<Avatar
+											alt={userData && userData.fullname}
+											src={`https://mecharcovz-be.onrender.com/public/uploads/${
+												userData.profesionalid ? 'avatarmedic' : 'avatarpatient'
+											}/${userData.avatar}`}
+											imgProps={{
+												style: {
+													objectFit: 'cover',
+													objectPosition: 'center',
+													borderRadius: '50%',
+												},
+											}}
+										>
+											{userData && userData.fullname.charAt(0).toUpperCase()}
+										</Avatar>
+									}
 								</IconButton>
 							</Tooltip>
 							<Menu
