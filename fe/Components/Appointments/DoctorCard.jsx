@@ -2,9 +2,11 @@ import { StarRounded, PlaceOutlined } from '@mui/icons-material';
 import { Avatar, Box, Stack, Typography } from '@mui/material';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import React from 'react';
+import Link from 'next/link';
 
 const DoctorCard = ({ doctor }) => {
-	const { fullname, country, specialty } = doctor;
+	const { fullname, country, specialties, avatar, email } = doctor;
+
 	return (
 		<Box
 			component={'article'}
@@ -21,9 +23,16 @@ const DoctorCard = ({ doctor }) => {
 				borderRadius: '0.5rem',
 			}}
 		>
-			<Avatar variant='circular' sizes='large' sx={{ backgroundColor: colors.categoryIcons.vaccines }}>
-				{fullname.charAt(0).toUpperCase()}
-			</Avatar>
+			<Link href={`/profile/doctor/${email}`}>
+				<Avatar
+					variant='circular'
+					sizes='large'
+					sx={{ backgroundColor: colors.categoryIcons.vaccines }}
+					src={avatar}
+				>
+					{fullname.charAt(0).toUpperCase()}
+				</Avatar>
+			</Link>
 			<Stack direction={'column'} spacing={0}>
 				<Typography
 					variant={'h6'}
@@ -32,7 +41,7 @@ const DoctorCard = ({ doctor }) => {
 					color={colors.text}
 					fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}
 				>
-					Dr. {fullname}
+					{fullname}
 				</Typography>
 				<Typography
 					variant={'body1'}
@@ -41,7 +50,7 @@ const DoctorCard = ({ doctor }) => {
 					color={colors.text}
 					fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 				>
-					{specialty}
+					{specialties[0]?.name}
 				</Typography>
 			</Stack>
 			<Box

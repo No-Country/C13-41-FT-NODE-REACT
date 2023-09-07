@@ -15,8 +15,7 @@ const ProfileContainer = styled('main')({
 	padding: '2rem 0 4rem',
 });
 
-function DoctorProfile({ params }) {
-
+function DoctorProfile() {
 	const [editResume, setEditResume] = useState(false);
 	const [resume, setResume] = useState('');
 	const [editProfessionalid, setEditProfessionalid] = useState(false);
@@ -25,16 +24,15 @@ function DoctorProfile({ params }) {
 	const [nationalId, setNationalId] = useState('');
 	const [avatar, setAvatar] = useState('');
 	const [phone, setPhone] = useState('');
-	const [editPhone, setEditPhone] = useState(false);
-	const [speciality, setSpeciality] = useState('');
 	const [editSocialMedia, setEditSocialMedia] = useState(false);
 	const [socialMedia, setSocialMedia] = useState('https://www.linkedin.com/in/gared-lyon-194b21222/');
 
+	const [speciality, setSpeciality] = useState('clinic');
 	// Snackbar
 	const [successUpdate, setSuccessUpdate] = useState(false);
 
-	const { userData, token } = useAuth();
-	console.log(token);
+	const { userData, updateUserData } = useAuth();
+
 	useEffect(() => {
 		if (userData) {
 			setResume(userData.resume);
@@ -42,27 +40,47 @@ function DoctorProfile({ params }) {
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
 			setSocialMedia(userData.socialmedia);
+			setAvatar(userData.avatar);
 		}
 	}, [userData]);
 
 	const handleUpdate = async () => {
 		if (!professionalid || !nationalId) return;
-
-		const data = {
-			...userData,
+		const newUserData = {
+			email: userData.email,
 			resume: resume,
 			profesionalid: professionalid,
 			nid: nationalId,
-			speciality,
 			avatar,
 			phone,
 			socialMedia,
 		};
-		console.log(data);
-		setSuccessUpdate(true);
-		setTimeout(() => {
-			setSuccessUpdate(false);
-		}, 3000);
+
+		try {
+			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `bearer ${localStorage.getItem('token')}`,
+				},
+				body: JSON.stringify(newUserData),
+			});
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const data = await response.json();
+			console.log(data.data.MedicFound);
+
+			updateUserData(data.data.MedicFound);
+			setSuccessUpdate(true);
+			setTimeout(() => {
+				setSuccessUpdate(false);
+			}, 3000);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
