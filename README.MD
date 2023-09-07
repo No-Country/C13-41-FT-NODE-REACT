@@ -113,7 +113,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Backend</h4>
         </a>
         <a href="https://github.com/miguelbel00">
-          <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/miguelbel00/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -130,7 +130,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Backend</h4>
         </a>
         <a href="https://github.com/gitgonlea">
-          <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/enzo-gonzalez-97t/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -152,7 +152,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Frontend</h4>
         </a>
         <a href="https://github.com/MaximilianoLeonel23">
-          <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/maximiliano-leonel-p%C3%A9rez-8846b826a/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -169,7 +169,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Frontend</h4>
         </a>
         <a href="https://github.com/scarolayton">
-          <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/sergio-eduardo-caro-layton-408969228/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -186,7 +186,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Frontend</h4>
         </a>
         <a href="https://github.com/cric992010">
-          <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/christian-omar-ortiz-salvador-a12114202/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -203,7 +203,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Frontend</h4>
         </a>
         <a href="https://github.com/jjrh92">
-          <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/jjrh92/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
