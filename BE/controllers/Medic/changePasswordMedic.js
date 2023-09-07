@@ -3,7 +3,6 @@ const { Medic } = require("../../database/models");
 const {sendEmail} = require('../Email/sendEmail')
 const {faker} = require('@faker-js/faker')
 
-// TODO: Cambiar con middleware de atenticación
 const changePasswordMedic = async (req, res) => {
   try {
 

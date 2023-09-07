@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Medic.hasMany(models.Comment,{foreignKey: 'medicId', as: 'comments'})
       Medic.hasMany(models.SocialNetwork,{foreignKey: 'medicId', as: 'socialnetworks'})
+      Medic.hasMany(models.Consult,{foreignKey: 'medicId', as: 'consults'})
     }
   }
   Medic.init({

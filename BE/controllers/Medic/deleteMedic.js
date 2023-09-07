@@ -1,6 +1,5 @@
 const { Medic } = require("../../database/models");
 
-// TODO: Cambiar con middleware de atenticación
 const deleteMedic = async (req, res) => {
   try {
     const email = req.query.email;

@@ -10,7 +10,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Consult.belongsTo(models.Medic, {
+        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
+        onDelete: 'CASCADE', // This ensures that if a Medic is deleted, their associated Schedules are also deleted
+      });
+      Consult.belongsTo(models.Patient, {
+        foreignKey: 'patientId', // This is the foreign key in the Schedule table that links to the Medic table
+        onDelete: 'CASCADE', // This ensures that if a Medic is deleted, their associated Schedules are also deleted
+      });
+      Consult.belongsTo(models.Schedule, {
+        foreignKey: 'scheduleId', // This is the foreign key in the Schedule table that links to the Medic table
+        onDelete: 'CASCADE', // This ensures that if a Medic is deleted, their associated Schedules are also deleted
+      });
     }
   }
   Consult.init({
@@ -34,6 +45,12 @@ module.exports = (sequelize, DataTypes) => {
     urlFile: {
       type: DataTypes.TEXT
     },
+    initialHour:{
+      type:DataTypes.STRING
+    },
+    finalHour:{
+      type:DataTypes.STRING
+    }
   }, {
     sequelize,
     modelName: 'Consult',

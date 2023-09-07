@@ -1,7 +1,6 @@
 
 const { Medic } = require("../../database/models");
 
-// TODO: Cambiar con middleware de atenticación
 const editMedic = async (req, res) => {
   try {
 

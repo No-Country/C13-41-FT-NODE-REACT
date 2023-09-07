@@ -1,20 +1,19 @@
 const { Consult } = require("../../database/models");
 
-// TODO: Cambiar con middleware de atenticación
 const editConsult = async (req, res) => {
   try {
-    const { id } = req.body
+    const { consultId } = req.body
 
-    if(!id)
+    if(!consultId)
     {
-      throw new Error("Must contain id")
+      throw new Error("Must contain consultId")
     }
 
     const updatedConsult = await Consult.update(
         req.body,
       {
         where: {
-          id: id,
+          id: consultId,
         },
       }
     );
@@ -23,18 +22,11 @@ const editConsult = async (req, res) => {
       throw new Error("Consult not found")
     }
 
-    const consult = await Consult.findOne(
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
-
+    const consult = await Consult.findByPk(consultId);
 
     return res
       .status(200)
-      .json({ data: { consult }, message: "consult updated" });
+      .json({ data: { consult }, message: "Consult Updated" });
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Edit Consult" });
   }

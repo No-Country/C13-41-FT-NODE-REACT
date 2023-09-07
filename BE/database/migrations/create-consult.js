@@ -28,6 +28,36 @@ module.exports = {
       urlFile: {
         type: Sequelize.TEXT
       },
+      initialHour:{
+        type:Sequelize.STRING
+      },
+      finalHour:{
+        type:Sequelize.STRING
+      },
+      medicId: {
+        type: Sequelize.UUID, // Use UUID data type
+        allowNull: false,
+        references: {
+          model: 'Medics', // This should match the actual table name for the Medic model
+          key: 'id',
+        }
+      },
+      patientId: {
+        type: Sequelize.UUID, // Use UUID data type
+        allowNull: false,
+        references: {
+          model: 'Patients', // This should match the actual table name for the Medic model
+          key: 'id',
+        }
+      },
+      scheduleId: {
+        type: Sequelize.INTEGER, // Use UUID data type
+        allowNull: false,
+        references: {
+          model: 'Schedules', // This should match the actual table name for the Medic model
+          key: 'id',
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
