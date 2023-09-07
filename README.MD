@@ -109,7 +109,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <img width="110" src="https://avatars.githubusercontent.com/u/55055505?v=4"/>
         </a>
         <a href="https://github.com/miguelbel00" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Miguel Beltran | Backend</h4>
+          <h4 style="margin-top: 1rem;">Miguel Beltran</h4>
           <h4 style="margin-top: 1rem;">Backend</h4>
         </a>
         <a href="https://github.com/miguelbel00">
