@@ -33,7 +33,6 @@ const VisuallyHiddenInput = styled('input')({
 
 });
 
-
 function Details({
 	editResume,
 	setEditResume,
@@ -57,6 +56,11 @@ function Details({
 	setSocialMedia,
 	speciality,
 	setSpeciality,
+	selectedFile, 
+	setSelectedFile,
+	isFilePicked, 
+	setIsFilePicked,
+
 }) {
 	const [specialties, SetSpecialties] = useState([]);
 	const { userData } = useAuth();
@@ -68,6 +72,48 @@ function Details({
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
+
+	const handleUploadPDF = async (e) => {
+
+		const file = e.target.files[0];
+		console.log (file);
+
+		const formData = new FormData();
+
+		formData.append("file", file);
+
+		try {
+
+			const response = await fetch(
+
+				'https://mecharcovz-be.onrender.com/api/v1/files?type=pdf&email=test@test.com', 
+
+				// cambiar ruta arriba
+				{
+					headers: {Authorization: `bearer ${localStorage.getItem("token")}`},
+					method: 'POST',
+					body: formData,
+				}
+	
+			)
+
+			if (response.error) {
+
+				throw new Error(response.error);
+	
+			}
+	
+			const data = await response.json();
+	
+			console.log(data)
+
+			
+		} catch (error) {
+
+			console.log (error);
+		}
+
+	};
 
 	return (
 		<Container sx={{ paddingY: 4 }}>
@@ -237,17 +283,14 @@ function Details({
 								component="label"
 								variant="contained"
 								startIcon={<CloudUploadIcon />}
-								href="#file-upload"
 								sx={{display: "flex", justifyContent: "center", alignItems: "center", height: "55px", maxHeight: "100%", backgroundColor: colors.buttonIcon, color: "white", fontWeight: "600", ':hover': {backgroundColor: colors.buttonIcon},}}
 								>
 								Upload PDF
-									<VisuallyHiddenInput type="file" />
+									<VisuallyHiddenInput accept='application/pdf' type='file' onChange={(e) => handleUploadPDF (e)}/>
 								</Button>
 							</FormControl>
 						</Stack>
 					</Grid>
-
-
 
 				</Grid>
 			)}
