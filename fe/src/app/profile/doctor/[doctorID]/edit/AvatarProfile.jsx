@@ -6,7 +6,7 @@ import { useAuth } from '@/contexts/Auth.context';
 import { Edit } from '@mui/icons-material';
 import { Box } from '@mui/system';
 const AvatarProfile = ({ avatar, setAvatar }) => {
-	const { userData, token } = useAuth();
+	const { userData, updateUserData } = useAuth();
 	const inputRef = useRef(null);
 
 	const handleIconClick = () => {
@@ -21,7 +21,7 @@ const AvatarProfile = ({ avatar, setAvatar }) => {
 
 		try {
 			const response = await fetch(
-				`https://mecharcovz-be.onrender.com/api/v1/files/public/uploads/avatarmedic?type=avatarmedic&email=${userData.email}`,
+				`https://mecharcovz-be.onrender.com/api/v1/files?type=avatarmedic&email=${userData.email}`,
 				{
 					method: 'POST',
 					headers: {
@@ -37,6 +37,7 @@ const AvatarProfile = ({ avatar, setAvatar }) => {
 
 			const data = await response.json();
 			console.log(data);
+			updateUserData(data.data.MedicFound);
 		} catch (error) {
 			console.error('Error al subir el archivo:', error);
 		}
@@ -55,9 +56,8 @@ const AvatarProfile = ({ avatar, setAvatar }) => {
 		}
 
 		console.log('Archivo válido seleccionado:', selectedFile);
-		// setAvatar(URL.createObjectURL(selectedFile));
-
 		uploadAvatar(selectedFile);
+		console.log('avatar actualizado');
 	};
 
 	return (
