@@ -96,7 +96,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">UX/UI</h4>
         </a>
         <a href="https://www.behance.net/micaelalemina">
-          <img src="https://img.shields.io/badge/behance-%23121011.svg?&style=for-the-badge&logo=behance&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Behance&color=172B4D&logo=Behance&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/micaela-lemi%C3%B1a-6339a3241/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
