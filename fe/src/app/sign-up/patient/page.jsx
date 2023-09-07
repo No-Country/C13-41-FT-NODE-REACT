@@ -51,7 +51,8 @@ export default function PacientSingUp() {
 						email: values.email,
 						country: values.country,
 						gender: values.gender,
-						nid: values.phone,
+						nid: values.nid,
+						phone: values.phone,
 						avatar: '',
 						birthdate: values.birthdate,
 					};
@@ -65,9 +66,10 @@ export default function PacientSingUp() {
 							body: JSON.stringify(userData),
 						});
 
-						const data = await response.json();
+						if (response?.error) {
+							throw new Error('Credenciales inválidas');
+						}
 
-						console.log(data);
 						setSuccessSignup(true);
 						setTimeout(() => {
 							setSuccessSignup(false);

@@ -104,7 +104,6 @@ const basicForm = props => {
 					helperText={Boolean(props.touched.phone) && props.errors.phone}
 				/>
 			</Grid>
-			{/* More fields... */}
 			<Grid item xs={6} md={6}>
 				<Field
 					name='email'

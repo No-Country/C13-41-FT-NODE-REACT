@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import { colors } from '@/app/colors';
 import { useAuth } from '@/contexts/Auth.context';
 
-const CommentInput = () => {
+const CommentInput = ({ doctorData }) => {
 	const [comment, setComment] = useState('');
 	const [successSendComment, setSuccessSendComment] = useState(false);
 	const { userData } = useAuth();
@@ -23,12 +23,29 @@ const CommentInput = () => {
 		const commentData = {
 			description: comment,
 			patientId: userData.id,
-			// id del médico
-			medicId: userData.id,
+			medicId: doctorData.id,
 		};
 
-		console.log(commentData);
 		// Enviar a la API en un try catch
+		try {
+			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/comment/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `bearer ${localStorage.getItem('token')}`,
+				},
+				body: JSON.stringify(commentData),
+			});
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const data = await response.json();
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
 		setSuccessSendComment(true);
 		setTimeout(() => {
 			setSuccessSendComment(false);

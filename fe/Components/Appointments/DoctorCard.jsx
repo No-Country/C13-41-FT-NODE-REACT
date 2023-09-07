@@ -6,7 +6,9 @@ import Link from 'next/link';
 
 const DoctorCard = ({ doctor }) => {
 	const { fullname, country, specialties, avatar, email } = doctor;
-
+	const generateRandomRate = () => {
+		return parseFloat(Math.random() * (5.0 - 3.0) + 3.0).toFixed(1);
+	};
 	return (
 		<Box
 			component={'article'}
@@ -27,8 +29,10 @@ const DoctorCard = ({ doctor }) => {
 				<Avatar
 					variant='circular'
 					sizes='large'
-					sx={{ backgroundColor: colors.categoryIcons.vaccines }}
-					src={avatar}
+					sx={{ backgroundColor: colors.categoryIcons.vaccines, width: '4rem', height: '4rem' }}
+					src={`https://mecharcovz-be.onrender.com/public/uploads/${
+						doctor.profesionalid ? 'avatarmedic' : 'avatarpatient'
+					}/${avatar}`}
 				>
 					{fullname.charAt(0).toUpperCase()}
 				</Avatar>
@@ -50,7 +54,7 @@ const DoctorCard = ({ doctor }) => {
 					color={colors.text}
 					fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 				>
-					{specialties[0]?.name}
+					{specialties[0]?.name ? specialties[0]?.name : 'General Practitioner'}
 				</Typography>
 			</Stack>
 			<Box
@@ -60,7 +64,12 @@ const DoctorCard = ({ doctor }) => {
 				alignItems={'center'}
 				width={'100%'}
 			>
-				<StarRounded sx={{ color: colors.starIcon }} />
+				<Stack direction={'row'} spacing={0.5} alignItems={'center'}>
+					<StarRounded sx={{ color: colors.starIcon }} />
+					<Typography variant='body2' className='inter' color={colors.text}>
+						{generateRandomRate()}
+					</Typography>
+				</Stack>
 				<Stack direction={'row'} spacing={0.5} alignItems={'center'}>
 					<PlaceOutlined sx={{ color: colors.locationIcon }} />
 					<Typography variant='body2' className='inter' color={colors.text}>
