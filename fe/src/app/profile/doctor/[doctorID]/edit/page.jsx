@@ -26,7 +26,9 @@ function DoctorProfile() {
 	const [phone, setPhone] = useState('');
 	const [editPhone, setEditPhone] = useState(false);
 	const [editSocialMedia, setEditSocialMedia] = useState(false);
-	const [socialMedia, setSocialMedia] = useState('https://www.linkedin.com/in/gared-lyon-194b21222/');
+	const [socialMedia, setSocialMedia] = useState(
+		'https://www.linkedin.com/in/gared-lyon-194b21222/',
+	);
 
 	const [speciality, setSpeciality] = useState('clinic');
 	// Snackbar
