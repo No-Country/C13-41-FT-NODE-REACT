@@ -16,18 +16,6 @@ import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { getSpecialty } from '@/lib/getSpecialty';
 
-const VisuallyHiddenInput = styled('input')`
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	white-space: nowrap;
-	width: 1px;
-`;
-
 function Details({
 	editResume,
 	setEditResume,
@@ -52,16 +40,47 @@ function Details({
 	speciality,
 	setSpeciality,
 }) {
-	const [specialties, SetSpecialties] = useState([]);
+	const [specialties, setSpecialties] = useState([]);
 	const { userData } = useAuth();
 	const fetchSpecialties = async () => {
 		const data = await getSpecialty();
-		SetSpecialties(data.data.specialties);
+		setSpecialties(data.data.specialties);
 	};
 
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
+
+	const handleAddSpecialty = async e => {
+		setSpeciality(e.target.value);
+		const findSpecialtyById = specialties.find(specialty => specialty.name === e.target.value);
+		console.log('especialidad buscada', findSpecialtyById);
+		console.log('valor del input', e.target.value);
+
+		const specialtyData = {
+			specialtyId: findSpecialtyById.id,
+			medicId: userData.id,
+		};
+		console.log(specialtyData);
+		try {
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/medic/addspecialty`, {
+				method: 'POST',
+				headers: {
+					Authorization: `bearer ${localStorage.getItem('token')}`,
+					body: JSON.stringify(specialtyData),
+				},
+			});
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const data = await response.json();
+			console.log(data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	return (
 		<Container sx={{ paddingY: 4 }}>
@@ -116,7 +135,7 @@ function Details({
 							<OutlinedInput
 								disabled={!editProfessionalid}
 								defaultValue={professionalid}
-								onChange={e => setProfessionalid(e.target.value)}
+								onChange={handleAddSpecialty}
 								endAdornment={
 									<InputAdornment position='start'>
 										<IconButton
@@ -208,11 +227,11 @@ function Details({
 								<Select
 									value={speciality}
 									MenuProps={{ disableScrollLock: true }}
-									onChange={e => setSpeciality(e.target.value)}
+									onChange={e => handleAddSpecialty(e)}
 								>
 									{specialties.map(props => {
 										return (
-											<MenuItem key={props.id} value={props.name}>
+											<MenuItem key={props.id} value={props.name} specialtyid={props.id}>
 												{props.name}
 											</MenuItem>
 										);

@@ -30,7 +30,7 @@ function DoctorProfile() {
 	const [socialMedia, setSocialMedia] = useState(
 		'https://www.linkedin.com/in/gared-lyon-194b21222/',
 	);
-	const [speciality, setSpeciality] = useState('Pediatrics');
+	const [speciality, setSpeciality] = useState('');
 	const [successUpdate, setSuccessUpdate] = useState(false);
 	const { userData, updateUserData } = useAuth();
 
@@ -45,6 +45,9 @@ function DoctorProfile() {
 				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
 			} else {
 				setAvatar(userData.avatar);
+			}
+			if (userData.specialties) {
+				setSpeciality(userData.specialties[specialties.length - 1]);
 			}
 		}
 	}, [userData]);
@@ -74,7 +77,6 @@ function DoctorProfile() {
 			}
 
 			const data = await response.json();
-			console.log(data.data.MedicFound);
 
 			updateUserData(data.data.MedicFound);
 			setSuccessUpdate(true);

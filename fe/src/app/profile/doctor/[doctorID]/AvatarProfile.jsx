@@ -59,7 +59,9 @@ const AvatarProfile = ({ doctorData }) => {
 						fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
 					}}
 				>
-					{doctorData?.specialties[0]?.name ? doctorData.specialties[0].name : 'General Practitioner'}
+					{doctorData?.specialties && doctorData.specialties.length > 0
+						? doctorData.specialties[doctorData.specialties.length - 1].name
+						: 'General Practitioner'}
 				</Typography>
 			</Stack>
 		</Stack>

@@ -234,7 +234,9 @@ const PublicDoctorProfilePage = ({ params }) => {
 							Comentarios ({fakeComments.length})
 						</Typography>
 						{/* Así solo los pacientes pueden dejar comentarios */}
-						{!userData.profesionalid && <CommentInput doctorData={doctorData} />}
+						{userData && !userData.hasOwnProperty('profesionalid') && (
+							<CommentInput doctorData={doctorData} />
+						)}
 						{fakeComments.length > 0 ? (
 							fakeComments.map((comment, idx) => {
 								return <CommentCard key={idx} comment={comment} />;
