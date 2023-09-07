@@ -77,10 +77,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/GaredLyon" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Gared Lyon | Project Manager</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/GaredLyon">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/gared-lyon-194b21222/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -114,10 +114,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/DavidEGiraldo" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">David Giraldo | Backend</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/DavidEGiraldo">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -130,10 +130,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/esteban-94" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Esteban Enriquez | Backend</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/esteban-94">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -146,10 +146,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/miguelbel00" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Miguel Beltran | Backend</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/miguelbel00">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -162,10 +162,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/gitgonlea" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Enzo Gonzalez | Backend</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/gitgonlea">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -218,7 +218,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/cric992010">
           <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
