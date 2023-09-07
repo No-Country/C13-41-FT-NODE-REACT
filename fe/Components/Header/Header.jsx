@@ -27,6 +27,7 @@ const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const { logout, token, userData } = useAuth();
+	console.log(userData);
 	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorElNav(event.currentTarget);
@@ -175,7 +176,7 @@ const Header = () => {
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{token && userData && (
-							<Stack direction='row' spacing={2}>
+							<Stack direction='row' spacing={1}>
 								<Button
 									onClick={() => (token ? push('/home') : push('/sign-in'))}
 									sx={{
