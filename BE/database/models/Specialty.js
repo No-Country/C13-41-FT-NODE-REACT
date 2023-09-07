@@ -5,6 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Specialty extends Model {
     static associate(models) {
+
       Specialty.belongsToMany(models.Medic, {
         through: 'MedicSpecialty', // Name of the junction table
         foreignKey: 'specialtyId',
