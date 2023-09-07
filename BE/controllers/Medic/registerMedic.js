@@ -6,9 +6,9 @@ const {sendEmail} = require('../Email/sendEmail')
 const createMedic = async (req, res) => {
     try {
   
-      const { fullname, password, email, country, gender, birthdate, nid, profesionalid } = req.body
+      const { fullname, password, email, country, gender, birthdate, nid, profesionalid, phone } = req.body
       
-      if (!fullname || !password || !email || !country || !gender || !birthdate || !nid || !profesionalid) {
+      if (!fullname || !password || !email || !country || !gender || !birthdate || !nid || !profesionalid || !phone) {
         throw new Error('All fields are required.')
       }
 
@@ -32,7 +32,8 @@ const createMedic = async (req, res) => {
         gender,
         nid,
         profesionalid,
-        birthdate
+        birthdate,
+        phone
       });
 
       const emailSubject = 'Welcome to Klinika Merchacovz'
