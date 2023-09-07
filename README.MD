@@ -51,8 +51,8 @@ Clonar este repositorio y ejecuta "npm install" y luego "npm run dev" desde tu v
    git clone https://github.com/No-Country/C13-41-FT-NODE-REACT.git
    ```
 
-O simplemente clickea en el link de Demo de abajo. 
-<a href="https://mecharcovz-fe.vercel.app/">Ver Demo</a>
+O simplemente clickea en el link de 
+<a href="https://mecharcovz-fe.vercel.app/">Ver Demo.</a>
 
 <!-- USAGE EXAMPLES -->
 <h1 align="center"> 
@@ -110,7 +110,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/miguelbel00" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Miguel Beltran</h4>
-          <h4 style="margin-top: 1rem;">Backend</h4>
+          <h4 style="margin-top: 1rem;">Backend & DevOps</h4>
         </a>
         <a href="https://github.com/miguelbel00">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
