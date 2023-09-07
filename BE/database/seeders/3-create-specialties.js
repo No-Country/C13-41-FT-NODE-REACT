@@ -26,7 +26,6 @@ module.exports = {
       'Otolaryngology']
     for (let i = 0; i < 20; i++) {
       specialties.push({
-        id: i + 1,
         name: specialtiesName[i],
         createdAt: new Date(),
         updatedAt: new Date(),

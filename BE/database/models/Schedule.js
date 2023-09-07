@@ -25,10 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    type: {
-      type: DataTypes.ENUM("daily","weekly"),
-      allowNull: false,
-    },
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
