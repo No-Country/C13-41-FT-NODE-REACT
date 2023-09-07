@@ -12,7 +12,7 @@ import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
 import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
-
+import { getAllDoctors } from '@/lib/getAllDoctors';
 const servicesLabels = ['labs', 'vaccines', 'doctors', 'medications', 'EHR'];
 const { labs, vaccines, doctors, medication, ehr } = colors.categoryIcons;
 const servicesColor = [labs, vaccines, doctors, medication, ehr];
@@ -24,21 +24,6 @@ const servicesIcon = [
 	<FolderOpenOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
 ];
 
-const getAllDoctors = async () => {
-	const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
-		method: 'GET',
-		headers: {
-			Authorization: `bearer ${localStorage.getItem('token')}`,
-		},
-	});
-
-	if (!response.ok) {
-		throw new Error('No se pudieron obtener los datos de los médicos');
-	}
-
-	return response.json();
-};
-
 const UserHomePage = () => {
 	const [nearbyDoctors, setNearbyDoctors] = useState([]);
 	const { userData } = useAuth();
@@ -46,7 +31,7 @@ const UserHomePage = () => {
 	const fetchData = async () => {
 		try {
 			const data = await getAllDoctors();
-			console.log(data.data);
+
 			const nearbyDoctors = data.data.medic.filter(doctor => {
 				return doctor.country.toLowerCase().includes(userData.country.toLowerCase());
 			});
