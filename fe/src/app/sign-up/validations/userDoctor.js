@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { countries } from './countries';
 
 const isStrongPassword = password => {
 	const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_\-])[A-Za-z\d@$!%*?&_\-]{8,}$/;
@@ -9,27 +10,7 @@ export const doctorSchema = yup.object({
 	fullname: yup.string().required(),
 	birthdate: yup.date().required(),
 	gender: yup.string().oneOf(['male', 'female', 'other'], 'select a gender'),
-	country: yup
-		.string()
-		.oneOf(
-			[
-				'Venezuela',
-				'Colombia',
-				'Argentina',
-				'Chile',
-				'Costa Rica',
-				'Mexico',
-				'Guatemala',
-				'Honduras',
-				'Nicaragua',
-				'Peru',
-				'Uruguay',
-				'El Salvador',
-				'Ecuador',
-				'Bolivia',
-			],
-			'thats not a good response',
-		),
+	country: yup.string().oneOf(countries, 'thats not a good response'),
 	phone: yup.number().min(6).required(),
 	email: yup.string().email('has to contain @ and .com, .net, etc..').required(),
 	password: yup

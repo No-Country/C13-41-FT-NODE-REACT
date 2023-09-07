@@ -11,7 +11,9 @@ import {
 	Select,
 	MenuItem,
 	FormHelperText,
+	InputLabel,
 } from '@mui/material';
+import { countries } from '@/app/sign-up/validations/countries';
 
 const basicForm = props => {
 	const [showPassword, setShowPassword] = React.useState(false);
@@ -58,6 +60,7 @@ const basicForm = props => {
 					fullWidth
 					displayEmpty
 					inputProps={{ 'aria-label': 'Without label' }}
+					MenuProps={{ disableScrollLock: true }}
 					error={Boolean(props.errors.gender) && Boolean(props.touched.gender)}
 					helperText={Boolean(props.touched.gender) && props.errors.gender}
 				>
@@ -71,13 +74,24 @@ const basicForm = props => {
 			<Grid item xs={6} md={6}>
 				<Field
 					name='country'
-					type='text'
-					as={TextField}
+					type='select'
+					as={Select}
 					fullWidth
-					label='Country'
+					displayEmpty
+					inputProps={{ 'aria-label': 'Without label' }}
+					MenuProps={{ disableScrollLock: true }}
 					error={Boolean(props.errors.country) && Boolean(props.touched.country)}
 					helperText={Boolean(props.touched.country) && props.errors.country}
-				/>
+				>
+					{countries.map((country, idx) => {
+						return (
+							<MenuItem key={idx} value={country}>
+								{country}
+							</MenuItem>
+						);
+					})}
+				</Field>
+				<FormHelperText>Country</FormHelperText>
 			</Grid>
 			<Grid item xs={6} md={6}>
 				<Field

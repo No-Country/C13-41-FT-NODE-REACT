@@ -3,19 +3,17 @@ import React, { useState, useEffect } from 'react';
 import BasicForm from '../../../../Components/BasicForm';
 import { patientSchema } from '../validations/userPacient';
 import { Form, Formik } from 'formik';
-import { Button, Snackbar, Alert, colors } from '@mui/material';
+import { Button, Snackbar, Alert } from '@mui/material';
+import { colors } from '@/app/colors';
 import { initialValues } from '../validations/initialValuesPatient';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import FormAlerts from '../../../../Components/FormAlerts';
 import '@fontsource/poppins';
 import { useRouter } from 'next/navigation';
-<<<<<<< HEAD
-
-=======
 import { titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import { GridColumnMenuContainer } from '@mui/x-data-grid';
->>>>>>> dev
+
 export default function PacientSingUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);

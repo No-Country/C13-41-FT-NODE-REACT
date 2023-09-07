@@ -12,6 +12,21 @@ import {
 } from '@mui/material';
 import { Edit, Save } from '@mui/icons-material';
 import { useAuth } from '@/contexts/Auth.context';
+import { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import { getSpecialty } from '@/lib/getSpecialty';
+
+const VisuallyHiddenInput = styled('input')`
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	white-space: nowrap;
+	width: 1px;
+`;
 
 function Details({
 	editResume,
@@ -19,6 +34,10 @@ function Details({
 	resume,
 	setResume,
 	editProfessionalid,
+	phone,
+	editPhone,
+	setPhone,
+	setEditPhone,
 	setEditProfessionalid,
 	professionalid,
 	setProfessionalid,
@@ -26,10 +45,23 @@ function Details({
 	setEditNationalId,
 	nationalId,
 	setNationalId,
+	editSocialMedia,
+	setEditSocialMedia,
+	socialMedia,
+	setSocialMedia,
 	speciality,
 	setSpeciality,
 }) {
+	const [specialties, SetSpecialties] = useState([]);
 	const { userData } = useAuth();
+	const fetchSpecialties = async () => {
+		const data = await getSpecialty();
+		SetSpecialties(data.data.specialties);
+	};
+
+	useEffect(() => {
+		fetchSpecialties();
+	}, []);
 
 	return (
 		<Container sx={{ paddingY: 4 }}>
@@ -122,6 +154,55 @@ function Details({
 					</Grid>
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
+							<label>
+								<a href={{ socialMedia }} target='_blank' rel='noopener noreferrer'>
+									Professional Social Media Link
+								</a>
+							</label>
+
+							<OutlinedInput
+								disabled={!editSocialMedia}
+								defaultValue={socialMedia}
+								onChange={e => setSocialMedia(e.target.value)}
+								endAdornment={
+									<InputAdornment position='start'>
+										<IconButton
+											aria-label='toggle to edit'
+											onClick={() => setEditSocialMedia(!editNationalId)}
+											edge='end'
+										>
+											{editSocialMedia ? <Save /> : <Edit />}
+										</IconButton>
+									</InputAdornment>
+								}
+							/>
+						</Stack>
+					</Grid>
+
+					<Grid item xs={12} sm={6}>
+						<Stack direction='column' spacing={2}>
+							<label>Telephone Number</label>
+							<OutlinedInput
+								disabled={!editPhone}
+								defaultValue={phone}
+								onChange={e => setPhone(e.target.value)}
+								endAdornment={
+									<InputAdornment position='start'>
+										<IconButton
+											aria-label='toggle to edit'
+											onClick={() => setEditPhone(!editPhone)}
+											edge='end'
+										>
+											{editPhone ? <Save /> : <Edit />}
+										</IconButton>
+									</InputAdornment>
+								}
+							/>
+						</Stack>
+					</Grid>
+
+					<Grid item xs={12} sm={6}>
+						<Stack direction='column' spacing={2}>
 							<label>Speciality</label>
 							<FormControl>
 								<Select
@@ -129,12 +210,15 @@ function Details({
 									MenuProps={{ disableScrollLock: true }}
 									onChange={e => setSpeciality(e.target.value)}
 								>
-									<MenuItem value='clinic'>Clinic</MenuItem>
-									<MenuItem value='cardiology'>Cardiology</MenuItem>
-									<MenuItem value='dermatology'>Dermatology</MenuItem>
-									<MenuItem value='neurology'>Neurology</MenuItem>
+									{specialties.map(props => {
+										return (
+											<MenuItem key={props.id} value={props.name}>
+												{props.name}
+											</MenuItem>
+										);
+									})}
 								</Select>
-								<FormHelperText>If you don't have a speciality select clinic</FormHelperText>
+								<FormHelperText>If you don't have a speciality Internal Medicine</FormHelperText>
 							</FormControl>
 						</Stack>
 					</Grid>
