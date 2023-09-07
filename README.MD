@@ -79,7 +79,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Project Manager</h4>
         </a>
         <a href="https://github.com/GaredLyon">
-          <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+          <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/gared-lyon-194b21222/">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
