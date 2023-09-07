@@ -8,12 +8,31 @@ import { useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select, InputLabel, FormHelperText } from '@mui/material';
 const PatienteCalendar = () => {
   const [doctorSchedule, setDoctorShchedule] = useState([
-    {dia: 'Tuesday', franja: '08:00 - 09:00'},
-    {dia: 'Wednesday', franja: '08:00 - 09:00'},
-    {dia: 'Friday', franja: '11:00 - 12:00'},
-    {dia: 'Saturday', franja: '10:00 - 11:00'},
-    {dia: 'Saturday', franja: '16:00 - 17:00'},
-
+    {
+      day:"Monday",
+      initialHour:"8:00",
+      finalHour:"09:00",
+      status:true,
+      duration:60,
+      medicId:"53822488-cc1f-43ad-ac56-e57e3bb1fb90"
+  },
+    {
+      day:"Monday",
+      initialHour:"9:00",
+      finalHour:"10:00",
+      status:true,
+      duration:60,
+      medicId:"53822488-cc1f-43ad-ac56-e57e3bb1fb90"
+  },
+    {
+      day:"Monday",
+      initialHour:"10:00",
+      finalHour:"11:00",
+      status:true,
+      duration:60,
+      medicId:"53822488-cc1f-43ad-ac56-e57e3bb1fb90"
+  },
+    
   ]);
   const [vacationDays, setVacationDays] = useState([
     {id: 1, title: 'Tue Sep 12 2023 '}, 
@@ -85,10 +104,10 @@ const PatienteCalendar = () => {
                     onChange={(newValue) => {handleChooseTime(newValue)}}
                   >
                     {doctorSchedule.map((date, index) => {
-                      if(date.dia.slice(0,3) === dayChoosed ){
+                      if(date.day.slice(0,3) === dayChoosed ){
                         return (
 
-                          <MenuItem key={index} value={date.franja}>{date.franja}</MenuItem>
+                          <MenuItem key={index} value={date.initialHour}>{date.initialHour}-{date.finalHour}</MenuItem>
                         )
                       }
                     }

@@ -28,6 +28,7 @@ const UserHomePage = () => {
 	const [nearbyDoctors, setNearbyDoctors] = useState([]);
 	const { userData } = useAuth();
 
+
 	const fetchData = async () => {
 		try {
 			const data = await getAllDoctors();
