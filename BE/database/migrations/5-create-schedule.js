@@ -4,8 +4,9 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Schedules', {
       id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true
       },
       day: {
         type: Sequelize.ENUM("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
@@ -17,10 +18,6 @@ module.exports = {
       },
       finalHour: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-      type: {
-        type: Sequelize.ENUM("daily", "weekly"),
         allowNull: false,
       },
       status: {

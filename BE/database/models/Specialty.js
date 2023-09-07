@@ -14,11 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Specialty.init({
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

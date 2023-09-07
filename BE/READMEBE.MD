@@ -84,10 +84,46 @@ Make sure to export the variables correctly to ensure the project works as expec
 The API exposes the following endpoints:
 
 - **POST /api/v1/auth/medic**: Medic autentication.
-- **POST /api/v1/medic**: Medic registration.
 - **POST /api/v1/auth/patient**: Patient autentication.
+---
+- **POST /api/v1/medic**: Medic registration.
+- **GET /api/v1/medic**: Get all or one Medic .
+- **PUT /api/v1/medic**: Edit Medic.
+- **DELETE /api/v1/medic**: Delete an Medic .
+---
 - **POST /api/v1/patient**: Patient registration.
-- **POST /api/v1/consult**: Consult registration.
+- **GET /api/v1/patient**: Get all or one Patient.
+- **PUT /api/v1/patient**: Edit Patient.
+- **DELETE /api/v1/patient**: Delete an Patient.
+---
+- `POST /api/v1/consult`: Create Consult.
+- `GET /api/v1/consult`: Get Consult by id or consults for medic.
+- `PUT /api/v1/consult`: Edit Consult.
+- `DELETE /api/v1/consult`: Delete Consult.
+---
+- **POST /api/v1/specialty**: Create Specialty.
+- **GET /api/v1/specialty**: Get All Specialties.
+- **PUT /api/v1/specialty**: Edit Specialty.
+- **DELETE /api/v1/specialty**: Delete Specialty.
+---
+- **POST /api/v1/schedule**: Create Schedule.
+- **GET /api/v1/schedule**: Get all schedules by medic.
+- `PUT /api/v1/schedule`: Edit schedule.
+- **DELETE /api/v1/schedule**: Delete Schedule.
+---
+- **POST /api/v1/socialnetwork**: Create social network for a  medic  .
+- **GET /api/v1/socialnetwork**: Get all social network for a medic  .
+- **PUT /api/v1/socialnetwork**: Edit social network.
+- **DELETE /api/v1/socialnetwork**: Delete social network.
+---
+- **POST /api/v1/vacationdate**: Create vacation Date for a  medic.
+- **GET /api/v1/vacationdate**: Get all vacation Date for a medic  .
+- **PUT /api/v1/vacationdate**: Edit vacation Date.
+- **DELETE /api/v1/vacationdate**: Delete vacation Date.
+---
+- **POST /api/v1/files**: update files on backend
+
+
 
 ## Request Examples :notebook:
 
@@ -111,30 +147,6 @@ Here are some examples of how to make requests to the API endpoints:
 
 ```
 
-**Response Body:**
-```json
-{
-  "data": {
-    "medic": {
-      "id": "0343446c-7fd2-427a-a922-d0949ffc629e",
-      "fullname": "Jhon Doe",
-      "password": "$2b$10$v2Nu9lE7cmhExJfxHQ1uzurOKUYrdmlNls18OWYYi/4EdveKSolMa",
-      "email": "jhondoe@mail.com",
-      "country": "Colombia",
-      "gender": "male",
-      "nid": "12312",
-      "profesionalid": "12334521",
-      "birthdate": "2023-05-11T00:00:00.000Z",
-      "updatedAt": "2023-08-28T14:27:13.509Z",
-      "createdAt": "2023-08-28T14:27:13.509Z",
-      "resume": null,
-      "avatar": null
-    }
-  },
-  "message": "Medic Created"
-}
-
-```
 
 - Register a new patient:
 **POST** */api/v1/patient*
@@ -151,27 +163,5 @@ Here are some examples of how to make requests to the API endpoints:
   "avatar": "unavatar.com",
   "birthdate": "2023-05-11"
   }
-
-```
-
-**Response Body:**
-```json
-{
-  "message": "Patient created",
-  "patient": {
-    "id": "a9dc545d-78f3-42e0-893e-78d9c7e51f8b",
-    "fullname": "Jhon Doe",
-    "password": "$2b$10$UPBZnexaetlRISGObca8NuRKw9jp5LyhT3kQuBbr4oVDcf35A74RC",
-    "email": "jhondoee@mail.com",
-    "country": "Colombia",
-    "nid": "12312",
-    "gender": "male",
-    "birthdate": "2023-05-11T00:00:00.000Z",
-    "updatedAt": "2023-08-28T15:23:43.474Z",
-    "createdAt": "2023-08-28T15:23:43.474Z",
-    "avatar": null,
-    "resume": null
-  }
-}
 
 ```
