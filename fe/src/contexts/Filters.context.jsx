@@ -23,7 +23,6 @@ export const FilterProvider = ({ children }) => {
 	const fetchData = async () => {
 		try {
 			const data = await getAllDoctors();
-			console.log(data.data);
 			setAllDoctors(data.data.medic);
 		} catch (error) {
 			console.error(error);

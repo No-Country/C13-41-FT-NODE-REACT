@@ -180,7 +180,7 @@ const DoctorsPage = () => {
 				<Divider orientation='vertical' flexItem />
 				<Box component={'section'} width={{ xs: '100%', sm: '70%' }} paddingX={1}>
 					<Grid container spacing={2}>
-						{filteredDoctor.length > 0 ? (
+						{filteredDoctor && filteredDoctor.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
 									<Grid item xs={6} md={4} key={doctor.id}>

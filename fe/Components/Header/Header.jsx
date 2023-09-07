@@ -17,6 +17,7 @@ import styled from '@emotion/styled';
 import { useAuth } from '@/contexts/Auth.context';
 import { useRouter } from 'next/navigation';
 import RegisterMenu from './RegisterMenu';
+import { Stack } from '@mui/material';
 
 const Logo = styled('img')({
 	width: '64px',
@@ -26,7 +27,6 @@ const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const { logout, token, userData } = useAuth();
-	console.log('user data', userData);
 	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorElNav(event.currentTarget);
@@ -107,7 +107,7 @@ const Header = () => {
 						>
 							{/* Verifico que este logueado y tenga los datos de usuario */}
 							{token && userData && (
-								<>
+								<div>
 									<MenuItem onClick={() => (token ? push('/home') : push('/sign-in'))}>
 										<Typography
 											textAlign='center'
@@ -147,7 +147,7 @@ const Header = () => {
 											</Typography>
 										</MenuItem>
 									)}
-								</>
+								</div>
 							)}
 						</Menu>
 					</Box>
@@ -175,7 +175,7 @@ const Header = () => {
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{token && userData && (
-							<>
+							<Stack direction='row' spacing={2}>
 								<Button
 									onClick={() => (token ? push('/home') : push('/sign-in'))}
 									sx={{
@@ -224,7 +224,7 @@ const Header = () => {
 								>
 									Schedule
 								</Button>
-							</>
+							</Stack>
 						)}
 					</Box>
 
