@@ -31,7 +31,6 @@ const UserHomePage = () => {
 	const fetchData = async () => {
 		try {
 			const data = await getAllDoctors();
-
 			const nearbyDoctors = data.data.medic.filter(doctor => {
 				return doctor.country.toLowerCase().includes(userData.country.toLowerCase());
 			});
