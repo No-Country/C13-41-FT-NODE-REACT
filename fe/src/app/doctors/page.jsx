@@ -11,12 +11,14 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
+import { getAllSpecialities } from '@/lib/getAllSpecialities';
 
 const DoctorsPage = () => {
+	const [specialties, setSpecialties] = useState([]);
 	const {
 		filteredDoctor,
 		allDoctors,
@@ -28,7 +30,20 @@ const DoctorsPage = () => {
 	} = useFilterContext();
 
 	const countryList = new Set(allDoctors.map(doctor => doctor.country));
-	const specialtyList = new Set(allDoctors.map(doctor => doctor.specialty));
+
+	const fetchSpecialties = async () => {
+		try {
+			const data = await getAllSpecialities();
+			const specialtiesList = data.data.specialties.map(specialty => specialty.name);
+			setSpecialties(specialtiesList);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchSpecialties();
+	}, []);
 
 	return (
 		<Container component={'main'} sx={{ paddingY: 4 }}>
@@ -138,7 +153,7 @@ const DoctorsPage = () => {
 								},
 							}}
 						>
-							{[...specialtyList].map(specialty => (
+							{specialties.map(specialty => (
 								<MenuItem key={specialty} value={specialty}>
 									{specialty}
 								</MenuItem>
@@ -165,12 +180,11 @@ const DoctorsPage = () => {
 				<Divider orientation='vertical' flexItem />
 				<Box component={'section'} width={{ xs: '100%', sm: '70%' }} paddingX={1}>
 					<Grid container spacing={2}>
-						{filteredDoctor.length > 0 ? (
+						{filteredDoctor && filteredDoctor.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
 									<Grid item xs={6} md={4} key={doctor.id}>
 										<DoctorCard doctor={doctor} />
-										{/* <Button href={`/profile/${doctor.id}`}>View profile</Button> */}
 										<Button
 											href='#'
 											variant='contained'
