@@ -13,6 +13,10 @@ export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(null);
 	const [userData, setUserData] = useState(null);
 
+	const updateUserData = data => {
+		setUserData(data);
+		localStorage.setItem('userData', JSON.stringify(data));
+	};
 	// Recupero el token y los datos del usuario del local storage
 	useEffect(() => {
 		const storedToken = localStorage.getItem('token');
@@ -35,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 
 	// Cierro sesión y borror el token y los datos del usuario
 	const logout = () => {
-		setToken(null);
+		setToken(null); 
 		setUserData(null);
 
 		localStorage.removeItem('token');
@@ -48,7 +52,9 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	return (
-		<AuthContext.Provider value={{ token, userData, login, logout, isAuthenticated }}>
+		<AuthContext.Provider
+			value={{ token, userData, setUserData, login, logout, isAuthenticated, updateUserData }}
+		>
 			{children}
 		</AuthContext.Provider>
 	);

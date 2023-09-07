@@ -6,6 +6,7 @@ import Details from './Details';
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/Auth.context';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import { getSpecialty } from '@/lib/getSpecialty';
 
 const ProfileContainer = styled('main')({
 	display: 'flex',
@@ -23,36 +24,65 @@ function DoctorProfile() {
 	const [editNationalId, setEditNationalId] = useState(false);
 	const [nationalId, setNationalId] = useState('');
 	const [avatar, setAvatar] = useState('');
-	const [speciality, setSpeciality] = useState('clinic');
+	const [phone, setPhone] = useState('');
+	const [editPhone, setEditPhone] = useState(false);
+	const [editSocialMedia, setEditSocialMedia] = useState(false);
+	const [socialMedia, setSocialMedia] = useState(
+		'https://www.linkedin.com/in/gared-lyon-194b21222/',
+	);
+	const [speciality, setSpeciality] = useState('Pediatrics');
 	// Snackbar
 	const [successUpdate, setSuccessUpdate] = useState(false);
-
-	const { userData } = useAuth();
+	const { userData, updateUserData } = useAuth();
 
 	useEffect(() => {
 		if (userData) {
 			setResume(userData.resume);
 			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
+			setPhone(userData.phone);
+			setSocialMedia(userData.socialmedia);
+			setAvatar(userData.avatar);
 		}
 	}, [userData]);
 
 	const handleUpdate = async () => {
 		if (!professionalid || !nationalId) return;
-
-		const data = {
-			...userData,
+		const newUserData = {
+			email: userData.email,
 			resume: resume,
 			profesionalid: professionalid,
 			nid: nationalId,
-			speciality,
 			avatar,
+			phone,
+			socialMedia,
 		};
-		console.log(data);
-		setSuccessUpdate(true);
-		setTimeout(() => {
-			setSuccessUpdate(false);
-		}, 3000);
+
+		try {
+			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `bearer ${localStorage.getItem('token')}`,
+				},
+				body: JSON.stringify(newUserData),
+			});
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const data = await response.json();
+			console.log(data.data.MedicFound);
+
+			updateUserData(data.data.MedicFound);
+			setSuccessUpdate(true);
+			setTimeout(() => {
+				setSuccessUpdate(false);
+			}, 3000);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
@@ -74,6 +104,14 @@ function DoctorProfile() {
 					setEditProfessionalid={setEditProfessionalid}
 					speciality={speciality}
 					setSpeciality={setSpeciality}
+					phone={phone}
+					setPhone={setPhone}
+					editPhone={editPhone}
+					setEditPhone={setEditPhone}
+					editSocialMedia={editSocialMedia}
+					setEditSocialMedia={setEditSocialMedia}
+					socialMedia={socialMedia}
+					setSocialMedia={setSocialMedia}
 				/>
 				<Container>
 					<Button
