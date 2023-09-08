@@ -15,23 +15,6 @@ import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { getSpecialty } from '@/lib/getSpecialty';
-import Button from '@mui/material/Button';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { colors } from '@/app/colors';
-
-const VisuallyHiddenInput = styled('input')({
-
-	clip: "rect(0 0 0 0)",
-	clipPath: "inset(50%)",
-	height: "1px",
-	overflow: "hidden",
-	position: "absolute",
-	bottom: "0",
-	left: "0",
-	whiteSpace: "nowrap",
-	width: "1px",
-
-});
 
 function Details({
 	editResume,
@@ -56,10 +39,6 @@ function Details({
 	setSocialMedia,
 	speciality,
 	setSpeciality,
-	selectedFile, 
-	setSelectedFile,
-	isFilePicked, 
-	setIsFilePicked,
 
 }) {
 	const [specialties, SetSpecialties] = useState([]);
@@ -73,48 +52,6 @@ function Details({
 		fetchSpecialties();
 	}, []);
 
-	const handleUploadPDF = async (e) => {
-
-		const file = e.target.files[0];
-		console.log (file);
-
-		const formData = new FormData();
-
-		formData.append("file", file);
-
-		try {
-
-			const response = await fetch(
-
-				'https://mecharcovz-be.onrender.com/api/v1/files?type=pdf&email=test@test.com', 
-
-				// cambiar ruta arriba
-				{
-					headers: {Authorization: `bearer ${localStorage.getItem("token")}`},
-					method: 'POST',
-					body: formData,
-				}
-	
-			)
-
-			if (response.error) {
-
-				throw new Error(response.error);
-	
-			}
-	
-			const data = await response.json();
-	
-			console.log(data)
-
-			
-		} catch (error) {
-
-			console.log (error);
-		}
-
-	};
-
 	return (
 		<Container sx={{ paddingY: 4 }}>
 			{userData && (
@@ -122,7 +59,7 @@ function Details({
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>Fullname</label>
-							<OutlinedInput defaultValue={userData.fullname} readOnly />
+							<OutlinedInput defaultValue={userData.fullname} readOnly sx={{userSelect: "none",}} draggable="false"/>
 						</Stack>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -137,31 +74,29 @@ function Details({
 							<OutlinedInput defaultValue={userData.country} readOnly />
 						</Stack>
 					</Grid>
+
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
-							<label>Resume</label>
-							<OutlinedInput
-								disabled={!editResume}
-								defaultValue={resume}
-								multiline
-								minRows={4}
-								maxRows={8}
-								onChange={e => setResume(e.target.value)}
-								sx={{ display: 'flex', alignItems: 'start' }}
-								endAdornment={
-									<InputAdornment position='start' sx={{ pt: 1.5 }}>
-										<IconButton
-											aria-label='toggle to edit'
-											onClick={() => setEditResume(!editResume)}
-											edge='end'
-										>
-											{editResume ? <Save /> : <Edit />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
+							<label>Speciality</label>
+							<FormControl>
+								<Select
+									value={speciality}
+									MenuProps={{ disableScrollLock: true }}
+									onChange={e => setSpeciality(e.target.value)}
+								>
+									{specialties.map(props => {
+										return (
+											<MenuItem key={props.id} value={props.name}>
+												{props.name}
+											</MenuItem>
+										);
+									})}
+								</Select>
+								<FormHelperText>If you don't have a speciality Internal Medicine</FormHelperText>
+							</FormControl>
 						</Stack>
 					</Grid>
+
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>Professional ID</label>
@@ -252,43 +187,29 @@ function Details({
 							/>
 						</Stack>
 					</Grid>
-
-					<Grid item xs={12} sm={6}>
+					<Grid item xs={12} sm={12}>
 						<Stack direction='column' spacing={2}>
-							<label>Speciality</label>
-							<FormControl>
-								<Select
-									value={speciality}
-									MenuProps={{ disableScrollLock: true }}
-									onChange={e => setSpeciality(e.target.value)}
-								>
-									{specialties.map(props => {
-										return (
-											<MenuItem key={props.id} value={props.name}>
-												{props.name}
-											</MenuItem>
-										);
-									})}
-								</Select>
-								<FormHelperText>If you don't have a speciality Internal Medicine</FormHelperText>
-							</FormControl>
-						</Stack>
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>Upload your Resume</label>
-							<FormControl sx={{display: "flex", alignContent: "center", height: "100%",}}>
-								<Button
-								component="label"
-								variant="contained"
-								startIcon={<CloudUploadIcon />}
-								sx={{display: "flex", justifyContent: "center", alignItems: "center", height: "55px", maxHeight: "100%", backgroundColor: colors.buttonIcon, color: "white", fontWeight: "600", ':hover': {backgroundColor: colors.buttonIcon},}}
-								>
-								Upload PDF
-									<VisuallyHiddenInput accept='application/pdf' type='file' onChange={(e) => handleUploadPDF (e)}/>
-								</Button>
-							</FormControl>
+							<label>A brief summary of your academic and professional experience.</label>
+							<OutlinedInput
+								disabled={!editResume}
+								defaultValue={resume}
+								multiline
+								minRows={4}
+								maxRows={8}
+								onChange={e => setResume(e.target.value)}
+								sx={{ display: 'flex', alignItems: 'start' }}
+								endAdornment={
+									<InputAdornment position='start' sx={{ pt: 1.5 }}>
+										<IconButton
+											aria-label='toggle to edit'
+											onClick={() => setEditResume(!editResume)}
+											edge='end'
+										>
+											{editResume ? <Save /> : <Edit />}
+										</IconButton>
+									</InputAdornment>
+								}
+							/>
 						</Stack>
 					</Grid>
 

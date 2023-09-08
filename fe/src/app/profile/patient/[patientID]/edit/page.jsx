@@ -6,7 +6,6 @@ import Details from './Details';
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/Auth.context';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
-import { getSpecialty } from '@/lib/getSpecialty';
 
 const ProfileContainer = styled('main')({
 	display: 'flex',
@@ -16,31 +15,20 @@ const ProfileContainer = styled('main')({
 	padding: '2rem 0 4rem',
 });
 
-function DoctorProfile() {
-	const [editResume, setEditResume] = useState(false);
-	const [resume, setResume] = useState('');
-	const [editProfessionalid, setEditProfessionalid] = useState(false);
-	const [professionalid, setProfessionalid] = useState('');
+function PatientProfile() {
+
 	const [editNationalId, setEditNationalId] = useState(false);
 	const [nationalId, setNationalId] = useState('');
 	const [avatar, setAvatar] = useState('');
 	const [phone, setPhone] = useState('');
 	const [editPhone, setEditPhone] = useState(false);
-	const [editSocialMedia, setEditSocialMedia] = useState(false);
-	const [socialMedia, setSocialMedia] = useState(
-		'https://www.linkedin.com/in/gared-lyon-194b21222/',
-	);
-	const [speciality, setSpeciality] = useState('Pediatrics');
 	const [successUpdate, setSuccessUpdate] = useState(false);
 	const { userData, updateUserData } = useAuth();
 
 	useEffect(() => {
 		if (userData) {
-			setResume(userData.resume);
-			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
-			setSocialMedia(userData.socialmedia);
 			if (userData.avatar) {
 				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
 			} else {
@@ -50,17 +38,15 @@ function DoctorProfile() {
 	}, [userData]);
 
 	const handleUpdate = async () => {
-		if (!professionalid || !nationalId) return;
+
 		const newUserData = {
 			email: userData.email,
-			resume: resume,
-			profesionalid: professionalid,
 			nid: nationalId,
 			phone: phone,
 		};
 
 		try {
-			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
+			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/patient', {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
@@ -74,9 +60,9 @@ function DoctorProfile() {
 			}
 
 			const data = await response.json();
-			console.log(data.data.MedicFound);
+			console.log(data.data.PatientFound);
 
-			updateUserData(data.data.MedicFound);
+			updateUserData(data.data.PatientFound);
 			setSuccessUpdate(true);
 			setTimeout(() => {
 				setSuccessUpdate(false);
@@ -95,24 +81,10 @@ function DoctorProfile() {
 					setEditNationalId={setEditNationalId}
 					nationalId={nationalId}
 					setNationalId={setNationalId}
-					editResume={editResume}
-					setEditResume={setEditResume}
-					resume={resume}
-					setResume={setResume}
-					professionalid={professionalid}
-					setProfessionalid={setProfessionalid}
-					editProfessionalid={editProfessionalid}
-					setEditProfessionalid={setEditProfessionalid}
-					speciality={speciality}
-					setSpeciality={setSpeciality}
 					phone={phone}
 					setPhone={setPhone}
 					editPhone={editPhone}
 					setEditPhone={setEditPhone}
-					editSocialMedia={editSocialMedia}
-					setEditSocialMedia={setEditSocialMedia}
-					socialMedia={socialMedia}
-					setSocialMedia={setSocialMedia}
 				/>
 				<Container>
 					<Button
@@ -148,4 +120,4 @@ function DoctorProfile() {
 	);
 }
 
-export default DoctorProfile;
+export default PatientProfile;
