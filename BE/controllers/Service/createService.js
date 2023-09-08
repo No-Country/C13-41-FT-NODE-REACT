@@ -4,7 +4,7 @@ const createService = async (req, res) => {
     const { description, price, specialtyId, medicId } = req.body
 
     if (!description || !price || !specialtyId || !medicId) {
-      throw new Error('Body must contain description, price and specialtyId')
+      throw new Error('Body must contain description, price, medicId and specialtyId')
     }
 
       const newService = await Service.create({
