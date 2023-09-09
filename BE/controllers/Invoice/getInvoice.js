@@ -2,13 +2,14 @@ const { Invoice } = require("../../database/models");
 
 const getInvoice = async (req, res) => {
   try {
-    const {invoiceId} = req.query
+    const {medicId, patientId} = req.query
 
-    if (!invoiceId) {
-      throw new Error('Query must contain invoiceId')
-    }
+    if (!medicId && !patientId) throw new Error("medicId or patientId is required")
 
-    const InvoicesFound = await Invoice.findOne({where: { id: invoiceId}})
+
+    const InvoicesFound = medicId ? 
+    await Invoice.findAll({where: { medicId: medicId}}) :
+    await Invoice.findAll({where: { patientId: patientId}})
      
     return res.status(200).json({ message: 'Get Invoice', data:{InvoicesFound} });
   } catch (error) {
