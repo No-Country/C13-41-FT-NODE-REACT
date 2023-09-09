@@ -1,4 +1,4 @@
-const { Comment } = require("../../database/models");
+const { Comment, Patient } = require("../../database/models");
 
 const getComments = async (req, res) => {
   try {
@@ -24,12 +24,9 @@ const getComments = async (req, res) => {
     const comments = await Comment.findAll({
       where: {
         [field]: id  
-      }
+      }, include: Patient
     });
-
-    if (!comments.length) {
-      throw new Error("Comments not found")
-    }
+    delete comments[0].dataValues.Patient.dataValues.password
 
     return res
       .status(200)

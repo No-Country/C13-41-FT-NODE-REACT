@@ -13,6 +13,7 @@ const schedulesRoutes = require('./schedulesRoutes')
 const commentsRoutes = require('./commentsRoutes')
 const socialNetworksRoutes = require('./socialNetworksRoutes')
 const vacationDatesRoutes = require('./vacationDatesRoutes')
+const servicesRoutes = require('./servicesRoutes')
 
 const router = express.Router()
 
@@ -27,5 +28,6 @@ router.use('/files',filesRoutes)
 router.use('/comment',commentsRoutes)
 router.use('/socialnetwork',socialNetworksRoutes)
 router.use('/vacationdate',vacationDatesRoutes)
+router.use('/service',servicesRoutes)
 
 module.exports = router
