@@ -11,17 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Consult.belongsTo(models.Medic, {
-        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
-        onDelete: 'CASCADE', // This ensures that if a Medic is deleted, their associated Schedules are also deleted
+        foreignKey: 'medicId', 
+        onDelete: 'CASCADE', 
       });
       Consult.belongsTo(models.Patient, {
-        foreignKey: 'patientId', // This is the foreign key in the Schedule table that links to the Medic table
-        onDelete: 'CASCADE', // This ensures that if a Medic is deleted, their associated Schedules are also deleted
+        foreignKey: 'patientId', 
+        onDelete: 'CASCADE', 
       });
       Consult.belongsTo(models.Schedule, {
-        foreignKey: 'scheduleId', // This is the foreign key in the Schedule table that links to the Medic table
-        onDelete: 'CASCADE', // This ensures that if a Medic is deleted, their associated Schedules are also deleted
+        foreignKey: 'scheduleId', 
+        onDelete: 'CASCADE', 
       });
+       Consult.belongsTo(models.Service, {
+        foreignKey: 'serviceId', 
+        onDelete: 'CASCADE', 
+      }); 
     }
   }
   Consult.init({

@@ -35,29 +35,37 @@ module.exports = {
         type:Sequelize.STRING
       },
       medicId: {
-        type: Sequelize.UUID, // Use UUID data type
+        type: Sequelize.UUID, 
         allowNull: false,
         references: {
-          model: 'Medics', // This should match the actual table name for the Medic model
+          model: 'Medics', 
           key: 'id',
         }
       },
       patientId: {
-        type: Sequelize.UUID, // Use UUID data type
+        type: Sequelize.UUID, 
         allowNull: false,
         references: {
-          model: 'Patients', // This should match the actual table name for the Medic model
+          model: 'Patients', 
           key: 'id',
         }
       },
       scheduleId: {
-        type: Sequelize.INTEGER, // Use UUID data type
+        type: Sequelize.INTEGER, 
         allowNull: false,
         references: {
-          model: 'Schedules', // This should match the actual table name for the Medic model
+          model: 'Schedules', 
           key: 'id',
         }
       },
+       serviceId: {
+        type: Sequelize.UUID, 
+        allowNull: false,
+        references: {
+          model: 'Services', 
+          key: 'id',
+        }
+      }, 
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
