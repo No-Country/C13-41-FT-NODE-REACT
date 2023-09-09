@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'invoices', // This sets an alias for the association
       });
       Medic.hasMany(models.Service, {
-        foreignKey: 'specialtyId', // This is the foreign key in the Schedule table that links to the Medic table
+        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
         as: 'services', // This sets an alias for the association
       });
       Medic.hasMany(models.Schedule, {
