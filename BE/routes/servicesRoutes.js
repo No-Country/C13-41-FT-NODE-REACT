@@ -10,10 +10,10 @@ const {
 
 const {verifyJWT} = require('../middlewares/jwt.js')
 
-router.post("/",createService)
-router.put("/",editService)
-router.get("/",getService)
-router.delete("/",deleteService)
+router.post("/",verifyJWT,createService)
+router.put("/",verifyJWT,editService)
+router.get("/",verifyJWT,getService)
+router.delete("/",verifyJWT,deleteService)
 
 
 module.exports = router;
