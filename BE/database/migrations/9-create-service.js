@@ -1,15 +1,13 @@
 'use strict';
 
-const { sequelize } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Services', {
       id: {
-        type: Sequelize.BIGINT,
-        primaryKey: true,
-        autoIncrement: true
+        type: Sequelize.UUID,
+        primaryKey: true
       },
       description: {
         type: Sequelize.TEXT,
