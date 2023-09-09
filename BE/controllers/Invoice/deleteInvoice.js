@@ -6,7 +6,7 @@ const deleteInvoice = async (req, res) => {
     const { invoiceId } = req.query
 
     await Invoice.destroy({ where: { id: invoiceId } })
-
+ 
     return res
       .status(200)
       .json({ message: "Invoice Deleted" });

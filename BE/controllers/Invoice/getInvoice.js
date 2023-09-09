@@ -9,7 +9,7 @@ const getInvoice = async (req, res) => {
     }
 
     const InvoicesFound = await Invoice.findOne({where: { id: invoiceId}})
-    
+     
     return res.status(200).json({ message: 'Get Invoice', data:{InvoicesFound} });
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Get Invoice" });

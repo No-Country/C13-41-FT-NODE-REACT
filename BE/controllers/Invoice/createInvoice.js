@@ -6,7 +6,7 @@ const createInvoice = async (req, res) => {
     if (!medicId || !patientId || !serviceId || !urlFile) {
       throw new Error('Body must contain medicId, patientId, serviceId, urlFile')
     }
-
+ 
       const newInvoice = await Invoice.create({
         medicId,
         patientId,

@@ -15,7 +15,7 @@ const editInvoice = async (req, res) => {
         }
       }
     )
-
+ 
     if (updatedInvoice == 0) {
       throw new Error('Invoice not found')
     }
