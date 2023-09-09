@@ -5,9 +5,8 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Invoices', {
       id: {
-        type: Sequelize.BIGINT,
-        primaryKey: true,
-        autoIncrement: true
+        type: Sequelize.UUID,
+        primaryKey: true
       },
       patientId: {
         type: Sequelize.UUID,
@@ -20,16 +19,18 @@ module.exports = {
         references: { model: 'Medics', key: 'id'}
       },
       serviceId: {
-        type: Sequelize.BIGINT,
+        type: Sequelize.UUID,
         allowNull: false,
         references: { model: 'Services', key: 'id'}
       },
       urlFile: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       status: {
         type: Sequelize.ENUM('preAccepted', 'accepted', 'canceled')
+      },
+      platform: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
