@@ -6,6 +6,10 @@ const { uuid } = require("uuidv4")
 module.exports = (sequelize, DataTypes) => {
   class Medic extends Model {
     static associate(models) {
+      Medic.hasMany(models.Invoice, {
+        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
+        as: 'invoices', // This sets an alias for the association
+      });
       Medic.hasMany(models.Service, {
         foreignKey: 'specialtyId', // This is the foreign key in the Schedule table that links to the Medic table
         as: 'services', // This sets an alias for the association
