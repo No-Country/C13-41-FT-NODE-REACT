@@ -24,5 +24,4 @@ export const patientSchema = yup.object({
 		.matches(/^[0-9]+$/, 'Only numbers are allowed. No dots or spaces')
 		.min(6, 'Must have at least 6 characters')
 		.required('NID is required'),
-	// checkbox: yup.boolean().required()
 });

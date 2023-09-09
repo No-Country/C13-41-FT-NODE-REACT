@@ -28,7 +28,6 @@ const UserHomePage = () => {
 	const [nearbyDoctors, setNearbyDoctors] = useState([]);
 	const { userData } = useAuth();
 
-
 	const fetchData = async () => {
 		try {
 			const data = await getAllDoctors();
@@ -44,6 +43,14 @@ const UserHomePage = () => {
 	useEffect(() => {
 		fetchData();
 	}, []);
+
+	function compareConsultationDates(a, b) {
+		const dateA = new Date(a.consultTimestamp);
+		const dateB = new Date(b.consultTimestamp);
+		return dateA - dateB;
+	}
+
+	fakeConsultations.sort(compareConsultationDates);
 
 	return (
 		<Container sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, paddingY: 4 }}>
@@ -148,14 +155,16 @@ const UserHomePage = () => {
 							);
 						})
 					) : (
-						<Typography
-							variant='body2'
-							className='inter'
-							color={colors.text}
-							fontSize={{ xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body }}
-						>
-							No doctors nearby
-						</Typography>
+						<Grid item xs={12}>
+							<Typography
+								variant='body2'
+								className='inter'
+								color={colors.text}
+								fontSize={{ xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body }}
+							>
+								No doctors nearby
+							</Typography>
+						</Grid>
 					)}
 				</Grid>
 			</Box>
