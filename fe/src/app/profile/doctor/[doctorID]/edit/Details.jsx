@@ -13,7 +13,6 @@ import {
 import { Edit, Save } from '@mui/icons-material';
 import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
 import { getSpecialty } from '@/lib/getSpecialty';
 
 function Details({
@@ -33,10 +32,10 @@ function Details({
 	setEditNationalId,
 	nationalId,
 	setNationalId,
-	editSocialMedia,
-	setEditSocialMedia,
-	socialMedia,
-	setSocialMedia,
+	editSocialLink,
+	setEditSocialLink,
+	socialLink,
+	setSocialLink,
 	speciality,
 	setSpeciality,
 
@@ -142,23 +141,23 @@ function Details({
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>
-								<a href={{ socialMedia }} target='_blank' rel='noopener noreferrer'>
+								<a href={{ socialLink }} target='_blank' rel='noopener noreferrer'>
 									Professional Social Media Link
 								</a>
 							</label>
 
 							<OutlinedInput
-								disabled={!editSocialMedia}
-								defaultValue={socialMedia}
-								onChange={e => setSocialMedia(e.target.value)}
+								disabled={!editSocialLink}
+								defaultValue={socialLink}
+								onChange={e => setSocialLink(e.target.value)}
 								endAdornment={
 									<InputAdornment position='start'>
 										<IconButton
 											aria-label='toggle to edit'
-											onClick={() => setEditSocialMedia(!editNationalId)}
+											onClick={() => setEditSocialLink(!editSocialLink)}
 											edge='end'
 										>
-											{editSocialMedia ? <Save /> : <Edit />}
+											{editSocialLink ? <Save /> : <Edit />}
 										</IconButton>
 									</InputAdornment>
 								}

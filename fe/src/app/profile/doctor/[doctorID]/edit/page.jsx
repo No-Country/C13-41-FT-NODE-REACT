@@ -26,8 +26,8 @@ function DoctorProfile() {
 	const [avatar, setAvatar] = useState('');
 	const [phone, setPhone] = useState('');
 	const [editPhone, setEditPhone] = useState(false);
-	const [editSocialMedia, setEditSocialMedia] = useState(false);
-	const [socialMedia, setSocialMedia] = useState(
+	const [editSocialLink, setEditSocialLink] = useState(false);
+	const [socialLink, setSocialLink] = useState(
 		'https://www.linkedin.com/in/gared-lyon-194b21222/',
 	);
 	const [speciality, setSpeciality] = useState('Pediatrics');
@@ -40,7 +40,7 @@ function DoctorProfile() {
 			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
-			setSocialMedia(userData.socialmedia);
+			setSocialLink(userData.sociallink);
 			if (userData.avatar) {
 				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
 			} else {
@@ -109,10 +109,10 @@ function DoctorProfile() {
 					setPhone={setPhone}
 					editPhone={editPhone}
 					setEditPhone={setEditPhone}
-					editSocialMedia={editSocialMedia}
-					setEditSocialMedia={setEditSocialMedia}
-					socialMedia={socialMedia}
-					setSocialMedia={setSocialMedia}
+					editSocialLink={editSocialLink}
+					setEditSocialLink={setEditSocialLink}
+					socialLink={socialLink}
+					setSocialLink={setSocialLink}
 				/>
 				<Container>
 					<Button
