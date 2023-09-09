@@ -9,7 +9,7 @@ const editSocialNetwork = async (req, res) => {
 
     if(!id || !link)
     {
-      throw new Error("Must contain id/email")
+      throw new Error("Must contain id/link")
     }
 
     const updatedSocialNetwork = await SocialNetwork.update(
