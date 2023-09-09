@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { uuid } = require("uuidv4")
 module.exports = (sequelize, DataTypes) => {
   class Invoice extends Model {
     static associate(models) {
@@ -42,15 +43,20 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     },
     urlFile: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     status: {
       type: DataTypes.ENUM('preAccepted', 'accepted', 'canceled')
     },
+    platform: {
+      type: DataTypes.STRING
+    }
   }, {
     sequelize,
     modelName: 'Invoice',
   })
+  Invoice.addHook('beforeSave', async (invoice) => {
+    return invoice.id = uuid();
+  });
   return Invoice;
 };
