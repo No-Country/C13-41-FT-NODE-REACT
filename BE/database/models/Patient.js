@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Patient.hasMany(models.Invoice,{foreignKey: 'patientId', as: 'invoices'})
       Patient.hasMany(models.Comment,{foreignKey: 'patientId', as: 'comments'})
     }
   }
