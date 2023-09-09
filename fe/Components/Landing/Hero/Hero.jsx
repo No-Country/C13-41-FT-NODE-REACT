@@ -2,17 +2,23 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 import { colors } from '@/app/colors';
-
+import {
+	Grid,
+} from '@mui/material';
+import doctor1 from '@/assets/image_1.png';
+import Image from 'next/image';
 const HeroContainer = styled('section')({
 	display: 'flex',
 	justifyContent: 'center',
 	gap: '30px',
 	marginTop: '30px',
 });
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const LeftContainer = styled('div')({
 	display: 'flex',
 	flexDirection: 'column',
+	left: '10%',
 	justifyContent: 'space-between',
 });
 
@@ -22,9 +28,13 @@ const RightContainer = styled('div')({
 });
 
 const Title = styled('h1')({
-	fontSize: '40px',
+	fontSize: '80px',
+	textAlign: 'center',
+	justifyContent: 'center',
 	color: `${colors.text}`,
 	fontWeight: '400',
+	transform: 'translate(10%, 20%)',
+
 });
 
 const Text = styled('p')({
@@ -33,54 +43,50 @@ const Text = styled('p')({
 	textAlign: 'left',
 });
 
-const ImagenBanner = styled('img')({
+const ImagenBanner = styled('div')({
 	display: 'flex',
-	height: '500px',
-	width: '500px',
+	backgroundColor: `${colors.cardBackground}`, //Provicional xD
+	padding: '20px',
+	borderRadius: '15%',
+	width: '75%', 
+	height: '75%',
+	transform: 'translate(30%, 0%)',
 });
+
+
 
 function Hero() {
 	return (
 		<HeroContainer>
 			<LeftContainer>
-				<Title>Welcome to Klinika</Title>
-				<Text>
-					We're thrilled to have you here, you've come to the right place.
-
-					We're delighted to introduce a convenient and efficient way to manage your healthcare needs. Our user-friendly online platform is designed with your well-being in mind, making it easier than ever to schedule medical appointments at your fingertips.
-
-					Your health is our priority, and our scheduling platform is designed to make your healthcare experience as smooth as possible. Whether you're due for a routine check-up, seeking specialized care, or simply need medical advice, we're here to assist you every step of the way.
-
-					Thank you for choosing Klinika for your medical needs. Your journey to a better health begins here.
-
-					Schedule your appointment today and embark on a path towards a healthier, happier you.
-
-					Best regards,
-					The Klinika Team.
-				</Text>
+				
+				<Title>Your healthy,<br/> Your way!</Title>
+			
 				<Button
 					href='https://github.com'
 					variant='contained'
 					sx={{
-						height: '60px',
-						width: '305px',
-						backgroundColor: colors.background,
-						marginTop: '30px',
+						width: '300px', 
+						height: '50px',
+						backgroundColor: colors.locationIcon,
 						fontSize: '1.2rem',
-						color: colors.text,
-						fontWeight: '600',
+						color: 'white',
+						fontWeight: '10',
 						display: 'flex',
+						transform: 'translate(0%, 0%)',
 					}}
 				>
-					Get an appointment
+					Get an appointment <ArrowForwardIosIcon/>
 				</Button>
+				<br/>
 			</LeftContainer>
 
 			<RightContainer>
-				<ImagenBanner
-					src='https://media.istockphoto.com/id/1189304032/es/foto/m%C3%A9dico-sosteniendo-tableta-digital-en-la-sala-de-reuniones.jpg?s=1024x1024&w=is&k=20&c=7bf_zCsHVWdJ7POvGwbd-zBIuSdZnNGnX4C7y9XYIQ8='
-					alt='Doctors banner'
-				/>
+				<ImagenBanner>
+					<Image src={doctor1} alt='doctorLanding' width={500} height={500}>
+						</Image> 
+				</ImagenBanner>
+				
 			</RightContainer>
 		</HeroContainer>
 	);

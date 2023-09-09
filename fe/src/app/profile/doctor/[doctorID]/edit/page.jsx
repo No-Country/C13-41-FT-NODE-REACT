@@ -31,6 +31,9 @@ function DoctorProfile() {
 		'https://www.linkedin.com/in/gared-lyon-194b21222/',
 	);
 	const [speciality, setSpeciality] = useState('');
+
+	const [selectedFile, setSelectedFile] = useState();
+	const [isFilePicked, setIsFilePicked] = useState(false);
 	const [successUpdate, setSuccessUpdate] = useState(false);
 	const { userData, updateUserData } = useAuth();
 
@@ -115,6 +118,10 @@ function DoctorProfile() {
 					setEditSocialMedia={setEditSocialMedia}
 					socialMedia={socialMedia}
 					setSocialMedia={setSocialMedia}
+					selectedFile={selectedFile}
+					setSelectedFile={setSelectedFile}
+					isFilePicked={isFilePicked}
+					setIsFilePicked={setIsFilePicked}
 				/>
 				<Container>
 					<Button

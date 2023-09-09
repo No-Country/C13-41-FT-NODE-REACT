@@ -31,6 +31,20 @@ module.exports = {
         updatedAt: new Date(),
       })
     }
+    patients.push({
+      id: uuid(),
+      fullname: faker.person.fullName(),
+      password: await bcrypt.hash('012345689',10),
+      resume: faker.person.bio(),
+      email: 'test@test.com',
+      country: faker.location.country(),
+      gender: genders[Math.floor(Math.random() * genders.length)],
+      phone: faker.phone.number('#########'),
+      birthdate: faker.date.birthdate({ min: 18, max: 65, mode: 'age' }),
+      nid: faker.number.int({ min: 1000000000, max: 9999999999 }),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    })
     return await queryInterface.bulkInsert("Patients", patients);
   },
   async down(queryInterface, Sequelize) {

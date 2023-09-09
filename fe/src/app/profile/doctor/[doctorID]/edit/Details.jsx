@@ -15,7 +15,27 @@ import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { getSpecialty } from '@/lib/getSpecialty';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { colors } from '@/app/colors';
 
+<<<<<<< HEAD
+=======
+const VisuallyHiddenInput = styled('input')({
+
+	clip: "rect(0 0 0 0)",
+	clipPath: "inset(50%)",
+	height: "1px",
+	overflow: "hidden",
+	position: "absolute",
+	bottom: "0",
+	left: "0",
+	whiteSpace: "nowrap",
+	width: "1px",
+
+});
+
+>>>>>>> c28ba325d3fc67507ab56788d099cf03b80eaff2
 function Details({
 	editResume,
 	setEditResume,
@@ -39,6 +59,11 @@ function Details({
 	setSocialMedia,
 	speciality,
 	setSpeciality,
+	selectedFile, 
+	setSelectedFile,
+	isFilePicked, 
+	setIsFilePicked,
+
 }) {
 	const [specialties, setSpecialties] = useState([]);
 	const { userData } = useAuth();
@@ -51,6 +76,7 @@ function Details({
 		fetchSpecialties();
 	}, []);
 
+<<<<<<< HEAD
 	const handleAddSpecialty = async e => {
 		setSpeciality(e.target.value);
 		const findSpecialtyById = specialties.find(specialty => specialty.name === e.target.value);
@@ -80,6 +106,48 @@ function Details({
 		} catch (error) {
 			console.error(error);
 		}
+=======
+	const handleUploadPDF = async (e) => {
+
+		const file = e.target.files[0];
+		console.log (file);
+
+		const formData = new FormData();
+
+		formData.append("file", file);
+
+		try {
+
+			const response = await fetch(
+
+				'https://mecharcovz-be.onrender.com/api/v1/files?type=pdf&email=test@test.com', 
+
+				// cambiar ruta arriba
+				{
+					headers: {Authorization: `bearer ${localStorage.getItem("token")}`},
+					method: 'POST',
+					body: formData,
+				}
+	
+			)
+
+			if (response.error) {
+
+				throw new Error(response.error);
+	
+			}
+	
+			const data = await response.json();
+	
+			console.log(data)
+
+			
+		} catch (error) {
+
+			console.log (error);
+		}
+
+>>>>>>> c28ba325d3fc67507ab56788d099cf03b80eaff2
 	};
 
 	return (
@@ -241,6 +309,24 @@ function Details({
 							</FormControl>
 						</Stack>
 					</Grid>
+
+					<Grid item xs={12} sm={6}>
+						<Stack direction='column' spacing={2}>
+							<label>Upload your Resume</label>
+							<FormControl sx={{display: "flex", alignContent: "center", height: "100%",}}>
+								<Button
+								component="label"
+								variant="contained"
+								startIcon={<CloudUploadIcon />}
+								sx={{display: "flex", justifyContent: "center", alignItems: "center", height: "55px", maxHeight: "100%", backgroundColor: colors.buttonIcon, color: "white", fontWeight: "600", ':hover': {backgroundColor: colors.buttonIcon},}}
+								>
+								Upload PDF
+									<VisuallyHiddenInput accept='application/pdf' type='file' onChange={(e) => handleUploadPDF (e)}/>
+								</Button>
+							</FormControl>
+						</Stack>
+					</Grid>
+
 				</Grid>
 			)}
 		</Container>
