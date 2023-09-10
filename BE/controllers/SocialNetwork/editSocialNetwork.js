@@ -1,19 +1,18 @@
 
 const { SocialNetwork } = require("../../database/models");
 
-// TODO: Cambiar con middleware de atenticación
+
 const editSocialNetwork = async (req, res) => {
   try {
 
     const { id, link } = req.body
 
-    if(!id || !link)
-    {
-      throw new Error("Must contain id/link")
+    if (!id || !link) {
+      throw new Error("Must contain id/email")
     }
 
     const updatedSocialNetwork = await SocialNetwork.update(
-        req.body,
+      req.body,
       {
         where: {
           id,
@@ -25,17 +24,11 @@ const editSocialNetwork = async (req, res) => {
       throw new Error("SocialNetwork not found")
     }
 
-    const updateSocialNetwork = await SocialNetwork.findOne(
-      {
-        where: {
-          id
-        },
-      }
-    );
+    const updateSocialNetwork = await SocialNetwork.findByPk(id)
 
     return res
       .status(200)
-      .json({ data:{updateSocialNetwork},message: "Social Network Updated" });
+      .json({ data: { updateSocialNetwork }, message: "Social Network Updated" });
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Edit Social Network" });
   }
