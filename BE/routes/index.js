@@ -15,6 +15,7 @@ const socialNetworksRoutes = require('./socialNetworksRoutes')
 const vacationDatesRoutes = require('./vacationDatesRoutes')
 const servicesRoutes = require('./servicesRoutes')
 const stripeRoutes = require('./stripeRoutes')
+const invoicesRoutes = require('./invoicesRoutes')
 
 const router = express.Router()
 
@@ -31,5 +32,6 @@ router.use('/socialnetwork',socialNetworksRoutes)
 router.use('/vacationdate',vacationDatesRoutes)
 router.use('/service',servicesRoutes)
 router.use('/payment/stripe',stripeRoutes)
+router.use('/invoice',invoicesRoutes)
 
 module.exports = router

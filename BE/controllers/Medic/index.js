@@ -5,7 +5,7 @@ const { deleteMedic } = require("./deleteMedic");
 const { getMedic } = require("./getMedic");
 const { changePasswordMedic } = require("./changePasswordMedic");
 const { addMedicSpecialty } = require("./addMedicSpecialty");
-
+const { delMedicSpecialty } = require("./delMedicSpecialty");
 
 module.exports = {
   editMedic,
@@ -14,5 +14,6 @@ module.exports = {
   deleteMedic,
   getMedic,
   changePasswordMedic,
-  addMedicSpecialty
+  addMedicSpecialty,
+  delMedicSpecialty
 };
