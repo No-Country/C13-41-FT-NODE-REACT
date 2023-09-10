@@ -7,26 +7,26 @@ module.exports = (sequelize, DataTypes) => {
   class Medic extends Model {
     static associate(models) {
       Medic.hasMany(models.Invoice, {
-        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
-        as: 'invoices', // This sets an alias for the association
+        foreignKey: 'medicId',
+        as: 'invoices',
       });
       Medic.hasMany(models.Service, {
-        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
-        as: 'services', // This sets an alias for the association
+        foreignKey: 'medicId',
+        as: 'services', 
       });
       Medic.hasMany(models.Schedule, {
-        foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
-        as: 'schedules', // This sets an alias for the association
+        foreignKey: 'medicId', 
+        as: 'schedules', 
       });
       Medic.belongsToMany(models.Specialty, {
-        through: 'MedicSpecialty', // This is the name of the intermediary table
+        through: 'MedicSpecialty',
         foreignKey: 'medicId',
         otherKey: 'specialtyId',
-        as: 'specialties', // This sets an alias for the association
+        as: 'specialties', 
       })
       Medic.hasOne(models.VacationDate, {
-        foreignKey: 'medicId', // This is the foreign key in the VacationDate table that links to the Medic table
-        as: 'vacationDate', // This sets an alias for the association
+        foreignKey: 'medicId', 
+        as: 'vacationDate', 
       });
       Medic.hasMany(models.Comment,{foreignKey: 'medicId', as: 'comments'})
       Medic.hasMany(models.SocialNetwork,{foreignKey: 'medicId', as: 'socialnetworks'})
