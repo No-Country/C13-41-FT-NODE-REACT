@@ -1,5 +1,6 @@
 'use strict';
 
+const { sequelize } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
       specialtyId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'MedicSpecialties', key: 'id'}
+        references: { model: 'Specialties', key: 'id'}
       },
       createdAt: {
         allowNull: false,
