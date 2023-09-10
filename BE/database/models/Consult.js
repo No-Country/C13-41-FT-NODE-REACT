@@ -10,7 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Consult.belongsTo(models.Medic, {
+        foreignKey: 'medicId', 
+        onDelete: 'CASCADE', 
+      });
+      Consult.belongsTo(models.Patient, {
+        foreignKey: 'patientId', 
+        onDelete: 'CASCADE', 
+      });
+      Consult.belongsTo(models.Schedule, {
+        foreignKey: 'scheduleId', 
+        onDelete: 'CASCADE', 
+      });
+       Consult.belongsTo(models.Service, {
+        foreignKey: 'serviceId', 
+        onDelete: 'CASCADE', 
+      }); 
     }
   }
   Consult.init({
@@ -34,6 +49,12 @@ module.exports = (sequelize, DataTypes) => {
     urlFile: {
       type: DataTypes.TEXT
     },
+    initialHour:{
+      type:DataTypes.STRING
+    },
+    finalHour:{
+      type:DataTypes.STRING
+    }
   }, {
     sequelize,
     modelName: 'Consult',

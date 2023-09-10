@@ -2,12 +2,16 @@
 const {
   Model
 } = require('sequelize');
+const { uuid} = require("uuidv4")
 module.exports = (sequelize, DataTypes) => {
   class Service extends Model {
     static associate(models) {
-
       Service.belongsTo(models.Specialty, {
         foreignKey: 'specialtyId',
+        onDelete: 'CASCADE', 
+      });
+      Service.belongsTo(models.Medic, {
+        foreignKey: 'medicId',
         onDelete: 'CASCADE', 
       });
     }
@@ -25,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID, 
       allowNull: false,
       references: {
-        model: 'Medic',
+        model: 'Medics',
         key: 'medicId',
       },
       onUpdate: 'CASCADE',
@@ -35,15 +39,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER, 
       allowNull: false,
       references: {
-        model: 'MedicSpecialty',
+        model: 'Specialties',
         key: 'specialtyId',
       },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     },
+    
   }, {
     sequelize,
     modelName: 'Service',
+  })
+  Service.addHook('beforeSave', async (service) => {
+    return service.id = uuid();
   })
   return Service;
 };

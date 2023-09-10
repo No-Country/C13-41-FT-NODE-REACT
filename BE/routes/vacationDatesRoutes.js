@@ -11,8 +11,8 @@ const {
 const {verifyJWT} = require('../middlewares/jwt.js')
 
 router.post("", verifyJWT,addVacationDate);
-router.put("", verifyJWT,getVacationDate);
-router.delete("", verifyJWT,editVacationDate);
-router.get("", verifyJWT,deleteVacationDate);
+router.put("", verifyJWT,editVacationDate);
+router.delete("", verifyJWT,deleteVacationDate);
+router.get("", verifyJWT,getVacationDate);
 
 module.exports = router;
