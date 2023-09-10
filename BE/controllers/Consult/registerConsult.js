@@ -3,10 +3,10 @@ const { Consult } = require('../../database/models')
 const createConsult = async (req, res) => {
   try {
 
-    const { diagnostic, recipe, consultTimestamp, status, resume, urlFile, medicId, patientId, scheduleId } = req.body
+    const { diagnostic, recipe, consultTimestamp, status, resume, urlFile, medicId, patientId, scheduleId,serviceId } = req.body
 
-    if (!diagnostic || !recipe || !consultTimestamp || !status || !resume || !urlFile || medicId || patientId || scheduleId) {
-      throw new Error('All fields are required.')
+    if (!diagnostic || !recipe || !consultTimestamp || !status || !resume || !urlFile || !medicId || !patientId || !scheduleId || !serviceId) {
+      throw new Error('All fields are required diagnostic, recipe, consultTimestamp, status, resume, urlFile, medicId, patientId, scheduleId, serviceId.')
     }
 
     const newConsult = await Consult.create({
@@ -18,7 +18,8 @@ const createConsult = async (req, res) => {
       urlFile,
       medicId,
       patientId,
-      scheduleId
+      scheduleId,
+      serviceId
     });
 
     return res.status(201).json({ data: { consult: newConsult }, message: "Consult Created" })
