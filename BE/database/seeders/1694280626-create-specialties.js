@@ -4,7 +4,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     let specialties= []
     const specialtiesName = [
-      'Internal Medicine',
+      'General Medicine',
       'Pediatrics',
       'Surgery',
       'Obstetrics and Gynecology',
@@ -16,7 +16,7 @@ module.exports = {
       'Neurology',
       'Dermatology',
       'Ophthalmology',
-      'Pathology',
+      'Internal Medicine',
       'Cardiology',
       'Gastroenterology',
       'Pulmonology',

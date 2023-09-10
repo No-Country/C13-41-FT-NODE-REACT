@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'specialtyId',
         otherKey: 'medicId',
         as: 'medics', // This sets an alias for the association
-      });
+      })
     }
   }
   Specialty.init({

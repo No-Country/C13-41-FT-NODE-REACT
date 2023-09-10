@@ -1,11 +1,8 @@
 'use strict';
-
-const { sequelize } = require('../models');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Services', {
+    await queryInterface.createTable('Comments', {
       id: {
         type: Sequelize.BIGINT,
         primaryKey: true,
@@ -15,19 +12,15 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      price: {
-        type: Sequelize.DOUBLE,
-        allowNull: false
+      patientId: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: { model: 'Patients', key: 'id'}
       },
       medicId: {
         type: Sequelize.UUID,
         allowNull: false,
         references: { model: 'Medics', key: 'id'}
-      },
-      specialtyId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'MedicSpecialties', key: 'id'}
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Services');
+    await queryInterface.dropTable('Comments');
   }
 };
