@@ -3,19 +3,17 @@ import React, { useState, useEffect } from 'react';
 import BasicForm from '../../../../Components/BasicForm';
 import { patientSchema } from '../validations/userPacient';
 import { Form, Formik } from 'formik';
-import { Button, Snackbar, Alert, colors } from '@mui/material';
+import { Button, Snackbar, Alert } from '@mui/material';
+import { colors } from '@/app/colors';
 import { initialValues } from '../validations/initialValuesPatient';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import FormAlerts from '../../../../Components/FormAlerts';
 import '@fontsource/poppins';
 import { useRouter } from 'next/navigation';
-<<<<<<< HEAD
-
-=======
 import { titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import { GridColumnMenuContainer } from '@mui/x-data-grid';
->>>>>>> dev
+
 export default function PacientSingUp() {
 	const [successSignup, setSuccessSignup] = useState(false);
 	const [errorSignup, setErrorSignup] = useState(false);
@@ -53,7 +51,8 @@ export default function PacientSingUp() {
 						email: values.email,
 						country: values.country,
 						gender: values.gender,
-						nid: values.phone,
+						nid: values.nid,
+						phone: values.phone,
 						avatar: '',
 						birthdate: values.birthdate,
 					};
@@ -67,9 +66,10 @@ export default function PacientSingUp() {
 							body: JSON.stringify(userData),
 						});
 
-						const data = await response.json();
+						if (response?.error) {
+							throw new Error('Credenciales inválidas');
+						}
 
-						console.log(data);
 						setSuccessSignup(true);
 						setTimeout(() => {
 							setSuccessSignup(false);

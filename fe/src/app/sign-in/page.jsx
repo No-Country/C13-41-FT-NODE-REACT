@@ -1,6 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import styles from './page.module.css';
 import Link from 'next/link';
 import * as yup from 'yup';
 import { Formik, Form, Field } from 'formik';
@@ -17,11 +16,12 @@ import {
 	Stack,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import jwtDecode from 'jwt-decode';
+// import jwtDecode from 'jwt-decode';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import { useAuth } from '@/contexts/Auth.context';
 import SigninFormAlerts from '../../../Components/SigninFormAlerts';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import jwtDecode from 'jwt-decode';
 
 const SignInPage = () => {
 	const [successSignin, setSuccessSignin] = useState(false);
@@ -65,6 +65,7 @@ const SignInPage = () => {
 
 		try {
 			let endpoint = '';
+
 			if (data.user === 'patient') {
 				endpoint = 'https://mecharcovz-be.onrender.com/api/v1/auth/patient';
 			} else {
@@ -78,33 +79,34 @@ const SignInPage = () => {
 				},
 				body: JSON.stringify(userLogin),
 			});
+
+			if (response?.error) {
+				throw new Error('Credenciales inválidas');
+			}
+
 			const dataUser = await response.json();
-			console.log(dataUser);
-			if (response.status === 201) {
-				const decoded = jwtDecode(dataUser.data.token);
 
-				// Almaceno el token y los datos en un estado y en el local storage por si cierra la sesión
-				if (data.user === 'patient') {
-					login({ token: dataUser.data.token, data: decoded.patient });
-				} else if (data.user === 'doctor') {
-					login({ token: dataUser.data.token, data: decoded.medic });
-				}
-				// Muestro el login exitoso
-				setSuccessSignin(true);
+			const decoded = jwtDecode(dataUser.data.token);
+
+			// Almaceno el token y los datos en un estado y en el local storage por si cierra la sesión
+			if (data.user === 'patient') {
+				login({ token: dataUser.data.token, data: decoded.patient });
+			} else if (data.user === 'doctor') {
+				login({ token: dataUser.data.token, data: decoded.medic });
+			}
+
+			// Muestro el login exitoso
+			setSuccessSignin(true);
+			setTimeout(() => {
+				setSuccessSignin(false);
+				setRedirecting(true);
 				setTimeout(() => {
-					setSuccessSignin(false);
-					setRedirecting(true);
-					setTimeout(() => {
-						setRedirecting(false);
-						push('/home');
-					}, 2000);
+					setRedirecting(false);
+					push('/home');
 				}, 2000);
-			}
-
-			if (response.status === 400) {
-				console.log('error login');
-			}
+			}, 2000);
 		} catch (error) {
+			console.log(error);
 			setErrorMessage(error.error);
 			setErrorSignin(true);
 			setTimeout(() => {

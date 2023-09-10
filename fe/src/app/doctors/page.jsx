@@ -3,25 +3,22 @@ import { useFilterContext } from '@/contexts/Filters.context';
 import {
 	Box,
 	Button,
-	Card,
-	CardActions,
-	CardContent,
-	CardHeader,
 	Container,
 	Divider,
 	Grid,
 	InputAdornment,
 	MenuItem,
-	Select,
 	TextField,
 	Typography,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
+import { getAllSpecialities } from '@/lib/getAllSpecialities';
 
 const DoctorsPage = () => {
+	const [specialties, setSpecialties] = useState([]);
 	const {
 		filteredDoctor,
 		allDoctors,
@@ -33,7 +30,20 @@ const DoctorsPage = () => {
 	} = useFilterContext();
 
 	const countryList = new Set(allDoctors.map(doctor => doctor.country));
-	const specialtyList = new Set(allDoctors.map(doctor => doctor.specialty));
+
+	const fetchSpecialties = async () => {
+		try {
+			const data = await getAllSpecialities();
+			const specialtiesList = data.data.specialties.map(specialty => specialty.name);
+			setSpecialties(specialtiesList);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchSpecialties();
+	}, []);
 
 	return (
 		<Container component={'main'} sx={{ paddingY: 4 }}>
@@ -71,7 +81,7 @@ const DoctorsPage = () => {
 						minHeight: { xs: 'auto', sm: '100vh' },
 					}}
 					paddingX={1}
-					width={{ xs: '100%', sm: '30%' }}
+					width={{ xs: '100%', sm: '20%' }}
 				>
 					<Box display={'flex'} flexDirection={'column'} rowGap={1} width={'100%'}>
 						<Typography
@@ -143,7 +153,7 @@ const DoctorsPage = () => {
 								},
 							}}
 						>
-							{[...specialtyList].map(specialty => (
+							{specialties.map(specialty => (
 								<MenuItem key={specialty} value={specialty}>
 									{specialty}
 								</MenuItem>
@@ -168,16 +178,15 @@ const DoctorsPage = () => {
 					</Box>
 				</Box>
 				<Divider orientation='vertical' flexItem />
-				<Box component={'section'} width={{ xs: '100%', sm: '70%' }} paddingX={1}>
+				<Box component={'section'} width={{ xs: '100%', sm: '80%' }} paddingX={1}>
 					<Grid container spacing={2}>
-						{filteredDoctor.length > 0 ? (
+						{filteredDoctor?.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
 									<Grid item xs={6} md={4} key={doctor.id}>
 										<DoctorCard doctor={doctor} />
-										{/* <Button href={`/profile/${doctor.id}`}>View profile</Button> */}
 										<Button
-											href='#'
+											href={`/appointments/${doctor.email}`}
 											variant='contained'
 											className='inter'
 											fullWidth

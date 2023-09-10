@@ -1,6 +1,6 @@
 'use client';
 import { Box, Typography, Container, Grid } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import fakeConsultations from './fakeConsultationData';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import { useAuth } from '@/contexts/Auth.context';
@@ -12,8 +12,7 @@ import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
 import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
-import { fakeDoctorData } from '../doctors/fakeDoctosData';
-
+import { getAllDoctors } from '@/lib/getAllDoctors';
 const servicesLabels = ['labs', 'vaccines', 'doctors', 'medications', 'EHR'];
 const { labs, vaccines, doctors, medication, ehr } = colors.categoryIcons;
 const servicesColor = [labs, vaccines, doctors, medication, ehr];
@@ -26,10 +25,33 @@ const servicesIcon = [
 ];
 
 const UserHomePage = () => {
+	const [nearbyDoctors, setNearbyDoctors] = useState([]);
 	const { userData } = useAuth();
-	const nearbyDoctors = fakeDoctorData.filter(doctor => {
-		return doctor.country.toLowerCase().includes(userData.country.toLowerCase());
-	});
+
+	const fetchData = async () => {
+		try {
+			const data = await getAllDoctors();
+			const nearbyDoctors = data.data.medic.filter(doctor => {
+				return doctor.country.toLowerCase().includes(userData.country.toLowerCase());
+			});
+			setNearbyDoctors(nearbyDoctors);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	function compareConsultationDates(a, b) {
+		const dateA = new Date(a.consultTimestamp);
+		const dateB = new Date(b.consultTimestamp);
+		return dateA - dateB;
+	}
+
+	fakeConsultations.sort(compareConsultationDates);
+
 	return (
 		<Container sx={{ display: 'flex', flexDirection: 'column', rowGap: 4, paddingY: 4 }}>
 			<Box component={'section'}>
@@ -97,7 +119,6 @@ const UserHomePage = () => {
 				>
 					{servicesLabels ? (
 						servicesLabels.map((service, idx) => {
-							console.log(servicesIcon[idx]);
 							return (
 								<ServiceCard
 									key={idx}
@@ -125,8 +146,8 @@ const UserHomePage = () => {
 					</Typography>
 				</Box>
 				<Grid container spacing={2}>
-					{nearbyDoctors.length > 0 ? (
-						nearbyDoctors.map((doctor, idx) => {
+					{nearbyDoctors?.length > 0 ? (
+						nearbyDoctors?.map((doctor, idx) => {
 							return (
 								<Grid item key={idx} xs={6} sm={4} lg={3}>
 									<DoctorCard doctor={doctor} />
@@ -134,14 +155,16 @@ const UserHomePage = () => {
 							);
 						})
 					) : (
-						<Typography
-							variant='body2'
-							className='inter'
-							color={colors.text}
-							fontSize={{ xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body }}
-						>
-							No doctors nearby
-						</Typography>
+						<Grid item xs={12}>
+							<Typography
+								variant='body2'
+								className='inter'
+								color={colors.text}
+								fontSize={{ xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body }}
+							>
+								No doctors nearby
+							</Typography>
+						</Grid>
 					)}
 				</Grid>
 			</Box>

@@ -6,26 +6,58 @@ import { useAuth } from '@/contexts/Auth.context';
 import { Edit } from '@mui/icons-material';
 import { Box } from '@mui/system';
 const AvatarProfile = ({ avatar, setAvatar }) => {
-	const { userData } = useAuth();
-
+	const { userData, updateUserData } = useAuth();
 	const inputRef = useRef(null);
 
 	const handleIconClick = () => {
 		inputRef.current.click();
 	};
 
+	const uploadAvatar = async file => {
+		const formData = new FormData();
+
+		formData.append('file', file);
+		formData.append('email', userData.email);
+
+		try {
+			const response = await fetch(
+				`https://mecharcovz-be.onrender.com/api/v1/files?type=avatarmedic&email=${userData.email}`,
+				{
+					method: 'POST',
+					headers: {
+						Authorization: `bearer ${localStorage.getItem('token')}`,
+					},
+					body: formData,
+				},
+			);
+
+			if (!response.ok) {
+				throw new Error('Error en la solicitud.');
+			}
+
+			const data = await response.json();
+			console.log(data);
+			updateUserData(data.data.MedicFound);
+		} catch (error) {
+			console.error('Error al subir el archivo:', error);
+		}
+	};
+
 	const handleFileChange = event => {
 		const selectedFile = event.target.files[0];
 
-		if (selectedFile) {
-			const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-			if (allowedTypes.includes(selectedFile.type)) {
-				console.log('Archivo válido seleccionado:', selectedFile);
-				setAvatar(URL.createObjectURL(selectedFile));
-			} else {
-				console.error('Tipo de archivo no válido. Selecciona una imagen JPEG, JPG o PNG.');
-			}
+		if (!selectedFile) return;
+
+		const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+
+		if (!allowedTypes.includes(selectedFile.type)) {
+			console.error('Tipo de archivo no válido. Selecciona una imagen JPEG, JPG o PNG.');
+			return;
 		}
+
+		console.log('Archivo válido seleccionado:', selectedFile);
+		uploadAvatar(selectedFile);
+		console.log('avatar actualizado');
 	};
 
 	return (

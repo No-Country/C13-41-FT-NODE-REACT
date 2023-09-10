@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Patient.hasMany(models.Invoice,{foreignKey: 'patientId', as: 'invoices'})
       Patient.hasMany(models.Comment,{foreignKey: 'patientId', as: 'comments'})
+      Patient.hasMany(models.Consult,{foreignKey: 'patientId', as: 'consults'})
     }
   }
   Patient.init({

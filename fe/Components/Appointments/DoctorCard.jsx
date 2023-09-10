@@ -2,9 +2,13 @@ import { StarRounded, PlaceOutlined } from '@mui/icons-material';
 import { Avatar, Box, Stack, Typography } from '@mui/material';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import React from 'react';
+import Link from 'next/link';
 
 const DoctorCard = ({ doctor }) => {
-	const { fullname, country, specialty } = doctor;
+	const { fullname, country, specialties, avatar, email } = doctor;
+	const generateRandomRate = () => {
+		return parseFloat(Math.random() * (5.0 - 3.0) + 3.0).toFixed(1);
+	};
 	return (
 		<Box
 			component={'article'}
@@ -21,9 +25,18 @@ const DoctorCard = ({ doctor }) => {
 				borderRadius: '0.5rem',
 			}}
 		>
-			<Avatar variant='circular' sizes='large' sx={{ backgroundColor: colors.categoryIcons.vaccines }}>
-				{fullname.charAt(0).toUpperCase()}
-			</Avatar>
+			<Link href={`/profile/doctor/${email}`}>
+				<Avatar
+					variant='circular'
+					sizes='large'
+					sx={{ backgroundColor: colors.categoryIcons.vaccines, width: '4rem', height: '4rem' }}
+					src={`https://mecharcovz-be.onrender.com/public/uploads/${
+						doctor.profesionalid ? 'avatarmedic' : 'avatarpatient'
+					}/${avatar}`}
+				>
+					{fullname.charAt(0).toUpperCase()}
+				</Avatar>
+			</Link>
 			<Stack direction={'column'} spacing={0}>
 				<Typography
 					variant={'h6'}
@@ -32,7 +45,7 @@ const DoctorCard = ({ doctor }) => {
 					color={colors.text}
 					fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}
 				>
-					Dr. {fullname}
+					{fullname}
 				</Typography>
 				<Typography
 					variant={'body1'}
@@ -41,7 +54,7 @@ const DoctorCard = ({ doctor }) => {
 					color={colors.text}
 					fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 				>
-					{specialty}
+					{specialties[0]?.name ? specialties[0]?.name : 'General Practitioner'}
 				</Typography>
 			</Stack>
 			<Box
@@ -51,7 +64,12 @@ const DoctorCard = ({ doctor }) => {
 				alignItems={'center'}
 				width={'100%'}
 			>
-				<StarRounded sx={{ color: colors.starIcon }} />
+				<Stack direction={'row'} spacing={0.5} alignItems={'center'}>
+					<StarRounded sx={{ color: colors.starIcon }} />
+					<Typography variant='body2' className='inter' color={colors.text}>
+						{generateRandomRate()}
+					</Typography>
+				</Stack>
 				<Stack direction={'row'} spacing={0.5} alignItems={'center'}>
 					<PlaceOutlined sx={{ color: colors.locationIcon }} />
 					<Typography variant='body2' className='inter' color={colors.text}>

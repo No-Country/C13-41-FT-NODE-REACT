@@ -11,25 +11,26 @@ module.exports = (sequelize, DataTypes) => {
         as: 'invoices',
       });
       Medic.hasMany(models.Service, {
-        foreignKey: 'medicId', 
-        as: 'services', 
+        foreignKey: 'medicId',
+        as: 'services',
       });
       Medic.hasMany(models.Schedule, {
-        foreignKey: 'medicId', 
-        as: 'schedules', 
+        foreignKey: 'medicId',
+        as: 'schedules',
       });
       Medic.belongsToMany(models.Specialty, {
         through: 'MedicSpecialty',
         foreignKey: 'medicId',
         otherKey: 'specialtyId',
-        as: 'specialties', 
+        as: 'specialties',
       })
       Medic.hasOne(models.VacationDate, {
-        foreignKey: 'medicId', 
-        as: 'vacationDate', 
+        foreignKey: 'medicId',
+        as: 'vacationDate',
       });
-      Medic.hasMany(models.Comment,{foreignKey: 'medicId', as: 'comments'})
-      Medic.hasMany(models.SocialNetwork,{foreignKey: 'medicId', as: 'socialnetworks'})
+      Medic.hasMany(models.Comment, { foreignKey: 'medicId', as: 'comments' })
+      Medic.hasMany(models.SocialNetwork, { foreignKey: 'medicId', as: 'socialnetworks' })
+      Medic.hasMany(models.Consult, { foreignKey: 'medicId', as: 'consults' })
     }
   }
   Medic.init({
@@ -69,7 +70,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    phone:{
+    phone: {
       type: DataTypes.BIGINT
     }
   }, {

@@ -19,13 +19,7 @@ const editSpecialty = async (req, res) => {
       throw new Error("Specialty not found")
     }
 
-    const specialty = await Specialty.findOne(
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+    const specialty = await Specialty.findByPk(id)
 
     return res
       .status(200)

@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class MedicSpecialty extends Model {
     static associate(models) {
-      MedicSpecialty.belongsTo(models.Service, {foreignKey: 'specialtyId', onDelete: 'CASCADE'})
+      
     }
   }
   MedicSpecialty.init({
