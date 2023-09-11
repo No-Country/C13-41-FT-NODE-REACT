@@ -6,34 +6,9 @@ import { Box, display, margin } from '@mui/system';
 import { addDays } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select, InputLabel, FormHelperText } from '@mui/material';
+import Loader from '../Loader/Loader';
 const PatienteCalendar = () => {
-  const [doctorSchedule, setDoctorShchedule] = useState([
-    {
-      day:"Monday",
-      initialHour:"8:00",
-      finalHour:"09:00",
-      status:true,
-      duration:60,
-      medicId:"53822488-cc1f-43ad-ac56-e57e3bb1fb90"
-  },
-    {
-      day:"Monday",
-      initialHour:"9:00",
-      finalHour:"10:00",
-      status:true,
-      duration:60,
-      medicId:"53822488-cc1f-43ad-ac56-e57e3bb1fb90"
-  },
-    {
-      day:"Monday",
-      initialHour:"10:00",
-      finalHour:"11:00",
-      status:true,
-      duration:60,
-      medicId:"53822488-cc1f-43ad-ac56-e57e3bb1fb90"
-  },
-    
-  ]);
+  const [doctorSchedule, setDoctorShchedule] = useState([]);
   const [vacationDays, setVacationDays] = useState([
     {id: 1, title: 'Tue Sep 12 2023 '}, 
     {id: 2, title: 'Wed Sep 13 2023 '},
@@ -41,40 +16,49 @@ const PatienteCalendar = () => {
     {id: 3, title: 'Fri Sep 22 2023 '},
     {id: 3, title: 'Sat Sep 23 2023 '},
   ])
+  const [loading, setLoading] = useState(true)
   const shouldDisabledDays = (evalueatedDate) => {
     return vacationDays.some((vacationDay) => evalueatedDate.getTime() === new Date(vacationDay.title).getTime())
   }
   const [dayChoosed, setDayChoosed] = useState('')
   const [timeChoosed, setTimeChoosed] = useState('')
-  // useEffect(() => {
-  //   const fetchTheSchedule = async () => {
-  //     try {
-  //       const responseSchedule = await fetch('https://mecharcovz-be.onrender.com/', {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(userData),
-  //     });
-  //     const responseVactionDays = await fetch('https://mecharcovz-be.onrender.com/', {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(userData),
-  //     });
-  //     const dataSchedule = await responseSchedule.json();
-  //     const dataVactionDays = await responseVactionDays.json();
-  //     console.log(dataVactionDays);
-  //     console.log(dataSchedule);
-  //     setDoctorShchedule(dataSchedule)
-  //     setVacationDays(dataVactionDays)
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  //   }
-    
-  // }, [])
+  const localStorageData = localStorage.getItem('userData');
+  const userData = JSON.parse(localStorageData)
+  const medicId = userData.id;
+  useEffect(() => {
+    const fetchTheSchedule = async () => {
+      try {
+        const responseSchedule = await fetch(`https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=${medicId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      // const responseVactionDays = await fetch('https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=53822488-cc1f-43ad-ac56-e57e3bb1fb90', {
+      //   method: 'GET',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': `bearer ${localStorage.getItem('token')}`,
+      //   }
+      // });
+      const dataSchedule = await responseSchedule.json();
+      const schedules = dataSchedule.data?.schedulesFound;
+      console.log(schedules);
+
+      // const dataVactionDays = await responseVactionDays.json();
+      // console.log(dataVactionDays);
+      console.log(dataSchedule);
+      setDoctorShchedule(schedules)
+      // setVacationDays(dataVactionDays)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchTheSchedule()
+    console.log(doctorSchedule);
+    setLoading(false)
+  }, [])
   const today = new Date();
   const minDay = addDays(today, 2);
   const maxDay = addDays(today, 20);
@@ -88,6 +72,11 @@ const PatienteCalendar = () => {
    
   }
   return (
+    <>
+    {loading ? (
+      <Loader/>
+    ): (
+
       <Box sx={{marginTop: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker shouldDisableDate={shouldDisabledDays} sx={{marginBottom: 6, minWidth: 200, maxWidth: 300 }} className='custom-time-picker' minDate={minDay} maxDate={maxDay}  onChange={(newValue) => handleChooseDate(newValue)}/>
@@ -118,6 +107,8 @@ const PatienteCalendar = () => {
           </FormControl>
           
       </Box>
+    )} 
+    </>
   )
 }
 
