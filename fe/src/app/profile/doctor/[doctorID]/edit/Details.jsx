@@ -14,6 +14,22 @@ import { Edit, Save } from '@mui/icons-material';
 import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
 import { getSpecialty } from '@/lib/getSpecialty';
+import Button from '@mui/material/Button';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { colors } from '@/app/colors';
+import styled from '@emotion/styled';
+
+const VisuallyHiddenInput = styled('input')({
+	clip: 'rect(0 0 0 0)',
+	clipPath: 'inset(50%)',
+	height: '1px',
+	overflow: 'hidden',
+	position: 'absolute',
+	bottom: '0',
+	left: '0',
+	whiteSpace: 'nowrap',
+	width: '1px',
+});
 
 function Details({
 	editResume,
@@ -38,18 +54,85 @@ function Details({
 	setSocialNetwork,
 	speciality,
 	setSpeciality,
-
+	selectedFile,
+	setSelectedFile,
+	isFilePicked,
+	setIsFilePicked,
 }) {
-	const [specialties, SetSpecialties] = useState([]);
+	const [specialties, setSpecialties] = useState([]);
 	const { userData } = useAuth();
 	const fetchSpecialties = async () => {
 		const data = await getSpecialty();
-		SetSpecialties(data.data.specialties);
+		setSpecialties(data.data.specialties);
 	};
 
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
+
+	const handleAddSpecialty = async e => {
+		setSpeciality(e.target.value);
+		const findSpecialtyById = specialties.find(specialty => specialty.name === e.target.value);
+		console.log('especialidad buscada', findSpecialtyById);
+		console.log('valor del input', e.target.value);
+
+		const specialtyData = {
+			medicId: userData.id,
+			specialtyId: findSpecialtyById.id,
+		};
+
+		console.log(JSON.stringify(specialtyData));
+		try {
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/medic/addspecialty`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${localStorage.getItem('token')}`,
+					body: JSON.stringify(specialtyData),
+				},
+			});
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const data = await response.json();
+			console.log(data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+	const handleUploadPDF = async e => {
+		const file = e.target.files[0];
+		console.log(file);
+
+		const formData = new FormData();
+
+		formData.append('file', file);
+
+		try {
+			const response = await fetch(
+				'https://mecharcovz-be.onrender.com/api/v1/files?type=pdf&email=test@test.com',
+
+				// cambiar ruta arriba
+				{
+					headers: { Authorization: `bearer ${localStorage.getItem('token')}` },
+					method: 'POST',
+					body: formData,
+				},
+			);
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const data = await response.json();
+
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<Container sx={{ paddingY: 4 }}>
@@ -58,7 +141,12 @@ function Details({
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>Fullname</label>
-							<OutlinedInput defaultValue={userData.fullname} readOnly sx={{userSelect: "none",}} draggable="false"/>
+							<OutlinedInput
+								defaultValue={userData.fullname}
+								readOnly
+								sx={{ userSelect: 'none' }}
+								draggable='false'
+							/>
 						</Stack>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -102,7 +190,7 @@ function Details({
 							<OutlinedInput
 								disabled={!editProfessionalid}
 								defaultValue={professionalid}
-								onChange={e => setProfessionalid(e.target.value)}
+								onChange={handleAddSpecialty}
 								endAdornment={
 									<InputAdornment position='start'>
 										<IconButton
@@ -211,7 +299,6 @@ function Details({
 							/>
 						</Stack>
 					</Grid>
-
 				</Grid>
 			)}
 		</Container>

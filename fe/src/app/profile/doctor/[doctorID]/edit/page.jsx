@@ -67,6 +67,12 @@ function DoctorProfile() {
 
 			GetSocialLink();
 
+			if (userData.specialties) {
+				setSpeciality(userData.specialties[specialties.length - 1]);
+			}
+			if (userData.link) {
+				setSocialMedia(userData.socialMedia);
+			}
 		}
 	}, [userData]);
 
@@ -102,21 +108,20 @@ function DoctorProfile() {
 				body: JSON.stringify(socialMediaData),
 
 			});
-	
+
 			if (response.error) {
 
 				throw new Error(response.error);
 
 			}
-	
+
 			const data = await response.json();
 			
 		} catch (error) {
-
 			console.log(error);
-			
 		}
 
+		handleSocialMedia();
 	};
 
 	return (
@@ -164,6 +169,9 @@ function DoctorProfile() {
 						onClick={handleUpdate}
 					>
 						Save Changes
+					</Button>
+					<Button variant='contained' sx={{ marginLeft: '1rem' }} onClick={handleSocialMedia}>
+						Upload Socialnetwork
 					</Button>
 				</Container>
 			</Container>

@@ -15,57 +15,46 @@ import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
 
 function Details({
-	editResume,
-	setEditResume,
-	resume,
-	setResume,
-	editProfessionalid,
 	phone,
 	editPhone,
 	setPhone,
 	setEditPhone,
-	setEditProfessionalid,
-	professionalid,
-	setProfessionalid,
 	editNationalId,
 	setEditNationalId,
 	nationalId,
 	setNationalId,
-	editSocialMedia,
-	setEditSocialMedia,
-	socialMedia,
-	setSocialMedia,
-	speciality,
-	setSpeciality,
-
 }) {
-	const [specialties, SetSpecialties] = useState([]);
 	const { userData } = useAuth();
 
 	return (
 		<Container sx={{ paddingY: 4 }}>
 			{userData && (
 				<Grid container spacing={2}>
-					<Grid item xs={12} sm={3}>
+					<Grid item xs={12} sm={4}>
 						<Stack direction='column' spacing={2}>
 							<label>Fullname</label>
-							<OutlinedInput defaultValue={userData.fullname} readOnly sx={{userSelect: "none",}} draggable="false"/>
+							<OutlinedInput
+								defaultValue={userData.fullname}
+								readOnly
+								sx={{ userSelect: 'none' }}
+								draggable='false'
+							/>
 						</Stack>
 					</Grid>
-					<Grid item xs={12} sm={3}>
+					<Grid item xs={12} sm={4}>
 						<Stack direction='column' spacing={2}>
 							<label>Email</label>
 							<OutlinedInput defaultValue={userData.email} readOnly />
 						</Stack>
 					</Grid>
-					<Grid item xs={12} sm={2}>
+					<Grid item xs={12} sm={4}>
 						<Stack direction='column' spacing={2}>
 							<label>Country</label>
 							<OutlinedInput defaultValue={userData.country} readOnly />
 						</Stack>
 					</Grid>
 
-					<Grid item xs={12} sm={2}>
+					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>National ID</label>
 							<OutlinedInput
@@ -87,7 +76,7 @@ function Details({
 						</Stack>
 					</Grid>
 
-					<Grid item xs={12} sm={2}>
+					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>Telephone Number</label>
 							<OutlinedInput
@@ -108,8 +97,6 @@ function Details({
 							/>
 						</Stack>
 					</Grid>
-
-
 				</Grid>
 			)}
 		</Container>

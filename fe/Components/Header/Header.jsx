@@ -295,7 +295,7 @@ const Header = () => {
 										if (userData && userData.profesionalid) {
 											push(`/profile/doctor/${userData.email}`);
 										} else {
-											push('/home');
+											push(`/profile/patient/${userData.email}/edit`);
 										}
 									}}
 								>

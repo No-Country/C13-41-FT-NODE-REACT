@@ -54,7 +54,7 @@ const DoctorCard = ({ doctor }) => {
 					color={colors.text}
 					fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 				>
-					{specialties[0]?.name ? specialties[0]?.name : 'General Practitioner'}
+					{specialties[specialties.length - 1]?.name ? specialties[0]?.name : 'General Practitioner'}
 				</Typography>
 			</Stack>
 			<Box

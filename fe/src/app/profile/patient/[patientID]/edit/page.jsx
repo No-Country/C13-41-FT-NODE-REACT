@@ -16,7 +16,6 @@ const ProfileContainer = styled('main')({
 });
 
 function PatientProfile() {
-
 	const [editNationalId, setEditNationalId] = useState(false);
 	const [nationalId, setNationalId] = useState('');
 	const [avatar, setAvatar] = useState('');
@@ -30,7 +29,7 @@ function PatientProfile() {
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
 			if (userData.avatar) {
-				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
+				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarpatient/${userData.avatar}`);
 			} else {
 				setAvatar(userData.avatar);
 			}
@@ -38,7 +37,6 @@ function PatientProfile() {
 	}, [userData]);
 
 	const handleUpdate = async () => {
-
 		const newUserData = {
 			email: userData.email,
 			nid: nationalId,
@@ -60,9 +58,8 @@ function PatientProfile() {
 			}
 
 			const data = await response.json();
-			console.log(data.data.PatientFound);
-
-			updateUserData(data.data.PatientFound);
+			console.log(data);
+			updateUserData(data.data.patient);
 			setSuccessUpdate(true);
 			setTimeout(() => {
 				setSuccessUpdate(false);

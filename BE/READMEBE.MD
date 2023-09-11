@@ -25,6 +25,14 @@
 |DEV_DB_PASSWORD| development password database|
 |DEV_DB_PORT| development port database|
 |DEV_DB_NAME| development name database|
+|PRO_STRIPE_BE_PAGE_SUCCESS| production url success return backend stripe
+|PRO_STRIPE_BE_PAGE_CANCEL| production url cancel return backend stripe
+|DEV_STRIPE_BE_PAGE_SUCCESS| development  url success return backend stripe
+|DEV_STRIPE_BE_PAGE_CANCEL|development url cancel return backend stripe
+|PRO_STRIPE_FE_PAGE_SUCCESS| production url success return frontend stripe
+|PRO_STRIPE_FE_PAGE_CANCEL| production url cancel return frontend stripe
+|DEV_STRIPE_FE_PAGE_SUCCESS| development url success return frontend stripe
+|DEV_STRIPE_FE_PAGE_CANCEL|development url cancel return frontend stripe
 
 ## Node Installation :space_invader:
 
@@ -49,7 +57,7 @@ NODE_ENV=development
 PRO_DB_USER=
 PRO_DB_HOST=
 PRO_DB_PASSWORD=
-PRO_DB_USER=
+PRO_DB_NAME=
 DEV_DB_USER=
 DEV_DB_HOST=
 DEV_DB_PASSWORD=

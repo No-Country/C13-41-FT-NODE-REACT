@@ -11,15 +11,14 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { colors } from '@/app/colors';
-import { useAuth } from '@/contexts/Auth.context';
 
-const CommentInput = ({ doctorData }) => {
+const CommentInput = ({ doctorData, userData }) => {
 	const [comment, setComment] = useState('');
 	const [successSendComment, setSuccessSendComment] = useState(false);
-	const { userData } = useAuth();
+
 	// Función para manejar comentarios
 	const handleSend = async () => {
-		if (!comment) return;
+		if (!comment || !userData || !doctorData) return;
 		const commentData = {
 			description: comment,
 			patientId: userData.id,
@@ -28,7 +27,7 @@ const CommentInput = ({ doctorData }) => {
 
 		// Enviar a la API en un try catch
 		try {
-			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/comment/', {
+			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/comment', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
