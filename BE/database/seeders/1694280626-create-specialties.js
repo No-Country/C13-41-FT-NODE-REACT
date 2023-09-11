@@ -4,7 +4,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     let specialties= []
     const specialtiesName = [
-      'Internal Medicine',
+      'General Medicine',
       'Pediatrics',
       'Surgery',
       'Obstetrics and Gynecology',
@@ -16,7 +16,7 @@ module.exports = {
       'Neurology',
       'Dermatology',
       'Ophthalmology',
-      'Pathology',
+      'Internal Medicine',
       'Cardiology',
       'Gastroenterology',
       'Pulmonology',
@@ -26,7 +26,6 @@ module.exports = {
       'Otolaryngology']
     for (let i = 0; i < 20; i++) {
       specialties.push({
-        id: i + 1,
         name: specialtiesName[i],
         createdAt: new Date(),
         updatedAt: new Date(),

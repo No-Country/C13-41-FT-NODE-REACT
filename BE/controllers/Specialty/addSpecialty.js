@@ -12,10 +12,11 @@ const addSpecialty = async (req, res) => {
           name: name
         }
       })
-  
+      
       if (isDuplicated) throw new Error('Specialty already exists.')
-  
-      const newSpecialty = await Specialty.create({ name: name });
+      
+      
+      const newSpecialty = await Specialty.create({ name });
   
       return res.status(201).json({ message: 'Specialty created', data: newSpecialty })
     } catch (error) {

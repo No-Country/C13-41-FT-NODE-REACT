@@ -81,7 +81,7 @@ const DoctorsPage = () => {
 						minHeight: { xs: 'auto', sm: '100vh' },
 					}}
 					paddingX={1}
-					width={{ xs: '100%', sm: '30%' }}
+					width={{ xs: '100%', sm: '20%' }}
 				>
 					<Box display={'flex'} flexDirection={'column'} rowGap={1} width={'100%'}>
 						<Typography
@@ -178,15 +178,15 @@ const DoctorsPage = () => {
 					</Box>
 				</Box>
 				<Divider orientation='vertical' flexItem />
-				<Box component={'section'} width={{ xs: '100%', sm: '70%' }} paddingX={1}>
+				<Box component={'section'} width={{ xs: '100%', sm: '80%' }} paddingX={1}>
 					<Grid container spacing={2}>
-						{filteredDoctor && filteredDoctor.length > 0 ? (
+						{filteredDoctor?.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
 									<Grid item xs={6} md={4} key={doctor.id}>
 										<DoctorCard doctor={doctor} />
 										<Button
-											href='#'
+											href={`/appointments/${doctor.email}`}
 											variant='contained'
 											className='inter'
 											fullWidth

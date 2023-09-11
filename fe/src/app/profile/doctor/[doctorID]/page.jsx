@@ -18,15 +18,16 @@ import CommentInput from './CommentInput';
 import { useEffect, useState } from 'react';
 import { getSingleDoctor } from '@/lib/getSingleDoctor';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 const PublicDoctorProfilePage = ({ params }) => {
 	const [doctorData, setDoctorData] = useState();
-	const doctorID = params.doctorID;
-	if (!doctorID) return;
-
+	const { push } = useRouter();
 	const { userData } = useAuth();
 
 	const fetchDoctorData = async () => {
-		const doctorData = await getSingleDoctor(doctorID);
+		const doctorData = await getSingleDoctor(params.doctorID);
+		// Pregunto si existe el id del médico, sino lo redirigo
+		if (doctorData.data.medic === null) push('/not-found');
 		setDoctorData(doctorData.data.medic);
 	};
 
@@ -131,7 +132,24 @@ const PublicDoctorProfilePage = ({ params }) => {
 									}}
 								>
 									<Stack direction={'row'} spacing={1} alignItems={'center'}>
-										<Payment sx={{ color: colors.profileIcon }} fontSize='medium' />
+										<Box
+											display={'flex'}
+											alignItems={'center'}
+											justifyContent={'center'}
+											sx={{
+												backgroundColor: colors.categoryIcons.doctors,
+												borderRadius: '100%',
+												width: '2.5rem',
+												height: '2.5rem',
+											}}
+										>
+											<Payment
+												sx={{
+													color: colors.text,
+												}}
+												fontSize='medium'
+											/>
+										</Box>
 										<Typography
 											variant={'h6'}
 											color={colors.text}
@@ -215,7 +233,12 @@ const PublicDoctorProfilePage = ({ params }) => {
 						>
 							Comentarios ({fakeComments.length})
 						</Typography>
-						{userData?.email !== doctorData?.email && <CommentInput />}
+						{/* Así solo los pacientes pueden dejar comentarios */}
+
+						{userData && !userData.hasOwnProperty('profesionalid') && (
+                            <CommentInput doctorData={doctorData} />
+                        )}
+
 						{fakeComments.length > 0 ? (
 							fakeComments.map((comment, idx) => {
 								return <CommentCard key={idx} comment={comment} />;

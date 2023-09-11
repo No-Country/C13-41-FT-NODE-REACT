@@ -12,6 +12,9 @@ const filesRoutes = require('./filesRoutes')
 const schedulesRoutes = require('./schedulesRoutes')
 const commentsRoutes = require('./commentsRoutes')
 const socialNetworksRoutes = require('./socialNetworksRoutes')
+const vacationDatesRoutes = require('./vacationDatesRoutes')
+const servicesRoutes = require('./servicesRoutes')
+const invoicesRoutes = require('./invoicesRoutes')
 
 const router = express.Router()
 
@@ -25,5 +28,8 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 router.use('/files',filesRoutes)
 router.use('/comment',commentsRoutes)
 router.use('/socialnetwork',socialNetworksRoutes)
+router.use('/vacationdate',vacationDatesRoutes)
+router.use('/service',servicesRoutes)
+router.use('/invoice',invoicesRoutes)
 
 module.exports = router

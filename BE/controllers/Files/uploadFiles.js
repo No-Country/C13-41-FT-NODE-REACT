@@ -37,9 +37,24 @@ const storage = multer.diskStorage({
   },
 });
 
+const fileFilter = (req, file, cb) => {
+  const fileExtension = path.extname(file.originalname).toLowerCase();
+  const allowedImageExtensions = ['.png', '.jpeg', '.jpg'];
+  const allowedConsultExtensions = ['.pdf', ...allowedImageExtensions];
+  
+  const allowedExtensions = req.query.type === 'consult' ? allowedConsultExtensions : allowedImageExtensions;
+
+  if (allowedExtensions.includes(fileExtension)) {
+    cb(null, true);
+  } else {
+    cb(new Error('Invalid file type'), false); 
+  }
+};
+
 const upload = multer({ 
   storage,
-  limits: { fileSize: 20 * 1024 * 1024 }
+  limits: { fileSize: 20 * 1024 * 1024 }, //20MB MAX
+  fileFilter
 });
 
 const uploadFilesMiddleware = upload.single('file'); 

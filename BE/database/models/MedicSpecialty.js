@@ -5,11 +5,12 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class MedicSpecialty extends Model {
     static associate(models) {
+      
     }
   }
   MedicSpecialty.init({
     medicId: DataTypes.UUID,
-    specialtyId: DataTypes.BIGINT,
+    specialtyId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'MedicSpecialty',

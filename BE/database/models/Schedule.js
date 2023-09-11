@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'medicId', // This is the foreign key in the Schedule table that links to the Medic table
           onDelete: 'CASCADE', // This ensures that if a Medic is deleted, their associated Schedules are also deleted
         });
+        Schedule.hasMany(models.Consult,{foreignKey: 'scheduleId', as: 'consults'})
     }
   }
   Schedule.init({
@@ -23,10 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     finalHour: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    type: {
-      type: DataTypes.ENUM("daily","weekly"),
       allowNull: false,
     },
     status: {

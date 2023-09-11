@@ -1,6 +1,5 @@
 const { MedicSpecialty } = require('../../database/models')
 
-// TODO: Cambiar con middleware de atenticación
 const addMedicSpecialty = async (req, res) => {
   try {
     const { medicId,specialtyId } = req.body;
