@@ -46,9 +46,64 @@ function DoctorProfile() {
 			} else {
 				setAvatar(userData.avatar);
 			}
+			if (userData.specialties) {
+				setSpeciality(userData.specialties[specialties.length - 1]);
+			}
+			if (userData.link) {
+				setSocialMedia(userData.socialMedia);
+			}
 		}
 	}, [userData]);
 
+	const handleSocialMedia = async () => {
+		try {
+			if (userData.link) {
+				const socialMediaData = {
+					id: userData.id,
+					link: socialMedia,
+				};
+				console.log(socialMediaData);
+				const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `bearer ${localStorage.getItem('token')}`,
+					},
+					body: JSON.stringify(socialMediaData),
+				});
+
+				if (response.error) {
+					throw new Error(response.error);
+				}
+
+				const data = await response.json();
+				console.log(data);
+			} else {
+				const socialMediaData = JSON.stringify({
+					medicId: '013b362f-a9b9-4f9e-bfab-19b163c4b4c4',
+					link: 'sdasdas',
+				});
+				console.log(socialMediaData);
+				const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `bearer ${localStorage.getItem('token')}`,
+					},
+					body: socialMediaData,
+				});
+
+				if (response.error) {
+					throw new Error(response.error);
+				}
+
+				const data = await response.json();
+				console.log(data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	const handleUpdate = async () => {
 		if (!professionalid || !nationalId) return;
 		const newUserData = {
@@ -58,7 +113,6 @@ function DoctorProfile() {
 			nid: nationalId,
 			phone: phone,
 			socialNetwork: socialNetwork,
-
 		};
 
 		// try {
@@ -88,7 +142,6 @@ function DoctorProfile() {
 		// }
 
 		try {
-
 			const socialMediaData = JSON.stringify({
 				medicId: '013b362f-a9b9-4f9e-bfab-19b163c4b4c4',
 				link: 'sdasdas',
@@ -101,21 +154,23 @@ function DoctorProfile() {
 				},
 				body: socialMediaData,
 			});
-	
+
 			if (response.error) {
 				throw new Error(response.error);
 			}
-	
+
 			const data = await response.json();
-			console.log(data);
-			
+
+			updateUserData(data.data.MedicFound);
+			setSuccessUpdate(true);
+			setTimeout(() => {
+				setSuccessUpdate(false);
+			}, 3000);
 		} catch (error) {
-
 			console.log(error);
-			
 		}
-		
 
+		handleSocialMedia();
 	};
 
 	return (
@@ -163,6 +218,9 @@ function DoctorProfile() {
 						onClick={handleUpdate}
 					>
 						Save Changes
+					</Button>
+					<Button variant='contained' sx={{ marginLeft: '1rem' }} onClick={handleSocialMedia}>
+						Upload Socialnetwork
 					</Button>
 				</Container>
 			</Container>
