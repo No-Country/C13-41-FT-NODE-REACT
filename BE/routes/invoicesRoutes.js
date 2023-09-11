@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  createInvoice,
   getInvoice,
   editInvoice,
   deleteInvoice
@@ -10,9 +9,8 @@ const {
 
 const {verifyJWT} = require('../middlewares/jwt.js')
 
-router.post("/",verifyJWT,createInvoice)
 router.get("/",verifyJWT,getInvoice)
 router.put("/",verifyJWT,editInvoice)
-router.delete("/",verifyJWT,deleteInvoice)
+router.delete("/",verifyJWT,deleteInvoice) //facturas no se poueden eliminar, solo se cancelan
 
 module.exports = router;

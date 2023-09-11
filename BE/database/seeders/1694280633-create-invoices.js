@@ -9,7 +9,8 @@ module.exports = {
     let invoices = [];
     const medics = await Medic.findAll();
     const patients = await Patient.findAll();
-
+    const statusInvoices = ['preAccepted', 'accepted', 'canceled']
+    const platformsInvoice = ['Stripe','Paypal']
     for (const medic of medics) {
       const services = await Service.findAll({ where: { medicId: medic.id } });
       for (const service of services) {
@@ -19,6 +20,8 @@ module.exports = {
             medicId: medic.id,
             patientId: patients[Math.floor(Math.random() * patients.length)].id,
             serviceId: service.id,
+            status:statusInvoices[Math.floor(Math.random() * statusInvoices.length)],
+            platform:platformsInvoice[Math.floor(Math.random() * platformsInvoice.length)],
             createdAt: new Date(),
             updatedAt: new Date(),
           });
