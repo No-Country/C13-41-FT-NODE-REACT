@@ -6,6 +6,7 @@ import Details from './Details';
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/Auth.context';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import Loader from '../../../../../../Components/Loader/Loader';
 import { getSpecialty } from '@/lib/getSpecialty';
 
 const ProfileContainer = styled('main')({
@@ -27,12 +28,11 @@ function DoctorProfile() {
 	const [phone, setPhone] = useState('');
 	const [editPhone, setEditPhone] = useState(false);
 	const [editSocialNetwork, setEditSocialNetwork] = useState(false);
-	const [socialNetwork, setSocialNetwork] = useState(
-		'https://www.linkedin.com/in/gared-lyon-194b21222/',
-	);
+	const [socialNetwork, setSocialNetwork] = useState("");
 	const [speciality, setSpeciality] = useState('Pediatrics');
 	const [successUpdate, setSuccessUpdate] = useState(false);
 	const { userData, updateUserData } = useAuth();
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		if (userData) {
@@ -40,12 +40,35 @@ function DoctorProfile() {
 			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
-			setSocialNetwork(userData.socialNetwork);
+			setSocialNetwork(userData.socialnetworks);
 			if (userData.avatar) {
 				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
 			} else {
 				setAvatar(userData.avatar);
 			}
+
+			async function GetSocialLink () {
+
+				const url = await fetch (`https://mecharcovz-be.onrender.com/api/v1/medic?email=${userData.email}`, {
+
+				method: 'GET',
+				headers: {
+					
+					Authorization: `bearer ${localStorage.getItem('token')}`,
+					'Content-Type': 'application/json',
+
+				},
+				
+				
+			})
+
+				let data = await url.json();
+				let medicSocialLink = setSocialNetwork(data.data.medic.socialnetworks[0].link);
+				
+			}
+
+			GetSocialLink();
+
 			if (userData.specialties) {
 				setSpeciality(userData.specialties[specialties.length - 1]);
 			}
@@ -53,119 +76,50 @@ function DoctorProfile() {
 				setSocialMedia(userData.socialMedia);
 			}
 		}
+
+		setLoading (false);
+
 	}, [userData]);
 
-	const handleSocialMedia = async () => {
-		try {
-			if (userData.link) {
-				const socialMediaData = {
-					id: userData.id,
-					link: socialMedia,
-				};
-				console.log(socialMediaData);
-				const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
-					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `bearer ${localStorage.getItem('token')}`,
-					},
-					body: JSON.stringify(socialMediaData),
-				});
-
-				if (response.error) {
-					throw new Error(response.error);
-				}
-
-				const data = await response.json();
-				console.log(data);
-			} else {
-				const socialMediaData = JSON.stringify({
-					medicId: '013b362f-a9b9-4f9e-bfab-19b163c4b4c4',
-					link: 'sdasdas',
-				});
-				console.log(socialMediaData);
-				const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `bearer ${localStorage.getItem('token')}`,
-					},
-					body: socialMediaData,
-				});
-
-				if (response.error) {
-					throw new Error(response.error);
-				}
-
-				const data = await response.json();
-				console.log(data);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
 	const handleUpdate = async () => {
 		if (!professionalid || !nationalId) return;
+		
 		const newUserData = {
+
 			email: userData.email,
 			resume: resume,
 			profesionalid: professionalid,
 			nid: nationalId,
 			phone: phone,
-			socialNetwork: socialNetwork,
+			socialNetwork: userData.socialnetworks,
 		};
 
-		// try {
-		// 	const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
-		// 		method: 'PUT',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 			Authorization: `bearer ${localStorage.getItem('token')}`,
-		// 		},
-		// 		body: JSON.stringify(newUserData),
-		// 	});
-
-		// 	if (response.error) {
-		// 		throw new Error(response.error);
-		// 	}
-
-		// 	const data = await response.json();
-		// 	console.log(data.data.MedicFound);
-
-		// 	updateUserData(data.data.MedicFound);
-		// 	setSuccessUpdate(true);
-		// 	setTimeout(() => {
-		// 		setSuccessUpdate(false);
-		// 	}, 3000);
-		// } catch (error) {
-		// 	console.error(error);
-		// }
-
 		try {
-			const socialMediaData = JSON.stringify({
-				medicId: '013b362f-a9b9-4f9e-bfab-19b163c4b4c4',
-				link: 'sdasdas',
-			});
-			console.log(socialMediaData);
-			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork/`, {
+
+			const socialMediaData = {
+				medicId: userData.id,
+				link: socialNetwork,
+			};
+
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
+
 				method: 'POST',
 				headers: {
 					Authorization: `bearer ${localStorage.getItem('token')}`,
+					'Content-Type': 'application/json',
 				},
-				body: socialMediaData,
+				body: JSON.stringify(socialMediaData),
+
 			});
 
 			if (response.error) {
+
 				throw new Error(response.error);
+
 			}
 
 			const data = await response.json();
-
-			updateUserData(data.data.MedicFound);
-			setSuccessUpdate(true);
-			setTimeout(() => {
-				setSuccessUpdate(false);
-			}, 3000);
+			
 		} catch (error) {
 			console.log(error);
 		}
@@ -174,67 +128,72 @@ function DoctorProfile() {
 	};
 
 	return (
-		<ProfileContainer>
-			<Container maxWidth='xl'>
-				<SaveBar handleUpdate={handleUpdate} avatar={avatar} setAvatar={setAvatar} />
-				<Details
-					editNationalId={editNationalId}
-					setEditNationalId={setEditNationalId}
-					nationalId={nationalId}
-					setNationalId={setNationalId}
-					editResume={editResume}
-					setEditResume={setEditResume}
-					resume={resume}
-					setResume={setResume}
-					professionalid={professionalid}
-					setProfessionalid={setProfessionalid}
-					editProfessionalid={editProfessionalid}
-					setEditProfessionalid={setEditProfessionalid}
-					speciality={speciality}
-					setSpeciality={setSpeciality}
-					phone={phone}
-					setPhone={setPhone}
-					editPhone={editPhone}
-					setEditPhone={setEditPhone}
-					editSocialNetwork={editSocialNetwork}
-					setEditSocialNetwork={setEditSocialNetwork}
-					socialNetwork={socialNetwork}
-					setSocialNetwork={setSocialNetwork}
-				/>
-				<Container>
-					<Button
-						variant='contained'
-						sx={{
-							backgroundColor: colors.buttonIcon,
-							color: 'white',
-							fontWeight: 600,
-							textTransform: 'none',
-							fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
-							':hover': {
+		<>
+			{loading ? (<Loader/>): (
+
+				<ProfileContainer>
+				<Container maxWidth='xl'>
+					<SaveBar handleUpdate={handleUpdate} avatar={avatar} setAvatar={setAvatar} />
+					<Details
+						editNationalId={editNationalId}
+						setEditNationalId={setEditNationalId}
+						nationalId={nationalId}
+						setNationalId={setNationalId}
+						editResume={editResume}
+						setEditResume={setEditResume}
+						resume={resume}
+						setResume={setResume}
+						professionalid={professionalid}
+						setProfessionalid={setProfessionalid}
+						editProfessionalid={editProfessionalid}
+						setEditProfessionalid={setEditProfessionalid}
+						speciality={speciality}
+						setSpeciality={setSpeciality}
+						phone={phone}
+						setPhone={setPhone}
+						editPhone={editPhone}
+						setEditPhone={setEditPhone}
+						editSocialNetwork={editSocialNetwork}
+						setEditSocialNetwork={setEditSocialNetwork}
+						socialNetwork={socialNetwork}
+						setSocialNetwork={setSocialNetwork}
+					/>
+					<Container>
+						<Button
+							variant='contained'
+							sx={{
 								backgroundColor: colors.buttonIcon,
-							},
-						}}
-						className='inter'
-						onClick={handleUpdate}
-					>
-						Save Changes
-					</Button>
-					<Button variant='contained' sx={{ marginLeft: '1rem' }} onClick={handleSocialMedia}>
-						Upload Socialnetwork
-					</Button>
+								color: 'white',
+								fontWeight: 600,
+								textTransform: 'none',
+								fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
+								':hover': {
+									backgroundColor: colors.buttonIcon,
+								},
+							}}
+							className='inter'
+							onClick={handleUpdate}
+						>
+							Save Changes
+						</Button>
+
+					</Container>
 				</Container>
-			</Container>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={successUpdate}
-				autoHideDuration={3000}
-				onClose={() => {}}
-			>
-				<Alert severity='success' sx={{ width: '100%' }}>
-					Information updated
-				</Alert>
-			</Snackbar>
-		</ProfileContainer>
+				<Snackbar
+					anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+					open={successUpdate}
+					autoHideDuration={3000}
+					onClose={() => {}}
+				>
+					<Alert severity='success' sx={{ width: '100%' }}>
+						Information updated
+					</Alert>
+				</Snackbar>
+			</ProfileContainer>
+
+			)}
+		</>
+
 	);
 }
 

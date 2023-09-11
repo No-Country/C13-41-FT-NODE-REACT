@@ -5,13 +5,20 @@ const deleteInvoice = async (req, res) => {
 
     const { invoiceId } = req.query
 
-    await Invoice.destroy({ where: { id: invoiceId } })
+    await Invoice.update(
+      {status: 'cancelled'},
+      {
+        where: {
+          id: invoiceId
+        }
+      }
+    )
  
     return res
       .status(200)
-      .json({ message: "Invoice Deleted" });
+      .json({ message: "Invoice Cancelled" });
   } catch (error) {
-    return res.status(400).json({ message: error.message, error: "Delete Invoice" });
+    return res.status(400).json({ message: error.message, error: "Cancel Invoice" });
   }
 };
 

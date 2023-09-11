@@ -37,8 +37,8 @@ const AvatarProfile = ({ avatar, setAvatar }) => {
 			}
 
 			const data = await response.json();
-			console.log(data);
-			updateUserData(data.data.PatientFound);
+
+			updateUserData(data.data.patient);
 		} catch (error) {
 			console.error('Error al subir el archivo:', error);
 		}
@@ -55,10 +55,7 @@ const AvatarProfile = ({ avatar, setAvatar }) => {
 			console.error('Tipo de archivo no válido. Selecciona una imagen JPEG, JPG o PNG.');
 			return;
 		}
-
-		console.log('Archivo válido seleccionado:', selectedFile);
 		uploadAvatar(selectedFile);
-		console.log('avatar de paciente actualizado');
 	};
 
 	return (

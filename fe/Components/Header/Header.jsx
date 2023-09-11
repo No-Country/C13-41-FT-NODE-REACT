@@ -29,7 +29,7 @@ const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const { logout, token, userData } = useAuth();
-	console.log(userData);
+
 	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorElNav(event.currentTarget);
@@ -295,7 +295,7 @@ const Header = () => {
 										if (userData && userData.profesionalid) {
 											push(`/profile/doctor/${userData.email}`);
 										} else {
-											push('/home');
+											push(`/profile/patient/${userData.email}/edit`);
 										}
 									}}
 								>

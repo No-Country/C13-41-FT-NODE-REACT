@@ -17,6 +17,7 @@ import { getSpecialty } from '@/lib/getSpecialty';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { colors } from '@/app/colors';
+import styled from '@emotion/styled';
 
 const VisuallyHiddenInput = styled('input')({
 	clip: 'rect(0 0 0 0)',
@@ -228,8 +229,8 @@ function Details({
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>
-								<a href={{ socialNetwork }} target='_blank' rel='noopener noreferrer'>
-									Professional Social Network Link
+								<a href={socialNetwork} target='_blank' rel='noopener noreferrer' style={{textDecoration: "underline", color: "blue"}}>
+									Professional Link
 								</a>
 							</label>
 
