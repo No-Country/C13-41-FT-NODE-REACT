@@ -51,8 +51,6 @@ function Details({
 		fetchSpecialties();
 	}, []);
 
-	console.log ({socialNetwork})
-
 	return (
 		<Container sx={{ paddingY: 4 }}>
 			{userData && (
@@ -143,8 +141,8 @@ function Details({
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>
-								<a href={{ socialNetwork }} target='_blank' rel='noopener noreferrer'>
-									Professional Social Network Link
+								<a href={socialNetwork} target='_blank' rel='noopener noreferrer' style={{textDecoration: "underline", color: "blue"}}>
+									Professional Link
 								</a>
 							</label>
 
