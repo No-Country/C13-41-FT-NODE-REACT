@@ -26,8 +26,8 @@ function DoctorProfile() {
 	const [avatar, setAvatar] = useState('');
 	const [phone, setPhone] = useState('');
 	const [editPhone, setEditPhone] = useState(false);
-	const [editSocialLink, setEditSocialLink] = useState(false);
-	const [socialLink, setSocialLink] = useState(
+	const [editSocialNetwork, setEditSocialNetwork] = useState(false);
+	const [socialNetwork, setSocialNetwork] = useState(
 		'https://www.linkedin.com/in/gared-lyon-194b21222/',
 	);
 	const [speciality, setSpeciality] = useState('Pediatrics');
@@ -40,7 +40,7 @@ function DoctorProfile() {
 			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
-			setSocialLink(userData.sociallink);
+			setSocialNetwork(userData.socialNetwork);
 			if (userData.avatar) {
 				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
 			} else {
@@ -57,33 +57,65 @@ function DoctorProfile() {
 			profesionalid: professionalid,
 			nid: nationalId,
 			phone: phone,
+			socialNetwork: socialNetwork,
+
 		};
 
+		// try {
+		// 	const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
+		// 		method: 'PUT',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 			Authorization: `bearer ${localStorage.getItem('token')}`,
+		// 		},
+		// 		body: JSON.stringify(newUserData),
+		// 	});
+
+		// 	if (response.error) {
+		// 		throw new Error(response.error);
+		// 	}
+
+		// 	const data = await response.json();
+		// 	console.log(data.data.MedicFound);
+
+		// 	updateUserData(data.data.MedicFound);
+		// 	setSuccessUpdate(true);
+		// 	setTimeout(() => {
+		// 		setSuccessUpdate(false);
+		// 	}, 3000);
+		// } catch (error) {
+		// 	console.error(error);
+		// }
+
 		try {
-			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
-				method: 'PUT',
+
+			const socialMediaData = JSON.stringify({
+				medicId: '013b362f-a9b9-4f9e-bfab-19b163c4b4c4',
+				link: 'sdasdas',
+			});
+			console.log(socialMediaData);
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork/`, {
+				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
 					Authorization: `bearer ${localStorage.getItem('token')}`,
 				},
-				body: JSON.stringify(newUserData),
+				body: socialMediaData,
 			});
-
+	
 			if (response.error) {
 				throw new Error(response.error);
 			}
-
+	
 			const data = await response.json();
-			console.log(data.data.MedicFound);
-
-			updateUserData(data.data.MedicFound);
-			setSuccessUpdate(true);
-			setTimeout(() => {
-				setSuccessUpdate(false);
-			}, 3000);
+			console.log(data);
+			
 		} catch (error) {
-			console.error(error);
+
+			console.log(error);
+			
 		}
+		
+
 	};
 
 	return (
@@ -109,10 +141,10 @@ function DoctorProfile() {
 					setPhone={setPhone}
 					editPhone={editPhone}
 					setEditPhone={setEditPhone}
-					editSocialLink={editSocialLink}
-					setEditSocialLink={setEditSocialLink}
-					socialLink={socialLink}
-					setSocialLink={setSocialLink}
+					editSocialNetwork={editSocialNetwork}
+					setEditSocialNetwork={setEditSocialNetwork}
+					socialNetwork={socialNetwork}
+					setSocialNetwork={setSocialNetwork}
 				/>
 				<Container>
 					<Button

@@ -32,10 +32,10 @@ function Details({
 	setEditNationalId,
 	nationalId,
 	setNationalId,
-	editSocialLink,
-	setEditSocialLink,
-	socialLink,
-	setSocialLink,
+	editSocialNetwork,
+	setEditSocialNetwork,
+	socialNetwork,
+	setSocialNetwork,
 	speciality,
 	setSpeciality,
 
@@ -50,6 +50,8 @@ function Details({
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
+
+	console.log ({socialNetwork})
 
 	return (
 		<Container sx={{ paddingY: 4 }}>
@@ -141,23 +143,23 @@ function Details({
 					<Grid item xs={12} sm={6}>
 						<Stack direction='column' spacing={2}>
 							<label>
-								<a href={{ socialLink }} target='_blank' rel='noopener noreferrer'>
-									Professional Social Media Link
+								<a href={{ socialNetwork }} target='_blank' rel='noopener noreferrer'>
+									Professional Social Network Link
 								</a>
 							</label>
 
 							<OutlinedInput
-								disabled={!editSocialLink}
-								defaultValue={socialLink}
-								onChange={e => setSocialLink(e.target.value)}
+								disabled={!editSocialNetwork}
+								defaultValue={socialNetwork}
+								onChange={e => setSocialNetwork(e.target.value)}
 								endAdornment={
 									<InputAdornment position='start'>
 										<IconButton
 											aria-label='toggle to edit'
-											onClick={() => setEditSocialLink(!editSocialLink)}
+											onClick={() => setEditSocialNetwork(!editSocialNetwork)}
 											edge='end'
 										>
-											{editSocialLink ? <Save /> : <Edit />}
+											{editSocialNetwork ? <Save /> : <Edit />}
 										</IconButton>
 									</InputAdornment>
 								}
