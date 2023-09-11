@@ -8,27 +8,27 @@ const createInvoice = async (req, res) => {
        * at the same controller that was summoner
        */
 
-    const { medicId, patientId, serviceId, urlFile,platform } = req.body
-    if (!medicId || !patientId || !serviceId || !urlFile || platform) {
-      throw new Error('Body must contain medicId, patientId, serviceId, urlFile,plataform')
+    const { medicId, patientId, serviceId, platform } = req.body
+
+    if (!medicId || !patientId || !serviceId || !platform) {
+      throw new Error('Body must contain medicId, patientId, serviceId,platform')
     }
- 
+
       const newInvoice = await Invoice.create({
         medicId,
         patientId,
         serviceId,
-        urlFile,
         status:'preAccepted',
         platform
       })
-
+  
       const medicFound = await Medic.findByPk(medicId)
       const patientFound = await Patient.findByPk(patientId)
-      const serviceFound = await Service.findByPk(patientId)
+      const serviceFound = await Service.findByPk(serviceId)
 
     return {service:serviceFound,invoiceId:newInvoice.id,medic:medicFound,patient:patientFound}
   } catch (error) {
-    return res.status(400).json({ error: 'Create Invoice', message: error.message })
+    return {error}
   }
 }
 
