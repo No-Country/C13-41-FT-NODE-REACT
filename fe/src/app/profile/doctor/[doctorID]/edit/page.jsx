@@ -6,6 +6,7 @@ import Details from './Details';
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/Auth.context';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import Loader from '../../../../../../Components/Loader/Loader';
 import { getSpecialty } from '@/lib/getSpecialty';
 
 const ProfileContainer = styled('main')({
@@ -31,6 +32,7 @@ function DoctorProfile() {
 	const [speciality, setSpeciality] = useState('Pediatrics');
 	const [successUpdate, setSuccessUpdate] = useState(false);
 	const { userData, updateUserData } = useAuth();
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		if (userData) {
@@ -74,10 +76,11 @@ function DoctorProfile() {
 				setSocialMedia(userData.socialMedia);
 			}
 		}
+
+		setLoading (false);
+
 	}, [userData]);
 
-
-	
 	const handleUpdate = async () => {
 		if (!professionalid || !nationalId) return;
 		
@@ -125,67 +128,72 @@ function DoctorProfile() {
 	};
 
 	return (
-		<ProfileContainer>
-			<Container maxWidth='xl'>
-				<SaveBar handleUpdate={handleUpdate} avatar={avatar} setAvatar={setAvatar} />
-				<Details
-					editNationalId={editNationalId}
-					setEditNationalId={setEditNationalId}
-					nationalId={nationalId}
-					setNationalId={setNationalId}
-					editResume={editResume}
-					setEditResume={setEditResume}
-					resume={resume}
-					setResume={setResume}
-					professionalid={professionalid}
-					setProfessionalid={setProfessionalid}
-					editProfessionalid={editProfessionalid}
-					setEditProfessionalid={setEditProfessionalid}
-					speciality={speciality}
-					setSpeciality={setSpeciality}
-					phone={phone}
-					setPhone={setPhone}
-					editPhone={editPhone}
-					setEditPhone={setEditPhone}
-					editSocialNetwork={editSocialNetwork}
-					setEditSocialNetwork={setEditSocialNetwork}
-					socialNetwork={socialNetwork}
-					setSocialNetwork={setSocialNetwork}
-				/>
-				<Container>
-					<Button
-						variant='contained'
-						sx={{
-							backgroundColor: colors.buttonIcon,
-							color: 'white',
-							fontWeight: 600,
-							textTransform: 'none',
-							fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
-							':hover': {
+		<>
+			{loading ? (<Loader/>): (
+
+				<ProfileContainer>
+				<Container maxWidth='xl'>
+					<SaveBar handleUpdate={handleUpdate} avatar={avatar} setAvatar={setAvatar} />
+					<Details
+						editNationalId={editNationalId}
+						setEditNationalId={setEditNationalId}
+						nationalId={nationalId}
+						setNationalId={setNationalId}
+						editResume={editResume}
+						setEditResume={setEditResume}
+						resume={resume}
+						setResume={setResume}
+						professionalid={professionalid}
+						setProfessionalid={setProfessionalid}
+						editProfessionalid={editProfessionalid}
+						setEditProfessionalid={setEditProfessionalid}
+						speciality={speciality}
+						setSpeciality={setSpeciality}
+						phone={phone}
+						setPhone={setPhone}
+						editPhone={editPhone}
+						setEditPhone={setEditPhone}
+						editSocialNetwork={editSocialNetwork}
+						setEditSocialNetwork={setEditSocialNetwork}
+						socialNetwork={socialNetwork}
+						setSocialNetwork={setSocialNetwork}
+					/>
+					<Container>
+						<Button
+							variant='contained'
+							sx={{
 								backgroundColor: colors.buttonIcon,
-							},
-						}}
-						className='inter'
-						onClick={handleUpdate}
-					>
-						Save Changes
-					</Button>
-					<Button variant='contained' sx={{ marginLeft: '1rem' }} onClick={handleSocialMedia}>
-						Upload Socialnetwork
-					</Button>
+								color: 'white',
+								fontWeight: 600,
+								textTransform: 'none',
+								fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
+								':hover': {
+									backgroundColor: colors.buttonIcon,
+								},
+							}}
+							className='inter'
+							onClick={handleUpdate}
+						>
+							Save Changes
+						</Button>
+
+					</Container>
 				</Container>
-			</Container>
-			<Snackbar
-				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-				open={successUpdate}
-				autoHideDuration={3000}
-				onClose={() => {}}
-			>
-				<Alert severity='success' sx={{ width: '100%' }}>
-					Information updated
-				</Alert>
-			</Snackbar>
-		</ProfileContainer>
+				<Snackbar
+					anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+					open={successUpdate}
+					autoHideDuration={3000}
+					onClose={() => {}}
+				>
+					<Alert severity='success' sx={{ width: '100%' }}>
+						Information updated
+					</Alert>
+				</Snackbar>
+			</ProfileContainer>
+
+			)}
+		</>
+
 	);
 }
 
