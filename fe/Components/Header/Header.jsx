@@ -29,7 +29,7 @@ const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const { logout, token, userData } = useAuth();
-	console.log(userData);
+
 	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorElNav(event.currentTarget);

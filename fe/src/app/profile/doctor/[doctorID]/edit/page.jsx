@@ -27,9 +27,7 @@ function DoctorProfile() {
 	const [phone, setPhone] = useState('');
 	const [editPhone, setEditPhone] = useState(false);
 	const [editSocialNetwork, setEditSocialNetwork] = useState(false);
-	const [socialNetwork, setSocialNetwork] = useState(
-		'https://www.linkedin.com/in/gared-lyon-194b21222/',
-	);
+	const [socialNetwork, setSocialNetwork] = useState("");
 	const [speciality, setSpeciality] = useState('Pediatrics');
 	const [successUpdate, setSuccessUpdate] = useState(false);
 	const { userData, updateUserData } = useAuth();
@@ -40,81 +38,84 @@ function DoctorProfile() {
 			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
-			setSocialNetwork(userData.socialNetwork);
+			setSocialNetwork(userData.socialnetworks);
 			if (userData.avatar) {
 				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
 			} else {
 				setAvatar(userData.avatar);
 			}
+
+			async function GetSocialLink () {
+
+				const url = await fetch (`https://mecharcovz-be.onrender.com/api/v1/medic?email=${userData.email}`, {
+
+				method: 'GET',
+				headers: {
+					
+					Authorization: `bearer ${localStorage.getItem('token')}`,
+					'Content-Type': 'application/json',
+
+				},
+				
+				
+			})
+
+				let data = await url.json();
+				let medicSocialLink = setSocialNetwork(data.data.medic.socialnetworks[0].link);
+				
+			}
+
+			GetSocialLink();
+
 		}
 	}, [userData]);
 
+
+	
 	const handleUpdate = async () => {
 		if (!professionalid || !nationalId) return;
+		
 		const newUserData = {
+
 			email: userData.email,
 			resume: resume,
 			profesionalid: professionalid,
 			nid: nationalId,
 			phone: phone,
-			socialNetwork: socialNetwork,
-
+			socialNetwork: userData.socialnetworks,
 		};
-
-		// try {
-		// 	const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
-		// 		method: 'PUT',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 			Authorization: `bearer ${localStorage.getItem('token')}`,
-		// 		},
-		// 		body: JSON.stringify(newUserData),
-		// 	});
-
-		// 	if (response.error) {
-		// 		throw new Error(response.error);
-		// 	}
-
-		// 	const data = await response.json();
-		// 	console.log(data.data.MedicFound);
-
-		// 	updateUserData(data.data.MedicFound);
-		// 	setSuccessUpdate(true);
-		// 	setTimeout(() => {
-		// 		setSuccessUpdate(false);
-		// 	}, 3000);
-		// } catch (error) {
-		// 	console.error(error);
-		// }
 
 		try {
 
-			const socialMediaData = JSON.stringify({
-				medicId: '013b362f-a9b9-4f9e-bfab-19b163c4b4c4',
-				link: 'sdasdas',
-			});
-			console.log(socialMediaData);
-			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork/`, {
+			const socialMediaData = {
+				medicId: userData.id,
+				link: socialNetwork,
+			};
+
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
+
 				method: 'POST',
 				headers: {
 					Authorization: `bearer ${localStorage.getItem('token')}`,
+					'Content-Type': 'application/json',
 				},
-				body: socialMediaData,
+				body: JSON.stringify(socialMediaData),
+
 			});
 	
 			if (response.error) {
+
 				throw new Error(response.error);
+
 			}
 	
 			const data = await response.json();
-			console.log(data);
 			
 		} catch (error) {
 
 			console.log(error);
 			
 		}
-		
 
 	};
 

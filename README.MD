@@ -37,7 +37,7 @@ La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como 
 <img src="https://media0.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif" width="30px">Tecnologias Usadas
 </h1>
 
-NodeJS, ReactJS, NextJS, MUI, Yup, Formik, date-fns, ReactDatePicker, y SweetAlert2.
+NodeJS, Express, PostgreSQL, ReactJS, NextJS, MUI, Yup, Formik, date-fns, ReactDatePicker, SweetAlert2, Render, Vercel, Stripe, y Jitsi .
 
 <!-- GETTING STARTED -->
 <h1 align="center"> 
