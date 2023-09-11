@@ -193,7 +193,7 @@ const ScheduleDoctor = () => {
     scheduleChoosed.map(async obj => {
       try {
         const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=${medicId}`, {
-          method: 'POST',
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `bearer ${localStorage.getItem('token')}`,
