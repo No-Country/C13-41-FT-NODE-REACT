@@ -1,9 +1,9 @@
 const { createSession } = require("./createSession");
-const { unsuccessfulPurchase } = require("./unsuccessfulPurchase");
+const { cancelPurchase } = require("./cancelPurchase");
 const { successfulPurchase } = require("./successfulPurchase");
 
 module.exports = {
   createSession,
-  unsuccessfulPurchase,
+  cancelPurchase,
   successfulPurchase
 };
