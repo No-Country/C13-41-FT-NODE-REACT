@@ -20,13 +20,7 @@ const editVacationDate = async (req, res) => {
       throw new Error("VacationDate not found")
     }
 
-    const vacationDate = await VacationDate.findOne(
-      {
-        where: {
-          id:vacactionDateId
-        },
-      }
-    );
+    const vacationDate = await VacationDate.findByPk(vacactionDateId)
     
       return res.status(200).json({ message: 'VacationDate Edited',data:{vacationDate}})
     } catch (error) {

@@ -3,8 +3,6 @@ import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors'
 import { Avatar, Stack, Typography } from '@mui/material';
 
 const AvatarProfile = ({ doctorData }) => {
-	console.log(doctorData);
-
 	if (!doctorData) return null;
 
 	return (
@@ -22,7 +20,12 @@ const AvatarProfile = ({ doctorData }) => {
 					fontWeight: 500,
 				}}
 				alt={doctorData && doctorData.fullname}
-				src={doctorData && doctorData.avatar}
+				src={
+					doctorData &&
+					`https://mecharcovz-be.onrender.com/public/uploads/${
+						doctorData.profesionalid ? 'avatarmedic' : 'avatarpatient'
+					}/${doctorData.avatar}`
+				}
 				imgProps={{
 					style: {
 						objectFit: 'cover',
@@ -56,7 +59,9 @@ const AvatarProfile = ({ doctorData }) => {
 						fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
 					}}
 				>
-					{doctorData?.specialties[0]?.name ? doctorData.specialties[0].name : 'General Practitioner'}
+					{doctorData?.specialties && doctorData.specialties.length > 0
+						? doctorData.specialties[doctorData.specialties.length - 1].name
+						: 'General Practitioner'}
 				</Typography>
 			</Stack>
 		</Stack>

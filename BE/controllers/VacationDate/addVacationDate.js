@@ -5,7 +5,7 @@ const addVacationDate = async (req, res) => {
   
       const { days,medicId } = req.body
   
-      if (!days || !medicId) throw new Error('Body must contain days.')
+      if (!days || !medicId) throw new Error('Body must contain days and medicId')
   
       const newVacationDate = await VacationDate.create({days,medicId})
   

@@ -39,6 +39,7 @@ export default function DoctorSignUp() {
 						country: values.country,
 						gender: values.gender,
 						nid: values.nid,
+						phone: values.phone,
 						profesionalid: values.profesionalid,
 						birthdate: values.birthdate,
 					};
@@ -52,9 +53,10 @@ export default function DoctorSignUp() {
 							body: JSON.stringify(userData),
 						});
 
-						const data = await response.json();
+						if (response?.error) {
+							throw new Error('Credenciales inválidas');
+						}
 
-						console.log(data);
 						setSuccessSignup(true);
 						setTimeout(() => {
 							setSuccessSignup(false);
