@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 import { getSingleDoctor } from '@/lib/getSingleDoctor';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Comments from './Comments';
 const PublicDoctorProfilePage = ({ params }) => {
 	const [doctorData, setDoctorData] = useState();
 	const { push } = useRouter();
@@ -30,7 +31,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 		if (doctorData.data.medic === null) push('/not-found');
 		setDoctorData(doctorData.data.medic);
 	};
-
+	console.log(doctorData);
 	useEffect(() => {
 		fetchDoctorData();
 	}, []);
@@ -231,26 +232,12 @@ const PublicDoctorProfilePage = ({ params }) => {
 							className='inter'
 							fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
 						>
-							Comentarios ({fakeComments.length})
+							Comentarios
 						</Typography>
-						{/* Así solo los pacientes pueden dejar comentarios */}
 						{userData && !userData.hasOwnProperty('profesionalid') && (
 							<CommentInput doctorData={doctorData} />
 						)}
-						{fakeComments.length > 0 ? (
-							fakeComments.map((comment, idx) => {
-								return <CommentCard key={idx} comment={comment} />;
-							})
-						) : (
-							<Chip
-								label='This medic has no comment yet'
-								className='inter'
-								sx={{
-									color: colors.text,
-									fontSize: { xs: titleFontSizeMobile.body, sm: titleFontSizeMobile.body },
-								}}
-							/>
-						)}
+						<Comments doctorData={doctorData} />
 					</Stack>
 				</Grid>
 			</Grid>
