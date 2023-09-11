@@ -12,27 +12,26 @@ import {
 	Settings,
 	Videocam,
 } from '@mui/icons-material';
-import { fakeComments } from './fakeComments';
-import CommentCard from './CommentCard';
-import CommentInput from './CommentInput';
+
 import { useEffect, useState } from 'react';
-import { getSingleDoctor } from '@/lib/getSingleDoctor';
+import { getSinglePatient } from '@/lib/getSinglePatient';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-const PublicDoctorProfilePage = ({ params }) => {
-	const [doctorData, setDoctorData] = useState();
+
+const PatientProfilePage = ({ params }) => {
+	const [patientData, SetPatientData] = useState();
 	const { push } = useRouter();
 	const { userData } = useAuth();
 
-	const fetchDoctorData = async () => {
-		const doctorData = await getSingleDoctor(params.doctorID);
-		// Pregunto si existe el id del médico, sino lo redirigo
-		if (doctorData.data.medic === null) push('/not-found');
-		setDoctorData(doctorData.data.medic);
+	const fetchPatientData = async () => {
+		const patientData = await getSinglePatient(params.patientID);
+
+		if (patientData.data.patient === null) push('/not-found');
+		SetPatientData(patientData.data.patient);
 	};
 
 	useEffect(() => {
-		fetchDoctorData();
+		fetchPatientData();
 	}, []);
 
 	return (
@@ -40,7 +39,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 			<Grid container spacing={4}>
 				<Grid item xs={12} sm={6}>
 					<Stack direction={'column'} spacing={4}>
-						<AvatarProfile doctorData={doctorData} />
+						<AvatarProfile patientData={patientData} />
 						<Stack
 							direction={'row'}
 							spacing={1}
@@ -81,8 +80,8 @@ const PublicDoctorProfilePage = ({ params }) => {
 									fontSize='medium'
 								/>
 							</Box>
-							{userData?.id === doctorData?.id && (
-								<Link href={`/profile/doctor/${userData?.email}/edit`}>
+							{userData?.id === patientData?.id && (
+								<Link href={`/profile/patient/${userData?.email}/edit`}>
 									<Box
 										sx={{
 											display: 'flex',
@@ -107,7 +106,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 						<Stack direction={'row'} spacing={1} justifyContent={'start'} alignItems={'center'}>
 							<PlaceOutlined sx={{ color: colors.locationIcon }} />
 							<Typography variant='body2' className='inter' color={colors.text}>
-								{doctorData?.country}
+								{patientData?.country}
 							</Typography>
 						</Stack>
 						<Stack direction={'column'} spacing={1} justifyContent={'start'}>
@@ -180,7 +179,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 								className='inter'
 								fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 							>
-								{doctorData?.resume ? doctorData.resume : 'Resume not provided yet.'}
+								{patientData?.resume ? patientData.resume : 'Resume not provided yet.'}
 							</Typography>
 						</Stack>
 						<Stack direction={'column'} spacing={1} justifyContent={'start'}>
@@ -202,10 +201,10 @@ const PublicDoctorProfilePage = ({ params }) => {
 									className='inter'
 									fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 								>
-									{doctorData && doctorData.email}
+									{patientData && patientData.email}
 								</Typography>
 							</Stack>
-							{doctorData && doctorData.phone && (
+							{patientData && patientData.phone && (
 								<Stack direction={'row'} spacing={2} justifyContent={'start'} alignItems={'center'}>
 									<PhoneAndroidOutlined sx={{ color: colors.buttonIcon }} />
 									<Typography
@@ -215,49 +214,17 @@ const PublicDoctorProfilePage = ({ params }) => {
 										className='inter'
 										fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 									>
-										{doctorData.phone}
+										{patientData.phone}
 									</Typography>
 								</Stack>
 							)}
 						</Stack>
 					</Stack>
 				</Grid>
-				<Grid item xs={12} sm={6}>
-					<Stack direction={'column'} spacing={4}>
-						<Typography
-							variant={'h4'}
-							color={colors.text}
-							fontWeight={600}
-							className='inter'
-							fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
-						>
-							Comentarios ({fakeComments.length})
-						</Typography>
-						{/* Así solo los pacientes pueden dejar comentarios */}
 
-						{userData && !userData.hasOwnProperty('profesionalid') && (
-                            <CommentInput doctorData={doctorData} />
-                        )}
-
-						{fakeComments.length > 0 ? (
-							fakeComments.map((comment, idx) => {
-								return <CommentCard key={idx} comment={comment} />;
-							})
-						) : (
-							<Chip
-								label='This medic has no comment yet'
-								className='inter'
-								sx={{
-									color: colors.text,
-									fontSize: { xs: titleFontSizeMobile.body, sm: titleFontSizeMobile.body },
-								}}
-							/>
-						)}
-					</Stack>
-				</Grid>
 			</Grid>
 		</Container>
 	);
 };
 
-export default PublicDoctorProfilePage;
+export default PatientProfilePage;
