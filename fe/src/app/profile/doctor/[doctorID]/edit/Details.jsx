@@ -17,6 +17,7 @@ import { getSpecialty } from '@/lib/getSpecialty';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { colors } from '@/app/colors';
+import styled from '@emotion/styled';
 
 const VisuallyHiddenInput = styled('input')({
 	clip: 'rect(0 0 0 0)',

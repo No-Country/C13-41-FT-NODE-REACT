@@ -1,5 +1,4 @@
 'use client';
-import { useAuth } from '@/contexts/Auth.context';
 import { Box, Chip } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import CommentCard from './CommentCard';
@@ -10,14 +9,21 @@ const Comments = ({ doctorData }) => {
 	const [fakeComments, setFakeComments] = useState([]);
 
 	const fetchData = async () => {
+		if (!doctorData) return;
+
 		const data = await getDoctorComments('medic', doctorData?.id);
-		console.log(data.data.comments);
-		setFakeComments(data.data.comments);
+		if (!data || !data.data || data.data.comments === null) {
+			setFakeComments([]);
+		} else {
+			setFakeComments(data.data.comments);
+		}
 	};
 
 	useEffect(() => {
-		fetchData();
-	}, []);
+		if (doctorData) {
+			fetchData();
+		}
+	}, [doctorData]);
 
 	return (
 		<Box>
