@@ -24,7 +24,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 		if (doctorData.data.medic === null) push('/not-found');
 		setDoctorData(doctorData.data.medic);
 	};
-	console.log(doctorData);
+
 	useEffect(() => {
 		fetchDoctorData();
 	}, []);
@@ -48,20 +48,11 @@ const PublicDoctorProfilePage = ({ params }) => {
 					</Stack>
 				</Grid>
 				<Grid item xs={12} sm={6}>
-					<Stack direction={'column'} spacing={4}>
-						<Typography
-							variant={'h4'}
-							color={colors.text}
-							fontWeight={600}
-							className='inter'
-							fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
-						>
-							Comentarios
-						</Typography>
+					<Stack direction={'column'} spacing={4} paddingY={2}>
+						<Comments doctorData={doctorData} />
 						{userData && !userData.hasOwnProperty('profesionalid') && (
 							<CommentInput doctorData={doctorData} userData={userData} />
 						)}
-						<Comments doctorData={doctorData} />
 					</Stack>
 				</Grid>
 			</Grid>
