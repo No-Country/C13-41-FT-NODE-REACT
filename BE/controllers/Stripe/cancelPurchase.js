@@ -20,7 +20,7 @@ const cancelPurchase = async (req, res) => {
     await sendEmail(res, patientEmail, `Invoice #${invoiceId} Update`, templateInvoice(invoiceId, 'Canceled', patientFullname))
      */
 
-return res.redirect(`${process.env.NODE_ENV == "development" ? process.env.DEV_STRIPE_FE_PAGE_CANCEL : process.env.PRO_STRIPE_FE_PAGE_CANCEL}`);
+return res.redirect(`${process.env.NODE_ENV == "development" ? process.env.DEV_STRIPE_FE_PAGE_CANCEL : process.env.PRO_STRIPE_FE_PAGE_CANCEL}?result=cancel`);
   } catch (error) {
   return res.status(400).json({ message: error.message, error: "Cancel Stripe" });
 }
