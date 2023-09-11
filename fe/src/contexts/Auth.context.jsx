@@ -32,16 +32,14 @@ export const AuthProvider = ({ children }) => {
 	const login = ({ token, data }) => {
 		setToken(token);
 		setUserData(data);
-
 		localStorage.setItem('token', token);
 		localStorage.setItem('userData', JSON.stringify(data));
 	};
 
 	// Cierro sesión y borror el token y los datos del usuario
 	const logout = () => {
-		setToken(null); 
+		setToken(null);
 		setUserData(null);
-
 		localStorage.removeItem('token');
 		localStorage.removeItem('userData');
 	};

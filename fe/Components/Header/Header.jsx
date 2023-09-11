@@ -58,132 +58,95 @@ const Header = () => {
 		<AppBar position='static' sx={{ backgroundColor: colors.navbarBackground, boxShadow: 'none' }}>
 			<Container maxWidth='xl'>
 				<Toolbar>
-					<Box sx={{ display: { xs: 'none', md: 'flex', mr: 1 } }}>
-						<Logo src='https://img.icons8.com/clouds/100/caduceus.png' />
-					</Box>
-					<Typography
-						variant='h6'
-						noWrap
-						component='a'
-						href='/'
-						className='inter'
-						sx={{
-							flexGrow1: 1,
-							mr: 2,
-							display: { xs: 'none', md: 'flex' },
-							fontWeight: 800,
-							color: colors.text,
-							textTransform: 'none',
-						}}
-					>
-						Klinika
-					</Typography>
+					<Box sx={{ display: { xs: 'none', md: 'flex', mr: 1 } }}>{LogoSvg()}</Box>
+					{token && (
+						<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+							<IconButton
+								size='large'
+								aria-label='account of current user'
+								aria-controls='menu-appbar'
+								aria-haspopup='true'
+								onClick={handleOpenNavMenu}
+								color='inherit'
+							>
+								<MenuIcon />
+							</IconButton>
+							<Menu
+								id='menu-appbar'
+								anchorEl={anchorElNav}
+								anchorOrigin={{
+									vertical: 'bottom',
+									horizontal: 'left',
+								}}
+								keepMounted
+								transformOrigin={{
+									vertical: 'top',
+									horizontal: 'left',
+								}}
+								open={Boolean(anchorElNav)}
+								onClose={handleCloseNavMenu}
+								sx={{
+									display: { xs: 'block', md: 'none' },
+								}}
+							>
+								{/* Verifico que este logueado y tenga los datos de usuario */}
+								{token && userData && (
+									<div>
+										<MenuItem onClick={() => (token ? push('/home') : push('/sign-in'))}>
+											<Typography
+												textAlign='center'
+												className='inter'
+												sx={{ color: colors.text, textTransform: 'none' }}
+											>
+												Home
+											</Typography>
+										</MenuItem>
+										<MenuItem onClick={() => (token ? push('/doctors') : push('/sign-in'))}>
+											<Typography
+												textAlign='center'
+												className='inter'
+												sx={{ color: colors.text, textTransform: 'none' }}
+											>
+												Doctors
+											</Typography>
+										</MenuItem>
 
-					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-						<IconButton
-							size='large'
-							aria-label='account of current user'
-							aria-controls='menu-appbar'
-							aria-haspopup='true'
-							onClick={handleOpenNavMenu}
-							color='inherit'
-						>
-							<MenuIcon />
-						</IconButton>
-						<Menu
-							id='menu-appbar'
-							anchorEl={anchorElNav}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'left',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'left',
-							}}
-							open={Boolean(anchorElNav)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: 'block', md: 'none' },
-							}}
-						>
-							{/* Verifico que este logueado y tenga los datos de usuario */}
-							{token && userData && (
-								<div>
-									<MenuItem onClick={() => (token ? push('/home') : push('/sign-in'))}>
-										<Typography
-											textAlign='center'
-											className='inter'
-											sx={{ color: colors.text, textTransform: 'none' }}
-										>
-											Home
-										</Typography>
-									</MenuItem>
-									<MenuItem onClick={() => (token ? push('/doctors') : push('/sign-in'))}>
-										<Typography
-											textAlign='center'
-											className='inter'
-											sx={{ color: colors.text, textTransform: 'none' }}
-										>
-											Doctors
-										</Typography>
-									</MenuItem>
+										{
+											// Verifico que sea un paciente para mostrar el link al new appointment
+											!userData.profesionalid && (
+												<MenuItem onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}>
+													<Typography
+														textAlign='center'
+														className='inter'
+														sx={{ color: colors.text, textTransform: 'none' }}
+													>
+														New appointment
+													</Typography>
+												</MenuItem>
+											)
+										}
 
-									{
-										// Verifico que sea un paciente para mostrar el link al new appointment
-										!userData.profesionalid && (
-											<MenuItem onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}>
-												<Typography
-													textAlign='center'
-													className='inter'
-													sx={{ color: colors.text, textTransform: 'none' }}
-												>
-													New appointment
-												</Typography>
-											</MenuItem>
-										)
-									}
+										{
+											// Verifico que sea un medico para mostrar el link a schedule
+											userData.profesionalid && (
+												<MenuItem onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}>
+													<Typography
+														textAlign='center'
+														className='inter'
+														sx={{ color: colors.text, textTransform: 'none' }}
+													>
+														Schedule
+													</Typography>
+												</MenuItem>
+											)
+										}
+									</div>
+								)}
+							</Menu>
+						</Box>
+					)}
 
-									{
-										// Verifico que sea un medico para mostrar el link a schedule
-										userData.profesionalid && (
-											<MenuItem onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}>
-												<Typography
-													textAlign='center'
-													className='inter'
-													sx={{ color: colors.text, textTransform: 'none' }}
-												>
-													Schedule
-												</Typography>
-											</MenuItem>
-										)
-									}
-								</div>
-							)}
-						</Menu>
-					</Box>
-
-					<Box sx={{ display: { xs: 'flex', md: 'none', mr: 1 } }}>
-						<Logo src='https://img.icons8.com/clouds/100/caduceus.png' />
-					</Box>
-					<Typography
-						variant='h6'
-						noWrap
-						component='a'
-						href='/'
-						sx={{
-							flexGrow: 1,
-							mr: 2,
-							display: { xs: 'flex', md: 'none' },
-							fontWeight: 800,
-							color: colors.text,
-							textTransform: 'none',
-						}}
-						className='inter'
-					>
-						Klinika
-					</Typography>
+					<Box sx={{ display: { xs: 'flex', md: 'none', mr: 2, flexGrow: 1 } }}>{LogoSvg()}</Box>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{token && userData && (
