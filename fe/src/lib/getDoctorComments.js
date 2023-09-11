@@ -11,7 +11,7 @@ export const getDoctorComments = async (type, id) => {
 	);
 
 	if (!response.ok) {
-		throw new Error('No se pudieron obtener los datos de los médicos');
+		return null;
 	}
 
 	return response.json();

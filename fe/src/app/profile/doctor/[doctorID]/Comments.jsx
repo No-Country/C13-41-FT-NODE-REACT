@@ -1,6 +1,5 @@
 'use client';
-import { useAuth } from '@/contexts/Auth.context';
-import { Box, Chip } from '@mui/material';
+import { Box, Chip, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import CommentCard from './CommentCard';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
@@ -10,17 +9,33 @@ const Comments = ({ doctorData }) => {
 	const [fakeComments, setFakeComments] = useState([]);
 
 	const fetchData = async () => {
+		if (!doctorData) return;
+
 		const data = await getDoctorComments('medic', doctorData?.id);
-		console.log(data.data.comments);
-		setFakeComments(data.data.comments);
+		if (!data || !data.data || data.data.comments === null) {
+			setFakeComments([]);
+		} else {
+			setFakeComments(data.data.comments);
+		}
 	};
 
 	useEffect(() => {
-		fetchData();
-	}, []);
+		if (doctorData) {
+			fetchData();
+		}
+	}, [doctorData]);
 
 	return (
 		<Box>
+			<Typography
+				variant={'h4'}
+				color={colors.text}
+				fontWeight={600}
+				className='inter'
+				fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
+			>
+				Comentarios {fakeComments && fakeComments.length > 0 && `(${fakeComments.length})`}
+			</Typography>
 			{fakeComments && fakeComments.length > 0 ? (
 				fakeComments.map((comment, idx) => {
 					return <CommentCard key={idx} comment={comment} />;
@@ -31,7 +46,7 @@ const Comments = ({ doctorData }) => {
 					className='inter'
 					sx={{
 						color: colors.text,
-						fontSize: { xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body },
+						fontSize: { xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body, paddingY: 4 },
 					}}
 				/>
 			)}
