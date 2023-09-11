@@ -1,17 +1,16 @@
 const { Consult } = require("../../database/models");
 
-// TODO: Cambiar con middleware de atenticación
 const deleteConsult = async (req, res) => {
   try {
-    const id = req.query.id;
+    const {consultId} = req.query;
 
-    if (!id) {
-      throw new Error("All fields are required")
+    if (!consultId) {
+      throw new Error("Must contain consultId")
     }
 
     const deletedConsult = await Consult.destroy({
       where: {
-        id: id,
+        id: consultId,
       },
     });
 
@@ -21,7 +20,7 @@ const deleteConsult = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "consult deleted" });
+      .json({ message: "Consult Deleted" });
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Delete Consult" });
   }

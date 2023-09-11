@@ -38,8 +38,8 @@ const createMedic = async (req, res) => {
 
       const emailSubject = 'Welcome to Klinika Merchacovz'
 
-      const emailBody = `<h1>Hello ${fullname}</h1>,
-      <h2>Thank you for registering on our platform. We are excited to have you as a Medic!</h2>
+      const emailBody = `<h1>Hello ${fullname},</h1>
+      <h2>Thank you for join us on our platform. We are excited to have you as a Medic!</h2>
       
       Best regards,
       Klinika Mercharcovz`;

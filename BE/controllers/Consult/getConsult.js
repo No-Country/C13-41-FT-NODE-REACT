@@ -1,27 +1,27 @@
 const { Consult } = require("../../database/models");
 
-// TODO: Cambiar con middleware de atenticación
 const getConsult = async (req, res) => {
   try {
     const {
-      id,
+      consultId, medicId, patientId
     } = req.query;
 
     if (
-      !id
+      !consultId && !medicId && !patientId
     ) {
-      throw new Error("All fields are required")
+      throw new Error("Query must have consultId or medicId or patientId")
     }
+    
+    let consult =
+      consultId
+        ? await Consult.findByPk(consultId)
+        : await Consult.findAll({ where: medicId ? medicId : patientId })
 
-    const consult = await Consult.findOne({
-      where: {
-        id: id
-      }
-    });
+
 
     return res
       .status(200)
-      .json({ message: 'Consult data', data:{consult} });
+      .json({ message: 'Consult data', data: { consult } });
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Get Consult" });
   }
