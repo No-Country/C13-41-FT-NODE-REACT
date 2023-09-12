@@ -6,8 +6,9 @@ const {
   uploadFilesResponse
 } = require("../controllers/Files/index.js");
 
+const {verifyJWT} = require('../middlewares/jwt.js')
 
-router.post('/', uploadFilesMiddleware, uploadFilesResponse);
+router.post('/', verifyJWT, uploadFilesMiddleware, uploadFilesResponse);
 
 
 module.exports = router;

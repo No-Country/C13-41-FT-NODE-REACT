@@ -4,7 +4,7 @@ const createSchedule = async (req, res) => {
     const { day, initialHour, finalHour, status, duration, medicId } = req.body
 
     if (!day || !initialHour || !finalHour || !status || !duration || !medicId) {
-      throw new Error('Body must contain day, initialHour, finalHour, type, status, duration, medicId')
+      throw new Error('Body must contain day, initialHour, finalHour, status, duration, medicId')
     }
 
       const newSchedule = await Schedule.create({
