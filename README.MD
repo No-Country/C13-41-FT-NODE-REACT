@@ -38,6 +38,8 @@ La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como 
 </h1>
 
 NodeJS, Express, PostgreSQL, ReactJS, NextJS, MUI, Yup, Formik, date-fns, ReactDatePicker, SweetAlert2, Render, Vercel, Stripe, y Jitsi.
+![Node.js](https://img.shields.io/static/v1?style=for-the-badge&message=Node.js&color=339933&logo=Node.js&logoColor=FFFFFF&label=)
+
 
 <!-- GETTING STARTED -->
 <h1 align="center"> 
@@ -226,8 +228,6 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1 align="center"> 
 <img src="https://media0.giphy.com/media/odMfXhzCqknOCYrNdU/giphy.gif" width="30px">Video
 </h1>
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 <p align="center"><a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
