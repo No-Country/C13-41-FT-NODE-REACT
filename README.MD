@@ -38,7 +38,23 @@ La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como 
 </h1>
 
 NodeJS, Express, PostgreSQL, ReactJS, NextJS, MUI, Yup, Formik, date-fns, ReactDatePicker, SweetAlert2, Render, Vercel, Stripe, y Jitsi.
+
 ![Node.js](https://img.shields.io/static/v1?style=for-the-badge&message=Node.js&color=339933&logo=Node.js&logoColor=FFFFFF&label=)
+![Express](https://img.shields.io/static/v1?style=for-the-badge&message=Express&color=000000&logo=Express&logoColor=FFFFFF&label=)
+![PostgreSQL](https://img.shields.io/static/v1?style=for-the-badge&message=PostgreSQL&color=4169E1&logo=PostgreSQL&logoColor=FFFFFF&label=)
+![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=)
+![Next.js](https://img.shields.io/static/v1?style=for-the-badge&message=Next.js&color=000000&logo=Next.js&logoColor=FFFFFF&label=)
+![MUI](https://img.shields.io/static/v1?style=for-the-badge&message=MUI&color=007FFF&logo=MUI&logoColor=FFFFFF&label=)
+![Yup](https://img.shields.io/badge/Yup-crimson?style=for-the-badge&logo=Yup&logoColor=fff)
+![Formik](https://img.shields.io/badge/Formik-172B4D?style=for-the-badge&logo=Formik&logoColor=fff)
+![date-fns](https://img.shields.io/badge/date-fns-123456)
+![ReactDatePicker](https://img.shields.io/badge/ReactDatePicker-123456)
+![SweetAlert2](https://img.shields.io/badge/SweetAlert2-123456)
+![Jitsi](https://img.shields.io/badge/Jitsi-123456)
+![Render](https://img.shields.io/static/v1?style=for-the-badge&message=Render&color=222222&logo=Render&logoColor=46E3B7&label=)
+![Vercel](https://img.shields.io/static/v1?style=for-the-badge&message=Vercel&color=000000&logo=Vercel&logoColor=FFFFFF&label=)
+![Stripe](https://img.shields.io/static/v1?style=for-the-badge&message=Stripe&color=008CDD&logo=Stripe&logoColor=FFFFFF&label=)
+
 
 
 <!-- GETTING STARTED -->
