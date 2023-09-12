@@ -37,8 +37,6 @@ La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como 
 <img src="https://media0.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif" width="30px">Tecnologias Usadas
 </h1>
 
-NodeJS, Express, PostgreSQL, ReactJS, NextJS, MUI, Yup, Formik, date-fns, ReactDatePicker, SweetAlert2, Render, Vercel, Stripe, y Jitsi.
-
 ![Node.js](https://img.shields.io/static/v1?style=for-the-badge&message=Node.js&color=339933&logo=Node.js&logoColor=FFFFFF&label=)
 ![Express](https://img.shields.io/static/v1?style=for-the-badge&message=Express&color=000000&logo=Express&logoColor=FFFFFF&label=)
 ![PostgreSQL](https://img.shields.io/static/v1?style=for-the-badge&message=PostgreSQL&color=4169E1&logo=PostgreSQL&logoColor=FFFFFF&label=)
@@ -252,7 +250,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <!-- Trello & Figma -->
 <h1 align="center"> 
-<img src="https://media0.giphy.com/media/U7n83jTSc6cmWTKRpT/giphy.gif" width="30px">Trello & Figma
+<img src="https://media0.giphy.com/media/W4uRlu88EyyzY4zdCy/giphy.gif" width="30px">Comunicacion & Organización
 </h1>
 
 <a href="https://trello.com/b/Q0G3my8O/sb-klinika">
@@ -262,6 +260,15 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <a href="https://www.figma.com/file/bRdQnlyWWehoRQbuwGENaJ/Klinica?type=design&node-id=0-1&mode=design&t=JrVs2p5rFJvPFzCk-0">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Logo" width="96" height="96">
 </a>
+
+<a href="https://www.nocountry.tech/">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://discord.gg/Zj2GmPwg">
+  <img src="https://img.icons8.com/color/480/discord-new-logo.png" alt="Logo" width="96" height="96">
+</a>
+
 
 <!-- ACKNOWLEDGMENTS -->
 <h1 align="center"> 
