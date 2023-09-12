@@ -248,6 +248,16 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
   </tr>
 </table>
 
+<!-- ABOUT THE PROJECT -->
+
+<h1 align="center"> 
+<img src="https://media3.giphy.com/media/ffumjakqlYO2kaRPKL/giphy.gif" width="30px">Documentación del proyecto
+</h1>
+
+<a href="https://drive.google.com/file/d/1j48fmS0Idk_D8nzWOLV4YbB0jRZFKOPm/view?usp=drivesdk">
+  <img src="https://img.icons8.com/officel/80/making-notes.png" alt="Logo" width="96" height="96">
+</a>
+
 <!-- CONTACT -->
 <h1 align="center"> 
 <img src="https://media3.giphy.com/media/dA9zmG7BCtbauczAQY/giphy.gif" width="30px">Contacto
