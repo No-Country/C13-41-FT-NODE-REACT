@@ -5,7 +5,11 @@ import { Stack } from '@mui/system';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import React from 'react';
 
-const AppointmentCard = ({ consultation }) => {
+const AppointmentCard = ({ consultation, patient, doctor, userData }) => {
+	const isMedic = userData && userData.profesionalid;
+	console.log('doctor', doctor);
+	console.log('patient', patient);
+	console.log('consult', consultation);
 	return (
 		<Card
 			sx={{
@@ -18,8 +22,12 @@ const AppointmentCard = ({ consultation }) => {
 				className='inter'
 				sx={{ color: colors.text }}
 				avatar={
-					<Avatar sx={{ backgroundColor: colors.categoryIcons.vaccines }} aria-label='recipe'>
-						{consultation.doctor.fullname.split(' ')[1].charAt(0).toUpperCase()}
+					<Avatar
+						sx={{ backgroundColor: colors.categoryIcons.vaccines }}
+						aria-label='recipe'
+						src={isMedic ? patient.avatar : doctor.avatar}
+					>
+						{doctor && doctor.fullname?.split(' ')[1].charAt(0).toUpperCase()}
 					</Avatar>
 				}
 				action={
@@ -27,8 +35,9 @@ const AppointmentCard = ({ consultation }) => {
 						<StarRounded sx={{ color: colors.starIcon }} />
 					</IconButton>
 				}
-				title={consultation.doctor.fullname}
-				subheader={consultation.doctor.speciality}
+				title={doctor && doctor.fullname}
+				subheader={'Especialidad'}
+				// subheader={consultation.doctor.speciality}
 			/>
 
 			<CardContent>
@@ -51,7 +60,7 @@ const AppointmentCard = ({ consultation }) => {
 						color={colors.text}
 						fontSize={{ xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body }}
 					>
-						{consultation.doctor.email}
+						{/* {consultation.doctor.email} */}Email
 					</Typography>
 				</Stack>
 			</CardContent>
