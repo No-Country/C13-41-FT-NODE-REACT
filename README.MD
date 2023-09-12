@@ -145,7 +145,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/miguelbel00" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Miguel Beltran</h4>
-          <h4 style="margin-top: 1rem;">Backend & DevOps</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer & DevOps</h4>
         </a>
         <a href="https://github.com/miguelbel00">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -162,7 +162,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/gitgonlea" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Enzo Gonzalez</h4>
-          <h4 style="margin-top: 1rem;">Backend</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer</h4>
         </a>
         <a href="https://github.com/gitgonlea">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -184,7 +184,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://www.linkedin.com/in/maximiliano-leonel-p%C3%A9rez-8846b826a/" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Maximiliano Perez</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/MaximilianoLeonel23">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -201,7 +201,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/scarolayton" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Sergio Caro</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/scarolayton">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -218,7 +218,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/cric992010" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Cristian Ortiz</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/cric992010">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -235,7 +235,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://www.linkedin.com/in/jjrh92" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Julio Reyes</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/jjrh92">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
