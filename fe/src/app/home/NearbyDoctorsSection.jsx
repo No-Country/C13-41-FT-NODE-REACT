@@ -3,6 +3,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
+import { getAllDoctors } from '@/lib/getAllDoctors';
 
 const NearbyDoctorsSection = ({ userData }) => {
 	const [nearbyDoctors, setNearbyDoctors] = useState([]);
@@ -11,7 +12,10 @@ const NearbyDoctorsSection = ({ userData }) => {
 		try {
 			const data = await getAllDoctors();
 			const nearbyDoctors = data.data.medic.filter(doctor => {
-				return doctor.country.toLowerCase().includes(userData.country.toLowerCase());
+				return (
+					doctor.country.toLowerCase().includes(userData.country.toLowerCase()) &&
+					doctor.id !== userData.id
+				);
 			});
 			setNearbyDoctors(nearbyDoctors);
 		} catch (error) {
@@ -40,7 +44,7 @@ const NearbyDoctorsSection = ({ userData }) => {
 				{nearbyDoctors?.length > 0 ? (
 					nearbyDoctors?.map((doctor, idx) => {
 						return (
-							<Grid item key={idx} xs={6} sm={4} lg={3}>
+							<Grid item key={idx} xs={6} sm={4} lg={2}>
 								<DoctorCard doctor={doctor} />
 							</Grid>
 						);

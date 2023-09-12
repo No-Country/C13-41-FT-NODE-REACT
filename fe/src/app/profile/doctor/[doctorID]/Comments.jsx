@@ -32,9 +32,10 @@ const Comments = ({ doctorData }) => {
 				color={colors.text}
 				fontWeight={600}
 				className='inter'
+				paddingBottom={2}
 				fontSize={{ xs: titleFontSizeMobile.h4, sm: titleFontSizeDesktop.h4 }}
 			>
-				Comentarios {fakeComments && fakeComments.length > 0 && `(${fakeComments.length})`}
+				Comments {fakeComments && fakeComments.length > 0 && `(${fakeComments.length})`}
 			</Typography>
 			{fakeComments && fakeComments.length > 0 ? (
 				fakeComments.map((comment, idx) => {

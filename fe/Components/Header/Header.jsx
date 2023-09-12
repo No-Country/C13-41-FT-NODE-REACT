@@ -48,7 +48,9 @@ const Header = () => {
 		<AppBar position='static' sx={{ backgroundColor: colors.navbarBackground, boxShadow: 'none' }}>
 			<Container maxWidth='xl'>
 				<Toolbar sx={{ paddingX: 0 }}>
+
 					<Box sx={{ display: { xs: 'none', md: 'flex' }, marginRight: '1rem', }}><Link href={"/"} >{LogoSvg()}</Link></Box>
+
 					{token && (
 						<NavMenuMobile
 							userData={userData}
@@ -59,7 +61,9 @@ const Header = () => {
 						/>
 					)}
 
+
 					<Box sx={{ display: { xs: 'flex', md: 'none', mr: 3, flexGrow: 1 } }}><Link href={"/"} >{LogoSvg()}</Link></Box>
+
 					<NavMenuDesktop userData={userData} token={token} />
 					{token ? (
 						<AvatarMenu
