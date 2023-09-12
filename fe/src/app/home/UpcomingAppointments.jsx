@@ -50,14 +50,12 @@ const UpcomingAppointments = ({ userData }) => {
 				</Typography>
 			</Box>
 			<Grid container spacing={2}>
-				{allConsults ? (
+				{allConsults.length > 0 ? (
 					allConsults.map((consult, idx) => {
-						// Encuentra el paciente correspondiente usando su ID
 						const patient = allPatients.find(patient => patient.id === consult.patientId);
-						// Encuentra el médico correspondiente usando su ID
 						const doctor = allDoctors.find(doctor => doctor.id === consult.medicId);
 						return (
-							<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
+							<Grid key={idx} item xs={12} sm={6} lg={4}>
 								{patient && doctor ? (
 									<AppointmentCard
 										consultation={consult}
@@ -73,7 +71,9 @@ const UpcomingAppointments = ({ userData }) => {
 					})
 				) : (
 					<Grid item xs={12}>
-						<Typography>No consults programmed</Typography>
+						<Typography variant='body2' color={colors.text} className='inter'>
+							No consults programmed
+						</Typography>
 					</Grid>
 				)}
 			</Grid>

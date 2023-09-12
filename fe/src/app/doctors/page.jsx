@@ -183,7 +183,7 @@ const DoctorsPage = () => {
 						{filteredDoctor?.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
-									<Grid item xs={6} md={4} key={doctor.id}>
+									<Grid item xs={6} md={6} key={doctor.id}>
 										<DoctorCard doctor={doctor} />
 										<Button
 											href={`/appointments/${doctor.email}`}

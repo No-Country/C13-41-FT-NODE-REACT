@@ -1,24 +1,22 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
-import MasksOutlinedIcon from '@mui/icons-material/MasksOutlined';
-import BiotechOutlinedIcon from '@mui/icons-material/BiotechOutlined';
-import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
-import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
-import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import ServicesCard from '../../../Components/Appointments/ServicesCard';
-
+import doctorImage from '@/assets/images/doctorFont.png';
+import pildorsImage from '@/assets/images/pildors.png';
+import tabletImage from '@/assets/images/OIP.png';
+import machineImage from '@/assets/images/zoomMachine.png';
+import vaccineImage from '@/assets/images/vaccines.png';
 const ServicesSection = () => {
-	const servicesLabels = ['labs', 'vaccines', 'doctors', 'medications', 'EHR'];
-	const { labs, vaccines, doctors, medication, ehr } = colors.categoryIcons;
-	const servicesColor = [labs, vaccines, doctors, medication, ehr];
-	const servicesIcon = [
-		<BiotechOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
-		<VaccinesOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
-		<MasksOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
-		<MedicationOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
-		<FolderOpenOutlinedIcon fontSize='large' sx={{ color: colors.text }} />,
+	const servicesLabels = ['doctors', 'medications', 'EHR', 'labs', 'vaccines'];
+	const servicesButtons = [
+		'Find by specialty',
+		'Get prescription and order',
+		'Access to your records',
+		'Access to your results',
+		'Get vaccunated',
 	];
+	const servicesImages = [doctorImage, pildorsImage, tabletImage, machineImage, vaccineImage];
 
 	return (
 		<Box component={'section'} display={'flex'} flexDirection={'column'} rowGap={2}>
@@ -41,20 +39,14 @@ const ServicesSection = () => {
 				gap={2}
 				flexWrap={'wrap'}
 			>
-				{servicesLabels ? (
-					servicesLabels.map((service, idx) => {
-						return (
-							<ServicesCard
-								key={idx}
-								serviceLabel={service}
-								serviceColor={servicesColor[idx]}
-								serviceIcon={servicesIcon[idx]}
-							/>
-						);
-					})
-				) : (
-					<></>
-				)}
+				{servicesLabels.map((label, index) => (
+					<ServicesCard
+						key={index}
+						serviceLabel={label}
+						serviceButton={servicesButtons[index]}
+						serviceImage={servicesImages[index]}
+					/>
+				))}
 			</Box>
 		</Box>
 	);
