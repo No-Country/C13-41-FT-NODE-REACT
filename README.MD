@@ -222,6 +222,16 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <br />
 [Via Discord](https://discord.gg/Zj2GmPwg)
 
+<!-- Video -->
+<h1 align="center"> 
+<img src="https://media3.giphy.com/media/SwmtomKcvF9XnJRgt7/giphy.gif" width="30px">Video
+
+<p align="center"><a href="https://www.youtube.com/watch?v=#########" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+
+<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/###########" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+
+</h1>
+
 <!-- Screenshots -->
 <h1 align="center"> 
 <img src="https://media1.giphy.com/media/xcFJX6T9z2iqiB9Ud9/giphy.gif" width="30px">Capturas de Pantalla
