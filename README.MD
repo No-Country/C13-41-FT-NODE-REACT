@@ -224,13 +224,12 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <!-- Video -->
 <h1 align="center"> 
-<img src="https://media3.giphy.com/media/SwmtomKcvF9XnJRgt7/giphy.gif" width="30px">Video
+<img src="https://media0.giphy.com/media/odMfXhzCqknOCYrNdU/giphy.gif" width="30px">Video
 </h1>
 
-<p align="center"><a href="https://www.youtube.com/watch?v=#########" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
-<p align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/###########" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
-
+<p align="center"><a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
 
 <!-- Screenshots -->
