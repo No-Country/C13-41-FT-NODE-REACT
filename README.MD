@@ -47,15 +47,13 @@ NodeJS, Express, PostgreSQL, ReactJS, NextJS, MUI, Yup, Formik, date-fns, ReactD
 ![MUI](https://img.shields.io/static/v1?style=for-the-badge&message=MUI&color=007FFF&logo=MUI&logoColor=FFFFFF&label=)
 ![Yup](https://img.shields.io/badge/Yup-crimson?style=for-the-badge&logo=Yup&logoColor=fff)
 ![Formik](https://img.shields.io/badge/Formik-172B4D?style=for-the-badge&logo=Formik&logoColor=fff)
+![Render](https://img.shields.io/static/v1?style=for-the-badge&message=Render&color=222222&logo=Render&logoColor=46E3B7&label=)
+![Vercel](https://img.shields.io/static/v1?style=for-the-badge&message=Vercel&color=000000&logo=Vercel&logoColor=FFFFFF&label=)
+![Stripe](https://img.shields.io/static/v1?style=for-the-badge&message=Stripe&color=008CDD&logo=Stripe&logoColor=FFFFFF&label=)
 ![date-fns](https://img.shields.io/badge/date-fns-123456)
 ![ReactDatePicker](https://img.shields.io/badge/ReactDatePicker-123456)
 ![SweetAlert2](https://img.shields.io/badge/SweetAlert2-123456)
 ![Jitsi](https://img.shields.io/badge/Jitsi-123456)
-![Render](https://img.shields.io/static/v1?style=for-the-badge&message=Render&color=222222&logo=Render&logoColor=46E3B7&label=)
-![Vercel](https://img.shields.io/static/v1?style=for-the-badge&message=Vercel&color=000000&logo=Vercel&logoColor=FFFFFF&label=)
-![Stripe](https://img.shields.io/static/v1?style=for-the-badge&message=Stripe&color=008CDD&logo=Stripe&logoColor=FFFFFF&label=)
-
-
 
 <!-- GETTING STARTED -->
 <h1 align="center"> 
@@ -247,11 +245,23 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <p align="center"><a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
-
 <!-- Screenshots -->
 <h1 align="center"> 
 <img src="https://media1.giphy.com/media/xcFJX6T9z2iqiB9Ud9/giphy.gif" width="30px">Capturas de Pantalla
 </h1>
+
+<!-- Trello & Figma -->
+<h1 align="center"> 
+<img src="https://media0.giphy.com/media/U7n83jTSc6cmWTKRpT/giphy.gif" width="30px">Trello & Figma
+</h1>
+
+<a href="https://trello.com/b/Q0G3my8O/sb-klinika">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain-wordmark.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://www.figma.com/file/bRdQnlyWWehoRQbuwGENaJ/Klinica?type=design&node-id=0-1&mode=design&t=JrVs2p5rFJvPFzCk-0">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Logo" width="96" height="96">
+</a>
 
 <!-- ACKNOWLEDGMENTS -->
 <h1 align="center"> 
