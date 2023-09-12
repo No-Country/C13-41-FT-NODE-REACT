@@ -250,7 +250,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <!-- Trello & Figma -->
 <h1 align="center"> 
-<img src="https://media2.giphy.com/media/Lqo3UBlXeHwZDoebKX/giphy.gif" width="30px">Comunicacion & Organización
+<img src="https://media2.giphy.com/media/Lqo3UBlXeHwZDoebKX/giphy.gif" width="30px">Organización
 </h1>
 
 <a href="https://trello.com/b/Q0G3my8O/sb-klinika">
