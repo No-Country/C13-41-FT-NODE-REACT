@@ -53,6 +53,27 @@ La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como 
 ![SweetAlert2](https://img.shields.io/badge/SweetAlert2-123456)
 ![Jitsi](https://img.shields.io/badge/Jitsi-123456)
 
+<!-- Organización -->
+<h1 align="center"> 
+<img src="https://media2.giphy.com/media/Lqo3UBlXeHwZDoebKX/giphy.gif" width="30px">Organización
+</h1>
+
+<a href="https://trello.com/b/Q0G3my8O/sb-klinika">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain-wordmark.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://www.figma.com/file/bRdQnlyWWehoRQbuwGENaJ/Klinica?type=design&node-id=0-1&mode=design&t=JrVs2p5rFJvPFzCk-0">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://www.nocountry.tech/">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://discord.gg/Zj2GmPwg">
+  <img src="https://img.icons8.com/color/480/discord-new-logo.png" alt="Logo" width="96" height="96">
+</a>
+
 <!-- GETTING STARTED -->
 <h1 align="center"> 
 <img src="https://media1.giphy.com/media/QvpqIQAAl66EfoTJj8/giphy.gif" width="30px">Comenzando
@@ -247,28 +268,6 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1 align="center"> 
 <img src="https://media1.giphy.com/media/xcFJX6T9z2iqiB9Ud9/giphy.gif" width="30px">Capturas de Pantalla
 </h1>
-
-<!-- Trello & Figma -->
-<h1 align="center"> 
-<img src="https://media2.giphy.com/media/Lqo3UBlXeHwZDoebKX/giphy.gif" width="30px">Organización
-</h1>
-
-<a href="https://trello.com/b/Q0G3my8O/sb-klinika">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain-wordmark.svg" alt="Logo" width="96" height="96">
-</a>
-
-<a href="https://www.figma.com/file/bRdQnlyWWehoRQbuwGENaJ/Klinica?type=design&node-id=0-1&mode=design&t=JrVs2p5rFJvPFzCk-0">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Logo" width="96" height="96">
-</a>
-
-<a href="https://www.nocountry.tech/">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" alt="Logo" width="96" height="96">
-</a>
-
-<a href="https://discord.gg/Zj2GmPwg">
-  <img src="https://img.icons8.com/color/480/discord-new-logo.png" alt="Logo" width="96" height="96">
-</a>
-
 
 <!-- ACKNOWLEDGMENTS -->
 <h1 align="center"> 
