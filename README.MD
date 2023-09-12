@@ -251,7 +251,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <!-- ABOUT THE PROJECT -->
 
 <h1 align="center"> 
-<img src="https://media3.giphy.com/media/ffumjakqlYO2kaRPKL/giphy.gif" width="30px">Documentación del proyecto
+<img src="https://media4.giphy.com/media/U3DTrGnuwfDpkNsr3d/giphy.gif" width="30px">Documentación
 </h1>
 
 <a href="https://drive.google.com/file/d/1j48fmS0Idk_D8nzWOLV4YbB0jRZFKOPm/view?usp=drivesdk">
