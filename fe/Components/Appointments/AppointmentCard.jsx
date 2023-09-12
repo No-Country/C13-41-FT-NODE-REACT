@@ -44,7 +44,12 @@ const AppointmentCard = ({ consultation, patient, doctor, userData }) => {
 				sx={{ color: colors.text }}
 				avatar={
 					<Avatar
-						sx={{ backgroundColor: colors.categoryIcons.vaccines, width: '4rem', height: '4rem' }}
+						sx={{
+							backgroundColor: colors.categoryIcons.vaccines,
+							width: '4rem',
+							height: '4rem',
+							fontSize: '2rem',
+						}}
 						aria-label='recipe'
 						alt={isMedic ? patient.fullname : doctor.fullname}
 						src={isMedic ? patient.avatar : doctor.avatar}
@@ -66,11 +71,7 @@ const AppointmentCard = ({ consultation, patient, doctor, userData }) => {
 					fontWeight: 500,
 					color: colors.text,
 				}}
-				subheader={
-					isMedic
-						? `${service && service.description?.slice(0, 25)}...`
-						: doctor?.specialties[specialties.length - 1]?.name
-				}
+				subheader={`${service && service.description?.slice(0, 25)}...`}
 				subheaderTypographyProps={{
 					variant: 'body2',
 					fontSize: { xs: titleFontSizeMobile.body, md: titleFontSizeDesktop.body },
