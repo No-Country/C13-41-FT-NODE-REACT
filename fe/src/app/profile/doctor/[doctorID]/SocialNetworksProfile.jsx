@@ -25,31 +25,27 @@ const SocialNetworksProfile = ({ doctorData }) => {
 			>
 				Social Networks
 			</Typography>
-			{doctorData?.socialnetworks.length > 0 &&
-				doctorData.socialnetworks.map((network, index) => {
-					return (
-						<Stack
-							direction={'row'}
-							spacing={2}
-							justifyContent={'start'}
-							alignItems={'center'}
-							key={index}
+			{doctorData && doctorData.socialnetworks?.length > 0 && (
+				<Stack direction={'row'} spacing={2} justifyContent={'start'} alignItems={'center'}>
+					{matchNetwork(doctorData.socialnetworks[0].link)}
+					<Link
+						href={doctorData.socialnetworks[0].link}
+						target='_blank'
+						rel='noopener noreferrer'
+						underline='none'
+					>
+						<Typography
+							variant={'body2'}
+							color={colors.text}
+							fontWeight={400}
+							className='inter'
+							fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
 						>
-							{matchNetwork(network.link)}
-							<Link href={network.link} target='_blank' rel='noopener noreferrer' underline='none'>
-								<Typography
-									variant={'body2'}
-									color={colors.text}
-									fontWeight={400}
-									className='inter'
-									fontSize={{ xs: titleFontSizeMobile.body, sm: titleFontSizeDesktop.body }}
-								>
-									{network.link}
-								</Typography>
-							</Link>
-						</Stack>
-					);
-				})}
+							{doctorData.socialnetworks[0].link}
+						</Typography>
+					</Link>
+				</Stack>
+			)}
 		</Stack>
 	);
 };

@@ -14,11 +14,23 @@ import InfoProfile from './InfoProfile';
 import ProfessionalStatement from './ProfessionalStatement';
 import ContactProfile from './ContactProfile';
 import SocialNetworksProfile from './SocialNetworksProfile';
+import { getDoctorComments } from '@/lib/getDoctorComments';
 const PublicDoctorProfilePage = ({ params }) => {
 	const [doctorData, setDoctorData] = useState();
+	const [doctorComments, setDoctorComments] = useState([]);
 	const { push } = useRouter();
 	const { userData } = useAuth();
 
+	const fetchComments = async () => {
+		if (!doctorData) return;
+
+		const data = await getDoctorComments('medic', doctorData.id);
+		if (!data || !data.data || data.data.comments === null) {
+			setDoctorComments([]);
+		} else {
+			setDoctorComments(data.data.comments);
+		}
+	};
 	const fetchDoctorData = async () => {
 		const doctorData = await getSingleDoctor(params.doctorID);
 		// Pregunto si existe el id del médico, sino lo redirigo
@@ -28,7 +40,8 @@ const PublicDoctorProfilePage = ({ params }) => {
 
 	useEffect(() => {
 		fetchDoctorData();
-	}, []);
+		fetchComments();
+	}, [doctorData]);
 
 	return (
 		<Container sx={{ paddingY: 4, minHeight: '100vh' }}>
@@ -51,9 +64,9 @@ const PublicDoctorProfilePage = ({ params }) => {
 				</Grid>
 				<Grid item xs={12} sm={6}>
 					<Stack direction={'column'} spacing={4} paddingY={2}>
-						<Comments doctorData={doctorData} />
+						<Comments doctorComments={doctorComments} />
 						{userData && !userData.hasOwnProperty('profesionalid') && (
-							<CommentInput doctorData={doctorData} userData={userData} />
+							<CommentInput doctorData={doctorData} userData={userData} fetchComments={fetchComments} />
 						)}
 					</Stack>
 				</Grid>
