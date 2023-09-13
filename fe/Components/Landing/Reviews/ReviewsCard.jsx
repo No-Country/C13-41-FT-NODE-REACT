@@ -5,7 +5,6 @@ import StarRating from './StarRating';
 import Image from 'next/image';
 
 const CardContainer = styled ("div") ({
-    border : "3px solid black",
     height: "16.875rem",
     width: "25.8125rem",
     display: "flex",

@@ -14,7 +14,6 @@ const CardContainer = styled ("div")({
     flexShrink: '0',
     borderRadius: "1.5rem",
     backgroundSize: 'cover', 
-    border: '1px solid black',
     "&::before": {
       content: '""',
       position: 'absolute',
@@ -51,7 +50,6 @@ const Title = styled ("h1") ({
 });
 
 const Text = styled ("p") ({
-
     fontSize: "14px",
     color: colors.text,
     textAlign: "left",
