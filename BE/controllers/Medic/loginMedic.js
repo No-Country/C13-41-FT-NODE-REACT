@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const {Medic} = require('../../database/models')
+const {Medic,Comment,Consult,Invoice,Schedule,VacationDate,Specialty,SocialNetwork,Service} = require('../../database/models')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
@@ -15,7 +15,20 @@ const loginMedic = async (req, res) => {
       const medic = await Medic.findOne({
         where: {
           email: email
-        }
+        },include: [
+          {
+            model: SocialNetwork,
+            as: 'socialnetworks'
+          },            
+          {
+            model: Specialty,
+            as: 'specialties'
+          },
+          {
+            model: Schedule,
+            as: 'schedules'
+          },
+        ]
       });
       
       if (!medic) {
