@@ -5,48 +5,45 @@ import doctoresJuntos from '@/assets/images/cincoDoctores.jpg';
 import Image from 'next/image';
 
 const WhyUsContainer = styled('section')({
+    
 	display: 'flex',
-    position: 'relative',
 	justifyContent: 'center',
 	marginTop: '5.31rem',
-    width: '90rem',
-    height: '28.75rem',
-    left: 15,
-	flexDirection: 'column',
+    flexDirection: 'column',
    
 });
 
 const InsiderContainer = styled('div')({
 	display: 'flex',
-	justifyContent: 'start',
-	flexDirection: 'row',
+	justifyContent: 'center',
 	alignItems: 'center',
+
+    '@media (max-width: 768px)': {
+
+		flexDirection: "column",
+
+	}
+
 });
 
 const TextContainer = styled ("div") ({
 
-    position: 'relative',
     display: "flex",
-    justifyContent: "start",
+    justifyContent: "center",
     marginTop: "2rem", 
     flexDirection: "column",
     gap: "15px",
-    left: '7rem',
-    width: '39.375rem',
-    height: '21.475rem',
+
 });
 
-
-
 const ImageContainer = styled('div')({
+
 	display: 'flex',
-    position: 'relative',
-    width: '39.375rem',
-    height: '22.5rem',
-    left: 75,
-	justifyContent: 'start',
+	justifyContent: 'center',
+    alignItems: "center",
 	marginTop: '2rem',
 	flexDirection: 'column',
+    padding: "10px",
 
 });
 
@@ -67,7 +64,7 @@ const MotiveTitle = styled('h1')({
     lineHeight: '2.625rem',
     fontStyle: 'normal',    
 	textAlign: 'left',
-    letterSpacing: '-0.01925rem',
+
 });
 
 const MotiveText = styled('p')({
@@ -76,45 +73,30 @@ const MotiveText = styled('p')({
 	fontStyle: 'normal',
     fontWeight: '400',
     lineHeight: '1.6875rem',
-    letterSpacing: '-0.01238rem',
     textAlign: 'left',
 });
 
-const DoctorsImage = styled('img')({
-	width: '792px',
-	height: '376px',
-});
 
 function WhyUs () {
-    const imageStyle = {
-        borderRadius: '0.5rem',
-        position: 'relative',
-        width: '39.375rem',
-        height: '22.5rem',
-        flexShrink: 0,
-      }
+
   return (
 
     <WhyUsContainer>
         <Title>Why you should choose us</Title>
         <InsiderContainer>
-        <ImageContainer>
-        <Image src={doctoresJuntos} alt='doctor' style={imageStyle}/> 
-        </ImageContainer>
-        <TextContainer>
-            <MotiveTitle>Continuity of care</MotiveTitle>
-            <MotiveText> Allows you to see the healthcare provider for follow-up appointments and ongoing management of chronic conditions.</MotiveText>
 
-            <MotiveTitle>Access to specialists</MotiveTitle>
-            <MotiveText>You will have access to a network of specialists and professionals, ensuring that you can receive specialized care even if you live far away.</MotiveText>
-                
-            <MotiveTitle>Prescriptions refills</MotiveTitle>
-            <MotiveText>You can easily request prescription refills and we will delivered it. </MotiveText>
-                
+            <ImageContainer>
+                <Image src={doctoresJuntos} alt='doctor'/> 
+            </ImageContainer>
+            <TextContainer>
+                <MotiveTitle>Continuity of care</MotiveTitle>
+                <MotiveText> Allows you to see the healthcare provider for follow-up appointments and ongoing management of chronic conditions.</MotiveText>
+                <MotiveTitle>Access to specialists</MotiveTitle>
+                <MotiveText>You will have access to a network of specialists and professionals, ensuring that you can receive specialized care even if you live far away.</MotiveText>  
+                <MotiveTitle>Prescriptions refills</MotiveTitle>
+                <MotiveText>You can easily request prescription refills and we will delivered it. </MotiveText>
+            </TextContainer>
 
-        </TextContainer>
-
-        
         </InsiderContainer>
     </WhyUsContainer>
   )

@@ -7,7 +7,7 @@ export const colors = {
 	textSERVICES: '#012232',
 	inputBackground: '#C1CBCF',
 	cardBackground: '#C1CBCF',
-	navbarBackground: '#9AAAB1',
+	navbarBackground: '#A6BFC2',
 	selectedOption: '#9AAAB1',
 	locationIcon: '#277676',
 	backgroundButtonServices: '#012232',
