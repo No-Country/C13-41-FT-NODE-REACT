@@ -100,20 +100,19 @@ function WhyUs () {
         <InsiderContainer>
         <ImageContainer>
         <Image src={doctoresJuntos} alt='doctor' style={imageStyle}/> 
-              
-            </ImageContainer>
-            <TextContainer>
-                <MotiveTitle>Continuity of care</MotiveTitle>
-                <MotiveText> Allows you to see the healthcare provider for follow-up appointments and ongoing management of chronic conditions.</MotiveText>
+        </ImageContainer>
+        <TextContainer>
+            <MotiveTitle>Continuity of care</MotiveTitle>
+            <MotiveText> Allows you to see the healthcare provider for follow-up appointments and ongoing management of chronic conditions.</MotiveText>
 
-                <MotiveTitle>Access to specialists</MotiveTitle>
-                <MotiveText>You will have access to a network of specialists and professionals, ensuring that you can receive specialized care even if you live far away.</MotiveText>
+            <MotiveTitle>Access to specialists</MotiveTitle>
+            <MotiveText>You will have access to a network of specialists and professionals, ensuring that you can receive specialized care even if you live far away.</MotiveText>
                 
-                <MotiveTitle>Prescriptions refills</MotiveTitle>
-                <MotiveText>You can easily request prescription refills and we will delivered it. </MotiveText>
+            <MotiveTitle>Prescriptions refills</MotiveTitle>
+            <MotiveText>You can easily request prescription refills and we will delivered it. </MotiveText>
                 
 
-            </TextContainer>
+        </TextContainer>
 
         
         </InsiderContainer>
