@@ -25,10 +25,8 @@ export const FilterProvider = ({ children }) => {
 		try {
 			const data = await getAllDoctors();
 			setAllDoctors(data.data.medic);
-			setIsLoading(false);
 		} catch (error) {
 			console.error(error);
-			setIsLoading(false);
 		}
 	};
 
@@ -38,6 +36,7 @@ export const FilterProvider = ({ children }) => {
 
 	useEffect(() => {
 		setFilteredDoctor(allDoctors);
+		setIsLoading(false);
 	}, [allDoctors]);
 
 	useEffect(() => {

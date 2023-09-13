@@ -38,12 +38,11 @@ const DoctorsPage = () => {
 		fetchSpecialties();
 	}, []);
 
-	useEffect(() => {
-		if (!isLoading) {
-			// Solo llamar a fetchData cuando no está cargando
-			fetchData();
-		}
-	}, [isLoading, fetchData]);
+	// useEffect(() => {
+	// 	if (!isLoading) {
+	// 		fetchData();
+	// 	}
+	// }, [isLoading, fetchData]);
 
 	return (
 		<Container component={'main'} sx={{ paddingY: 4 }}>
