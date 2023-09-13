@@ -19,6 +19,7 @@ export const FilterProvider = ({ children }) => {
 	const [filterByName, setFilterByName] = useState('');
 	const [filterBySpecialty, setFilterBySpecialty] = useState('');
 	const [filterByCountry, setFilterByCountry] = useState('');
+	const [isLoading, setIsLoading] = useState(true);
 
 	const fetchData = async () => {
 		try {
@@ -35,6 +36,7 @@ export const FilterProvider = ({ children }) => {
 
 	useEffect(() => {
 		setFilteredDoctor(allDoctors);
+		setIsLoading(false);
 	}, [allDoctors]);
 
 	useEffect(() => {
@@ -62,6 +64,8 @@ export const FilterProvider = ({ children }) => {
 				setFilterByName,
 				filterBySpecialty,
 				setFilterBySpecialty,
+				isLoading,
+				fetchData,
 			}}
 		>
 			{children}

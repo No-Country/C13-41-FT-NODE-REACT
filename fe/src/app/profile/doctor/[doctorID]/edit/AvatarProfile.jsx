@@ -6,7 +6,7 @@ import { useAuth } from '@/contexts/Auth.context';
 import { Edit } from '@mui/icons-material';
 import { Box } from '@mui/system';
 const AvatarProfile = ({ avatar, setAvatar }) => {
-	const { userData, updateUserData } = useAuth();
+	const { userData, getUserData, token } = useAuth();
 	const inputRef = useRef(null);
 
 	const handleIconClick = () => {
@@ -36,8 +36,8 @@ const AvatarProfile = ({ avatar, setAvatar }) => {
 			}
 
 			const data = await response.json();
-			console.log(data);
-			updateUserData(data.data.MedicFound);
+
+			await getUserData(token, userData, 'medic');
 		} catch (error) {
 			console.error('Error al subir el archivo:', error);
 		}

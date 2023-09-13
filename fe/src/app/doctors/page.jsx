@@ -1,16 +1,6 @@
 'use client';
 import { useFilterContext } from '@/contexts/Filters.context';
-import {
-	Box,
-	Button,
-	Container,
-	Divider,
-	Grid,
-	InputAdornment,
-	MenuItem,
-	TextField,
-	Typography,
-} from '@mui/material';
+import { Box, Button, Chip, Container, Divider, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
@@ -28,6 +18,8 @@ const DoctorsPage = () => {
 		setFilterByName,
 		filterBySpecialty,
 		setFilterBySpecialty,
+		isLoading,
+		fetchData,
 	} = useFilterContext();
 
 	const countryList = new Set(allDoctors.map(doctor => doctor.country));
@@ -46,6 +38,12 @@ const DoctorsPage = () => {
 		fetchSpecialties();
 	}, []);
 
+	// useEffect(() => {
+	// 	if (!isLoading) {
+	// 		fetchData();
+	// 	}
+	// }, [isLoading, fetchData]);
+
 	return (
 		<Container component={'main'} sx={{ paddingY: 4 }}>
 			<SearcherInput setFilterByName={setFilterByName} />
@@ -61,7 +59,23 @@ const DoctorsPage = () => {
 				<Divider orientation='vertical' flexItem />
 				<Box component={'section'} width={{ xs: '100%', sm: '80%' }} paddingX={1}>
 					<Grid container spacing={2}>
-						{filteredDoctor && filteredDoctor.length > 0 ? (
+						{isLoading ? (
+							<Grid item xs={12}>
+								<Typography
+									variant='h6'
+									className='inter'
+									color={colors.text}
+									backgroundColor={colors.inputBackground}
+									borderRadius={2}
+									textAlign={'center'}
+									paddingX={2}
+									paddingY={1}
+									fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}
+								>
+									Loading doctors...
+								</Typography>
+							</Grid>
+						) : filteredDoctor && filteredDoctor.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
 									<Grid item xs={6} md={6} key={doctor.id}>
@@ -76,7 +90,6 @@ const DoctorsPage = () => {
 												color: 'white',
 												textTransform: 'none',
 												mt: 1,
-
 												':hover': { backgroundColor: colors.buttonIcon },
 											}}
 											fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}

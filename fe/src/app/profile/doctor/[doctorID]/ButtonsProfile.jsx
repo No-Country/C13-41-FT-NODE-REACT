@@ -1,5 +1,5 @@
 import { colors } from '@/app/colors';
-import { ChatBubbleRounded, Settings, Videocam } from '@mui/icons-material';
+import { ChatBubbleRounded, EventRounded, Settings, Videocam } from '@mui/icons-material';
 import { Box, Stack } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
@@ -65,6 +65,23 @@ const ButtonsProfile = ({ userData, doctorData }) => {
 							}}
 							fontSize='medium'
 						/>
+					</Box>
+				</Link>
+			)}
+			{!userData.profesionalid && (
+				<Link href={`/appointments/${doctorData?.email}`}>
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							backgroundColor: colors.cardBackground,
+							borderRadius: '0.5rem',
+							padding: '0.5rem',
+							cursor: 'pointer',
+						}}
+					>
+						<EventRounded sx={{ color: colors.profileIcon }} fontSize='medium' />
 					</Box>
 				</Link>
 			)}

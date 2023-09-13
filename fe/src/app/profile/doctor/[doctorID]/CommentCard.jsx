@@ -31,7 +31,7 @@ const CommentCard = ({ comment }) => {
 			setSuccessDeleted(true);
 			setTimeout(() => {
 				setSuccessDeleted(false);
-			}, 2000);
+			}, 3000);
 		} catch (error) {
 			console.log(error);
 		}
@@ -67,7 +67,7 @@ const CommentCard = ({ comment }) => {
 								{comment.description}
 							</Typography>
 						</Stack>
-						{userData.id === comment.patientId && (
+						{userData && userData.id === comment.patientId && (
 							<Clear
 								sx={{ color: colors.buttonIcon, cursor: 'pointer' }}
 								fontSize='small'
