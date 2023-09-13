@@ -34,7 +34,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 	const fetchDoctorData = async () => {
 		const doctorData = await getSingleDoctor(params.doctorID);
 		// Pregunto si existe el id del médico, sino lo redirigo
-		if (doctorData.data.medic === null) push('/not-found');
+		if (doctorData?.data.medic === null) push('/not-found');
 		setDoctorData(doctorData.data.medic);
 	};
 

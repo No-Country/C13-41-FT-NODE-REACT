@@ -1,4 +1,10 @@
-const {Patient} = require('../../database/models')
+const { Patient, Comment, Consult, Invoice } = require('../../database/models')
+
+const modelsToInclude = [
+  { model: Comment, as: 'comments' },
+  { model: Consult, as: 'consults' },
+  { model: Invoice, as: 'invoices' }
+];
 
 const getPatient = async (req, res) => {
     try {
@@ -9,9 +15,9 @@ const getPatient = async (req, res) => {
       (await Patient.findOne({
         where: {
           email: email
-        }
+        },include: modelsToInclude
       }))
-      : await Patient.findAll()
+      : await Patient.findAll({include:modelsToInclude})
 
       return res.status(200).json({ message: 'Patient data', data:{patient} })
   
