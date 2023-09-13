@@ -89,9 +89,9 @@ const SignInPage = () => {
 
 			// Almaceno el token y los datos en un estado y en el local storage por si cierra la sesión
 			if (data.user === 'patient') {
-				login({ token: dataUser.data.token, data: decoded.patient });
+				login({ token: dataUser.data.token, data: decoded.patient, type: 'patient' });
 			} else if (data.user === 'doctor') {
-				login({ token: dataUser.data.token, data: decoded.medic });
+				login({ token: dataUser.data.token, data: decoded.medic, type: 'medic' });
 			}
 
 			// Muestro el login exitoso

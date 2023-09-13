@@ -1,21 +1,9 @@
-'use client';
-import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
 import { useAuth } from '@/contexts/Auth.context';
-import { Close } from '@mui/icons-material';
-import {
-	Button,
-	Chip,
-	FormControl,
-	FormHelperText,
-	Grid,
-	MenuItem,
-	Select,
-	Stack,
-} from '@mui/material';
-import React, { useEffect } from 'react';
+import { Chip, FormControl, FormHelperText, Grid, MenuItem, Select, Stack } from '@mui/material';
+import React from 'react';
 
 const SpecialtyInput = ({ specialties, setSpeciality, speciality, handleAddSpecialty }) => {
-	const { userData, getUserData, token } = useAuth();
+	const { userData } = useAuth();
 	const deleteSpecialty = async specialty => {
 		try {
 			const response = await fetch(
@@ -32,8 +20,8 @@ const SpecialtyInput = ({ specialties, setSpeciality, speciality, handleAddSpeci
 			if (response.error) {
 				throw new Error(response.error);
 			}
-
-			await getUserData(token, userData, 'medic');
+			const data = await response.json();
+			console.log(data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -45,7 +33,7 @@ const SpecialtyInput = ({ specialties, setSpeciality, speciality, handleAddSpeci
 				<label>Speciality</label>
 				<FormControl>
 					<Select
-						value={''}
+						value={speciality.length > 0 ? speciality[0].name : ''}
 						MenuProps={{ disableScrollLock: true }}
 						onChange={e => handleAddSpecialty(e)}
 					>
@@ -59,29 +47,10 @@ const SpecialtyInput = ({ specialties, setSpeciality, speciality, handleAddSpeci
 					</Select>
 					<FormHelperText>If you don't have a speciality Internal Medicine</FormHelperText>
 				</FormControl>
-				<Stack direction='row' gap={2} alignItems={'center'} flexWrap={'wrap'}>
+				<Stack direction='row' spacing={2} alignItems={'center'} flexWrap={'wrap'}>
 					{speciality.length > 0 &&
-						speciality.map((item, idx) => {
-							return (
-								<Button
-									endIcon={
-										<Close sx={{ colors: colors.buttonIcon }} onClick={() => deleteSpecialty(item)} />
-									}
-									variant='outlined'
-									key={idx}
-									sx={{
-										textTransform: 'none',
-										color: colors.buttonIcon,
-										borderColor: colors.buttonIcon,
-										fontSize: { xs: titleFontSizeMobile.normal, sm: titleFontSizeDesktop.normal },
-										':hover': {
-											borderColor: colors.buttonIcon,
-										},
-									}}
-								>
-									{item.name}
-								</Button>
-							);
+						speciality.map(item => {
+							return <Chip label={item.name} fullWidth onClick={() => deleteSpecialty(item)}></Chip>;
 						})}
 				</Stack>
 			</Stack>

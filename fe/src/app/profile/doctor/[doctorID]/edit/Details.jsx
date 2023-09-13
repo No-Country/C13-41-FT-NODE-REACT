@@ -1,3 +1,4 @@
+'use client';
 import { Container, Grid } from '@mui/material';
 import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
@@ -35,7 +36,7 @@ function Details({
 	setSpeciality,
 }) {
 	const [specialtiesList, setSpecialtiesList] = useState([]);
-	const { userData, token } = useAuth();
+	const { userData, token, getUserData } = useAuth();
 	const fetchSpecialties = async () => {
 		const data = await getSpecialty();
 		setSpecialtiesList(data.data.specialties);
@@ -46,20 +47,26 @@ function Details({
 	}, []);
 
 	const handleAddSpecialty = async e => {
+		if (e.target.value === '') return;
 		const findSpecialtyById = specialtiesList.find(specialty =>
 			specialty.name.includes(e.target.value),
 		);
 		console.log('especialidad buscada', findSpecialtyById);
-		console.log('valor del input', e.target.value);
 
 		try {
+			const newSpecialty = {
+				specialtyId: findSpecialtyById.id,
+				medicId: userData.id,
+			};
+			console.log(newSpecialty);
+
 			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/medic/addspecialty`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 					Authorization: `bearer ${token}`,
-					body: JSON.stringify({ medicId: userData.id, specialtyId: findSpecialtyById.id }),
 				},
+				body: JSON.stringify(newSpecialty),
 			});
 
 			if (response.error) {
@@ -68,6 +75,8 @@ function Details({
 
 			const data = await response.json();
 			console.log(data);
+
+			await getUserData(token, userData, 'medic');
 		} catch (error) {
 			console.error(error);
 		}

@@ -1,4 +1,3 @@
-import { colors } from '@/app/colors';
 import { Edit, Save } from '@mui/icons-material';
 import { Grid, IconButton, InputAdornment, OutlinedInput, Stack } from '@mui/material';
 import React from 'react';
@@ -14,10 +13,10 @@ const SocialNetworksInput = ({
 			<Stack direction='column' spacing={2}>
 				<label>
 					<a
-						href={socialNetwork ? socialNetwork : '#'}
+						href={socialNetwork}
 						target='_blank'
 						rel='noopener noreferrer'
-						style={{ color: colors.categoryIcons.doctors, textDecoration: 'underline' }}
+						style={{ textDecoration: 'underline', color: 'blue' }}
 					>
 						Professional Link
 					</a>

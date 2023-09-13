@@ -32,7 +32,7 @@ function DoctorProfile() {
 	const [socialNetwork, setSocialNetwork] = useState('');
 	const [speciality, setSpeciality] = useState([]);
 	const [successUpdate, setSuccessUpdate] = useState(false);
-	const { userData, updateUserData } = useAuth();
+	const { userData, updateUserData, getUserData, token } = useAuth();
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -41,9 +41,10 @@ function DoctorProfile() {
 			setProfessionalid(userData.profesionalid);
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
-			if (userData.socialnetworks) {
-				setSocialNetwork(userData.socialnetworks);
-			} else {
+			if (!userData.socialnetworks) {
+				setSocialNetwork('');
+			} else if (userData.socialnetworks.length > 0) {
+				setSocialNetwork(userData.socialnetworks[0].link);
 			}
 			if (userData.avatar) {
 				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
@@ -83,7 +84,7 @@ function DoctorProfile() {
 			}
 
 			const data = await response.json();
-			console.log(data);
+
 			if (!data) return;
 			setSuccessUpdate(true);
 			updateUserData(data.data.MedicFound);
@@ -94,10 +95,38 @@ function DoctorProfile() {
 			console.log(error);
 		}
 
-		handleSocialMedia();
+		if (userData.socialnetworks.length > 0) {
+			updateSocialNetwork();
+		} else if (!userData.socialnetworks && socialNetwork !== '') {
+			createSocialNetwork();
+		}
 	};
+	const updateSocialNetwork = async () => {
+		try {
+			const updateSocialNetwork = {
+				id: userData.socialnetworks[0].id,
+				link: socialNetwork,
+			};
 
-	const handleSocialMedia = async () => {
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
+				method: 'PUT',
+				headers: {
+					Authorization: `bearer ${localStorage.getItem('token')}`,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(updateSocialNetwork),
+			});
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			await getUserData(token, userData, 'medic');
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const createSocialNetwork = async () => {
 		try {
 			const socialMediaData = {
 				medicId: userData.id,
@@ -117,7 +146,7 @@ function DoctorProfile() {
 				throw new Error(response.error);
 			}
 
-			const data = await response.json();
+			await getUserData(token, userData, 'medic');
 		} catch (error) {
 			console.log(error);
 		}
