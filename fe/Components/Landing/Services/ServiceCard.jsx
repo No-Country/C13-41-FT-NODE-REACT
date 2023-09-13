@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
-import Link from 'next/link';
-import { Stack, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import doctorFont from '@/assets/images/doctorFont.png';
 import Image from 'next/image';
 import { Button } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -12,14 +8,13 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 const CardContainer = styled ("div")({
-    position: 'relative', // Establecer la posición como relativa
-    /* background: 'linear-gradient( 90deg, #C1CBCF 43%, rgba(193, 203, 207, 0) 99.50%)', */
+    position: 'relative',
     height: "17.5rem",
     width: "32.625rem",
     flexShrink: '0',
-   
     borderRadius: "1.5rem",
-    backgroundSize: 'cover', // Ajustar el tamaño de la imagen para cubrir todo el contenedor
+    backgroundSize: 'cover', 
+    border: '1px solid black',
     "&::before": {
       content: '""',
       position: 'absolute',
@@ -28,7 +23,7 @@ const CardContainer = styled ("div")({
       width: '100%',
       height: '100%',
       borderRadius: "1.5rem",
-      background: 'linear-gradient( 90deg, #C1CBCF 43%, rgba(193, 203, 207, 0) 99.50%)',
+      background: 'linear-gradient( 90deg, #C1CBCF 43%, rgba(193, 203, 207, 0) 79.50%)',
       zIndex: 1, // Aplicar zIndex al fondo
     },
 });
@@ -62,16 +57,6 @@ const Text = styled ("p") ({
     textAlign: "left",
 
 });
-
-
-
-/* const EstiloImagen = styled ("div")((props) => ({
-  width: "32.625rem",
-  height: "17.5rem",
-  flexShrink: 0,
-  borderRadius: "0.5rem",
-  background: `url(${props.imgg}), lightgray 50% / cover no-repeat`,
-})); */
 
 
 
