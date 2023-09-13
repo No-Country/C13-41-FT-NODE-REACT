@@ -19,13 +19,16 @@ export const FilterProvider = ({ children }) => {
 	const [filterByName, setFilterByName] = useState('');
 	const [filterBySpecialty, setFilterBySpecialty] = useState('');
 	const [filterByCountry, setFilterByCountry] = useState('');
+	const [isLoading, setIsLoading] = useState(true);
 
 	const fetchData = async () => {
 		try {
 			const data = await getAllDoctors();
 			setAllDoctors(data.data.medic);
+			setIsLoading(false);
 		} catch (error) {
 			console.error(error);
+			setIsLoading(false);
 		}
 	};
 
@@ -62,6 +65,8 @@ export const FilterProvider = ({ children }) => {
 				setFilterByName,
 				filterBySpecialty,
 				setFilterBySpecialty,
+				isLoading,
+				fetchData,
 			}}
 		>
 			{children}

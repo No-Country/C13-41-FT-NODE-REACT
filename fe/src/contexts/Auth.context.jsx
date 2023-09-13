@@ -29,11 +29,11 @@ export const AuthProvider = ({ children }) => {
 	}, []);
 
 	// Inicio sesión y almacenaoel token y los datos del usuario
-	const login = ({ token, data }) => {
-		setToken(token);
+	const login = async ({ token, data }) => {
 		setUserData(data);
-		localStorage.setItem('token', token);
+		setToken(token);
 		localStorage.setItem('userData', JSON.stringify(data));
+		localStorage.setItem('token', token);
 	};
 
 	// Cierro sesión y borror el token y los datos del usuario

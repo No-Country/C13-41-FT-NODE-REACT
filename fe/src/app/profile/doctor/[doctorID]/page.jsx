@@ -1,9 +1,9 @@
 'use client';
 import { useAuth } from '@/contexts/Auth.context';
-import { Box, Card, Container, Grid, Stack, Typography } from '@mui/material';
+import { Container, Grid, Stack, Typography } from '@mui/material';
 import AvatarProfile from './AvatarProfile';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
-import { EmailOutlined, Payment, PhoneAndroidOutlined, PlaceOutlined } from '@mui/icons-material';
+import { PlaceOutlined } from '@mui/icons-material';
 import CommentInput from './CommentInput';
 import { useEffect, useState } from 'react';
 import { getSingleDoctor } from '@/lib/getSingleDoctor';
@@ -13,6 +13,7 @@ import ButtonsProfile from './ButtonsProfile';
 import InfoProfile from './InfoProfile';
 import ProfessionalStatement from './ProfessionalStatement';
 import ContactProfile from './ContactProfile';
+import SocialNetworksProfile from './SocialNetworksProfile';
 const PublicDoctorProfilePage = ({ params }) => {
 	const [doctorData, setDoctorData] = useState();
 	const { push } = useRouter();
@@ -45,6 +46,7 @@ const PublicDoctorProfilePage = ({ params }) => {
 						<InfoProfile />
 						<ProfessionalStatement doctorData={doctorData} />
 						<ContactProfile doctorData={doctorData} />
+						<SocialNetworksProfile doctorData={doctorData} />
 					</Stack>
 				</Grid>
 				<Grid item xs={12} sm={6}>
