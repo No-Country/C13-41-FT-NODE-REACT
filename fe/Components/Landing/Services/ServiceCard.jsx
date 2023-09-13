@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { Button } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-
-
 const CardContainer = styled ("div")({
     position: 'relative',
     height: "17.5rem",
@@ -14,7 +12,7 @@ const CardContainer = styled ("div")({
     flexShrink: '0',
     borderRadius: "1.5rem",
     backgroundSize: 'cover', 
-    border: '1px solid black',
+
     "&::before": {
       content: '""',
       position: 'absolute',
@@ -26,16 +24,6 @@ const CardContainer = styled ("div")({
       background: 'linear-gradient( 90deg, #C1CBCF 43%, rgba(193, 203, 207, 0) 79.50%)',
       zIndex: 1, // Aplicar zIndex al fondo
     },
-});
-
-const CardIcon = styled('img')({
-	height: '3rem',
-	width: '3rem',
-	userSelect: 'none',
-	backgroundColor: colors.doctorExperience,
-	borderRadius: '100%',
-	padding: '0.5rem',
-  position: 'static',
 });
 
 const Title = styled ("h1") ({
@@ -54,27 +42,22 @@ const Text = styled ("p") ({
 
     fontSize: "14px",
     color: colors.text,
-    textAlign: "left",
+    textAlign: "center",
 
 });
-
-
 
 function ServiceCard (props) {
 
   const imageStyle = {
     borderRadius: '1.5rem',
     position: 'relative',
-    zIndex: 0,
-    width: '32.3rem',
-    height: '17.5rem',
     flexShrink: 0,
     
   }
+  
   return (
 
     <CardContainer>
-        {/* <CardIcon draggable="false" src={props.img}></CardIcon> */}
         <Image src={props.imgg} alt='doctorFont' style={imageStyle} 
         /> 
         <Title>{props.title}</Title>

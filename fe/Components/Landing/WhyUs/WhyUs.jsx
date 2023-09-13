@@ -21,6 +21,7 @@ const InsiderContainer = styled('div')({
 	justifyContent: 'start',
 	flexDirection: 'row',
 	alignItems: 'center',
+
 });
 
 const TextContainer = styled ("div") ({
@@ -35,8 +36,6 @@ const TextContainer = styled ("div") ({
     width: '39.375rem',
     height: '21.475rem',
 });
-
-
 
 const ImageContainer = styled('div')({
 	display: 'flex',
@@ -78,11 +77,6 @@ const MotiveText = styled('p')({
     lineHeight: '1.6875rem',
     letterSpacing: '-0.01238rem',
     textAlign: 'left',
-});
-
-const DoctorsImage = styled('img')({
-	width: '792px',
-	height: '376px',
 });
 
 function WhyUs () {

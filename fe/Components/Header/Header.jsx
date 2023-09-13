@@ -61,7 +61,6 @@ const Header = () => {
 						/>
 					)}
 
-
 					<Box sx={{ display: { xs: 'flex', md: 'none', mr: 3, flexGrow: 1 } }}><Link href={"/"} >{LogoSvg()}</Link></Box>
 
 					<NavMenuDesktop userData={userData} token={token} />
