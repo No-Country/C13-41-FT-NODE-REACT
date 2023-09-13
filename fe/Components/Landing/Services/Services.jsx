@@ -15,7 +15,7 @@ const ServicesContainer = styled('section')({
 	rowGap: '2rem',
 	paddingTop: '6rem',
 	justifyContent: 'center',
-
+  
 });
 
 const CardsContainer = styled ("div") ({
@@ -25,8 +25,7 @@ const CardsContainer = styled ("div") ({
     width: '100%',
     overflow: 'hidden',
     gap: "1.25rem",
-    alignItems : 'center',
-    
+    alignItems : 'center',   
 });
 
 const Title = styled('h1')({

@@ -1,14 +1,31 @@
-import { StarRounded, PlaceOutlined } from '@mui/icons-material';
+'use client';
+import { ChatBubbleOutline, PlaceOutlined } from '@mui/icons-material';
 import { Avatar, Box, Stack, Typography } from '@mui/material';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { getDoctorComments } from '@/lib/getDoctorComments';
 
 const DoctorCard = ({ doctor }) => {
 	const { fullname, country, specialties, avatar, email } = doctor;
-	const generateRandomRate = () => {
-		return parseFloat(Math.random() * (5.0 - 3.0) + 3.0).toFixed(1);
+	const [comments, setComments] = useState([]);
+
+	const fetchData = async () => {
+		if (!doctor) return;
+
+		const data = await getDoctorComments('medic', doctor?.id);
+		if (!data || !data.data || data.data.comments === null) {
+			setComments([]);
+		} else {
+			setComments(data.data.comments);
+		}
 	};
+
+	useEffect(() => {
+		if (doctor) {
+			fetchData();
+		}
+	}, [doctor]);
 	return (
 		<Box
 			component={'article'}
@@ -65,13 +82,13 @@ const DoctorCard = ({ doctor }) => {
 				width={'100%'}
 			>
 				<Stack direction={'row'} spacing={0.5} alignItems={'center'}>
-					<StarRounded sx={{ color: colors.starIcon }} />
+					<ChatBubbleOutline sx={{ color: colors.locationIcon }} fontSize='medium' />
 					<Typography variant='body2' className='inter' color={colors.text}>
-						{generateRandomRate()}
+						({comments?.length})
 					</Typography>
 				</Stack>
 				<Stack direction={'row'} spacing={0.5} alignItems={'center'}>
-					<PlaceOutlined sx={{ color: colors.locationIcon }} />
+					<PlaceOutlined sx={{ color: colors.locationIcon }} fontSize='medium' />
 					<Typography variant='body2' className='inter' color={colors.text}>
 						{country}
 					</Typography>

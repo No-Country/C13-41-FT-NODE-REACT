@@ -2,6 +2,8 @@ export const colors = {
 	// Prueba de background
 	background: '#F0ECE4',
 	text: '#131313',
+	textWHYUS: '#012232',
+	textMeetSpecialist: '#012232',
 	textSERVICES: '#012232',
 	inputBackground: '#C1CBCF',
 	cardBackground: '#C1CBCF',

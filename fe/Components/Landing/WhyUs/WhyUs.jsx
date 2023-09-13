@@ -1,12 +1,19 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@/app/colors';
+import doctoresJuntos from '@/assets/images/cincoDoctores.jpg';
+import Image from 'next/image';
 
 const WhyUsContainer = styled('section')({
 	display: 'flex',
+    position: 'relative',
 	justifyContent: 'center',
-	marginTop: '100px',
+	marginTop: '5.31rem',
+    width: '90rem',
+    height: '28.75rem',
+    left: 15,
 	flexDirection: 'column',
+   
 });
 
 const InsiderContainer = styled('div')({
@@ -18,39 +25,59 @@ const InsiderContainer = styled('div')({
 
 const TextContainer = styled ("div") ({
 
+    position: 'relative',
     display: "flex",
     justifyContent: "start",
-    marginTop: "30px",
+    marginTop: "2rem", 
     flexDirection: "column",
-    gap: "10px",
-
+    gap: "15px",
+    left: '7rem',
+    width: '39.375rem',
+    height: '21.475rem',
 });
+
+
 
 const ImageContainer = styled('div')({
 	display: 'flex',
+    position: 'relative',
+    width: '39.375rem',
+    height: '22.5rem',
+    left: 75,
 	justifyContent: 'start',
-	marginTop: '30px',
+	marginTop: '2rem',
 	flexDirection: 'column',
+
 });
 
 const Title = styled('h1')({
-	fontSize: '40px',
-	color: `${colors.text}`,
-	fontWeight: '400',
+	fontSize: '2.875rem',
+	color: `${colors.textWHYUS}`,
+	fontWeight: '500',
 	textAlign: 'center',
+    fontStyle: 'normal',
+    letterSpacing: '-0.03163rem',
+    lineHeight: '4.3125rem',
 });
 
 const MotiveTitle = styled('h1')({
-	fontSize: '40px',
-	color: `${colors.text}`,
-	fontWeight: '600',
+	fontSize: '1.75rem',
+	color: `${colors.textWHYUS}`,
+	fontWeight: '500',
+    lineHeight: '2.625rem',
+    fontStyle: 'normal',    
 	textAlign: 'left',
+    letterSpacing: '-0.01925rem',
 });
 
 const MotiveText = styled('p')({
-	fontSize: '14px',
+	fontSize: '1.125rem',
 	color: `${colors.text}`,
-	textAlign: 'left',
+	fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: '1.6875rem',
+    letterSpacing: '-0.01238rem',
+    textAlign: 'left',
 });
 
 const DoctorsImage = styled('img')({
@@ -59,29 +86,36 @@ const DoctorsImage = styled('img')({
 });
 
 function WhyUs () {
-
+    const imageStyle = {
+        borderRadius: '0.5rem',
+        position: 'relative',
+        width: '39.375rem',
+        height: '22.5rem',
+        flexShrink: 0,
+      }
   return (
 
     <WhyUsContainer>
-        <Title>Why Klinika?, because we understand the value of your time and your health. Our intuitive scheduling system empowers you to:</Title>
+        <Title>Why you should choose us</Title>
         <InsiderContainer>
-
+        <ImageContainer>
+        <Image src={doctoresJuntos} alt='doctor' style={imageStyle}/> 
+              
+            </ImageContainer>
             <TextContainer>
+                <MotiveTitle>Continuity of care</MotiveTitle>
+                <MotiveText> Allows you to see the healthcare provider for follow-up appointments and ongoing management of chronic conditions.</MotiveText>
 
-                <MotiveTitle>Take Control</MotiveTitle>
-                <MotiveText> You are in charge of your healthcare journey. Browse through available appointment slots and choose the one that fits your schedule seamlessly</MotiveText>
-                <MotiveTitle>24/7 Accessibility</MotiveTitle>
-                <MotiveText>No need to wait for office hours to make an appointment. Our platform is accessible round the clock, allowing you to book at a time that suits you best.</MotiveText>
-                <MotiveTitle>Effortless Booking</MotiveTitle>
-                <MotiveText>Say goodbye to long hold times on the phone. With just a few clicks, you can secure your spot with your preferred health professional.</MotiveText>
-                <MotiveTitle>Transparent Availability</MotiveTitle>
-                <MotiveText>Get a clear view of the available time slots for your chosen health professional. This transparency ensures you make the best informed decisions.</MotiveText>
+                <MotiveTitle>Access to specialists</MotiveTitle>
+                <MotiveText>You will have access to a network of specialists and professionals, ensuring that you can receive specialized care even if you live far away.</MotiveText>
+                
+                <MotiveTitle>Prescriptions refills</MotiveTitle>
+                <MotiveText>You can easily request prescription refills and we will delivered it. </MotiveText>
+                
 
             </TextContainer>
 
-            <ImageContainer>
-                <DoctorsImage src="https://media.istockphoto.com/id/1189304032/es/foto/m%C3%A9dico-sosteniendo-tableta-digital-en-la-sala-de-reuniones.jpg?s=612x612&w=0&k=20&c=pmijXzja8qGwKXlqt7YWzSUkxFxnODfK6u7B1QXd1wU="/>
-            </ImageContainer>
+        
         </InsiderContainer>
     </WhyUsContainer>
   )
