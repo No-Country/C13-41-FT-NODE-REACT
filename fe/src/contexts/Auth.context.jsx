@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(null);
 	const [userData, setUserData] = useState(null);
 
-	const updateUserData = data => {
+	const updateUserData = async data => {
 		setUserData(data);
 		localStorage.setItem('userData', JSON.stringify(data));
 	};
