@@ -39,7 +39,6 @@ const Title = styled ("h1") ({
 });
 
 const Text = styled ("p") ({
-
     fontSize: "14px",
     color: colors.text,
     textAlign: "center",
@@ -80,7 +79,7 @@ function ServiceCard (props) {
 				>
 					{props.buttonTitle} <ArrowForwardIosIcon/>
 				</Button>
-       {/*  <Link style={{fontSize: "14px", color: colors.text}} href={props.link}>Get Started</Link> */}
+
     </CardContainer>
 
   )
