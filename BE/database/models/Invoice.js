@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM('preAccepted', 'accepted', 'canceled')
     },
     platform: {
-      type: DataTypes.STRING
+      type: DataTypes.ENUM('Stripe','Paypal')
     }
   }, {
     sequelize,

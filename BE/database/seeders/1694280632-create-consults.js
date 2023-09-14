@@ -13,7 +13,7 @@ module.exports = {
 
     for (let i = 0; i < services.length; i++) {
       const serviceId = services[i].id;
-      const medicId = medics[Math.floor(Math.random() * medics.length)].id
+      const medicId = services[i].medicId
       const schedules = await Schedule.findAll({where:{medicId}})
       for (let j = 0; j < Math.floor(Math.random() * 5) + 1; j++) {
         consults.push({

@@ -1,19 +1,15 @@
-import { Stack } from '@mui/system';
-import {
-	Container,
-	FormControl,
-	FormHelperText,
-	Grid,
-	IconButton,
-	InputAdornment,
-	MenuItem,
-	OutlinedInput,
-	Select,
-} from '@mui/material';
-import { Edit, Save } from '@mui/icons-material';
+'use client';
+import { Container, Grid } from '@mui/material';
 import { useAuth } from '@/contexts/Auth.context';
 import { useEffect, useState } from 'react';
 import { getSpecialty } from '@/lib/getSpecialty';
+import UneditableInfo from './inputs/UneditableInfo';
+import SpecialtyInput from './inputs/SpecialtyInput';
+import ProfesionalIdInput from './inputs/ProfesionalIdInput';
+import NationalidInput from './inputs/NationalidInput';
+import PhoneInput from './inputs/PhoneInput';
+import ResumeInput from './inputs/ResumeInput';
+import SocialNetworksInput from './inputs/SocialNetworksInput';
 
 function Details({
 	editResume,
@@ -38,180 +34,95 @@ function Details({
 	setSocialNetwork,
 	speciality,
 	setSpeciality,
-
 }) {
-	const [specialties, SetSpecialties] = useState([]);
-	const { userData } = useAuth();
+	const [specialtiesList, setSpecialtiesList] = useState([]);
+	const { userData, token, getUserData } = useAuth();
 	const fetchSpecialties = async () => {
 		const data = await getSpecialty();
-		SetSpecialties(data.data.specialties);
+		setSpecialtiesList(data.data.specialties);
 	};
 
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
 
+	const handleAddSpecialty = async e => {
+		if (e.target.value === '') return;
+		const findSpecialtyById = specialtiesList.find(specialty =>
+			specialty.name.includes(e.target.value),
+		);
+		console.log('especialidad buscada', findSpecialtyById);
+
+		try {
+			const newSpecialty = {
+				specialtyId: findSpecialtyById.id,
+				medicId: userData.id,
+			};
+			console.log(newSpecialty);
+
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/medic/addspecialty`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `bearer ${token}`,
+				},
+				body: JSON.stringify(newSpecialty),
+			});
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const data = await response.json();
+			console.log(data);
+
+			await getUserData(token, userData, 'medic');
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	return (
 		<Container sx={{ paddingY: 4 }}>
 			{userData && (
 				<Grid container spacing={2}>
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>Fullname</label>
-							<OutlinedInput defaultValue={userData.fullname} readOnly sx={{userSelect: "none",}} draggable="false"/>
-						</Stack>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>Email</label>
-							<OutlinedInput defaultValue={userData.email} readOnly />
-						</Stack>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>Country</label>
-							<OutlinedInput defaultValue={userData.country} readOnly />
-						</Stack>
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>Speciality</label>
-							<FormControl>
-								<Select
-									value={speciality}
-									MenuProps={{ disableScrollLock: true }}
-									onChange={e => setSpeciality(e.target.value)}
-								>
-									{specialties.map(props => {
-										return (
-											<MenuItem key={props.id} value={props.name}>
-												{props.name}
-											</MenuItem>
-										);
-									})}
-								</Select>
-								<FormHelperText>If you don't have a speciality Internal Medicine</FormHelperText>
-							</FormControl>
-						</Stack>
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>Professional ID</label>
-							<OutlinedInput
-								disabled={!editProfessionalid}
-								defaultValue={professionalid}
-								onChange={e => setProfessionalid(e.target.value)}
-								endAdornment={
-									<InputAdornment position='start'>
-										<IconButton
-											aria-label='toggle to edit'
-											onClick={() => setEditProfessionalid(!editProfessionalid)}
-											edge='end'
-										>
-											{editProfessionalid ? <Save /> : <Edit />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-						</Stack>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>National ID</label>
-							<OutlinedInput
-								disabled={!editNationalId}
-								defaultValue={nationalId}
-								onChange={e => setNationalId(e.target.value)}
-								endAdornment={
-									<InputAdornment position='start'>
-										<IconButton
-											aria-label='toggle to edit'
-											onClick={() => setEditNationalId(!editNationalId)}
-											edge='end'
-										>
-											{editNationalId ? <Save /> : <Edit />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-						</Stack>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>
-								<a href={socialNetwork} target='_blank' rel='noopener noreferrer' style={{textDecoration: "underline", color: "blue"}}>
-									Professional Link
-								</a>
-							</label>
-
-							<OutlinedInput
-								disabled={!editSocialNetwork}
-								defaultValue={socialNetwork}
-								onChange={e => setSocialNetwork(e.target.value)}
-								endAdornment={
-									<InputAdornment position='start'>
-										<IconButton
-											aria-label='toggle to edit'
-											onClick={() => setEditSocialNetwork(!editSocialNetwork)}
-											edge='end'
-										>
-											{editSocialNetwork ? <Save /> : <Edit />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-						</Stack>
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
-						<Stack direction='column' spacing={2}>
-							<label>Telephone Number</label>
-							<OutlinedInput
-								disabled={!editPhone}
-								defaultValue={phone}
-								onChange={e => setPhone(e.target.value)}
-								endAdornment={
-									<InputAdornment position='start'>
-										<IconButton
-											aria-label='toggle to edit'
-											onClick={() => setEditPhone(!editPhone)}
-											edge='end'
-										>
-											{editPhone ? <Save /> : <Edit />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-						</Stack>
-					</Grid>
-					<Grid item xs={12} sm={12}>
-						<Stack direction='column' spacing={2}>
-							<label>A brief summary of your academic and professional experience.</label>
-							<OutlinedInput
-								disabled={!editResume}
-								defaultValue={resume}
-								multiline
-								minRows={4}
-								maxRows={8}
-								onChange={e => setResume(e.target.value)}
-								sx={{ display: 'flex', alignItems: 'start' }}
-								endAdornment={
-									<InputAdornment position='start' sx={{ pt: 1.5 }}>
-										<IconButton
-											aria-label='toggle to edit'
-											onClick={() => setEditResume(!editResume)}
-											edge='end'
-										>
-											{editResume ? <Save /> : <Edit />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-						</Stack>
-					</Grid>
-
+					<UneditableInfo userData={userData} />
+					<SpecialtyInput
+						specialties={specialtiesList}
+						setSpeciality={setSpeciality}
+						speciality={speciality}
+						handleAddSpecialty={handleAddSpecialty}
+					/>
+					<ProfesionalIdInput
+						professionalid={professionalid}
+						editProfessionalid={editProfessionalid}
+						handleAddSpecialty={handleAddSpecialty}
+						setEditProfessionalid={setEditProfessionalid}
+					/>
+					<NationalidInput
+						nationalId={nationalId}
+						setNationalId={setNationalId}
+						editNationalId={editNationalId}
+						setEditNationalId={setEditNationalId}
+					/>
+					<SocialNetworksInput
+						socialNetwork={socialNetwork}
+						setSocialNetwork={setSocialNetwork}
+						editSocialNetwork={editSocialNetwork}
+						setEditSocialNetwork={setEditSocialNetwork}
+					/>
+					<PhoneInput
+						phone={phone}
+						editPhone={editPhone}
+						setPhone={setPhone}
+						setEditPhone={setEditPhone}
+					/>
+					<ResumeInput
+						resume={resume}
+						setResume={setResume}
+						editResume={editResume}
+						setEditResume={setEditResume}
+					/>
 				</Grid>
 			)}
 		</Container>

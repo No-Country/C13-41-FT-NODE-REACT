@@ -1,54 +1,77 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import { colors, titleFontSizeDesktop, } from '@/app/colors';
 import ServiceCard from './ServiceCard';
-import { Typography } from '@mui/material';
-import {
-	cardiologyIcon,
-	dermatologyIcon,
-	neurologyIcon,
-	opthalmologyIcon,
-	dentistryIcon,
-} from './ServicesIcon';
+import doctorFont from '@/assets/images/doctorFont.png';
+import pildors from '@/assets/images/pildors.png';
+import oip from '@/assets/images/OIP.png';
+import zoomMachine from '@/assets/images/zoomMachine.png';
+import vaccines from '@/assets/images/vaccines.png';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import './styles.css';
 
 const ServicesContainer = styled('section')({
 	display: 'flex',
 	flexDirection: 'column',
-	rowGap: '2rem',
+	gap: '2rem',
 	paddingTop: '6rem',
 	justifyContent: 'center',
-});
-
-const CardsContainer = styled ("div") ({
-
-    display: "flex",
-    flexDirection: "row",
-    gap: "30px",
-
+  
 });
 
 const Title = styled('h1')({
-	fontSize: { xs: titleFontSizeMobile.h1, sm: titleFontSizeDesktop.h1 },
-	color: `${colors.text}`,
+	fontSize: `${titleFontSizeDesktop.h1}`,
+	color: `${colors.	textSERVICES}`,
 	fontWeight: '500',
 	textAlign: 'center',
+  display: 'flex',
+  fontFamily: 'Inter',
+  fontStyle: 'normal',
+/*   width: '1440px', */
+  height: '80px',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  flexShrink: '0',
 });
+
 
 function Services () {
 
   return (
-
     <ServicesContainer>
         <Title>Services</Title>
-        <CardsContainer>
-            <ServiceCard link="https://www.google.com" description="Cardiology is the medical specialty dedicated to the study, diagnosis, and treatment of conditions related to the heart and the circulatory system. Cardiologists are healthcare professionals who specialize in this field and are experts in managing a wide range of heart-related issues." title="Cardiology" img="https://cdn-icons-png.flaticon.com/512/3736/3736150.png" />
-            <ServiceCard link="https://www.google.com" description="Odontology is a branch of healthcare focused on the prevention, diagnosis, and treatment of oral health issues. Dentists are healthcare professionals who specialize in this field, and they play a crucial role in helping individuals maintain good oral hygiene and overall dental health. Dentistry encompasses a wide range of services and procedures" title="Odontology" img="https://img.icons8.com/cotton/64/tooth--v1.png" />
-            <ServiceCard link="https://www.google.com" description="Neurology is a medical specialty that focuses on the diagnosis and treatment of disorders related to the nervous system, which includes the brain, spinal cord, nerves, and muscles. Neurologists are medical professionals who specialize in this field, and they play a crucial role in assessing, diagnosing, and managing a wide range of neurological conditions." title="Neurology" img="https://img.icons8.com/ios/100/brain--v1.png" />
-            <ServiceCard link="https://www.google.com" description="Ophthalmology is the branch of medicine that deals with the diagnosis, treatment, and management of conditions related to the eyes and the visual system. Ophthalmologists are medical doctors who specialize in this field and are experts in addressing a wide range of eye and vision-related issues. " title="Ophthalmology" img="https://img.icons8.com/external-line-icons-royyan-wijaya/64/external-eyes-whatsername-medical-line-line-icons-royyan-wijaya.png" />
-            <ServiceCard link="https://www.google.com" description="Dermatology is a medical specialty focused on the diagnosis, treatment, and management of disorders and conditions related to the skin, hair, nails, and mucous membranes. Dermatologists are healthcare professionals who specialize in this field and play a crucial role in helping patients maintain healthy skin and address a wide range of dermatological issues." title="Dermatology" img="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/external-dermathology-medical-kiranshastry-lineal-kiranshastry.png" />
-        </CardsContainer>
+
+        <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{60:{slidesPerView: 1, spaceBetween: 400}, 540:{slidesPerView: 1, spaceBetween: 20}, 1027:{slidesPerView: 2, spaceBetween: 20}, 1500:{slidesPerView: 3, spaceBetween: 120}}} color={colors.background} allowSlideNext allowSlidePrev >
+
+          <SwiperSlide style={{backgroundColor: colors.background}}>
+            <ServiceCard button="/sign-in" title="Doctors" imgg={doctorFont} buttonTitle="Find by medical speciality"/>
+          </SwiperSlide>
+
+          <SwiperSlide style={{backgroundColor: colors.background}}>
+            <ServiceCard button="/sign-in" title="Medications" imgg={pildors} buttonTitle="Get prescription & order" />
+          </SwiperSlide>
+
+          <SwiperSlide style={{backgroundColor: colors.background}}>
+            <ServiceCard button="/sign-in" title="EHR Files" imgg={oip} buttonTitle="Access to your records" />
+          </SwiperSlide>
+
+          <SwiperSlide style={{backgroundColor: colors.background}}>
+            <ServiceCard button="/sign-in" title="Labs" imgg={zoomMachine} buttonTitle="Access to your results"/>
+          </SwiperSlide>
+
+          <SwiperSlide style={{backgroundColor: colors.background}}>
+            <ServiceCard button="/sign-in" title="Vaccines" imgg={vaccines} buttonTitle="Get vaccinated"/>
+          </SwiperSlide>
+
+
+        </Swiper>
+  
 
     </ServicesContainer>
+
 
   )
 

@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.ENUM('preAccepted', 'accepted', 'canceled')
       },
       platform: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM('Stripe','Paypal')
       },
       createdAt: {
         allowNull: false,

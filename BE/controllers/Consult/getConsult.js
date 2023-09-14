@@ -15,7 +15,9 @@ const getConsult = async (req, res) => {
     let consult =
       consultId
         ? await Consult.findByPk(consultId)
-        : await Consult.findAll({ where: medicId ? medicId : patientId })
+        : await Consult.findAll({ where: {
+          [medicId ? 'medicId' : 'patientId']: medicId || patientId,
+        } })
 
 
 

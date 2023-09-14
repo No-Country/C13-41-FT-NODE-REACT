@@ -7,18 +7,22 @@ module.exports = {
   async up(queryInterface, Sequelize) {
 
     const services = [];
-    const medicos = await Medic.findAll()
+    const medics = await Medic.findAll()
     const specialties = await Specialty.findAll()
-    for (let i = 0; i < 10; i++) {
-      services.push({
-        id:uuid(),
-        description: faker.lorem.sentence(),
-        price: Math.floor(Math.random() * 500) + 10,
-        medicId: medicos[Math.floor(Math.random() * medicos.length)].id,
-        specialtyId: specialties[Math.floor(Math.random() * specialties.length)].id,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
+
+    for (const medic of medics) {
+      for(let i = 0; i < 2; i++)
+      {
+        services.push({
+          id:uuid(),
+          description: faker.lorem.sentence(),
+          price: Math.floor(Math.random() * 500) + 10,
+          medicId: medic.id,
+          specialtyId: specialties[Math.floor(Math.random() * specialties.length)].id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
+      }
     }
     return await queryInterface.bulkInsert("Services", services);
   },

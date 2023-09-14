@@ -1,0 +1,1777 @@
+paths:
+  /api/v1/patient:
+    post:
+      tags:
+        - Patient
+      summary: Create a patient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        '201':
+          description: Patient created successfully
+          content:
+            application/json:
+              example:
+                message: Email confirmation for registration sent
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Register Patient
+                message: Error 
+    get:
+      security:
+        - jwtAuth: []
+      tags:
+        - Patient
+      summary: Get patient data by email
+      parameters:
+        - name: email
+          in: query
+          description: Email address of the patient to retrieve
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: Patient data retrieved successfully
+          content:
+            application/json:
+              example:
+                message: Patient data
+                data:
+                  patient: {patient_data_here}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Get Patient
+                message: Error message
+    put:
+      security:
+        - jwtAuth: []
+      tags:
+        - Patient
+      summary: Update patient data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        '200':
+          description: Patient data updated successfully
+          content:
+            application/json:
+              example:
+                message: Patient Updated
+                data:
+                  patient: {updated_patient_data_here}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Edit Patient
+                message: Error message            
+    delete:
+      security:
+        - jwtAuth: []
+      tags:
+        - Patient
+      summary: Delete patient data by email
+      parameters:
+        - name: email
+          in: query
+          description: Email address of the patient to delete
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: Patient deleted successfully
+          content:
+            application/json:
+              example:
+                message: Patient deleted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Delete Patient
+                message: Error message
+  /api/v1/medic:
+    post:
+      tags:
+        - Medic
+      summary: Create a Medic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Medic'
+      responses:
+        '201':
+          description: Medic created successfully
+          content:
+            application/json:
+              example:
+                message: Email confirmation for registration sent
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Register Medic
+                message: Error 
+    get:
+      security:
+        - jwtAuth: []
+      tags:
+        - Medic
+      summary: Get Medic data by email
+      parameters:
+        - name: email
+          in: query
+          description: Email address of the Medic to retrieve
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: Medic data retrieved successfully
+          content:
+            application/json:
+              example:
+                message: Medic data
+                data:
+                  Medic: {Medic_data_here}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Get Medic
+                message: Error message
+    put:
+      security:
+        - jwtAuth: []
+      tags:
+        - Medic
+      summary: Update Medic data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Medic'
+      responses:
+        '200':
+          description: Medic data updated successfully
+          content:
+            application/json:
+              example:
+                message: Medic Updated
+                data:
+                  Medic: {updated_Medic_data_here}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Edit Medic
+                message: Error message            
+    delete:
+      security:
+        - jwtAuth: []
+      tags:
+        - Medic
+      summary: Delete Medic data by email
+      parameters:
+        - name: email
+          in: query
+          description: Email address of the Medic to delete
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: Medic deleted successfully
+          content:
+            application/json:
+              example:
+                message: Medic deleted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                error: Delete Medic
+                message: Error message      
+  /api/v1/schedule:
+    post:
+      security:
+        - jwtAuth: []
+      tags:
+        - Schedule
+      summary: Create a Schedule
+      description: Create a new schedule.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+      responses:
+        '201':
+          description: Schedule created
+          content:
+            application/json:
+              example:
+                message: Schedule created
+                data:
+                  newSchedule: {}
+        '400':
+          description: Create Schedule failed
+          content:
+            application/json:
+              example:
+                error: Create Schedule
+                message: Error message
+
+    get:
+      security:
+        - jwtAuth: []
+      tags:
+        - Schedule
+      summary: Get Schedules
+      description: Get schedules based on parameters.
+      parameters:
+        - in: query
+          name: medicId
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get Schedules successful
+          content:
+            application/json:
+              example:
+                message: Get Schedules
+                data:
+                  schedulesFound: []
+        '400':
+          description: Get Schedules failed
+          content:
+            application/json:
+              example:
+                error: Get Schedules
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      tags:
+        - Schedule    
+      summary: Update a Schedule
+      description: Update an existing schedule.
+      parameters:
+        - in: query
+          name: scheduleId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+      responses:
+        '200':
+          description: Schedule Updated
+          content:
+            application/json:
+              example:
+                message: Schedule Updated
+                data:
+                  schedule: {}
+        '400':
+          description: Edit Schedule failed
+          content:
+            application/json:
+              example:
+                error: Edit Schedule
+                message: Error message
+    delete:
+      security:
+        - jwtAuth: []
+      tags:
+        - Schedule    
+      summary: Delete a Schedule
+      description: Delete an existing schedule.
+      parameters:
+        - in: query
+          name: scheduleId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Schedule Deleted
+          content:
+            application/json:
+              example:
+                message: Schedule Deleted
+        '400':
+          description: Delete Schedule failed
+          content:
+            application/json:
+              example:
+                error: Delete Schedule
+                message: Error message
+  /api/v1/specialty:
+    post:
+      security:
+        - jwtAuth: []
+      tags:
+        - Specialty
+      summary: Create a Specialty
+      description: Create a new specialty.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+      responses:
+        '201':
+          description: Specialty created
+          content:
+            application/json:
+              example:
+                message: Specialty created
+                data:
+                  newSpecialty: {}
+        '400':
+          description: Register Specialty failed
+          content:
+            application/json:
+              example:
+                error: Register Specialty
+                message: Error message
+
+    get:
+      security:
+        - jwtAuth: []
+      tags:
+        - Specialty
+      summary: Get all Specialties
+      description: Get all specialties.
+      responses:
+        '200':
+          description: Get Specialties successful
+          content:
+            application/json:
+              example:
+                data:
+                  specialties: [] # Add example data here
+        '400':
+          description: Get Specialties failed
+          content:
+            application/json:
+              example:
+                error: Get Specialties
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      tags:
+        - Specialty 
+      summary: Update a Specialty
+      description: Update an existing specialty.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Specialty Updated
+          content:
+            application/json:
+              example:
+                data:
+                  specialty: {} # Add example data here
+                message: Specialty Updated
+        '400':
+          description: Edit Specialty failed
+          content:
+            application/json:
+              example:
+                error: Edit Specialty
+                message: Error message
+
+    delete:
+      security:
+        - jwtAuth: []
+      tags:
+        - Specialty
+      summary: Delete a Specialty
+      description: Delete a specialty by ID.
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Specialty Deleted
+          content:
+            application/json:
+              example:
+                message: Specialty Deleted
+        '400':
+          description: Delete Specialty failed
+          content:
+            application/json:
+              example:
+                error: Delete Specialty
+                message: Error message       
+  /api/v1/vacationdate:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Create a Vacation Date
+      description: Create a new vacation date.
+      tags:
+        - VacationDate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/vacationDate'
+      responses:
+        '201':
+          description: VacationDate created
+          content:
+            application/json:
+              example:
+                message: VacationDate created
+                data:
+                  newVacationDate: {}
+        '400':
+          description: Add Vacation Date failed
+          content:
+            application/json:
+              example:
+                error: Add Vacation Date
+                message: Error message
+
+    get:
+      security:
+        - jwtAuth: []
+      summary: Get a Vacation Date
+      description: Get a vacation date by ID.
+      tags:
+        - VacationDate
+      parameters:
+        - in: query
+          name: vacationDateId
+          required: true
+          schema:
+            type: string
+          description: The ID of the vacation date to retrieve
+        - in: query
+          name: medicId
+          required: true
+          schema:
+            type: string
+          description: The ID of the associated medic
+      responses:
+        '200':
+          description: VacationDate obtained
+          content:
+            application/json:
+              example:
+                message: VacationDate obtained
+                data:
+                  dateFound: {}
+        '400':
+          description: Get Vacation Date failed
+          content:
+            application/json:
+              example:
+                error: Add Vacation Date
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      summary: Update a Vacation Date
+      description: Update an existing vacation date.
+      tags:
+        - VacationDate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/vacationDate'
+      responses:
+        '200':
+          description: VacationDate Edited
+          content:
+            application/json:
+              example:
+                message: VacationDate Edited
+                data:
+                  vacationDate: {}
+        '400':
+          description: Edit Vacation Date failed
+          content:
+            application/json:
+              example:
+                error: Add Vacation Date
+                message: Error message
+
+    delete:
+      security:
+        - jwtAuth: []
+      summary: Delete a Vacation Date
+      description: Delete a vacation date by ID.
+      tags:
+        - VacationDate
+      parameters:
+        - in: query
+          name: vacationDateId
+          required: true
+          schema:
+            type: string
+          description: The ID of the vacation date to delete
+      responses:
+        '200':
+          description: VacationDate deleted
+          content:
+            application/json:
+              example:
+                message: VacationDate deleted
+        '400':
+          description: Delete Vacation Date failed
+          content:
+            application/json:
+              example:
+                error: Delete Vacation Date
+                message: Error message   
+  /api/v1/comment:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Create a Comment
+      description: Create a new comment.
+      tags:
+        - Comment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          description: Comment Created
+          content:
+            application/json:
+              example:
+                data:
+                  comment: {}
+                message: Comment Created
+        '400':
+          description: Create Comment failed
+          content:
+            application/json:
+              example:
+                error: Create Comment
+                message: Error message
+
+    get:
+      security:
+        - jwtAuth: []
+      summary: Get Comments
+      description: Get comments based on parameters.
+      tags:
+        - Comment
+      parameters:
+        - in: query
+          name: type
+          description: patient or medic
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: id
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get Comments successful
+          content:
+            application/json:
+              example:
+                data:
+                  comments: []
+                message: Comments obtained
+        '400':
+          description: Get Comments failed
+          content:
+            application/json:
+              example:
+                error: Get Comments
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      summary: Update a Comment
+      description: Update an existing comment.
+      tags:
+        - Comment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          description: Comment updated
+          content:
+            application/json:
+              example:
+                data:
+                  findComment: {}
+                message: Comment updated
+        '400':
+          description: Edit Comment failed
+          content:
+            application/json:
+              example:
+                error: Edit Comment
+                message: Error message
+
+    delete:
+      security:
+        - jwtAuth: []
+      summary: Delete a Comment
+      description: Delete a comment by ID.
+      tags:
+        - Comment
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Comment deleted
+          content:
+            application/json:
+              example:
+                message: Comment deleted
+        '400':
+          description: Delete Comment failed
+          content:
+            application/json:
+              example:
+                error: Delete Comment
+                message: Error message        
+  /api/v1/socialnetwork:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Create a Social Network
+      description: Create a new social network entry.
+      tags:
+        - SocialNetwork
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SocialNetwork'
+      responses:
+        '201':
+          description: Social Network Created
+          content:
+            application/json:
+              example:
+                data:
+                  SocialNetwork: {}
+                message: Social Network Created
+        '400':
+          description: Register Social Network failed
+          content:
+            application/json:
+              example:
+                error: Register Social Network
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      summary: Update a Social Network
+      description: Update an existing social network entry.
+      tags:
+        - SocialNetwork
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SocialNetwork'
+      responses:
+        '200':
+          description: Social Network Updated
+          content:
+            application/json:
+              example:
+                data:
+                  updateSocialNetwork: {}
+                message: Social Network Updated
+        '400':
+          description: Edit Social Network failed
+          content:
+            application/json:
+              example:
+                error: Edit Social Network
+                message: Error message
+
+    delete:
+      security:
+        - jwtAuth: []
+      summary: Delete a Social Network
+      description: Delete a social network entry by ID.
+      tags:
+        - SocialNetwork
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+          description: The ID of the social network entry to delete
+      responses:
+        '200':
+          description: Social Network Deleted
+          content:
+            application/json:
+              example:
+                message: Social Network Deleted
+        '400':
+          description: Delete Social Network failed
+          content:
+            application/json:
+              example:
+                error: Delete Social Network
+                message: Error message
+  /api/v1/service:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Create a Service
+      description: Create a new service.
+      tags:
+        - Service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        '201':
+          description: Service created
+          content:
+            application/json:
+              example:
+                message: Service created
+                data:
+                  newService: {}
+        '400':
+          description: Create Service failed
+          content:
+            application/json:
+              example:
+                error: Create Service
+                message: Error message
+
+    get:
+      security:
+        - jwtAuth: []
+      summary: Get Service
+      description: Get service based on parameters.
+      tags:
+        - Service
+      parameters:
+        - in: query
+          name: serviceId
+          required: false
+          schema:
+            type: string
+          description: The ID of the service to retrieve
+        - in: query
+          name: medicId
+          required: false
+          schema:
+            type: string
+          description: The ID of the associated medic
+        - in: query
+          name: patientId
+          required: false
+          schema:
+            type: string
+          description: The ID of the associated patient
+      responses:
+        '200':
+          description: Service obtained
+          content:
+            application/json:
+              example:
+                message: Service obtained
+                data:
+                  serviceFound: {}
+        '400':
+          description: Get Service failed
+          content:
+            application/json:
+              example:
+                error: Get Service
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      summary: Update a Service
+      description: Update an existing service.
+      tags:
+        - Service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Service'
+      responses:
+        '200':
+          description: Service Edited
+          content:
+            application/json:
+              example:
+                message: Service Edited
+                data:
+                  serviceFound: {}
+        '400':
+          description: Edit Service failed
+          content:
+            application/json:
+              example:
+                error: Edit Service
+                message: Error message
+
+    delete:
+      security:
+        - jwtAuth: []
+      summary: Delete a Service
+      description: Delete a service by ID.
+      tags:
+        - Service
+      parameters:
+        - in: query
+          name: serviceId
+          required: true
+          schema:
+            type: string
+          description: The ID of the service to delete
+      responses:
+        '200':
+          description: Service Deleted
+          content:
+            application/json:
+              example:
+                message: Service Deleted
+        '400':
+          description: Delete Service failed
+          content:
+            application/json:
+              example:
+                error: Delete Service
+                message: Error message    
+  /api/v1/consult:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Create a Consult
+      description: Create a new consult entry.
+      tags:
+        - Consult
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Consult'
+      responses:
+        '201':
+          description: Consult Created
+          content:
+            application/json:
+              example:
+                message: Consult Created
+                data:
+                  consult: {}
+        '400':
+          description: Register Consult failed
+          content:
+            application/json:
+              example:
+                error: Register Consult
+                message: Error message
+
+    get:
+      security:
+        - jwtAuth: []
+      summary: Get Consult
+      description: Get consult based on parameters.
+      tags:
+        - Consult
+      parameters:
+        - in: query
+          name: consultId
+          required: false
+          schema:
+            type: string
+          description: The ID of the consult to retrieve
+        - in: query
+          name: medicId
+          required: false
+          schema:
+            type: string
+          description: The ID of the associated medic
+        - in: query
+          name: patientId
+          required: false
+          schema:
+            type: string
+          description: The ID of the associated patient
+      responses:
+        '200':
+          description: Consult data
+          content:
+            application/json:
+              example:
+                message: Consult data
+                data:
+                  consult: {}
+        '400':
+          description: Get Consult failed
+          content:
+            application/json:
+              example:
+                error: Get Consult
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      summary: Update a Consult
+      description: Update an existing consult entry.
+      tags:
+        - Consult
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Consult'
+      responses:
+        '200':
+          description: Consult Updated
+          content:
+            application/json:
+              example:
+                message: Consult Updated
+                data:
+                  consult: {}
+        '400':
+          description: Edit Consult failed
+          content:
+            application/json:
+              example:
+                error: Edit Consult
+                message: Error message
+
+    delete:
+      security:
+        - jwtAuth: []
+      summary: Delete a Consult
+      description: Delete a consult by ID.
+      tags:
+        - Consult
+      parameters:
+        - in: query
+          name: consultId
+          required: true
+          schema:
+            type: string
+          description: The ID of the consult to delete
+      responses:
+        '200':
+          description: Consult Deleted
+          content:
+            application/json:
+              example:
+                message: Consult Deleted
+        '400':
+          description: Delete Consult failed
+          content:
+            application/json:
+              example:
+                error: Delete Consult
+                message: Error message   
+  /api/v1/invoice:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Create an Invoice
+      description: Create a new invoice entry.
+      tags:
+        - Invoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '200':
+          description: Invoice Created
+          content:
+            application/json:
+              example:
+                service: serviceFound
+                invoiceId: newInvoice.id
+                medic: medicFound
+                patient: patientFound
+        '400':
+          description: Create Invoice failed
+          content:
+            application/json:
+              example:
+                error: Create Invoice
+                message: Error message
+
+    get:
+      security:
+        - jwtAuth: []
+      summary: Get Invoice
+      description: Get invoices based on parameters.
+      tags:
+        - Invoice
+      parameters:
+        - in: query
+          name: medicId
+          required: false
+          schema:
+            type: string
+          description: The ID of the associated medic
+        - in: query
+          name: patientId
+          required: false
+          schema:
+            type: string
+          description: The ID of the associated patient
+      responses:
+        '200':
+          description: Get Invoice successful
+          content:
+            application/json:
+              example:
+                message: Get Invoice
+                data:
+                  InvoicesFound: []
+        '400':
+          description: Get Invoice failed
+          content:
+            application/json:
+              example:
+                error: Get Invoice
+                message: Error message
+
+    put:
+      security:
+        - jwtAuth: []
+      summary: Update an Invoice
+      description: Update an existing invoice entry.
+      tags:
+        - Invoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '200':
+          description: Invoice Updated
+          content:
+            application/json:
+              example:
+                data:
+                  invoice: {}
+                message: Invoice Updated
+        '400':
+          description: Edit Invoice failed
+          content:
+            application/json:
+              example:
+                error: Edit Invoice
+                message: Error message
+
+    delete:
+      security:
+        - jwtAuth: []
+      summary: Cancel an Invoice
+      description: Cancel an invoice by ID.
+      tags:
+        - Invoice
+      parameters:
+        - in: query
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+          description: The ID of the invoice to cancel
+      responses:
+        '200':
+          description: Invoice Cancelled
+          content:
+            application/json:
+              example:
+                message: Invoice Cancelled
+        '400':
+          description: Cancel Invoice failed
+          content:
+            application/json:
+              example:
+                error: Cancel Invoice
+                message: Error message
+  /api/v1/payment/stripe/create:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Create a Stripe Payment Session
+      description: Create a new Stripe payment session.
+      tags:
+        - Stripe Payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '200':
+          description: Create Stripe Payment Session successful
+          content:
+            application/json:
+              example:
+                message: Create Stripe
+                data:
+                  url: session.url
+        '400':
+          description: Create Stripe Payment Session failed
+          content:
+            application/json:
+              example:
+                error: Create Stripe
+                message: Error message
+
+  /api/v1/payment/stripe/success:
+    get:
+      security:
+        - jwtAuth: []
+      summary: Successful Stripe Payment
+      description: Handle successful Stripe payments.
+      tags:
+        - Stripe Payment
+      parameters:
+        - in: query
+          name: patientEmail
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: medicEmail
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: medicFullname
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: patientFullname
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: invoiceId
+          required: false
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirect to Stripe Success Page
+        '400':
+          description: Success Stripe Payment failed
+          content:
+            application/json:
+              example:
+                error: Success Stripe
+                message: Error message
+
+  /api/v1/payment/stripe/cancel:
+    get:
+      security:
+        - jwtAuth: []
+      summary: Cancelled Stripe Payment
+      description: Handle cancelled Stripe payments.
+      tags:
+        - Stripe Payment
+      parameters:
+        - in: query
+          name: patientEmail
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: medicEmail
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: medicFullname
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: patientFullname
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: invoiceId
+          required: false
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirect to Stripe Cancel Page
+        '400':
+          description: Cancel Stripe Payment failed
+          content:
+            application/json:
+              example:
+                error: Cancel Stripe
+                message: Error message     
+  /api/v1/files:
+    post:
+      security:
+        - jwtAuth: []
+      summary: Upload a File
+      description: Upload a file with a specific type and associate it with a medic or patient.
+      tags:
+        - Files
+      parameters:
+        - in: query
+          name: type
+          required: true
+          schema:
+            type: string
+            enum: [consult, avatarpatient, avatarmedic]
+          description: The type of file (consult, avatarpatient, or avatarmedic)
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+          description: The email of the medic or patient to associate the file with
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  # Specify the allowed file formats here:
+                  # For "consult", allow pdf, jpeg, jpg, and png
+                  # For "avatarpatient" and "avatarmedic", allow jpeg, jpg, and png
+                  # Example for "consult":
+                  # enum: [application/pdf, image/jpeg, image/jpg, image/png]
+                  # Example for "avatarpatient" and "avatarmedic":
+                  # enum: [image/jpeg, image/jpg, image/png]
+                  enum: [application/pdf, image/jpeg, image/jpg, image/png]
+      responses:
+        '400':
+          description: Upload Failed
+          content:
+            application/json:
+              example:
+                message: Error message
+                error: Upload fail   
+  /api/v1/auth/patient:
+    post:
+      summary: Patient Login
+      description: Log in a patient.
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Patient logged in
+          content:
+            application/json:
+              example:
+                message: Patient logged
+                data:
+                  token: 'your_auth_token_here'
+        '400':
+          description: Patient Login failed
+          content:
+            application/json:
+              example:
+                error: Login Patient
+                message: Error message  
+  /api/v1/auth/medic:
+    post:
+      summary: Medic Login
+      description: Log in a medic.
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Medic logged in
+          content:
+            application/json:
+              example:
+                message: Medic logged
+                data:
+                  token: 'your_auth_token_here'
+        '400':
+          description: Medic Login failed
+          content:
+            application/json:
+              example:
+                error: Login medic
+                message: Error message                          
+                                                                                                                                                  
+components:
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Patient: 
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        fullname:
+          type: string
+        avatar:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+          format: email
+        country:
+          type: string
+        nid:
+          type: integer
+          example: 1234
+        gender:
+          type: string
+          enum: ['male', 'female', 'other']
+        birthdate:
+          type: string
+          format: date
+        resume:
+          type: string
+        phone:
+          type: integer
+          example: 1234567
+      required:
+        - id
+        - fullname
+        - password
+        - email
+        - country
+        - nid
+        - gender
+        - birthdate
+        - phone
+    Medic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        fullname:
+          type: string
+        resume:
+          type: string
+        country:
+          type: string
+        avatar:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+          format: email
+        gender:
+          type: string
+          enum: ['male', 'female', 'other']
+        profesionalid:
+          type: integer
+          example: 123456
+        nid:
+          type: integer
+          example: 1234
+        birthdate:
+          type: string
+          format: date
+        phone:
+          type: integer
+          example: 1234567
+      required:
+        - id
+        - fullname
+        - password
+        - email
+        - gender
+        - nid
+        - profesionalid
+        - phone
+        - country
+        - birthdate
+    Specialty:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+       
+      required:
+        - id
+        - name
+    Schedule:
+      type: object
+      properties:
+        day:
+          type: string
+          enum:
+            - Monday
+            - Tuesday
+            - Wednesday
+            - Thursday
+            - Friday
+            - Saturday
+            - Sunday
+        initialHour:
+          type: string
+        finalHour:
+          type: string
+        status:
+          type: boolean
+        duration:
+          type: integer
+          example: 1
+        medicId:
+          type: string    
+      required:
+        - id
+        - initialHour
+        - finalHour
+        - status
+        - gender
+        - medicId
+    MedicSpecialty:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+          description: The ID of the MedicSpecialty entry
+        medicId:
+          type: string
+          format: uuid
+          description: The ID of the associated medic
+        specialtyId:
+          type: integer
+          format: int32
+          description: The ID of the associated specialty
+      required:
+        - medicId
+        - specialtyId
+    vacationDate:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+          description: The ID of the MedicAvailability entry
+        days:
+          type: array
+          items:
+            type: string
+            format: date
+          description: An array of available days
+        medicId:
+          type: string
+          format: uuid
+          description: The ID of the associated medic
+      required:
+        - id
+        - days
+        - medicId          
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+          description: The ID of the Comment entry
+        description:
+          type: string
+          description: The description of the comment
+        patientId:
+          type: string
+          format: uuid
+          description: The ID of the associated patient
+        medicId:
+          type: string
+          format: uuid
+          description: The ID of the associated medic
+      required:
+        - id
+        - description
+        - patientId
+        - medicId
+
+    SocialNetwork:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+          description: The ID of the SocialNetwork entry
+        medicId:
+          type: string
+          format: uuid
+          description: The ID of the associated medic
+        link:
+          type: string
+          description: The link to the social network profile
+      required:
+        - id
+        - medicId
+        - link
+
+    Service:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The ID of the Service entry
+        description:
+          type: string
+          description: The description of the service
+        price:
+          type: number
+          format: double
+          example: 200.0
+          description: The price of the service
+        medicId:
+          type: string
+          format: uuid
+          description: The ID of the associated medic
+        specialtyId:
+          type: integer
+          format: int32
+          example: 1
+          description: The ID of the associated specialty
+      required:
+        - id
+        - description
+        - price
+        - medicId
+        - specialtyId
+
+    Consult:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The ID of the Consult entry
+        diagnostic:
+          type: string
+          description: The diagnostic information
+        recipe:
+          type: string
+          description: The prescription or recipe
+        consultTimestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the consultation
+        status:
+          type: string
+          enum:
+            - programmed
+            - finished
+            - active
+            - canceled
+          description: The status of the consultation
+        resume:
+          type: string
+          description: A summary of the consultation
+        urlFile:
+          type: string
+          description: URL to associated files
+        initialHour:
+          type: string
+        finalHour:
+          type: string
+        medicId:
+          type: string
+          format: uuid
+          description: The ID of the associated medic
+        patientId:
+          type: string
+          format: uuid
+          description: The ID of the associated patient
+        scheduleId:
+          type: integer
+          format: int32
+          example: 123
+          description: The ID of the associated schedule
+        serviceId:
+          type: string
+          format: uuid
+          description: The ID of the associated service
+      required:
+        - id
+        - consultTimestamp
+        - status
+        - medicId
+        - patientId
+        - scheduleId
+        - serviceId
+
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The ID of the Invoice entry
+        patientId:
+          type: string
+          format: uuid
+          description: The ID of the associated patient
+        medicId:
+          type: string
+          format: uuid
+          description: The ID of the associated medic
+        serviceId:
+          type: string
+          format: uuid
+          description: The ID of the associated service
+        urlFile:
+          type: string
+          description: URL to the invoice file
+        status:
+          type: string
+          enum:
+            - preAccepted
+            - accepted
+            - canceled
+          description: The status of the invoice
+        platform:
+          type: string
+          enum:
+            - Stripe
+            - Paypal
+          description: The payment platform used for the invoice
+      required:
+        - id
+        - patientId
+        - medicId
+        - serviceId    

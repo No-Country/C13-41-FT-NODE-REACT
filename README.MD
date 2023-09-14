@@ -9,8 +9,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+
   <a href="No-Country/C13-41-FT-NODE-REACT">
-    <img src="https://img.icons8.com/emoji/96/hospital-emoji.png" alt="Logo" width="96" height="96">
+    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/assets/images/banner.png" alt="Banner">
   </a>
 
 <h3 align="center">Bienvenid@s a Klinika</h3>
@@ -31,13 +32,54 @@
 <img src="https://media2.giphy.com/media/4ZrRpqbSaWoyZYRoCd/giphy.gif" width="30px">Acerca del Proyecto
 </h1>
 
+<br />
+  <a href="No-Country/C13-41-FT-NODE-REACT">
+    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/app/icon.png" alt="Logo" width="96" height="96">
+  </a>
+<br />
+
 La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como objetivo revolucionar la forma en que las personas acceden a servicios médicos de calidad desde la comodidad de sus hogares. En un mundo cada vez más digitalizado, "Klinika" se presenta como una solución integral que permite a los pacientes conectarse con médicos y profesionales de la salud de manera remota, eliminando las barreras geográficas y facilitando un acceso rápido y seguro a la atención médica.
 
 <h1 align="center"> 
 <img src="https://media0.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif" width="30px">Tecnologias Usadas
 </h1>
 
-NodeJS, Express, PostgreSQL, ReactJS, NextJS, MUI, Yup, Formik, date-fns, ReactDatePicker, SweetAlert2, Render, Vercel, Stripe, y Jitsi .
+![Node.js](https://img.shields.io/static/v1?style=for-the-badge&message=Node.js&color=339933&logo=Node.js&logoColor=FFFFFF&label=)
+![Express](https://img.shields.io/static/v1?style=for-the-badge&message=Express&color=000000&logo=Express&logoColor=FFFFFF&label=)
+![PostgreSQL](https://img.shields.io/static/v1?style=for-the-badge&message=PostgreSQL&color=4169E1&logo=PostgreSQL&logoColor=FFFFFF&label=)
+![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=)
+![Next.js](https://img.shields.io/static/v1?style=for-the-badge&message=Next.js&color=000000&logo=Next.js&logoColor=FFFFFF&label=)
+![MUI](https://img.shields.io/static/v1?style=for-the-badge&message=MUI&color=007FFF&logo=MUI&logoColor=FFFFFF&label=)
+![Yup](https://img.shields.io/badge/Yup-crimson?style=for-the-badge&logo=Yup&logoColor=fff)
+![Formik](https://img.shields.io/badge/Formik-172B4D?style=for-the-badge&logo=Formik&logoColor=fff)
+![Render](https://img.shields.io/static/v1?style=for-the-badge&message=Render&color=222222&logo=Render&logoColor=46E3B7&label=)
+![Vercel](https://img.shields.io/static/v1?style=for-the-badge&message=Vercel&color=000000&logo=Vercel&logoColor=FFFFFF&label=)
+![Stripe](https://img.shields.io/static/v1?style=for-the-badge&message=Stripe&color=008CDD&logo=Stripe&logoColor=FFFFFF&label=)
+![date-fns](https://img.shields.io/badge/date-fns-123456)
+![ReactDatePicker](https://img.shields.io/badge/ReactDatePicker-123456)
+![SweetAlert2](https://img.shields.io/badge/SweetAlert2-123456)
+![Jitsi](https://img.shields.io/badge/Jitsi-123456)
+
+<!-- Organización -->
+<h1 align="center"> 
+<img src="https://media2.giphy.com/media/Lqo3UBlXeHwZDoebKX/giphy.gif" width="30px">Organización
+</h1>
+
+<a href="https://trello.com/b/Q0G3my8O/sb-klinika">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain-wordmark.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://www.figma.com/file/bRdQnlyWWehoRQbuwGENaJ/Klinica?type=design&node-id=0-1&mode=design&t=JrVs2p5rFJvPFzCk-0">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://www.nocountry.tech/">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" alt="Logo" width="96" height="96">
+</a>
+
+<a href="https://discord.gg/Zj2GmPwg">
+  <img src="https://img.icons8.com/color/480/discord-new-logo.png" alt="Logo" width="96" height="96">
+</a>
 
 <!-- GETTING STARTED -->
 <h1 align="center"> 
@@ -110,7 +152,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/miguelbel00" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Miguel Beltran</h4>
-          <h4 style="margin-top: 1rem;">Backend & DevOps</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer & DevOps</h4>
         </a>
         <a href="https://github.com/miguelbel00">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -127,7 +169,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/gitgonlea" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Enzo Gonzalez</h4>
-          <h4 style="margin-top: 1rem;">Backend</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer</h4>
         </a>
         <a href="https://github.com/gitgonlea">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -149,7 +191,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://www.linkedin.com/in/maximiliano-leonel-p%C3%A9rez-8846b826a/" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Maximiliano Perez</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/MaximilianoLeonel23">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -166,7 +208,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/scarolayton" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Sergio Caro</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/scarolayton">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -183,7 +225,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://github.com/cric992010" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Cristian Ortiz</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/cric992010">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -200,7 +242,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <a href="https://www.linkedin.com/in/jjrh92" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Julio Reyes</h4>
-          <h4 style="margin-top: 1rem;">Frontend</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/jjrh92">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
@@ -213,6 +255,16 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
   </tr>
 </table>
 
+<!-- ABOUT THE PROJECT -->
+
+<h1 align="center"> 
+<img src="https://media4.giphy.com/media/U3DTrGnuwfDpkNsr3d/giphy.gif" width="30px">Documentación
+</h1>
+
+<a href="https://drive.google.com/file/d/1j48fmS0Idk_D8nzWOLV4YbB0jRZFKOPm/view?usp=drivesdk">
+  <img src="https://img.icons8.com/officel/80/making-notes.png" alt="Logo" width="96" height="96">
+</a>
+
 <!-- CONTACT -->
 <h1 align="center"> 
 <img src="https://media3.giphy.com/media/dA9zmG7BCtbauczAQY/giphy.gif" width="30px">Contacto
@@ -221,6 +273,13 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 [Via Github](https://github.com/No-Country/C13-41-FT-NODE-REACT)
 <br />
 [Via Discord](https://discord.gg/Zj2GmPwg)
+
+<!-- Video -->
+<h1 align="center"> 
+<img src="https://media0.giphy.com/media/odMfXhzCqknOCYrNdU/giphy.gif" width="30px">Video
+</h1>
+
+<p align="center"><a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
 <!-- Screenshots -->
 <h1 align="center"> 

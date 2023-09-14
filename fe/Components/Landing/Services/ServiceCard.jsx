@@ -1,60 +1,61 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
-import Link from 'next/link';
-import { Stack, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { colors } from '@/app/colors';
+import Image from 'next/image';
+import { Button } from '@mui/material';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const CardContainer = styled ("div") ({
-
-    height: "300px",
-    width: "300px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    backgroundColor: "whitesmoke",
-    borderRadius: "5px",
-
-});
-
-const CardIcon = styled('img')({
-	height: '3rem',
-	width: '3rem',
+const CardContainer = styled('div')({
+	height: '18rem',
+	width: '33rem',
+	backgroundSize: 'cover',
+	justifyContent: 'center',
+	alignItems: 'center',
 	userSelect: 'none',
-	backgroundColor: colors.doctorExperience,
-	borderRadius: '100%',
-	padding: '0.5rem',
 });
 
-const Title = styled ("h1") ({
-
-    fontSize: "40px",
-    color: colors.text,
-    fontWeight: "400",
-
+const Title = styled('h1')({
+	position: 'relative',
+	fontSize: '3.375rem',
+	color: colors.text,
+	fontWeight: '500',
+	fontStyle: 'normal',
+	lineHeight: '150%',
+	top: -270,
+	zIndex: 1,
 });
 
-const Text = styled ("p") ({
+function ServiceCard(props) {
+	const imageStyle = {
+		borderRadius: '1.5rem',
+		position: 'relative',
+		flexShrink: 0,
+	};
 
-    fontSize: "14px",
-    color: colors.text,
-    textAlign: "left",
-
-});
-
-
-function ServiceCard (props) {
-
-  return (
-    
-    <CardContainer>
-        <CardIcon draggable="false" src={props.img}></CardIcon>
-        <Title>{props.title}</Title>
-        <Text>{props.description}</Text>
-        <Link style={{fontSize: "14px", color: colors.text}} href={props.link}>Get Started</Link>
-    </CardContainer>
-
-  )
+	return (
+		<CardContainer style={{ backgroundImage: props.imgg }}>
+			<Image src={props.imgg} alt='doctorFont' style={{ borderRadius: '0.5rem' }} />
+			<Title>{props.title}</Title>
+			<Title>{props.description}</Title>
+			<Button
+				href={props.button}
+				variant='contained'
+				sx={{
+					width: '19.065rem',
+					height: '3.25rem',
+					backgroundColor: colors.backgroundButtonServices,
+					fontSize: '0.95rem',
+					color: colors.colorTextButtonService,
+					fontWeight: '500',
+					display: 'flex',
+					flexShrink: 0,
+					transform: 'translate(10%, -370%)',
+				}}
+			>
+				{props.buttonTitle} <ArrowForwardIosIcon />
+			</Button>
+		</CardContainer>
+	);
 }
 
 export default ServiceCard;

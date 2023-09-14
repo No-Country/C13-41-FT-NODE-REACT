@@ -1,4 +1,15 @@
-const { Medic,Specialty } = require('../../database/models')
+const { Medic,Specialty, SocialNetwork, Comment, Consult, Invoice, Schedule, Service, VacationDate } = require('../../database/models')
+
+const modelsToInclude = [
+  { model: Specialty, as: 'specialties' },
+  { model: SocialNetwork, as: 'socialnetworks' },
+  { model: Comment, as: 'comments' },
+  { model: Consult, as: 'consults' },
+  { model: Invoice, as: 'invoices' },
+  { model: Schedule, as: 'schedules' },
+  { model: Service, as: 'services' },
+  { model: VacationDate, as: 'vacationDate' }
+];
 
 const getMedic = async (req, res) => {
   try {
@@ -9,13 +20,9 @@ const getMedic = async (req, res) => {
       (await Medic.findOne({
         where: {
           email: email
-        },include: {
-          model: Specialty,
-          as: 'specialties'}
+        },include: modelsToInclude
       }))
-      : await Medic.findAll({include: {
-        model: Specialty,
-        as: 'specialties'},})
+      : await Medic.findAll({include:modelsToInclude})
 
 
     return res.status(200).json({ message: 'Medic data', data: { medic } })

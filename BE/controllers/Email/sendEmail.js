@@ -1,6 +1,6 @@
-const transporter = require('../../config/email')
+const {transporter} = require('../../config/email')
 
-async function sendEmail(res, toRecipient, emailSubject, emailBody, message) {
+async function sendEmail(res, toRecipient, emailSubject, emailBody) {
   try {
 
     const mailOptions = {
@@ -11,7 +11,7 @@ async function sendEmail(res, toRecipient, emailSubject, emailBody, message) {
     };
 
     await transporter.sendMail(mailOptions);
-    return res.status(200).send({message})
+    return
     
   } catch (error) {
     return res.status(400).json({ message: error.message, error: "Email error" });
