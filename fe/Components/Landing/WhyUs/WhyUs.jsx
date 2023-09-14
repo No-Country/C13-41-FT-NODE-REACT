@@ -5,7 +5,6 @@ import doctoresJuntos from '@/assets/images/cincoDoctores.jpg';
 import Image from 'next/image';
 
 const WhyUsContainer = styled('section')({
-    
 	display: 'flex',
 	justifyContent: 'center',
 	marginTop: '5.31rem',
@@ -17,7 +16,6 @@ const InsiderContainer = styled('div')({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-
     '@media (max-width: 768px)': {
 
 		flexDirection: "column",

@@ -44,7 +44,7 @@ function Services () {
     <ServicesContainer>
         <Title>Services</Title>
 
-        <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{320:{slidesPerView: 1, spaceBetween: 10}, 640:{slidesPerView: 3, spaceBetween: 100}}} color={colors.background} allowSlideNext allowSlidePrev >
+        <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{60:{slidesPerView: 1, spaceBetween: 400}, 540:{slidesPerView: 1, spaceBetween: 20}, 1027:{slidesPerView: 2, spaceBetween: 20}, 1500:{slidesPerView: 3, spaceBetween: 120}}} color={colors.background} allowSlideNext allowSlidePrev >
 
           <SwiperSlide style={{backgroundColor: colors.background}}>
             <ServiceCard button="/sign-in" title="Doctors" imgg={doctorFont} buttonTitle="Find by medical speciality"/>

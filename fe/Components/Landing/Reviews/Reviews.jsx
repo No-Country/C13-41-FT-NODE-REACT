@@ -49,7 +49,7 @@ function Reviews() {
       <Title>Our services in the eyes of our patients</Title>
       <CardsContainer>
 
-        <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{320:{slidesPerView: 1, spaceBetween: 10}, 640:{slidesPerView: 3, spaceBetween: 100}}} color={colors.background} allowSlideNext allowSlidePrev >
+        <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{150:{slidesPerView: 1, spaceBetween:300}, 790:{slidesPerView: 2, spaceBetween: 50}, 1290:{slidesPerView: 3, spaceBetween: 50}}} color={colors.background} allowSlideNext allowSlidePrev >
 
           <SwiperSlide style={{backgroundColor: colors.background}}>
             <ReviewCard
