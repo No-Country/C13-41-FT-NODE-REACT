@@ -12,7 +12,7 @@ import {
 import React, { useState } from 'react';
 import { colors } from '@/app/colors';
 
-const CommentInput = ({ doctorData, userData }) => {
+const CommentInput = ({ doctorData, userData, fetchComments }) => {
 	const [comment, setComment] = useState('');
 	const [successSendComment, setSuccessSendComment] = useState(false);
 
@@ -42,6 +42,7 @@ const CommentInput = ({ doctorData, userData }) => {
 
 			const data = await response.json();
 			console.log(data);
+			await fetchComments();
 		} catch (error) {
 			console.log(error);
 		}

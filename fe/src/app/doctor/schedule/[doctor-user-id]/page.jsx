@@ -6,6 +6,7 @@ import { colors } from '@/app/colors';
 import DoctorCalendar from '../../../../../Components/Calendar/DoctorCalendar';
 import Loader from '../../../../../Components/Loader/Loader.jsx';
 import { useRouter } from 'next/navigation';
+import getDoctorSchedule from '@/lib/getDoctorSchedule';
 const ScheduleDoctor = () => {
   const [vacationDays, setVacationDays] = useState([]);
   const [schedule, setSchedule] = useState([
@@ -121,34 +122,22 @@ const ScheduleDoctor = () => {
   useEffect(() => {
     
     const fetchActualSchedule = async () => {
-      try {
-        const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=${medicId}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `bearer ${localStorage.getItem('token')}`,
-        }      
-      });
-      const data = await response.json();
-      const schedules = data.data?.schedulesFound;
-      console.log(schedules);
-      schedules.map((fs) => {
-        const updatedSchedule = [...schedule];
-        const found = updatedSchedule.findIndex((s) => s.day === fs.day)
-        const foundTime = updatedSchedule[found].slots.findIndex(slot => slot.time === `${fs.initialHour} - ${fs.finalHour}`)
-        if(foundTime !== -1){
-          updatedSchedule[found].slots[foundTime].selected = true
-        }
-        setSchedule(updatedSchedule)
-      })
-    } catch (error) {
-      console.log(error);
-    }
-    }
-    fetchActualSchedule()
-    // console.log(fetchedSchedule);
-    console.log(schedule);
-    setLoading(false)
+     const schedules = await getDoctorSchedule(medicId)
+     schedules.map((fs) => {
+      const updatedSchedule = [...schedule];
+      const found = updatedSchedule.findIndex((s) => s.day === fs.day)
+      const foundTime = updatedSchedule[found].slots.findIndex(slot => slot.time === `${fs.initialHour} - ${fs.finalHour}`)
+      if(foundTime !== -1){
+        updatedSchedule[found].slots[foundTime].selected = true
+      }
+      setSchedule(updatedSchedule)
+      setLoading(false)
+    })
+  }
+  fetchActualSchedule()
+  // console.log(fetchedSchedule);
+  console.log(schedule);
+    
   }, [])
   const handleCheckboxChange = (day, time) => {
     const updatedSchedule = [...schedule];
@@ -193,7 +182,7 @@ const ScheduleDoctor = () => {
     scheduleChoosed.map(async obj => {
       try {
         const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=${medicId}`, {
-          method: 'POST',
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `bearer ${localStorage.getItem('token')}`,

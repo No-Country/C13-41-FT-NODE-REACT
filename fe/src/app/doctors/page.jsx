@@ -1,24 +1,16 @@
 'use client';
 import { useFilterContext } from '@/contexts/Filters.context';
-import {
-	Box,
-	Button,
-	Container,
-	Divider,
-	Grid,
-	InputAdornment,
-	MenuItem,
-	TextField,
-	Typography,
-} from '@mui/material';
+import { Box, Button, Chip, Container, Divider, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
 import { getAllSpecialities } from '@/lib/getAllSpecialities';
+import { useRouter } from 'next/navigation';
 import SearcherInput from './SearcherInput';
 import FiltersAside from './FiltersAside';
 
 const DoctorsPage = () => {
+	const { push } = useRouter();
 	const [specialties, setSpecialties] = useState([]);
 	const {
 		filteredDoctor,
@@ -28,6 +20,8 @@ const DoctorsPage = () => {
 		setFilterByName,
 		filterBySpecialty,
 		setFilterBySpecialty,
+		isLoading,
+		fetchData,
 	} = useFilterContext();
 
 	const countryList = new Set(allDoctors.map(doctor => doctor.country));
@@ -45,8 +39,33 @@ const DoctorsPage = () => {
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
-
-	return (
+	const handdleCreateService = async  (doctor) => { 
+		try {
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/service`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `bearer ${localStorage.getItem('token')}`,
+			},
+			body: JSON.stringify(
+				{
+					description: 'Appointment',
+					price: 2000,
+					medicId: doctor.id,
+					specialtyId: doctor.specialties[0].id
+				}
+			)
+		
+		});
+		const data = await response.json()
+		const newService = data.data.newService
+		console.log(newService.id);
+		push(`/appointments/${doctor.email}/${newService.id}`)
+		} catch (error) {
+			console.error
+		}
+	}
+		return (
 		<Container component={'main'} sx={{ paddingY: 4 }}>
 			<SearcherInput setFilterByName={setFilterByName} />
 			<Box component={'section'} display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }} gap={4}>
@@ -61,13 +80,30 @@ const DoctorsPage = () => {
 				<Divider orientation='vertical' flexItem />
 				<Box component={'section'} width={{ xs: '100%', sm: '80%' }} paddingX={1}>
 					<Grid container spacing={2}>
-						{filteredDoctor && filteredDoctor.length > 0 ? (
+						{isLoading ? (
+							<Grid item xs={12}>
+								<Typography
+									variant='h6'
+									className='inter'
+									color={colors.text}
+									backgroundColor={colors.inputBackground}
+									borderRadius={2}
+									textAlign={'center'}
+									paddingX={2}
+									paddingY={1}
+									fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}
+								>
+									Loading doctors...
+								</Typography>
+							</Grid>
+						) : filteredDoctor && filteredDoctor.length > 0 ? (
 							filteredDoctor.map(doctor => {
 								return (
 									<Grid item xs={6} md={6} key={doctor.id}>
 										<DoctorCard doctor={doctor} />
 										<Button
-											href={`/appointments/${doctor.email}`}
+											// href={`/appointments/${doctor.email}`}
+											onClick={() => handdleCreateService(doctor)}
 											variant='contained'
 											className='inter'
 											fullWidth
@@ -76,7 +112,6 @@ const DoctorsPage = () => {
 												color: 'white',
 												textTransform: 'none',
 												mt: 1,
-
 												':hover': { backgroundColor: colors.buttonIcon },
 											}}
 											fontSize={{ xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 }}

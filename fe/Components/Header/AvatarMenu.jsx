@@ -20,8 +20,8 @@ const AvatarMenu = ({
 						<Avatar
 							alt={userData && userData.fullname}
 							src={`https://mecharcovz-be.onrender.com/public/uploads/${
-								userData.profesionalid ? 'avatarmedic' : 'avatarpatient'
-							}/${userData.avatar}`}
+								userData && userData.profesionalid ? 'avatarmedic' : 'avatarpatient'
+							}/${userData && userData.avatar}`}
 							imgProps={{
 								style: {
 									objectFit: 'cover',

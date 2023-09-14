@@ -31,11 +31,12 @@ function Footer() {
 							color: colors.text,
 							textAlign: 'center',
 							fontSize: { xs: titleFontSizeMobile.h3, sm: titleFontSizeDesktop.h3 },
+							userSelect: "none",
 						}}
 					>
 						Klinika
 					</Typography>
-					<Typography variant='body2' className='inter' sx={{ color: colors.text, textAlign: 'center' }}>
+					<Typography variant='body2' className='inter' sx={{ color: colors.text, textAlign: 'center', userSelect: "none", }}>
 					Disclaimer: The content of this project does not constitute legal, professional, academic, or any other type of advice. Any reliance you place on the information provided is therefore strictly at your own risk. References to any specific products, services, organizations, or third-party websites are provided for informational purposes only and do not constitute endorsements or recommendations. This is an academic project and it may contain links to external websites or resources over which we have no control. We are not responsible for the content, availability, or accuracy of these external resources.
 					</Typography>
 				</Stack>
@@ -49,39 +50,43 @@ function Footer() {
 				>
 					<Stack direction='row' gap={2}>
 						<LinkedInIcon sx={{ color: colors.text }} fontSize='medium' />
-						<GitHubIcon sx={{ color: colors.text }} fontSize='medium' />
+						<a href="https://github.com/No-Country/C13-41-FT-NODE-REACT" target="_blank" rel="noopener noreferrer"><GitHubIcon sx={{ color: colors.text }} fontSize='medium' /></a>
 						<InstagramIcon sx={{ color: colors.text }} fontSize='medium' />
 						<FacebookIcon sx={{ color: colors.text }} fontSize='medium' />
 						<YouTubeIcon sx={{ color: colors.text }} fontSize='medium' />
 					</Stack>
 					<Stack direction='row' gap={2}>
 						<Link
-							href={'/'}
+							draggable="false"
+							href={'/sign-in'}
 							style={{
 								color: colors.text,
 								textTransform: 'none',
 								fontWeight: '600',
 								textAlign: 'center',
+								userSelect: "none",
 							}}
 						>
 							Our Services
 						</Link>
 						<Link
-							href={'/'}
+							href={'/sign-in'}
+							draggable="false"
 							style={{
 								color: colors.text,
 								textTransform: 'none',
 								fontWeight: '600',
 								textAlign: 'center',
+								userSelect: "none",
 							}}
 						>
 							Doctors
 						</Link>
-						<Link href={'/'} style={{ color: colors.text, textTransform: 'none', fontWeight: '600' }}>
+						<Link draggable="false" href={'/sign-in'} style={{ color: colors.text, textTransform: 'none', fontWeight: '600', userSelect: "none", }}>
 							About
 						</Link>
 					</Stack>
-					<Typography variant='body2' className='inter' sx={{ color: colors.text }}>
+					<Typography variant='body2' className='inter' sx={{ color: colors.text, userSelect: "none",  }}>
 						©2023 Klinika - All rights reserved
 					</Typography>
 				</Stack>
