@@ -14,11 +14,13 @@
     <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/assets/images/banner.png" alt="Banner">
   </a>
 
+<br />
+
+<h3 align="center">Bienvenid@s a Klinika</h3>
+
   <a href="No-Country/C13-41-FT-NODE-REACT">
     <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/app/icon.png" alt="Logo" width="96" height="96">
   </a>
-
-<h3 align="center">Bienvenid@s a Klinika</h3>
 
   <p align=center">
     Somos un gestor de telemedicina. Nuestra misión es conectar profesionales de la salud con pacientes que requieran de sus servicios de una manera amigable, comoda y accesible.
