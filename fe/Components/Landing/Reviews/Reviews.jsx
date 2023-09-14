@@ -18,8 +18,8 @@ const ReviewsContainer = styled('section')({
 	marginTop: '100px',
 	flexDirection: 'column',
 	flexShrink: '0',
-
 	height: '28rem',
+	userSelect: 'none',
 });
 
 const CardsContainer = styled('div')({
@@ -65,6 +65,30 @@ function Reviews() {
 							description="“This clinic has been a game-changer for my family. We've used their services for routine check-ups and urgent health concerns.”"
 							author='Aspen Hart'
 							imgg={cliente1}
+						/>
+					</SwiperSlide>
+
+					<SwiperSlide style={{ backgroundColor: colors.background }}>
+						<ReviewCard
+							description="“I can't express how grateful I am for this clinic. The doctors are not only experts in their fields but also compassionate and understanding.”"
+							author='Theo Berkshire'
+							imgg={cliente2}
+						/>
+					</SwiperSlide>
+
+					<SwiperSlide style={{ backgroundColor: colors.background }}>
+						<ReviewCard
+							description='“I had a fantastic experience with this clinic! The virtual consultation was seamless, and the doctor was incredibly knowledgeable.”'
+							author='Isabella Martinez'
+							imgg={cliente3}
+						/>
+					</SwiperSlide>
+
+					<SwiperSlide style={{ backgroundColor: colors.background }}>
+						<ReviewCard
+							description='“Exceptional service from start to finish! The doctor I consulted with was attentive and provided me with personalized advice.”'
+							author='Amy Scarrow'
+							imgg={cliente4}
 						/>
 					</SwiperSlide>
 

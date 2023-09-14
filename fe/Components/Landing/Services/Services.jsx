@@ -19,6 +19,7 @@ const ServicesContainer = styled('section')({
 	gap: '2rem',
 	paddingTop: '6rem',
 	justifyContent: 'center',
+	userSelect: 'none',
 });
 
 const Title = styled('h1')({
@@ -29,33 +30,35 @@ const Title = styled('h1')({
 	display: 'flex',
 	fontFamily: 'Inter',
 	fontStyle: 'normal',
-	/*   width: '1440px', */
 	height: '80px',
 	flexDirection: 'column',
 	justifyContent: 'center',
 	flexShrink: '0',
+	userSelect: 'none',
 });
 
 function Services() {
 	return (
 		<ServicesContainer>
-			<Title>Services</Title>
+			<Swiper>
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard
+						button='/sign-in'
+						title='Medications'
+						imgg={pildors}
+						buttonTitle='Get prescription & order'
+					/>
+				</SwiperSlide>
 
-			<Swiper
-				autoplay={{ delay: 100 }}
-				slidesPerView={3}
-				spaceBetween={100}
-				pagination={{ clickable: true }}
-				modules={[Pagination]}
-				className='mySwiper'
-				breakpoints={{
-					320: { slidesPerView: 1, spaceBetween: 10 },
-					640: { slidesPerView: 3, spaceBetween: 100 },
-				}}
-				color={colors.background}
-				allowSlideNext
-				allowSlidePrev
-			>
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard
+						button='/sign-in'
+						title='EHR Files'
+						imgg={oip}
+						buttonTitle='Access to your records'
+					/>
+				</SwiperSlide>
+
 				<SwiperSlide style={{ backgroundColor: colors.background }}>
 					<ServiceCard
 						button='/sign-in'
@@ -90,6 +93,10 @@ function Services() {
 						imgg={zoomMachine}
 						buttonTitle='Access to your results'
 					/>
+				</SwiperSlide>
+
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard button='/sign-in' title='Vaccines' imgg={vaccines} buttonTitle='Get vaccinated' />
 				</SwiperSlide>
 
 				<SwiperSlide style={{ backgroundColor: colors.background }}>

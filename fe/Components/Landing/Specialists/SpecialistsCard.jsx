@@ -12,6 +12,14 @@ const CardContainer = styled('div')({
 	flexShrink: '0',
 	height: '41.125rem',
 	width: '25.8125rem',
+	borderRadius: '0.5rem',
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'space-around',
+
+	flexShrink: '0',
+	height: '41.125rem',
+	width: '25.8125rem',
 	borderRadius: '1.5rem',
 	display: 'flex',
 	flexDirection: 'column',
@@ -25,16 +33,10 @@ const CardContainer = styled('div')({
 		left: 0,
 		width: '100%',
 		height: '100%',
-		borderRadius: '1.5rem',
+		borderRadius: '0.5rem',
 		background: 'linear-gradient( 360deg, #C1CBCF 33%, rgba(193, 203, 207, 0) 80.50%)',
 		zIndex: 1, // Aplicar zIndex al fondo
 	},
-});
-
-const CardIcon = styled('img')({
-	height: '64px',
-	width: '64px',
-	userSelect: 'none',
 });
 
 const Name = styled('h1')({
@@ -96,7 +98,7 @@ const NameContainer = styled('div')({
 
 function SpecialistsCard(props) {
 	const imageStyle = {
-		borderRadius: '1.5rem',
+		borderRadius: '0.5rem',
 		position: 'relative',
 		zIndex: 0,
 		width: '25.8125rem',
@@ -104,29 +106,27 @@ function SpecialistsCard(props) {
 		flexShrink: 0,
 	};
 	return (
-		<CardContainer className='inter'>
+		<CardContainer>
 			<Image src={props.imgg} alt='doctor' style={imageStyle} />
 			<NameContainer>
 				<Name>{props.name}</Name>
 			</NameContainer>
-			<Title className='inter'>{props.speciality}</Title>
-			<Text className='inter'>{props.description}</Text>
+			<Title>{props.speciality}</Title>
+			<Text>{props.description}</Text>
 			<Button
 				href={props.button}
 				variant='contained'
-				className='inter'
 				sx={{
 					width: '19.065rem',
-					padding: '1rem',
+					height: '3.75rem',
 					backgroundColor: colors.backgroundButtonServices,
-					fontSize: { xs: titleFontSizeMobile.h6, sm: titleFontSizeDesktop.h6 },
+					fontSize: '0.95rem',
 					color: colors.colorTextButtonService,
 					fontWeight: '500',
 					display: 'flex',
 					flexShrink: 0,
 					zIndex: 2,
 					transform: 'translate(8%, -30%)',
-					textTransform: 'none',
 				}}
 			>
 				{props.buttonTitle} <ArrowForwardIosIcon />

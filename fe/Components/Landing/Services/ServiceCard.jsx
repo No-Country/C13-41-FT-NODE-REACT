@@ -1,34 +1,21 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import { colors } from '@/app/colors';
 import Image from 'next/image';
 import { Button } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const CardContainer = styled('div')({
-	position: 'relative',
-	height: '17.5rem',
-	width: '30rem',
-	flexShrink: '0',
-	borderRadius: '1.5rem',
+	height: '18rem',
+	width: '33rem',
 	backgroundSize: 'cover',
-
-	'&::before': {
-		content: '""',
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		width: '100%',
-		height: '100%',
-		borderRadius: '1.5rem',
-		background: 'linear-gradient( 90deg, #C1CBCF 43%, rgba(193, 203, 207, 0) 79.50%)',
-		zIndex: 1, // Aplicar zIndex al fondo
-	},
+	justifyContent: 'center',
+	alignItems: 'center',
+	userSelect: 'none',
 });
 
 const Title = styled('h1')({
 	position: 'relative',
-	left: 30,
 	fontSize: '3.375rem',
 	color: colors.text,
 	fontWeight: '500',
@@ -36,12 +23,6 @@ const Title = styled('h1')({
 	lineHeight: '150%',
 	top: -270,
 	zIndex: 1,
-});
-
-const Text = styled('p')({
-	fontSize: '14px',
-	color: colors.text,
-	textAlign: 'center',
 });
 
 function ServiceCard(props) {
@@ -52,10 +33,10 @@ function ServiceCard(props) {
 	};
 
 	return (
-		<CardContainer>
-			<Image src={props.imgg} alt='doctorFont' style={imageStyle} />
+		<CardContainer style={{ backgroundImage: props.imgg }}>
+			<Image src={props.imgg} alt='doctorFont' style={{ borderRadius: '0.5rem' }} />
 			<Title>{props.title}</Title>
-			<Text>{props.description}</Text>
+			<Title>{props.description}</Title>
 			<Button
 				href={props.button}
 				variant='contained'
@@ -68,7 +49,6 @@ function ServiceCard(props) {
 					fontWeight: '500',
 					display: 'flex',
 					flexShrink: 0,
-					zIndex: 2,
 					transform: 'translate(10%, -370%)',
 				}}
 			>

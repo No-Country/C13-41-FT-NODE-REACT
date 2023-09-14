@@ -10,6 +10,7 @@ const WhyUsContainer = styled('section')({
 	justifyContent: 'center',
 	marginTop: '5.31rem',
 	flexDirection: 'column',
+	userSelect: 'none',
 });
 
 const InsiderContainer = styled('div')({
@@ -68,33 +69,30 @@ const MotiveText = styled('p')({
 function WhyUs() {
 	return (
 		<WhyUsContainer>
-			<Title className='inter'>Why you should choose us</Title>
+			<Title>Why you should choose us</Title>
 			<InsiderContainer>
 				<ImageContainer>
-					<Image src={doctoresJuntos} alt='doctor' />
+					<Image
+						draggable='false'
+						src={doctoresJuntos}
+						alt='doctor'
+						style={{ borderRadius: '0.5rem' }}
+					/>
 				</ImageContainer>
-				<TextContainer className='inter'>
-					<Stack spacing={1} direction='column'>
-						<MotiveTitle>Continuity of care</MotiveTitle>
-						<MotiveText>
-							{' '}
-							Allows you to see the healthcare provider for follow-up appointments and ongoing management
-							of chronic conditions.
-						</MotiveText>
-					</Stack>
-					<Stack spacing={1} direction='column'>
-						<MotiveTitle>Access to specialists</MotiveTitle>
-						<MotiveText>
-							You will have access to a network of specialists and professionals, ensuring that you can
-							receive specialized care even if you live far away.
-						</MotiveText>
-					</Stack>
-					<Stack spacing={1} direction='column'>
-						<MotiveTitle>Prescriptions refills</MotiveTitle>
-						<MotiveText>
-							You can easily request prescription refills and we will delivered it.{' '}
-						</MotiveText>
-					</Stack>
+				<TextContainer>
+					<MotiveTitle>Continuity of care</MotiveTitle>
+					<MotiveText>
+						{' '}
+						Allows you to see the healthcare provider for follow-up appointments and ongoing management of
+						chronic conditions.
+					</MotiveText>
+					<MotiveTitle>Access to specialists</MotiveTitle>
+					<MotiveText>
+						You will have access to a network of specialists and professionals, ensuring that you can
+						receive specialized care even if you live far away.
+					</MotiveText>
+					<MotiveTitle>Prescriptions refills</MotiveTitle>
+					<MotiveText>You can easily request prescription refills and we will delivered it. </MotiveText>
 				</TextContainer>
 			</InsiderContainer>
 		</WhyUsContainer>

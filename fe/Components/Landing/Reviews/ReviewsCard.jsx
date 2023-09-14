@@ -1,31 +1,32 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '@/app/colors';
+import { colors } from '@/app/colors';
 import StarRating from './StarRating';
 import Image from 'next/image';
 
 const CardContainer = styled('div')({
-	height: '16rem',
-	width: '25rem',
+	height: '100%',
+	width: '100%',
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'space-around',
 	background: 'var(--Desktop---Cards, #C1CBCF)',
 	borderRadius: '0.5rem',
 	flexShrink: '0',
-	padding: '1.5rem 1rem',
+	justifyContent: 'center',
+	alignItems: 'center',
+	padding: '16px 32px 20px 32px',
 });
 
 const Author = styled('h1')({
 	position: 'relative',
-	left: 10,
-	marginTop: 10,
 	fontSize: '1.375rem',
 	color: `${colors.text}`,
 	fontStyle: 'normal',
 	fontWeight: '400',
 	lineHeight: '2.9625rem',
 	letterSpacing: '-0.01513rem',
+	paddingLeft: '8px',
 });
 
 const Text = styled('p')({
@@ -33,16 +34,19 @@ const Text = styled('p')({
 	fontStyle: 'normal',
 	fontWeight: '400',
 	lineHeight: '1.5rem',
-	letterSpacing: '-0.011rem',
 	color: `${colors.text}`,
-	textAlign: 'left',
+	textAlign: 'center',
+	paddingBottom: '8px',
+	padding: '0px 16px 0px 16px',
 });
 
 const PersonContainer = styled('div')({
 	display: 'flex',
+	justifyContent: 'center',
 	flexDirection: 'row',
-	gap: '10px',
-	/* justifyContent: 'center', */
+	gap: '4px',
+	alignItems: 'center',
+	paddingBottom: '8px',
 });
 
 function ReviewCard(props) {
