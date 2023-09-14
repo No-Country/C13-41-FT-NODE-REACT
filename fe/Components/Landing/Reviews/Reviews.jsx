@@ -43,7 +43,7 @@ const Title = styled('h1')({
 function Reviews() {
 	return (
 		<ReviewsContainer>
-			<Title>Our services in the eyes of our patients</Title>
+			<Title className='inter'>Our services in the eyes of our patients</Title>
 			<CardsContainer>
 				<Swiper
 					autoplay={{ delay: 100 }}
