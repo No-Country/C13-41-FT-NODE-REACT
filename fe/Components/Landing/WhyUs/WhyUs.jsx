@@ -10,6 +10,7 @@ const WhyUsContainer = styled('section')({
 	justifyContent: 'center',
 	marginTop: '5.31rem',
     flexDirection: 'column',
+    userSelect: "none",
    
 });
 
@@ -86,7 +87,7 @@ function WhyUs () {
         <InsiderContainer>
 
             <ImageContainer>
-                <Image src={doctoresJuntos} alt='doctor'/> 
+                <Image draggable="false" src={doctoresJuntos} alt='doctor' style={{borderRadius: "0.5rem", }}/> 
             </ImageContainer>
             <TextContainer>
                 <MotiveTitle>Continuity of care</MotiveTitle>

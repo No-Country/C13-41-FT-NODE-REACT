@@ -18,8 +18,8 @@ const ReviewsContainer = styled("section")({
   marginTop: "100px",
   flexDirection: "column",
   flexShrink: "0",
-
   height: "28rem",
+  userSelect: "none",
 });
 
 const CardsContainer = styled("div")({
@@ -92,7 +92,6 @@ function Reviews() {
             imgg={cliente5}
           />
           </SwiperSlide>
-
 
         </Swiper>
 

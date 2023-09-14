@@ -14,11 +14,13 @@ import 'swiper/css/pagination';
 import './styles.css';
 
 const ServicesContainer = styled('section')({
+
 	display: 'flex',
 	flexDirection: 'column',
 	gap: '2rem',
 	paddingTop: '6rem',
 	justifyContent: 'center',
+  userSelect: "none",
   
 });
 
@@ -30,13 +32,12 @@ const Title = styled('h1')({
   display: 'flex',
   fontFamily: 'Inter',
   fontStyle: 'normal',
-/*   width: '1440px', */
   height: '80px',
   flexDirection: 'column',
   justifyContent: 'center',
   flexShrink: '0',
+  userSelect: "none",
 });
-
 
 function Services () {
 
@@ -66,12 +67,9 @@ function Services () {
             <ServiceCard button="/sign-in" title="Vaccines" imgg={vaccines} buttonTitle="Get vaccinated"/>
           </SwiperSlide>
 
-
         </Swiper>
-  
 
     </ServicesContainer>
-
 
   )
 
