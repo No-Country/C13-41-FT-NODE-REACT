@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="No-Country/C13-41-FT-NODE-REACT">
-    <img src="https://img.icons8.com/emoji/96/hospital-emoji.png" alt="Logo" width="96" height="96">
+    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/app/icon.png" alt="Logo" width="96" height="96">
   </a>
 
 <h3 align="center">Bienvenid@s a Klinika</h3>
