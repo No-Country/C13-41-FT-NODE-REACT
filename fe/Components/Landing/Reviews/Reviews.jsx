@@ -41,64 +41,20 @@ const Title = styled('h1')({
 });
 
 function Reviews() {
-	return (
-		<ReviewsContainer>
-			<Title className='inter'>Our services in the eyes of our patients</Title>
-			<CardsContainer>
-				<Swiper
-					autoplay={{ delay: 100 }}
-					slidesPerView={3}
-					spaceBetween={100}
-					pagination={{ clickable: true }}
-					modules={[Pagination]}
-					className='mySwiper'
-					breakpoints={{
-						320: { slidesPerView: 1, spaceBetween: 10 },
-						640: { slidesPerView: 3, spaceBetween: 100 },
-					}}
-					color={colors.background}
-					allowSlideNext
-					allowSlidePrev
-				>
-					<SwiperSlide style={{ backgroundColor: colors.background }}>
-						<ReviewCard
-							description="“This clinic has been a game-changer for my family. We've used their services for routine check-ups and urgent health concerns.”"
-							author='Aspen Hart'
-							imgg={cliente1}
-						/>
-					</SwiperSlide>
-
+	
   
   return (
     <ReviewsContainer>
       <Title>Our services in the eyes of our patients</Title>
+
       <CardsContainer>
-
-        <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{150:{slidesPerView: 1, spaceBetween:300}, 790:{slidesPerView: 2, spaceBetween: 50}, 1290:{slidesPerView: 3, spaceBetween: 50}}} color={colors.background} allowSlideNext allowSlidePrev >
-
-          <SwiperSlide style={{backgroundColor: colors.background}}>
-            <ReviewCard
-            description="“This clinic has been a game-changer for my family. We've used their services for routine check-ups and urgent health concerns.”"
-            author="Aspen Hart"
-            imgg={cliente1}
-          />
-          </SwiperSlide>
-
-					<SwiperSlide style={{ backgroundColor: colors.background }}>
-						<ReviewCard
-							description="“I can't express how grateful I am for this clinic. The doctors are not only experts in their fields but also compassionate and understanding.”"
-							author='Theo Berkshire'
-							imgg={cliente2}
-						/>
-					</SwiperSlide>
-
         <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{150:{slidesPerView: 1, spaceBetween:300}, 790:{slidesPerView: 2, spaceBetween: 50}, 1290:{slidesPerView: 3, spaceBetween: 50}}} color={colors.background} allowSlideNext allowSlidePrev >
 
 					<SwiperSlide style={{ backgroundColor: colors.background }}>
 						<ReviewCard
 							description='“Exceptional service from start to finish! The doctor I consulted with was attentive and provided me with personalized advice.”'
 							author='Amy Scarrow'
-							imgg={cliente4}
+							imgg={cliente1}
 						/>
 					</SwiperSlide>
 
