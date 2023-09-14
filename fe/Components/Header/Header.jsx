@@ -29,7 +29,6 @@ const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const { logout, token, userData } = useAuth();
-
 	const { push } = useRouter();
 	const handleOpenNavMenu = event => {
 		setAnchorElNav(event.currentTarget);
@@ -148,7 +147,7 @@ const Header = () => {
 									{
 										// Verifico que sea un medico para mostrar el link a schedule
 										userData.profesionalid && (
-											<MenuItem onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}>
+											<MenuItem onClick={() => (token ? push(`/doctor/schedule/${userData.id}`) : push('/sign-in'))}>
 												<Typography
 													textAlign='center'
 													className='inter'
@@ -233,7 +232,7 @@ const Header = () => {
 									// Verifico que sea un médico para mostrar el link al schedule
 									userData.profesionalid && (
 										<Button
-											onClick={() => (token ? push('/doctor/schedule/1') : push('/sign-in'))}
+											onClick={() => (token ? push(`/doctor/schedule/${userData.email}`) : push('/sign-in'))}
 											sx={{
 												color: colors.text,
 												display: 'block',
