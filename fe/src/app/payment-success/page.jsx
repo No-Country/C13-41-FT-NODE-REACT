@@ -11,16 +11,14 @@ const paymentSuccess = () => {
     serviceId,
     scheduleIdChoosed
 	} = useAppoinmentContext()
-  const localStorageData = localStorage.getItem('userData');
-  const userData = JSON.parse(localStorageData)
-  const userId = userData.id;
+  const localStorageData = typeof window !== "undefined" ? localStorage.getItem('userData') : null;
+  const userData = localStorageData ? JSON.parse(localStorageData) : null;
+  const userId = userData ? userData.id : null;
   useEffect(() => {
     const date = new Date().getTime()
-    console.log(date);
     const time = '10:00-11:00'
     const arr = time.split('-')
     const dividedTime = timeChoosed.split('-')
-    console.log(arr);
     const createConsult = async () => {
       try {
         const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/consult`, {
@@ -49,9 +47,8 @@ const paymentSuccess = () => {
         });
   
         const data = await response.json();
-        console.log(data);
       } catch (error) {
-        console.log(error);
+
       }
     }
     createConsult()
