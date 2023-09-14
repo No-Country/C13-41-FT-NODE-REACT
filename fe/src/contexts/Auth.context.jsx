@@ -13,10 +13,11 @@ export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(null);
 	const [userData, setUserData] = useState(null);
 
-	const updateUserData = data => {
+	const updateUserData = async data => {
 		setUserData(data);
 		localStorage.setItem('userData', JSON.stringify(data));
 	};
+
 	// Recupero el token y los datos del usuario del local storage
 	useEffect(() => {
 		const storedToken = localStorage.getItem('token');
@@ -29,11 +30,35 @@ export const AuthProvider = ({ children }) => {
 	}, []);
 
 	// Inicio sesión y almacenaoel token y los datos del usuario
-	const login = ({ token, data }) => {
+	const login = async ({ token, data, type }) => {
+		const user = await getUserData(token, data, type);
+		setUserData(user);
 		setToken(token);
-		setUserData(data);
+		localStorage.setItem('userData', JSON.stringify(user));
 		localStorage.setItem('token', token);
-		localStorage.setItem('userData', JSON.stringify(data));
+	};
+
+	const getUserData = async (token, data, type) => {
+		try {
+			const response = await fetch(
+				`https://mecharcovz-be.onrender.com/api/v1/${type}?email=${data.email}`,
+				{
+					headers: {
+						Authorization: `bearer ${token}`,
+					},
+				},
+			);
+
+			if (response.error) {
+				throw new Error(response.error);
+			}
+
+			const userData = await response.json();
+			await updateUserData(userData.data[type]);
+			return userData.data[type];
+		} catch (error) {
+			Cookie.log(error);
+		}
 	};
 
 	// Cierro sesión y borror el token y los datos del usuario
@@ -51,7 +76,16 @@ export const AuthProvider = ({ children }) => {
 
 	return (
 		<AuthContext.Provider
-			value={{ token, userData, setUserData, login, logout, isAuthenticated, updateUserData }}
+			value={{
+				token,
+				userData,
+				setUserData,
+				login,
+				logout,
+				isAuthenticated,
+				updateUserData,
+				getUserData,
+			}}
 		>
 			{children}
 		</AuthContext.Provider>

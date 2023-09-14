@@ -11,13 +11,23 @@ import Image from "next/image";
 
 const MobileAppContainer = styled("section")({
   display: "flex",
-  position: 'relative',
-  justifyContent: 'initial',
-  marginTop: "100px",
-  width: "90rem",
-  height: "53.6875rem",
-  left: 15,
+  justifyContent: 'center',
+
+  '@media (min-width: 768px)': {
+
+    marginTop: "100px",
+
+	},
+
+  '@media (max-width: 500px)': {
+
+    marginTop: "200px",
+
+	},
+
+  marginBottom: "100px",
   flexDirection: 'column',
+
 });
 
 const ParentContainer = styled("div")({
@@ -26,36 +36,48 @@ const ParentContainer = styled("div")({
   justifyContent: 'start',
   flexDirection: "row",
   alignItems: 'center',
+
 });
 
 const ChildContainer = styled("div")({
-  position: "relative",
-  left: 80,
+
   display: "flex",
   flexDirection: "row",
   gap: "70px",
   justifyContent: "center",
+
+  '@media (max-width: 768px)': {
+
+		display: "none",
+
+	}
+
 });
+
 const Child2Container = styled("div")({
-  position: "relative",
-  left: 60,
+
   display: "flex",
   flexDirection: "row",
   gap: "70px",
   justifyContent: "center",
+
+  '@media (max-width: 768px)': {
+
+		display: "none",
+
+	}
+
 });
 
 
 const TextContainer = styled ("div") ({
 
-    position: 'relative',
     display: "flex",
     justifyContent: "start",
     marginTop: "-8rem", 
     flexDirection: "column",
     gap: "35px",
-    width: '39.375rem',
-    height: '21.475rem',
+
 });
 
 
@@ -66,7 +88,7 @@ const Title = styled("h1")({
     lineHeight: '2.625rem',
     fontStyle: 'normal',    
 	textAlign: 'center',
-    letterSpacing: '-0.01925rem',
+
 });
 
 
@@ -75,31 +97,19 @@ const Text = styled ("p") ({
 	color: `${colors.text}`,
 	fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: '1.6875rem',
-    letterSpacing: '-0.01238rem',
     textAlign: 'left',
 	
-
 });
 
 function MobileApp() {
+
   const image1Style = {
     borderRadius: "1.5rem",
-    position: "relative",
-    zIndex: 0,
-    width: "20.08275rem",
-    height: "40.625rem",
-    flexShrink: 0,
-
 	
   };
   const image2Style = {
     borderRadius: "1.5rem",
-    position: "relative",
-    zIndex: 0,
-    width: "20.08275rem",
-    height: "40.625rem",
-    flexShrink: 0,
+
   };
   const imagenQrGpAs = {
     borderRadius: "1.5rem",
@@ -110,7 +120,7 @@ function MobileApp() {
       
       <ParentContainer>
 	  <TextContainer>
-	  <Title>Download our Mobile App</Title>
+	  <Title>Download our App</Title>
 	  <Text>Experience the future of healthcare at your fingertips! Scan the code now to unlock a world of convenience and care with our clinic app.</Text>
 	  <Image src={qr} alt="qr" style={imagenQrGpAs} />
 	  <Image src={Google_Play} alt="googlePlay"  style={imagenQrGpAs }/>
