@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import { colors, titleFontSizeDesktop, } from '@/app/colors';
+import { colors, titleFontSizeDesktop } from '@/app/colors';
 import ServiceCard from './ServiceCard';
 import doctorFont from '@/assets/images/doctorFont.png';
 import pildors from '@/assets/images/pildors.png';
@@ -19,62 +19,85 @@ const ServicesContainer = styled('section')({
 	gap: '2rem',
 	paddingTop: '6rem',
 	justifyContent: 'center',
-  
+	userSelect: 'none',
 });
 
 const Title = styled('h1')({
 	fontSize: `${titleFontSizeDesktop.h1}`,
-	color: `${colors.	textSERVICES}`,
+	color: `${colors.textSERVICES}`,
 	fontWeight: '500',
 	textAlign: 'center',
-  display: 'flex',
-  fontFamily: 'Inter',
-  fontStyle: 'normal',
-/*   width: '1440px', */
-  height: '80px',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  flexShrink: '0',
+	display: 'flex',
+	fontFamily: 'Inter',
+	fontStyle: 'normal',
+	height: '80px',
+	flexDirection: 'column',
+	justifyContent: 'center',
+	flexShrink: '0',
+	userSelect: 'none',
 });
 
+function Services() {
+	return (
+		<ServicesContainer>
+			<Swiper>
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard
+						button='/sign-in'
+						title='Medications'
+						imgg={pildors}
+						buttonTitle='Get prescription & order'
+					/>
+				</SwiperSlide>
 
-function Services () {
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard
+						button='/sign-in'
+						title='EHR Files'
+						imgg={oip}
+						buttonTitle='Access to your records'
+					/>
+				</SwiperSlide>
 
-  return (
-    <ServicesContainer>
-        <Title>Services</Title>
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard
+						button='/sign-in'
+						title='Doctors'
+						imgg={doctorFont}
+						buttonTitle='Find by medical speciality'
+					/>
+				</SwiperSlide>
 
         <Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{60:{slidesPerView: 1, spaceBetween: 400}, 540:{slidesPerView: 1, spaceBetween: 20}, 1027:{slidesPerView: 2, spaceBetween: 20}, 1500:{slidesPerView: 3, spaceBetween: 120}}} color={colors.background} allowSlideNext allowSlidePrev >
 
-          <SwiperSlide style={{backgroundColor: colors.background}}>
-            <ServiceCard button="/sign-in" title="Doctors" imgg={doctorFont} buttonTitle="Find by medical speciality"/>
-          </SwiperSlide>
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard
+						button='/sign-in'
+						title='EHR Files'
+						imgg={oip}
+						buttonTitle='Access to your records'
+					/>
+				</SwiperSlide>
 
-          <SwiperSlide style={{backgroundColor: colors.background}}>
-            <ServiceCard button="/sign-in" title="Medications" imgg={pildors} buttonTitle="Get prescription & order" />
-          </SwiperSlide>
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard
+						button='/sign-in'
+						title='Labs'
+						imgg={zoomMachine}
+						buttonTitle='Access to your results'
+					/>
+				</SwiperSlide>
 
-          <SwiperSlide style={{backgroundColor: colors.background}}>
-            <ServiceCard button="/sign-in" title="EHR Files" imgg={oip} buttonTitle="Access to your records" />
-          </SwiperSlide>
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard button='/sign-in' title='Vaccines' imgg={vaccines} buttonTitle='Get vaccinated' />
+				</SwiperSlide>
 
-          <SwiperSlide style={{backgroundColor: colors.background}}>
-            <ServiceCard button="/sign-in" title="Labs" imgg={zoomMachine} buttonTitle="Access to your results"/>
-          </SwiperSlide>
-
-          <SwiperSlide style={{backgroundColor: colors.background}}>
-            <ServiceCard button="/sign-in" title="Vaccines" imgg={vaccines} buttonTitle="Get vaccinated"/>
-          </SwiperSlide>
-
-
-        </Swiper>
-  
-
-    </ServicesContainer>
-
-
-  )
-
+				<SwiperSlide style={{ backgroundColor: colors.background }}>
+					<ServiceCard button='/sign-in' title='Vaccines' imgg={vaccines} buttonTitle='Get vaccinated' />
+				</SwiperSlide>
+			</Swiper>
+		</ServicesContainer>
+	);
 }
 
 export default Services;

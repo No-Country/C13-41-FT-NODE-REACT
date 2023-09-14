@@ -27,6 +27,7 @@ const MobileAppContainer = styled("section")({
 
   marginBottom: "100px",
   flexDirection: 'column',
+  userSelect: "none",
 
 });
 
@@ -128,17 +129,17 @@ function MobileApp() {
 	  <TextContainer>
 	  <Title>Download our App</Title>
 	  <Text>Experience the future of healthcare at your fingertips! Scan the code now to unlock a world of convenience and care with our clinic app.</Text>
-	  <Image src={qr} alt="qr" style={imagenQrGpAs} />
-	  <Image src={Google_Play} alt="googlePlay"  style={imagenQrGpAs }/>
-	  <Image src={App_Store} alt="App_Store"  style={imagenQrGpAs}/>
+	  <Image draggable="false" src={qr} alt="qr" style={imagenQrGpAs} />
+	  <Image draggable="false"src={Google_Play} alt="googlePlay"  style={imagenQrGpAs }/>
+	  <Image draggable="false"src={App_Store} alt="App_Store"  style={imagenQrGpAs}/>
 	  </TextContainer>
 
         <Child2Container>
-          <Image src={phone2} alt="doctorFont" style={image2Style} />
+          <Image draggable="false" src={phone2} alt="doctorFont" style={image2Style} />
         </Child2Container>
 
         <ChildContainer>
-          <Image src={phone1} alt="doctorFont" style={image1Style} />
+          <Image draggable="false" src={phone1} alt="doctorFont" style={image1Style} />
         </ChildContainer>
 
       </ParentContainer>

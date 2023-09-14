@@ -18,6 +18,7 @@ const SpecialistsContainer = styled('section')({
 	marginTop: '100px',
 	flexDirection: 'column',
 	gap: "2rem",
+	userSelect: "none",
 
 });
 
@@ -59,16 +60,16 @@ function Specialists () {
 		<Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{220:{slidesPerView: 1, spaceBetween: 120},  480:{slidesPerView: 1, spaceBetween: 4}, 840:{slidesPerView: 2, spaceBetween: 80},1220:{slidesPerView: 3, spaceBetween: 20}}} color={colors.background} allowSlideNext allowSlidePrev>
 
           <SwiperSlide style={{backgroundColor: colors.background}}>
-		  	<SpecialistsCard link="https://www.google.com"  description="Dr. Campbell areas of expertise include chest pain, palpitations, breathlessness, cardiovascular imaging, general cardiology." name="Dr. James Campbell" speciality="Cardiologist" buttonTitle="Get an appointment" imgg={doctor2} />
+		  	<SpecialistsCard button="/sign-in" description="Dr. Campbell areas of expertise include chest pain, palpitations, breathlessness, cardiovascular imaging, general cardiology." name="Dr. James Campbell" speciality="Cardiologist" buttonTitle="Get an appointment" imgg={doctor2} />
           </SwiperSlide>
 
           <SwiperSlide style={{backgroundColor: colors.background}}>
-		  	<SpecialistsCard link="https://www.google.com" description="
+		  	<SpecialistsCard button="/sign-in" description="
             Dr Avery is a chartered counselling psychologist She deals with areas of abuse, loneliness, trauma, social dynamics" name="Dr. Primrose Avery" speciality="Psychologist" buttonTitle="Get an appointment" imgg= {doctor1}/>
           </SwiperSlide>
 
           <SwiperSlide style={{backgroundColor: colors.background}}>
-		  	<SpecialistsCard link="https://www.google.com" description="Dr Knox specialises in the treatment of skin cancer, skin surgery, psoriasis, eczema, acne, and skin rashes." name="Dr. Amber Knox" speciality="Dermatologist" buttonTitle="Get an appointment" imgg= {doctor3} />
+		  	<SpecialistsCard button="/sign-in" description="Dr Knox specialises in the treatment of skin cancer, skin surgery, psoriasis, eczema, acne, and skin rashes." name="Dr. Amber Knox" speciality="Dermatologist" buttonTitle="Get an appointment" imgg= {doctor3} />
           </SwiperSlide>
 
         </Swiper>

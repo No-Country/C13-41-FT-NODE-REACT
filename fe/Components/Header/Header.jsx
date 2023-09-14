@@ -43,13 +43,13 @@ const Header = () => {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
-	console.log(userData);
+
 	return (
-		<AppBar position='static' sx={{ backgroundColor: colors.navbarBackground, boxShadow: 'none' }}>
+		<AppBar position='static' sx={{ backgroundColor: colors.navbarBackground, boxShadow: 'none', userSelect: "none", }}>
 			<Container maxWidth='xl'>
 				<Toolbar sx={{ paddingX: 0 }}>
 					<Box sx={{ display: { xs: 'none', md: 'flex' }, marginRight: '1rem' }}>
-						<Link href={'/'}>{LogoSvg()}</Link>
+						<Link draggable="false" href={'/'}>{LogoSvg()}</Link>
 					</Box>
 
 					{token && (
