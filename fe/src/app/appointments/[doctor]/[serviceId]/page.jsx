@@ -40,6 +40,7 @@ const AppointmentInfoPage = ({params}) => {
 	const [doctorSchedule, setDoctorShchedule] = useState([]);
 	const [vacationDays, setVacationDays] = useState([])
 	const doctorEmail = params.doctor
+
 	setServiceId(params.serviceId)
 	useEffect(() => {
 		console.log(serviceId);

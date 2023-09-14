@@ -5,12 +5,11 @@ import React, { useEffect, useState } from 'react';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
 import { getAllSpecialities } from '@/lib/getAllSpecialities';
-import { useRouter } from 'next/navigation';
 import SearcherInput from './SearcherInput';
 import FiltersAside from './FiltersAside';
-
+import { useRouter } from 'next/navigation';
 const DoctorsPage = () => {
-	const { push } = useRouter();
+	const {push} = useRouter()
 	const [specialties, setSpecialties] = useState([]);
 	const {
 		filteredDoctor,
@@ -39,7 +38,14 @@ const DoctorsPage = () => {
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
+
+	// useEffect(() => {
+	// 	if (!isLoading) {
+	// 		fetchData();
+	// 	}
+	// }, [isLoading, fetchData]);
 	const handdleCreateService = async  (doctor) => { 
+		console.log('hola');
 		try {
 			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/service`, {
 			method: 'POST',
@@ -62,10 +68,11 @@ const DoctorsPage = () => {
 		console.log(newService.id);
 		push(`/appointments/${doctor.email}/${newService.id}`)
 		} catch (error) {
-			console.error
+			console.error(error)
 		}
 	}
-		return (
+
+	return (
 		<Container component={'main'} sx={{ paddingY: 4 }}>
 			<SearcherInput setFilterByName={setFilterByName} />
 			<Box component={'section'} display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }} gap={4}>
@@ -103,7 +110,7 @@ const DoctorsPage = () => {
 										<DoctorCard doctor={doctor} />
 										<Button
 											// href={`/appointments/${doctor.email}`}
-											onClick={() => handdleCreateService(doctor)}
+											onClick={() =>handdleCreateService(doctor)}
 											variant='contained'
 											className='inter'
 											fullWidth
