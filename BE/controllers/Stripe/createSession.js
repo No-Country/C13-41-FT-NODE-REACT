@@ -14,6 +14,10 @@ const createSession = async (req, res) => {
     //Afterward, send emails for the invoice creation to both patients and medic
     /* await sendEmail(res, patient.email, `New Invoice #${invoiceId}`, templateInvoice(invoiceId,'Created',patient.fullname))
     await sendEmail(res, medic.email, `New Invoice #${invoiceId}`, templateInvoice(invoiceId,'Created',medic.fullname)) */
+
+    
+    const priceInDollars = service.price;
+    const priceInCents = Math.round(priceInDollars * 100);
     
     const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
     const session = await stripe.checkout.sessions.create({
@@ -25,7 +29,7 @@ const createSession = async (req, res) => {
               name: service.description,
             },
             currency: "usd",
-            unit_amount: service.price,
+            unit_amount: priceInCents,
           },
           quantity: 1,
         },
