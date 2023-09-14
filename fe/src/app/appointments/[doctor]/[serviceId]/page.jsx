@@ -29,8 +29,11 @@ const AppointmentInfoPage = ({params}) => {
         doctorId,
         setDoctorId,
         serviceId,
+				setUserId,
+				userId,
         setServiceId,
-        setScheduleIdChoosed
+        setScheduleIdChoosed,
+				scheduleIdChoosed
 	} = useAppoinmentContext()
 	const [activeStep, setActiveStep] = useState(0);
 	const [loading, setLoading] = useState(true);
@@ -40,10 +43,11 @@ const AppointmentInfoPage = ({params}) => {
 	const [doctorSchedule, setDoctorShchedule] = useState([]);
 	const [vacationDays, setVacationDays] = useState([])
 	const doctorEmail = params.doctor
-
+	const localStorageData = localStorage.getItem('userData');
+  const userData = JSON.parse(localStorageData)
+  setUserId(userData.id)	
 	setServiceId(params.serviceId)
 	useEffect(() => {
-		console.log(serviceId);
 		const fetchDoctor = async () => {
 			const doctorData = await getSingleDoctor(doctorEmail)
 			const doctor = doctorData.data.medic
@@ -77,6 +81,42 @@ const AppointmentInfoPage = ({params}) => {
 					setScheduleIdChoosed(s.id)
 				}
 			})
+		}else if(activeStep === 1) {
+			const dividedTime = timeChoosed.split('-')
+			const timeStamp = new Date(dayChoosed).getTime()
+
+    const createConsult = async () => {
+      try {
+        const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/consult`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify(
+            {
+              diagnostic: 'write the diagnostic',
+              recipe: 'the recipe',
+              consultTimestamp: timeStamp,
+              status: 'programmed',
+              resume: 'resume',
+              urlFile: 'url',
+              medicId: doctorId,
+              patientId: userId,
+              scheduleId: scheduleIdChoosed,
+              serviceId: serviceId
+            }
+          )
+        
+        });
+  
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    createConsult()
 		}
 		setActiveStep(prevActiveStep => prevActiveStep + 1);
 	};
