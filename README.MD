@@ -9,8 +9,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+
   <a href="No-Country/C13-41-FT-NODE-REACT">
-    <img src="https://img.icons8.com/emoji/96/hospital-emoji.png" alt="Logo" width="96" height="96">
+    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/assets/images/banner.png" alt="Banner">
   </a>
 
 <h3 align="center">Bienvenid@s a Klinika</h3>
@@ -30,6 +31,12 @@
 <h1 align="center"> 
 <img src="https://media2.giphy.com/media/4ZrRpqbSaWoyZYRoCd/giphy.gif" width="30px">Acerca del Proyecto
 </h1>
+
+<br />
+  <a href="No-Country/C13-41-FT-NODE-REACT">
+    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/app/icon.png" alt="Logo" width="96" height="96">
+  </a>
+<br />
 
 La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como objetivo revolucionar la forma en que las personas acceden a servicios médicos de calidad desde la comodidad de sus hogares. En un mundo cada vez más digitalizado, "Klinika" se presenta como una solución integral que permite a los pacientes conectarse con médicos y profesionales de la salud de manera remota, eliminando las barreras geográficas y facilitando un acceso rápido y seguro a la atención médica.
 

@@ -12,7 +12,7 @@ const CardContainer = styled ("div") ({
     flexShrink: '0',
     height: "41.125rem",
     width: "25.8125rem",
-    borderRadius: "1.5rem",
+    borderRadius: "0.5rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
@@ -26,18 +26,10 @@ const CardContainer = styled ("div") ({
       left: 0,
       width: '100%',
       height: '100%',
-      borderRadius: "1.5rem",
+      borderRadius: "0.5rem",
       background: 'linear-gradient( 360deg, #C1CBCF 33%, rgba(193, 203, 207, 0) 80.50%)',
       zIndex: 1, // Aplicar zIndex al fondo
     },
-
-});
-
-const CardIcon = styled ("img") ({
-
-    height: "64px",
-    width: "64px",
-    userSelect: "none",
 
 });
 
@@ -104,7 +96,7 @@ const NameContainer = styled ("div") ({
 
 function SpecialistsCard (props) {
     const imageStyle = {
-        borderRadius: '1.5rem',
+        borderRadius: '0.5rem',
         position: 'relative',
         zIndex: 0,
         width: '25.8125rem',

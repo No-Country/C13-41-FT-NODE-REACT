@@ -18,10 +18,10 @@ const HeroContainer = styled('section')({
 		display: "flex",
 		flexDirection: "column-reverse",
 
-	}
+	},
+	userSelect: "none",
 
 });
-
 
 const LeftContainer = styled('div')({
 	display: 'flex',
@@ -32,6 +32,7 @@ const LeftContainer = styled('div')({
 });
 
 const RightContainer = styled('div')({
+
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'end',
@@ -47,27 +48,32 @@ const RightContainer = styled('div')({
 });
 
 const Title = styled('h1')({
+
 	fontSize: '80px',
 	textAlign: 'center',
 	color: `${colors.text}`,
 	fontWeight: '400',
+	userSelect: "none",
 
 	'@media (max-width: 768px)': {
 
-		fontSize: '65px',
+		fontSize: '40px',
 
 	}
 
 });
 
 const ImagenBanner = styled('div')({
+
 	display: 'flex',
 	backgroundColor: `${colors.cardBackground}`,
 	padding: '20px',
-	borderRadius: '15%',
+	borderRadius: '0.5rem',
 	width: '75%', 
 	height: '75%',
-	justifyContent: 'center',
+	justifyItems: 'center',
+	alignSelf: "center",
+	userSelect: "none",
 
 });
 
@@ -81,6 +87,7 @@ function Hero() {
 				<Button
 					href='/sign-in'
 					variant='contained'
+					draggable="false"
 					sx={{
 						width: '300px', 
 						height: '50px',
@@ -90,7 +97,7 @@ function Hero() {
 						fontWeight: '10',
 						display: 'flex',
 						alignSelf: 'center',
-
+						userSelect: "none",
 					}}
 				>
 					Get an appointment <ArrowForwardIosIcon/>
@@ -100,7 +107,7 @@ function Hero() {
 
 			<RightContainer>
 				<ImagenBanner>
-					<Image src={doctor1} alt='A female doctor wearing a white coat' width={500} height={500} />
+					<Image draggable="false" src={doctor1} alt='A female doctor wearing a white coat' width={500} height={500} style={{display: "flex", }} />
 				</ImagenBanner>
 				
 			</RightContainer>
