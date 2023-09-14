@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { FilterProvider } from '@/contexts/Filters.context';
 import { AuthProvider } from '@/contexts/Auth.context';
+import { AppoinmentProvider } from '@/contexts/Appoinment.context';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Box } from '@mui/material';
@@ -23,15 +24,17 @@ export default function RootLayout({ children }) {
 	return (
 		<AuthProvider>
 			<FilterProvider>
-				<html lang='en' className={inter.className}>
-					<body>
-						<Header />
-						<Box component={'main'} sx={{ backgroundColor: colors.background }}>
-							{children}
-						</Box>
-						<Footer />
-					</body>
-				</html>
+				<AppoinmentProvider>
+					<html lang='en' className={inter.className}>
+						<body>
+							<Header />
+							<Box component={'main'} sx={{ backgroundColor: colors.background }}>
+								{children}
+							</Box>
+							<Footer />
+						</body>
+					</html>
+				</AppoinmentProvider>
 			</FilterProvider>
 		</AuthProvider>
 	);

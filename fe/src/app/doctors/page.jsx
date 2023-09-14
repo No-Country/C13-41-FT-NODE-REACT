@@ -5,10 +5,12 @@ import React, { useEffect, useState } from 'react';
 import { colors, titleFontSizeDesktop, titleFontSizeMobile } from '../colors';
 import DoctorCard from '../../../Components/Appointments/DoctorCard';
 import { getAllSpecialities } from '@/lib/getAllSpecialities';
+import { useRouter } from 'next/navigation';
 import SearcherInput from './SearcherInput';
 import FiltersAside from './FiltersAside';
 
 const DoctorsPage = () => {
+	const { push } = useRouter();
 	const [specialties, setSpecialties] = useState([]);
 	const {
 		filteredDoctor,
@@ -37,14 +39,33 @@ const DoctorsPage = () => {
 	useEffect(() => {
 		fetchSpecialties();
 	}, []);
-
-	// useEffect(() => {
-	// 	if (!isLoading) {
-	// 		fetchData();
-	// 	}
-	// }, [isLoading, fetchData]);
-
-	return (
+	const handdleCreateService = async  (doctor) => { 
+		try {
+			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/service`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `bearer ${localStorage.getItem('token')}`,
+			},
+			body: JSON.stringify(
+				{
+					description: 'Appointment',
+					price: 2000,
+					medicId: doctor.id,
+					specialtyId: doctor.specialties[0].id
+				}
+			)
+		
+		});
+		const data = await response.json()
+		const newService = data.data.newService
+		console.log(newService.id);
+		push(`/appointments/${doctor.email}/${newService.id}`)
+		} catch (error) {
+			console.error
+		}
+	}
+		return (
 		<Container component={'main'} sx={{ paddingY: 4 }}>
 			<SearcherInput setFilterByName={setFilterByName} />
 			<Box component={'section'} display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }} gap={4}>
@@ -81,7 +102,8 @@ const DoctorsPage = () => {
 									<Grid item xs={6} md={6} key={doctor.id}>
 										<DoctorCard doctor={doctor} />
 										<Button
-											href={`/appointments/${doctor.email}`}
+											// href={`/appointments/${doctor.email}`}
+											onClick={() => handdleCreateService(doctor)}
 											variant='contained'
 											className='inter'
 											fullWidth
