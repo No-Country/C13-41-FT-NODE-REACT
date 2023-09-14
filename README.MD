@@ -9,6 +9,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+
+  <a href="No-Country/C13-41-FT-NODE-REACT">
+    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/assets/images/banner.png" alt="Banner">
+  </a>
+
   <a href="No-Country/C13-41-FT-NODE-REACT">
     <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/app/icon.png" alt="Logo" width="96" height="96">
   </a>
