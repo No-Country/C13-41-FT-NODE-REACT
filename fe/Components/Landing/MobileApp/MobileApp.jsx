@@ -13,7 +13,7 @@ const MobileAppContainer = styled("section")({
   display: "flex",
   justifyContent: 'center',
 
-  '@media (min-width: 768px)': {
+  '@media (min-width: 769px)': {
 
     marginTop: "100px",
 
@@ -78,6 +78,12 @@ const TextContainer = styled ("div") ({
     marginTop: "-8rem", 
     flexDirection: "column",
     gap: "35px",
+    '@media (max-width: 768px)': {
+
+      marginTop: "100px",
+  
+    }
+    
 
 });
 

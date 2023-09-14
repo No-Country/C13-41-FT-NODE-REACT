@@ -1,117 +1,109 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Box, Button, Paper } from '@mui/material';
+import { Button } from '@mui/material';
 import { colors } from '@/app/colors';
+import doctor1 from '@/assets/image_1.png';
 import Image from 'next/image';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import heroImage from '@/assets/images/doctorBannerImage.svg';
+
 const HeroContainer = styled('section')({
+
 	display: 'flex',
-	justifyContent: 'space-between',
-	minHeight: '100vh',
+	justifyContent: "space-around",
+	gap: '30px',
+	marginTop: '30px',
+
 	'@media (max-width: 768px)': {
-		flexDirection: 'column-reverse',
-		alignItems: 'center',
-	},
+
+		display: "flex",
+		flexDirection: "column-reverse",
+
+	}
+
 });
 
+
 const LeftContainer = styled('div')({
-	width: { xs: '100%', sm: '50%' },
 	display: 'flex',
 	flexDirection: 'column',
-	alignItems: { xs: 'center', sm: 'flex-start' },
-	margin: 'auto',
-	gap: '2rem',
+	justifyContent: 'space-around',
+	gap: "30px"
+
+});
+
+const RightContainer = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'end',
+	alignSelf: "center",
+
+	'@media (max-width: 768px)': {
+
+		display: "flex",
+		alignItems: "center",
+
+	}
+
 });
 
 const Title = styled('h1')({
 	fontSize: '80px',
-	textAlign: 'left',
+	textAlign: 'center',
 	color: `${colors.text}`,
-	fontWeight: '300',
+	fontWeight: '400',
 
 	'@media (max-width: 768px)': {
-		textAlign: 'center',
-		fontSize: '2.5rem',
-		fontWeight: '300',
-	},
+
+		fontSize: '65px',
+
+	}
+
+});
+
+const ImagenBanner = styled('div')({
+	display: 'flex',
+	backgroundColor: `${colors.cardBackground}`,
+	padding: '20px',
+	borderRadius: '15%',
+	width: '75%', 
+	height: '75%',
+	justifyContent: 'center',
+
 });
 
 function Hero() {
 	return (
 		<HeroContainer>
 			<LeftContainer>
-				<Title className='inter'>
-					Your health,
-					<br /> Your way!
-				</Title>
-
+				
+				<Title>Your health,<br/> Your way!</Title>
+			
 				<Button
 					href='/sign-in'
 					variant='contained'
-					className='inter'
 					sx={{
-						padding: '1rem 2rem',
+						width: '300px', 
+						height: '50px',
 						backgroundColor: colors.locationIcon,
 						fontSize: '1.2rem',
 						color: 'white',
-						textTransform: 'none',
-						width: 'fit-content',
-						':hover': {
-							backgroundColor: colors.locationIcon,
-						},
+						fontWeight: '10',
+						display: 'flex',
+						alignSelf: 'center',
+
 					}}
-					endIcon={<ArrowForwardIosIcon />}
 				>
-					Get an appointment
+					Get an appointment <ArrowForwardIosIcon/>
 				</Button>
-				<br />
+				<br/>
 			</LeftContainer>
 
-			<Box
-				sx={{
-					width: { xs: '90%', sm: '50%' },
-					height: { xs: '75vh', sm: 'auto' },
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'center',
-					alignItems: 'center',
-				}}
-			>
-				<Box
-					sx={{
-						width: { xs: '100%', sm: '60%' },
-						height: '60%',
-						borderRadius: '3rem',
-						border: '1px solid',
-						borderColor: colors.cardBackground,
-						padding: '0.5rem',
-					}}
-				>
-					<Paper
-						elevation={0}
-						sx={{
-							width: '100%',
-							height: '100%',
-							backgroundColor: colors.cardBackground,
-							borderRadius: '3rem',
-							position: 'relative',
-						}}
-					>
-						<Image
-							src={heroImage}
-							alt='A female doctor wearing a white coat'
-							style={{
-								position: 'absolute',
-								bottom: 0,
-								left: 0,
-								width: 'auto',
-								height: '125%',
-							}}
-						/>
-					</Paper>
-				</Box>
-			</Box>
+			<RightContainer>
+				<ImagenBanner>
+					<Image src={doctor1} alt='A female doctor wearing a white coat' width={500} height={500} />
+				</ImagenBanner>
+				
+			</RightContainer>
 		</HeroContainer>
 	);
 }

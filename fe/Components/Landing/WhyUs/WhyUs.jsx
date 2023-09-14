@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { colors } from '@/app/colors';
 import doctoresJuntos from '@/assets/images/cincoDoctores.jpg';
 import Image from 'next/image';
-import { Stack } from '@mui/material';
 
 const WhyUsContainer = styled('section')({
 	display: 'flex',
@@ -17,10 +16,12 @@ const InsiderContainer = styled('div')({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	gap: '2rem',
-	'@media (max-width: 768px)': {
-		flexDirection: 'column',
-	},
+    '@media (max-width: 768px)': {
+
+		flexDirection: "column",
+
+	}
+
 });
 
 const TextContainer = styled('div')({

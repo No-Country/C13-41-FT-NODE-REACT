@@ -57,7 +57,7 @@ function Specialists () {
         <Title>Meet our Specialists</Title>
         <CardsContainer>
 
-		<Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{320:{slidesPerView: 1, spaceBetween: 10}, 640:{slidesPerView: 3, spaceBetween: 1}}} color={colors.background} allowSlideNext allowSlidePrev>
+		<Swiper autoplay={{delay:100}} slidesPerView={3} spaceBetween={100} pagination={{clickable: true,}} modules={[Pagination]} className="mySwiper" breakpoints={{220:{slidesPerView: 1, spaceBetween: 120},  480:{slidesPerView: 1, spaceBetween: 4}, 840:{slidesPerView: 2, spaceBetween: 80},1220:{slidesPerView: 3, spaceBetween: 20}}} color={colors.background} allowSlideNext allowSlidePrev>
 
           <SwiperSlide style={{backgroundColor: colors.background}}>
 		  	<SpecialistsCard button="/sign-in" description="Dr. Campbell areas of expertise include chest pain, palpitations, breathlessness, cardiovascular imaging, general cardiology." name="Dr. James Campbell" speciality="Cardiologist" buttonTitle="Get an appointment" imgg={doctor2} />
