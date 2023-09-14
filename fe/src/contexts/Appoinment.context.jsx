@@ -19,6 +19,10 @@ export const AppoinmentProvider = ({children}) => {
   const [doctorId , setDoctorId] = useState('')
   const [serviceId, setServiceId] = useState('')
 	const [scheduleIdChoosed, setScheduleIdChoosed] = useState('')
+  const [userId, setUserId] = useState('')
+  const localStorageData = localStorage.getItem('userData');
+  const userData = JSON.parse(localStorageData)
+  setUserId(userData.id)
   return (
     <AppointmentContext.Provider
       value={{
@@ -29,6 +33,7 @@ export const AppoinmentProvider = ({children}) => {
         doctorId,
         setDoctorId,
         serviceId,
+        userId,
         setServiceId,
         scheduleIdChoosed,
         setScheduleIdChoosed
