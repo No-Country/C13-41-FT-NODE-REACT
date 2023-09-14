@@ -37,7 +37,7 @@ const NavMenuDesktop = ({ userData, token }) => {
 						// Verifico que sea un paciente para mostrar link a new appointment
 						!userData.profesionalid && (
 							<Button
-								onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}
+								onClick={() => (token ? push('/doctors') : push('/sign-in'))}
 								sx={{
 									color: colors.text,
 									display: 'block',
