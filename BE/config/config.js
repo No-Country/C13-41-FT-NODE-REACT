@@ -8,7 +8,8 @@ module.exports={
       "database": process.env.DEV_DB_NAME,
       "host": process.env.DEV_DB_HOST,
       "port": process.env.DEV_DB_PORT,
-      "dialect": "postgres"
+      "dialect": "postgres",
+      "logging":false
     },
     "production": {
       "username": process.env.PRO_DB_USER,
@@ -23,6 +24,7 @@ module.exports={
           "rejectUnauthorized": false
         }
       },
+      "logging":false
     }
   
 }

@@ -15,7 +15,7 @@ module.exports = {
       10);
       const genders = ["male", "female", "other"]
     let patients = []
-    for (let i = 0; i < 40; i++) {
+/*     for (let i = 0; i < 40; i++) {
       patients.push({
         id: uuid(),
         fullname: faker.person.fullName(),
@@ -30,7 +30,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       })
-    }
+    } */
     patients.push({
       id: uuid(),
       fullname: faker.person.fullName(),
