@@ -282,7 +282,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <p align="center"><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/ThumbnailKlinikaYT.png?token=GHSAT0AAAAAABWVTLWO46M4WW2IO5SRCHK6ZIEQ6KQ"/>
+<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/ThumbnailKlinikaYT.png"/>
 
 <!-- Screenshots -->
 <h1 align="center"> 
