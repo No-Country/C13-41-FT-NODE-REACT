@@ -56,7 +56,7 @@ const DoctorsPage = () => {
 			body: JSON.stringify(
 				{
 					description: 'Appointment',
-					price: 2000,
+					price: 20,
 					medicId: doctor.id,
 					specialtyId: doctor.specialties[0].id
 				}
