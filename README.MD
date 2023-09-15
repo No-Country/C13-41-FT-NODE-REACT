@@ -224,7 +224,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <img width="110" src="https://avatars.githubusercontent.com/u/40554424?v=4"/>
         </a>
         <a href="https://github.com/cric992010" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Cristian Ortiz</h4>
+          <h4 style="margin-top: 1rem;">Christian Ortiz</h4>
           <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
         <a href="https://github.com/cric992010">
@@ -279,7 +279,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <img src="https://media0.giphy.com/media/odMfXhzCqknOCYrNdU/giphy.gif" width="30px">Video
 </h1>
 
-<p align="center"><a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
 <!-- Screenshots -->
 <h1 align="center"> 
