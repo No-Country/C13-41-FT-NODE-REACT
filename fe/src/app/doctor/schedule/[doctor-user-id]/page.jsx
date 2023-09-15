@@ -124,15 +124,15 @@ const ScheduleDoctor = () => {
     const fetchActualSchedule = async () => {
      const schedules = await getDoctorSchedule(medicId)
      schedules.map((fs) => {
-      const updatedSchedule = [...schedule];
-      const found = updatedSchedule.findIndex((s) => s.day === fs.day)
-      const foundTime = updatedSchedule[found].slots.findIndex(slot => slot.time === `${fs.initialHour} - ${fs.finalHour}`)
-      if(foundTime !== -1){
-        updatedSchedule[found].slots[foundTime].selected = true
-      }
-      setSchedule(updatedSchedule)
+       const updatedSchedule = [...schedule];
+       const found = updatedSchedule.findIndex((s) => s.day === fs.day)
+       const foundTime = updatedSchedule[found].slots.findIndex(slot => slot.time === `${fs.initialHour} - ${fs.finalHour}`)
+       if(foundTime !== -1){
+         updatedSchedule[found].slots[foundTime].selected = true
+        }
+        setSchedule(updatedSchedule)
+      })
       setLoading(false)
-    })
   }
   fetchActualSchedule()
   // console.log(fetchedSchedule);
@@ -182,7 +182,7 @@ const ScheduleDoctor = () => {
     scheduleChoosed.map(async obj => {
       try {
         const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=${medicId}`, {
-          method: 'PUT',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `bearer ${localStorage.getItem('token')}`,

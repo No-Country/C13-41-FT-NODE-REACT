@@ -1,6 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { getAllDoctors } from '@/lib/getAllDoctors';
+import { useAuth } from './Auth.context';
+
 
 const { createContext, useContext } = require('react');
 export const FilterContext = createContext(null);
@@ -20,6 +22,7 @@ export const FilterProvider = ({ children }) => {
 	const [filterBySpecialty, setFilterBySpecialty] = useState('');
 	const [filterByCountry, setFilterByCountry] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
+	const {token} = useAuth();
 
 	const fetchData = async () => {
 		try {
@@ -31,8 +34,14 @@ export const FilterProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		fetchData();
-	}, []);
+
+		if (token) {
+
+			fetchData();
+
+		}
+
+	}, [token]);
 
 	useEffect(() => {
 		setFilteredDoctor(allDoctors);

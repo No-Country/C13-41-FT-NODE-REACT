@@ -62,7 +62,7 @@ const NavMenuMobile = ({ userData, token, handleCloseNavMenu, handleOpenNavMenu,
 						{
 							// Verifico que sea un paciente para mostrar el link al new appointment
 							!userData.profesionalid && (
-								<MenuItem onClick={() => (token ? push('/appointments/1') : push('/sign-in'))}>
+								<MenuItem onClick={() => (token ? push('/doctors') : push('/sign-in'))}>
 									<Typography
 										textAlign='center'
 										className='inter'

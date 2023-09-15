@@ -19,6 +19,8 @@ export const AppoinmentProvider = ({children}) => {
   const [doctorId , setDoctorId] = useState('')
   const [serviceId, setServiceId] = useState('')
 	const [scheduleIdChoosed, setScheduleIdChoosed] = useState('')
+  const [userId, setUserId] = useState('')
+ 
   return (
     <AppointmentContext.Provider
       value={{
@@ -29,6 +31,8 @@ export const AppoinmentProvider = ({children}) => {
         doctorId,
         setDoctorId,
         serviceId,
+        userId,
+        setUserId,
         setServiceId,
         scheduleIdChoosed,
         setScheduleIdChoosed
