@@ -10,7 +10,7 @@
 <br />
 <div align="center">
 
-  <a href="No-Country/C13-41-FT-NODE-REACT">
+  <a href="No-Country/C13-41-FT-NODE-REACT" target="_blank">
     <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/assets/images/banner.png" alt="Banner">
   </a>
 
@@ -20,9 +20,9 @@
     Somos un gestor de telemedicina. Nuestra misión es conectar profesionales de la salud con pacientes que requieran de sus servicios de una manera amigable, comoda y accesible.
     <br />
     <br />
-    <a href="https://mecharcovz-fe.vercel.app/">Ver Demo</a>
+    <a href="https://mecharcovz-fe.vercel.app/" target="_blank">Ver Demo</a>
     ·
-    <a href="https://github.com/No-Country/C13-41-FT-NODE-REACT/issues">Reportar Bug</a>
+    <a href="https://github.com/No-Country/C13-41-FT-NODE-REACT/issues" target="_blank">Reportar Bug</a>
   </p>
 </div>
 
@@ -33,7 +33,7 @@
 </h1>
 
 <br />
-  <a href="No-Country/C13-41-FT-NODE-REACT">
+  <a href="No-Country/C13-41-FT-NODE-REACT" target="_blank">
     <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/app/icon.png" alt="Logo" width="96" height="96">
   </a>
 <br />
@@ -65,19 +65,19 @@ La plataforma de telemedicina "Klinika" es un proyecto innovador que tiene como 
 <img src="https://media2.giphy.com/media/Lqo3UBlXeHwZDoebKX/giphy.gif" width="30px">Organización
 </h1>
 
-<a href="https://trello.com/b/Q0G3my8O/sb-klinika">
+<a href="https://trello.com/b/Q0G3my8O/sb-klinika" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain-wordmark.svg" alt="Logo" width="96" height="96">
 </a>
 
-<a href="https://www.figma.com/file/bRdQnlyWWehoRQbuwGENaJ/Klinica?type=design&node-id=0-1&mode=design&t=JrVs2p5rFJvPFzCk-0">
+<a href="https://www.figma.com/file/bRdQnlyWWehoRQbuwGENaJ/Klinica?type=design&node-id=0-1&mode=design&t=JrVs2p5rFJvPFzCk-0" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Logo" width="96" height="96">
 </a>
 
-<a href="https://www.nocountry.tech/">
+<a href="https://www.nocountry.tech/" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" alt="Logo" width="96" height="96">
 </a>
 
-<a href="https://discord.gg/Zj2GmPwg">
+<a href="https://discord.gg/Zj2GmPwg" target="_blank">
   <img src="https://img.icons8.com/color/480/discord-new-logo.png" alt="Logo" width="96" height="96">
 </a>
 
@@ -94,7 +94,7 @@ Clonar este repositorio y ejecuta "npm install" y luego "npm run dev" desde tu v
    ```
 
 O simplemente clickea en el link de 
-<a href="https://mecharcovz-fe.vercel.app/">Ver Demo.</a>
+<a href="https://mecharcovz-fe.vercel.app/" target="_blank">Ver Demo.</a>
 
 <!-- USAGE EXAMPLES -->
 <h1 align="center"> 
@@ -120,10 +120,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Gared Lyon</h4>
           <h4 style="margin-top: 1rem;">Project Manager</h4>
         </a>
-        <a href="https://github.com/GaredLyon">
+        <a href="https://github.com/GaredLyon" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/gared-lyon-194b21222/">
+        <a href="https://www.linkedin.com/in/gared-lyon-194b21222/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -137,10 +137,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Micaela Lemiña</h4>
           <h4 style="margin-top: 1rem;">UX/UI</h4>
         </a>
-        <a href="https://www.behance.net/micaelalemina">
+        <a href="https://www.behance.net/micaelalemina" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Behance&color=172B4D&logo=Behance&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/micaela-lemi%C3%B1a-6339a3241/">
+        <a href="https://www.linkedin.com/in/micaela-lemi%C3%B1a-6339a3241/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -154,10 +154,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Miguel Beltran</h4>
           <h4 style="margin-top: 1rem;">Backend Developer & DevOps</h4>
         </a>
-        <a href="https://github.com/miguelbel00">
+        <a href="https://github.com/miguelbel00" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/miguelbel00/">
+        <a href="https://www.linkedin.com/in/miguelbel00/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -171,10 +171,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Enzo Gonzalez</h4>
           <h4 style="margin-top: 1rem;">Backend Developer</h4>
         </a>
-        <a href="https://github.com/gitgonlea">
+        <a href="https://github.com/gitgonlea" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/enzo-gonzalez-97t/">
+        <a href="https://www.linkedin.com/in/enzo-gonzalez-97t/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -193,10 +193,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Maximiliano Perez</h4>
           <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
-        <a href="https://github.com/MaximilianoLeonel23">
+        <a href="https://github.com/MaximilianoLeonel23" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/maximiliano-leonel-p%C3%A9rez-8846b826a/">
+        <a href="https://www.linkedin.com/in/maximiliano-leonel-p%C3%A9rez-8846b826a/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -210,10 +210,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Sergio Caro</h4>
           <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
-        <a href="https://github.com/scarolayton">
+        <a href="https://github.com/scarolayton" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/sergio-eduardo-caro-layton-408969228/">
+        <a href="https://www.linkedin.com/in/sergio-eduardo-caro-layton-408969228/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -227,10 +227,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Christian Ortiz</h4>
           <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
-        <a href="https://github.com/cric992010">
+        <a href="https://github.com/cric992010" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/christian-omar-ortiz-salvador-a12114202/">
+        <a href="https://www.linkedin.com/in/christian-omar-ortiz-salvador-a12114202/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -244,10 +244,10 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
           <h4 style="margin-top: 1rem;">Julio Reyes</h4>
           <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         </a>
-        <a href="https://github.com/jjrh92">
+        <a href="https://github.com/jjrh92" target="_blank">
           <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/jjrh92/">
+        <a href="https://www.linkedin.com/in/jjrh92/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
@@ -261,7 +261,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <img src="https://media4.giphy.com/media/U3DTrGnuwfDpkNsr3d/giphy.gif" width="30px">Documentación
 </h1>
 
-<a href="https://drive.google.com/file/d/1j48fmS0Idk_D8nzWOLV4YbB0jRZFKOPm/view?usp=drivesdk">
+<a href="https://drive.google.com/file/d/1j48fmS0Idk_D8nzWOLV4YbB0jRZFKOPm/view?usp=drivesdk" target="_blank">
   <img src="https://img.icons8.com/officel/80/making-notes.png" alt="Logo" width="96" height="96">
 </a>
 
