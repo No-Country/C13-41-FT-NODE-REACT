@@ -13,13 +13,8 @@ const paymentSuccess = () => {
     scheduleIdChoosed,
     userId
 	} = useAppoinmentContext()
-  const localStorageData = typeof window !== "undefined" ? localStorage.getItem('userData') : null;
-  const userData = localStorageData ? JSON.parse(localStorageData) : null;
-  const userId = userData ? userData.id : null;
+  
   useEffect(() => {
-    const date = new Date().getTime()
-    const time = '10:00-11:00'
-    const arr = time.split('-')
     const dividedTime = timeChoosed.split('-')
     const createConsult = async () => {
       try {
