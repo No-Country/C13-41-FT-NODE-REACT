@@ -66,9 +66,9 @@ const SignInPage = () => {
 			let endpoint = '';
 
 			if (data.user === 'patient') {
-				endpoint = 'https://mecharcovz-be.onrender.com/api/v1/auth/patient';
+				endpoint = 'http://localhost:3005/api/v1/auth/patient';
 			} else {
-				endpoint = 'https://mecharcovz-be.onrender.com/api/v1/auth/medic';
+				endpoint = 'http://localhost:3005/api/v1/auth/medic';
 			}
 
 			const response = await fetch(endpoint, {

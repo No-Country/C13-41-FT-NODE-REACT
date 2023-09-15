@@ -47,7 +47,7 @@ const DoctorCard = ({ doctor }) => {
 					variant='circular'
 					sizes='large'
 					sx={{ backgroundColor: colors.categoryIcons.vaccines, width: '4rem', height: '4rem' }}
-					src={`https://mecharcovz-be.onrender.com/public/uploads/${
+					src={`http://localhost:3005/public/uploads/${
 						doctor.profesionalid ? 'avatarmedic' : 'avatarpatient'
 					}/${avatar}`}
 				>

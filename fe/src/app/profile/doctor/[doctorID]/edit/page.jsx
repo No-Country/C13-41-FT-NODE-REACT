@@ -47,7 +47,7 @@ function DoctorProfile() {
 				setSocialNetwork(userData.socialnetworks[0].link);
 			}
 			if (userData.avatar) {
-				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${userData.avatar}`);
+				setAvatar(`http://localhost:3005/public/uploads/avatarmedic/${userData.avatar}`);
 			} else {
 				setAvatar(userData.avatar);
 			}
@@ -70,7 +70,7 @@ function DoctorProfile() {
 		};
 
 		try {
-			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/medic`, {
+			const response = await fetch(`http://localhost:3005/api/v1/medic`, {
 				method: 'PUT',
 				headers: {
 					Authorization: `bearer ${localStorage.getItem('token')}`,
@@ -108,7 +108,7 @@ function DoctorProfile() {
 				link: socialNetwork,
 			};
 
-			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
+			const response = await fetch(`http://localhost:3005/api/v1/socialnetwork`, {
 				method: 'PUT',
 				headers: {
 					Authorization: `bearer ${localStorage.getItem('token')}`,
@@ -133,7 +133,7 @@ function DoctorProfile() {
 				link: socialNetwork,
 			};
 
-			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/socialnetwork`, {
+			const response = await fetch(`http://localhost:3005/api/v1/socialnetwork`, {
 				method: 'POST',
 				headers: {
 					Authorization: `bearer ${localStorage.getItem('token')}`,

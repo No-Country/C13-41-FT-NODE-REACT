@@ -58,7 +58,7 @@ export default function PacientSingUp() {
 					};
 
 					try {
-						const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/patient', {
+						const response = await fetch('http://localhost:3005/api/v1/patient', {
 							method: 'POST',
 							headers: {
 								'Content-Type': 'application/json',

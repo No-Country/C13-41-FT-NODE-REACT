@@ -22,7 +22,7 @@ const AvatarProfile = ({ avatar, setAvatar }) => {
 
 		try {
 			const response = await fetch(
-				`https://mecharcovz-be.onrender.com/api/v1/files?type=avatarpatient&email=${userData.email}`,
+				`http://localhost:3005/api/v1/files?type=avatarpatient&email=${userData.email}`,
 				{
 					method: 'POST',
 					headers: {

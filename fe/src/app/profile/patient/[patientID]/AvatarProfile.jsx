@@ -22,7 +22,7 @@ const AvatarProfile = ({ patientData }) => {
 				alt={patientData && patientData.fullname}
 				src={
 					patientData &&
-					`https://mecharcovz-be.onrender.com/public/uploads/${
+					`http://localhost:3005/public/uploads/${
 						patientData.profesionalid ? 'avatarmedic' : 'avatarpatient'
 					}/${patientData.avatar}`
 				}

@@ -27,7 +27,7 @@ const CommentInput = ({ doctorData, userData, fetchComments }) => {
 
 		// Enviar a la API en un try catch
 		try {
-			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/comment', {
+			const response = await fetch('http://localhost:3005/api/v1/comment', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

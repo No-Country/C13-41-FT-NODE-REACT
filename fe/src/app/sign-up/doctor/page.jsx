@@ -45,7 +45,7 @@ export default function DoctorSignUp() {
 					};
 
 					try {
-						const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/medic', {
+						const response = await fetch('http://localhost:3005/api/v1/medic', {
 							method: 'POST',
 							headers: {
 								'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ const CommentCard = ({ comment }) => {
 	const handleDeleteComment = async () => {
 		try {
 			const response = await fetch(
-				`https://mecharcovz-be.onrender.com/api/v1/comment?id=${comment.id}`,
+				`http://localhost:3005/api/v1/comment?id=${comment.id}`,
 				{
 					method: 'DELETE',
 					headers: {

@@ -1,6 +1,6 @@
 export const getDoctorComments = async (type, id) => {
 	const response = await fetch(
-		`https://mecharcovz-be.onrender.com/api/v1/comment?type=${type}&id=${id}`,
+		`http://localhost:3005/api/v1/comment?type=${type}&id=${id}`,
 		{
 			method: 'GET',
 			headers: {

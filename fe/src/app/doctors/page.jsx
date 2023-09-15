@@ -45,9 +45,9 @@ const DoctorsPage = () => {
 	// 	}
 	// }, [isLoading, fetchData]);
 	const handdleCreateService = async  (doctor) => { 
-		console.log('hola');
+
 		try {
-			const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/service`, {
+			const response = await fetch(`http://localhost:3005/api/v1/service`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -58,18 +58,19 @@ const DoctorsPage = () => {
 					description: 'Appointment',
 					price: 20,
 					medicId: doctor.id,
-					specialtyId: doctor.specialties[0].id
+					specialtyId: doctor.specialties[0].id,
 				}
 			)
 		
 		});
 		const data = await response.json()
 		const newService = data.data.newService
-		console.log(newService.id);
+
 		push(`/appointments/${doctor.email}/${newService.id}`)
 		} catch (error) {
 			console.error(error)
 		}
+
 	}
 
 	return (

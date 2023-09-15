@@ -86,8 +86,9 @@ const AppointmentInfoPage = ({params}) => {
 			const timeStamp = new Date(dayChoosed).getTime()
 
     const createConsult = async () => {
+
       try {
-        const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/consult`, {
+        const response = await fetch(`http://localhost:3005/api/v1/consult`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -102,16 +103,17 @@ const AppointmentInfoPage = ({params}) => {
               resume: 'resume',
               urlFile: 'url',
               medicId: doctorId,
-              patientId: userId,
+              patientId: "3718ba64-e184-45df-a07a-efe598487344",
               scheduleId: scheduleIdChoosed,
               serviceId: serviceId
+
             }
           )
         
         });
-  
+
         const data = await response.json();
-        console.log(data);
+
       } catch (error) {
         console.log(error);
       }
@@ -165,7 +167,7 @@ const AppointmentInfoPage = ({params}) => {
 					{
 						<Avatar
 							alt={doctorName}
-							src={`https://mecharcovz-be.onrender.com/public/uploads/avatarmedic/${doctorAvatar}`}
+							src={`http://localhost:3005/public/uploads/avatarmedic/${doctorAvatar}`}
 							sx={{width: 100, height: 100}}
 							imgProps={{
 								style: {

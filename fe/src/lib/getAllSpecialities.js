@@ -1,5 +1,5 @@
 export const getAllSpecialities = async () => {
-	const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/specialty', {
+	const response = await fetch('http://localhost:3005/api/v1/specialty', {
 		method: 'GET',
 		headers: {
 			Authorization: `bearer ${localStorage.getItem('token')}`,

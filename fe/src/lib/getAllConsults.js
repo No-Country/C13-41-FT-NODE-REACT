@@ -1,6 +1,6 @@
 export const getAllConsultsByPatient = async patientId => {
 	const response = await fetch(
-		`https://mecharcovz-be.onrender.com/api/v1/consult?patientId=${patientId}`,
+		`http://localhost:3005/api/v1/consult?patientId=${patientId}`,
 		{
 			method: 'GET',
 			headers: {
@@ -16,7 +16,7 @@ export const getAllConsultsByPatient = async patientId => {
 
 export const getAllConsultsByDoctor = async medicId => {
 	const response = await fetch(
-		`https://mecharcovz-be.onrender.com/api/v1/consult?medicId=${medicId}`,
+		`http://localhost:3005/api/v1/consult?medicId=${medicId}`,
 		{
 			method: 'GET',
 			headers: {

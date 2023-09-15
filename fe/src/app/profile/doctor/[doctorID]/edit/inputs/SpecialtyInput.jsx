@@ -19,7 +19,7 @@ const SpecialtyInput = ({ specialties, setSpeciality, speciality, handleAddSpeci
 	const deleteSpecialty = async specialty => {
 		try {
 			const response = await fetch(
-				`https://mecharcovz-be.onrender.com/api/v1/medic/delspecialty?specialtyId=${specialty.id}&medicId=${userData.id}`,
+				`http://localhost:3005/api/v1/medic/delspecialty?specialtyId=${specialty.id}&medicId=${userData.id}`,
 				{
 					method: 'DELETE',
 					headers: {

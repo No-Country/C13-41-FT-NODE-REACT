@@ -15,6 +15,7 @@ import ProfessionalStatement from './ProfessionalStatement';
 import ContactProfile from './ContactProfile';
 import SocialNetworksProfile from './SocialNetworksProfile';
 import { getDoctorComments } from '@/lib/getDoctorComments';
+
 const PublicDoctorProfilePage = ({ params }) => {
 	const [doctorData, setDoctorData] = useState();
 	const [doctorComments, setDoctorComments] = useState([]);

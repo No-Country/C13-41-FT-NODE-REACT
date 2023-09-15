@@ -15,7 +15,7 @@ const ProceedWithThePayment = (params) => {
     // }
     // console.log(body);
     try {
-      const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/payment/stripe/create`, {
+      const response = await fetch(`http://localhost:3005/api/v1/payment/stripe/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

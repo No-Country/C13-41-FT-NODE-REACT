@@ -181,7 +181,7 @@ const ScheduleDoctor = () => {
     console.log(vacationDays)
     scheduleChoosed.map(async obj => {
       try {
-        const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/schedule?medicId=${medicId}`, {
+        const response = await fetch(`http://localhost:3005/api/v1/schedule?medicId=${medicId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

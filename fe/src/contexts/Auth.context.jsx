@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 	const getUserData = async (token, data, type) => {
 		try {
 			const response = await fetch(
-				`https://mecharcovz-be.onrender.com/api/v1/${type}?email=${data.email}`,
+				`http://localhost:3005/api/v1/${type}?email=${data.email}`,
 				{
 					headers: {
 						Authorization: `bearer ${token}`,

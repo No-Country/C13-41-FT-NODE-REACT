@@ -52,7 +52,7 @@ const AppointmentCard = ({ consultation, patient, doctor, userData }) => {
 						}}
 						aria-label='recipe'
 						alt={isMedic ? patient.fullname : doctor.fullname}
-						src={`https://mecharcovz-be.onrender.com/public/uploads/${
+						src={`http://localhost:3005/public/uploads/${
 							isMedic ? 'avatarpatient/' + patient.avatar : 'avatarmedic/' + doctor.avatar
 						}
 						`}

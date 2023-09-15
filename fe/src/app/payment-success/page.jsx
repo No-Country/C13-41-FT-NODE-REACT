@@ -18,7 +18,7 @@ const paymentSuccess = () => {
     const dividedTime = timeChoosed.split('-')
     const createConsult = async () => {
       try {
-        const response = await fetch(`https://mecharcovz-be.onrender.com/api/v1/consult`, {
+        const response = await fetch(`http://localhost:3005/api/v1/consult`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

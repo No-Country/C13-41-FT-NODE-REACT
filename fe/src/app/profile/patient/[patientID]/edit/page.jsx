@@ -29,7 +29,7 @@ function PatientProfile() {
 			setNationalId(userData.nid);
 			setPhone(userData.phone);
 			if (userData.avatar) {
-				setAvatar(`https://mecharcovz-be.onrender.com/public/uploads/avatarpatient/${userData.avatar}`);
+				setAvatar(`http://localhost:3005/public/uploads/avatarpatient/${userData.avatar}`);
 			} else {
 				setAvatar(userData.avatar);
 			}
@@ -44,7 +44,7 @@ function PatientProfile() {
 		};
 
 		try {
-			const response = await fetch('https://mecharcovz-be.onrender.com/api/v1/patient', {
+			const response = await fetch('http://localhost:3005/api/v1/patient', {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',

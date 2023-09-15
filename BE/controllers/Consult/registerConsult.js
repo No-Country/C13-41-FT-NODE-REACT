@@ -21,7 +21,7 @@ const createConsult = async (req, res) => {
       scheduleId,
       serviceId
     });
-
+    console.log (newConsult)
     return res.status(201).json({ data: { consult: newConsult }, message: "Consult Created" })
   } catch (error) {
     return res.status(400).json({ message: error.message, error: 'Register Consult' })

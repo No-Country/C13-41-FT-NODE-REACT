@@ -3,7 +3,7 @@ export const getSingleDoctor = async doctorID => {
 	const formattedDoctorID = doctorID.replace(/%40/g, '@');
 
 	const response = await fetch(
-		`https://mecharcovz-be.onrender.com/api/v1/medic?email=${formattedDoctorID}`,
+		`http://localhost:3005/api/v1/medic?email=${formattedDoctorID}`,
 		{
 			method: 'GET',
 			headers: {
