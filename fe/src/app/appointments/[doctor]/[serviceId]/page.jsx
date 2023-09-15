@@ -45,7 +45,7 @@ const AppointmentInfoPage = ({params}) => {
 	const doctorEmail = params.doctor
 	const localStorageData = localStorage.getItem('userData');
   const userData = JSON.parse(localStorageData)
-  setUserId(userData.id)	
+  // setUserId(userData.id)	
 	setServiceId(params.serviceId)
 	useEffect(() => {
 		const fetchDoctor = async () => {
@@ -135,7 +135,11 @@ const AppointmentInfoPage = ({params}) => {
 			alingItems: 'center'
 		},
 	}));
-	
+	const Section = styled(Box)(({ theme }) => ({
+		[theme.breakpoints.down("sm")]: {
+			width: '100%'
+		},
+	}));
 	return (
 		<>
 		{loading ? (
@@ -182,7 +186,7 @@ const AppointmentInfoPage = ({params}) => {
 				<Typography variant='body1'>{doctorSpeciality}</Typography>
 				<Typography variant='body1'>Price: $20 USD/hr</Typography>
 				</Box>
-				<Box
+				<Section
 					component='div'
 					sx={{
 						width: '75%',
@@ -239,11 +243,11 @@ const AppointmentInfoPage = ({params}) => {
 									Back
 								</Button>
 								<Box sx={{ flex: '1 1 auto' }} />
-								<Button disabled={timeChoosed === ''} onClick={handleNext}>{activeStep === steps.length - 1 ? 'Finish' : 'Next'}</Button>
+								<Button disabled={timeChoosed === ''} onClick={handleNext}>{activeStep === steps.length - 1 ? '' : 'Next'}</Button>
 							</Box>
 						</>
 					)}
-				</Box>
+				</Section>
 			</Wrapper>
 		</Container>
 		)}
