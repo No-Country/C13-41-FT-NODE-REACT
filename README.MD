@@ -282,28 +282,28 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <p align="center"><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/ThumbnailKlinikaYT.png"/>
+<img src="https://i.imgur.com/CnxiHOh.png"/>
 
 <!-- Screenshots -->
 <h1 align="center"> 
 <img src="https://media1.giphy.com/media/xcFJX6T9z2iqiB9Ud9/giphy.gif" width="30px">Capturas de Pantalla
 </h1>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/01.png?token=GHSAT0AAAAAABWVTLWPZVBVEEMRODQRGJ2EZIEQ3ZQ"/>
+<img src="https://i.imgur.com/PiiZO5v.png"/>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/02.png?token=GHSAT0AAAAAABWVTLWP2WLQZTMK6KU2KN7EZIEQ35Q"/>
+<img src="https://i.imgur.com/IOrVNR6.png"/>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/03.png?token=GHSAT0AAAAAABWVTLWPQCQKTRJSXW3OLH62ZIEQ4EA"/>
+<img src="https://i.imgur.com/ZHdFplT.png"/>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/04.png?token=GHSAT0AAAAAABWVTLWOH6NBWO7XNWWNEASGZIEQ4GQ"/>
+<img src="https://i.imgur.com/gwy7mMJ.png"/>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/05.png?token=GHSAT0AAAAAABWVTLWO54BOIQX2J4EJCCMOZIEQ4JA"/>
+<img src="https://i.imgur.com/z0wgCVz.png"/>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/06.png?token=GHSAT0AAAAAABWVTLWO5OK6LNXIWC4DECTKZIEQ4LQ"/>
+<img src="https://i.imgur.com/D0DeU4Z.png"/>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/07.png?token=GHSAT0AAAAAABWVTLWP3IQISTJRD53TD5RCZIEQ4NQ"/>
+<img src="https://i.imgur.com/wHuwja1.png"/>
 
-<img src="https://raw.githubusercontent.com/No-Country/C13-41-FT-NODE-REACT/main/fe/src/assets/github/08.png?token=GHSAT0AAAAAABWVTLWOP4UGSUEVJQ2IMABAZIEQ4PQ"/>
+<img src="https://i.imgur.com/IeVncbl.png"/>
 
 
 <!-- ACKNOWLEDGMENTS -->
