@@ -280,7 +280,7 @@ Puedes Comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 </h1>
 
 
-<p align="center"><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-C13_41_FT_NODE_REACT-red?style=for-the-badge&logo=youtube"/></a></p>
 
 <img src="https://i.imgur.com/CnxiHOh.png"/>
 
