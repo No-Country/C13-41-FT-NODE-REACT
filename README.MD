@@ -11,7 +11,7 @@
 <div align="center">
 
   <a href="No-Country/C13-41-FT-NODE-REACT" target="_blank">
-    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/assets/images/banner.png" alt="Banner">
+    <img src="https://i.imgur.com/tVmFUOJ.png" alt="Banner">
   </a>
 
 <h3 align="center">Bienvenid@s a Klinika</h3>
@@ -34,7 +34,7 @@
 
 <br />
   <a href="No-Country/C13-41-FT-NODE-REACT" target="_blank">
-    <img src="https://github.com/No-Country/C13-41-FT-NODE-REACT/blob/FE-julio-A101/fe/src/app/icon.png" alt="Logo" width="96" height="96">
+    <img src="https://i.imgur.com/66vNU4U.png" alt="Logo" width="96" height="96">
   </a>
 <br />
 
